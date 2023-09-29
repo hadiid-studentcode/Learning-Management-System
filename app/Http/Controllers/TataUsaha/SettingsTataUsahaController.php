@@ -25,8 +25,6 @@ class SettingsTataUsahaController extends TataUsahaController
 
         ], $id);
 
-
-
         $string = $getPegawai->foto;
         $parts = explode('-', $string);
         $filename = end($parts);
