@@ -214,4 +214,29 @@ class Pegawai extends Model
 
         return $result;
     }
+
+    public function getPegawaiFirstWhereId($select, $id)
+    {
+        $result = DB::table('pegawai')
+        ->select($select)
+            ->where('id', '=', $id)
+            ->first();
+
+        return $result;
+    }
+    public function HapusFotoPegawai($id)
+    {
+        $result = new Pegawai();
+        $getfoto = $result->getPegawaiFirstWhereId(['foto'], $id);
+
+        if (!empty($getfoto->foto)) {
+            $fotoPath = $getfoto->foto;
+
+            $image_path = 'storage/pegawai/images/' . $fotoPath;
+
+            if (File::exists($image_path)) {
+                File::delete($image_path);
+            }
+        }
+    }
 }
