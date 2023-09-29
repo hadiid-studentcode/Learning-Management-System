@@ -79,6 +79,7 @@ class RekapKeuanganSuperUserController extends SuperUserController
     public function show(Request $r, string $id)
     {
 
+
         $string = $r->bulan;
         $parts = explode('-', $string);
         $monthDay = $parts[0];
@@ -93,9 +94,10 @@ class RekapKeuanganSuperUserController extends SuperUserController
         $pemasukan = $resultRekapKeuangan->getRekapKeuanganWherePemasukan();
         $pengeluaran = $resultRekapKeuangan->getRekapKeuanganWherePengeluaran();
 
-        $rekapKeuangan = array_merge($pemasukan->toArray(), $pengeluaran->toArray());
+        // $rekapKeuangan = array_merge($pemasukan->toArray(), $pengeluaran->toArray());
 
-        $total = $resultRekapKeuangan->totalPemasukkanDanPengeluaran($rekapKeuangan);
+
+        // $total = $resultRekapKeuangan->totalPemasukkanDanPengeluaran($rekapKeuangan);
 
         $totalSearch = $resultRekapKeuangan->totalPemasukkanDanPengeluaran($rekapKeuanganSearch);
 
@@ -106,12 +108,12 @@ class RekapKeuanganSuperUserController extends SuperUserController
         // get tahunAjaran where id
         $tahunAjaranWhereid = $result->getTahunAjaranWhereId($r->tahunAjaran);
 
-        foreach ($rekapKeuangan as $rk) {
+        // foreach ($rekapKeuangan as $rk) {
 
-            $result = new Calender();
+        //     $result = new Calender();
 
-            $tanggal = $result->TanggalBahasaIndonesia($rk->tanggal);
-        }
+        //     $tanggal = $result->TanggalBahasaIndonesia($rk->tanggal);
+        // }
 
         if (empty($rekapKeuanganSearch)) {
             $tanggalSearch['tanggal'] = '';
@@ -135,13 +137,13 @@ class RekapKeuanganSuperUserController extends SuperUserController
             ->with('month', $month)
             ->with('tahunAjaranWhereid', $tahunAjaranWhereid)
             ->with('rekapKeuanganSearch', $rekapKeuanganSearch)
-            ->with('totalPemasukan', $total['pemasukan'])
-            ->with('totalPengeluaran', $total['pengeluaran'])
+            // ->with('totalPemasukan', $total['pemasukan'])
+            // ->with('totalPengeluaran', $total['pengeluaran'])
             ->with('totalPemasukanSearch', $totalSearch['pemasukan'])
             ->with('totalPengeluaranSearch', $totalSearch['pengeluaran'])
-            ->with('tanggal', $tanggal)
-            ->with('tanggalSearch', $tanggalSearch['tanggal'])
-            ->with('rekapKeuangan', $rekapKeuangan);
+            // ->with('tanggal', $tanggal)
+            ->with('tanggalSearch', $tanggalSearch['tanggal']);
+            // ->with('rekapKeuangan', $rekapKeuangan);
     }
 
     /**

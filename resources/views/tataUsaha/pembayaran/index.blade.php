@@ -1,11 +1,12 @@
-@extends('layouts.main') 
+@extends('layouts.main')
 @section('main')
     <div class="">
         <div class="card card-custom gutter-b">
             <div class="card-body">
                 <div class="d-flex flex-column align-items-center">
                     <h2 class="text-dark-75 text-hover-success font-size-h1">Data Pembayaran</h2>
-                    <p class="text-dark-50 mt-2 text-center">Silakan pilih jenis data pembayaran dan lakukan pengisian data pembayaran di
+                    <p class="text-dark-50 mt-2 text-center">Silakan pilih jenis data pembayaran dan lakukan pengisian data
+                        pembayaran di
                         bawah ini.</p>
                 </div>
             </div>
@@ -314,7 +315,7 @@
                                     </th>
                                 </tr>
                                 <tr>
-                                    <th >No Transaksi</th>
+                                    <th>No Transaksi</th>
                                     <th>Jenis</th>
                                     <th>Nominal</th>
                                     <th>Tanggal</th>
@@ -529,73 +530,71 @@
 
 
 
-                                                            @if ($p->report == 'Diterima')
-                                                                {{-- <form action="{{ asset($route . '/pembayaran/' . $p->no_transaksi) }}"
-                                                            method="post"> @csrf @method('DELETE') <input type="hidden"
-                                                                name="nisn" id="nisn" value="{{ $nisn }}"> --}}
+                                                            <form
+                                                                action="{{ asset($route . '/pembayaran/' . $p->no_transaksi) }}"
+                                                                method="post"> @csrf @method('DELETE') <input
+                                                                    type="hidden" name="nisn" id="nisn"
+                                                                    value="{{ $nisn }}">
 
 
 
 
-                                                                {{-- <button type="button" class="btn btn-danger btn-sm"
+                                                                <button type="button" class="btn btn-danger btn-sm"
                                                                     data-toggle="modal"
                                                                     data-target="#confirmDeleteModal{{ $p->id }}">
                                                                     <i class="fas fa-trash"></i>
                                                                 </button>
- --}}
 
-                                                                {{-- </form> --}}
 
-                                                                {{-- modal confirm delete --}}
+                                                            </form>
 
-                                                                {{--                                                                
-                                                                <div class="modal fade"
-                                                                    id="confirmDeleteModal{{ $p->id }}"
-                                                                    tabindex="-1" role="dialog"
-                                                                    aria-labelledby="confirmDeleteModalLabel"
-                                                                    aria-hidden="true">
-                                                                    <div class="modal-dialog" role="document">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title"
-                                                                                    id="confirmDeleteModalLabel">
-                                                                                    Konfirmasi
-                                                                                    Hapus Pembayaran</h5>
-                                                                                <button type="button" class="close"
-                                                                                    data-dismiss="modal"
-                                                                                    aria-label="Close">
-                                                                                    <span aria-hidden="true">&times;</span>
-                                                                                </button>
-                                                                            </div>
-                                                                            <div class="modal-body"> Apakah Anda yakin
-                                                                                ingin
-                                                                                menghapus
-                                                                                pembayaran
-                                                                                ini? </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-dismiss="modal">Batal</button>
-                                                                                <form
-                                                                                    action="{{ url('/' . $route . '/pembayaran/' . $p->no_transaksi) }}"
-                                                                                    method="POST"> @csrf @method('DELETE')
-                                                                                    <input type="hidden"
-                                                                                        name="siswa_nisn" id="siswa_nisn"
-                                                                                        value="{{ $nisn }}">
-                                                                                    <button type="submit"
-                                                                                        class="btn btn-danger"
-                                                                                        onclick="return showConfirmation('{{ $p->id }}')">Hapus</button>
-                                                                                </form>
-                                                                            </div>
+                                                            {{-- modal confirm delete --}}
+
+
+                                                            <div class="modal fade"
+                                                                id="confirmDeleteModal{{ $p->id }}" tabindex="-1"
+                                                                role="dialog" aria-labelledby="confirmDeleteModalLabel"
+                                                                aria-hidden="true">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title"
+                                                                                id="confirmDeleteModalLabel">
+                                                                                Konfirmasi
+                                                                                Hapus Pembayaran</h5>
+                                                                            <button type="button" class="close"
+                                                                                data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body"> Apakah Anda yakin
+                                                                            ingin
+                                                                            menghapus
+                                                                            pembayaran
+                                                                            ini? </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-secondary"
+                                                                                data-dismiss="modal">Batal</button>
+                                                                            <form
+                                                                                action="{{ url('/' . $route . '/pembayaran/' . $p->no_transaksi) }}"
+                                                                                method="POST"> @csrf @method('DELETE')
+                                                                                <input type="hidden" name="siswa_nisn"
+                                                                                    id="siswa_nisn"
+                                                                                    value="{{ $nisn }}">
+                                                                                <button type="submit"
+                                                                                    class="btn btn-danger"
+                                                                                    onclick="return showConfirmation('{{ $p->id }}')">Hapus</button>
+                                                                            </form>
                                                                         </div>
                                                                     </div>
-                                                                </div> --}}
+                                                                </div>
+                                                            </div>
 
 
 
 
-                                                                {{-- end --}}
-                                                            @endif
+
 
 
 
@@ -605,59 +604,7 @@
                                                                 <i class="fas fa-print"></i>
                                                             </a>
 
-                                                            @if (!$p->report == 'Ditolak')
-                                                                @if ($p->deskripsi == 'Belum Lunas')
-                                                                    {{-- 
-                                                                    <button class="btn btn-warning btn-sm"
-                                                                        data-toggle="modal"
-                                                                        data-target="#reportModal_{{ $p->no_transaksi }}">
-                                                                        <i class="fas fa-exclamation"
-                                                                            style="color: white;"></i>
-                                                                    </button>
-                                                                    <!-- Modal lapor -->
-                                                                    <div class="modal fade"
-                                                                        id="reportModal_{{ $p->no_transaksi }}"
-                                                                        tabindex="-1" role="dialog"
-                                                                        aria-labelledby="reportModalLabel"
-                                                                        aria-hidden="true">
-                                                                        <div class="modal-dialog" role="document">
-                                                                            <div class="modal-content">
-                                                                                <div class="modal-header">
-                                                                                    <h5 class="modal-title"
-                                                                                        id="reportModalLabel">
-                                                                                        Laporkan
-                                                                                        Masalah
-                                                                                    </h5>
-                                                                                    <button type="button" class="close"
-                                                                                        data-dismiss="modal"
-                                                                                        aria-label="Close">
-                                                                                        <span
-                                                                                            aria-hidden="true">&times;</span>
-                                                                                    </button>
-                                                                                </div>
-                                                                                <div class="modal-body">
-                                                                                    Apakah Anda ingin melaporkan masalah
-                                                                                    ini?
-                                                                                </div>
-                                                                                <form
-                                                                                    action="{{ url('/tata-usaha/pembayaran/report/' . $nisn . '/' . $p->no_transaksi) }}"
-                                                                                    method="post">
-                                                                                    @csrf
-                                                                                    <div class="modal-footer">
-                                                                                        <button type="button"
-                                                                                            class="btn btn-secondary"
-                                                                                            data-dismiss="modal">Batal</button>
-                                                                                        <button type="submit"
-                                                                                            class="btn btn-success">Ya,
-                                                                                            Laporkan</button>
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
- --}}
-                                                                @endif
-                                                            @endif
+
 
                                                     </div>
                                                 </td>

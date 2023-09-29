@@ -1,29 +1,23 @@
 @extends('layouts.main')
 
 @section('main')
-
     <div class="">
         <div class="card card-custom">
             <div class="card-body">
                 <div class="d-flex flex-column align-items-center">
                     <h2 class="text-dark-75 text-center ">Management Akun</h2>
-                    <p class="text-dark-50 text-center">Silahkan Atur Pembuatan akun baru SIMU Kampa Untuk Semua Warga Sekolah Yang
+                    <p class="text-dark-50 text-center">Silahkan Atur Pembuatan akun baru SIMU Kampa Untuk Semua Warga
+                        Sekolah Yang
                         Baru.</p>
                 </div>
             </div>
         </div>
-    </div
-
-    {{-- <div class="">
-        <div class="card card-custom gutter-b"> --}}
-    {{-- <div class="card-body">
+    </div {{-- <div class="">
+        <div class="card card-custom gutter-b"> --}} {{-- <div class="card-body">
                 <button id="tambah-akun-btn" class="btn btn-success" data-toggle="modal" data-target="#tambahAkun">Tambah
                     Akun</button>
-            </div> --}}
-    {{-- </div>
-    </div> --}}
-    {{-- tambah akun --}}
-    {{-- <div id="tambahAkun" class="modal fade">
+            </div> --}} {{-- </div>
+    </div> --}} {{-- tambah akun --}} {{-- <div id="tambahAkun" class="modal fade">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -91,122 +85,100 @@
                 </div>
             </div>
         </div>
-    </div> --}}
-
-    <div class="">
-        <div class="card card-custom gutter-b">
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table id="data_table" class="table table-bordered table-striped" style="text-align: center">
-                        <thead>
+    </div> --}} <div
+        class="">
+    <div class="card card-custom gutter-b">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="data_table" class="table table-bordered table-striped" style="text-align: center">
+                    <thead>
+                        <tr>
+                            <th colspan="5">
+                                <h5 class="text-center">Data Akun</h5>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style="width: 5%;">No</th>
+                            <th>Nama</th>
+                            <th>Username</th>
+                            <th>Posisi</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($akun as $a)
                             <tr>
-                                <th colspan="5">
-                                    <h5 class="text-center">Data Akun</h5>
-                                </th>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $a->nama_lengkap }}</td>
+                                <td>{{ $a->userid }}</td>
+                                <td>{{ $a->hak_akses }}</td>
+
+                                <td>
+
+                                    <div class="btn-sm" role="group" aria-label="Basic mixed styles example">
+                                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                            data-target="#editAkun{{ $a->id }}">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                                {{-- sda --}}
                             </tr>
-                            <tr>
-                                <th style="width: 5%;">No</th>
-                                <th>Nama</th>
-                                <th>Username</th>
-                                <th>Posisi</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($akun as $a)
-                                {{-- <tr @if ($a->siswa_id_user == null && $a->guru_id_user == null && $a->wali_murid_id_user == null && $a->pegawai_id_user == null) class="d-none" style="background-color: rgba(255, 0, 0, 0.174)"  @endif
-                                 @if ($a->hak_akses == 'Super User') class="d-none" @endif       
-                                        
-                                        > --}}
 
-                                        <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $a->nama_lengkap }}</td>
-                                            <td>{{ $a->userid }}</td>
-                                            <td>{{ $a->hak_akses }}</td>
-                                            <td>
-                                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#editAkun{{ $a->id }}">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                    
-                                                    <div style="width: 10px">
+                            <div id="editAkun{{ $a->id }}" class="modal fade">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Formulir Edit Akun</h5>
 
-                                                    </div>
-
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $a->nama_lengkap }}</td>
-                                    <td>{{ $a->userid }}</td>
-                                    <td>{{ $a->hak_akses }}</td>
-                                    <td>
-
-                                        <div class="btn-sm" role="group" aria-label="Basic mixed styles example">
-                                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                                data-target="#editAkun{{ $a->id }}">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                          
                                         </div>
+                                        <div class="modal-body">
+                                            <form action="{{ url('/tata-usaha/manajemen-akun/' . $a->id) }}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <div class="form-group">
+                                                    <label for="edit-nama">Nama:</label>
+                                                    <input type="text" class="form-control"
+                                                        value="{{ $a->nama_lengkap }}" name="nama_lengkap" disabled>
+                                                </div>
 
-                                        </form>
-                                    </td>
-                                </tr>
-
-                                <div id="editAkun{{ $a->id }}" class="modal fade">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Formulir Edit Akun</h5>
-
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="{{ url('/tata-usaha/manajemen-akun/' . $a->id) }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <div class="form-group">
-                                                        <label for="edit-nama">Nama:</label>
-                                                        <input type="text" class="form-control"
-                                                            value="{{ $a->nama_lengkap }}" name="nama_lengkap" disabled>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="edit-username">Username:</label>
-                                                        <input type="text" class="form-control"
-                                                            value="{{ $a->userid }}" name="username" disabled>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="edit-password">Password:</label>
-                                                        <div class="input-group">
-                                                            <input type="password" class="form-control"
-                                                                id="edit_password_{{ $a->id }}" name="password">
-                                                            <div class="input-group-append">
-                                                                <span class="input-group-text">
-                                                                    <i id="password_toggle_{{ $a->id }}"
-                                                                        class="fa fa-eye"
-                                                                        onclick="eye({{ $a->id }})"></i>
-                                                                </span>
-                                                            </div>
+                                                <div class="form-group">
+                                                    <label for="edit-username">Username:</label>
+                                                    <input type="text" class="form-control" value="{{ $a->userid }}"
+                                                        name="username" disabled>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="edit-password">Password:</label>
+                                                    <div class="input-group">
+                                                        <input type="password" class="form-control"
+                                                            id="edit_password_{{ $a->id }}" name="password">
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text">
+                                                                <i id="password_toggle_{{ $a->id }}"
+                                                                    class="fa fa-eye"
+                                                                    onclick="eye({{ $a->id }})"></i>
+                                                            </span>
                                                         </div>
                                                     </div>
+                                                </div>
 
-                                                    <button type="submit" class="btn btn-success">Update</button>
-                                                    <button type="button" class="btn btn-success"
-                                                        data-dismiss="modal">Cancel</button>
-                                                </form>
-                                            </div>
+                                                <button type="submit" class="btn btn-success">Update</button>
+                                                <button type="button" class="btn btn-success"
+                                                    data-dismiss="modal">Cancel</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
-
-                                <!-- Confirmation Delete Modal -->
-                           
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                            </div>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
+    </div>
     </div>
 
     <script>
