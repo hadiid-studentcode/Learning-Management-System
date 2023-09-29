@@ -14,8 +14,8 @@
                         <div class="row align-items-center">
                             <div class="col-md-4 my-md-0 mb-2">
                                 <div class="d-flex align-items-center">
-                                    <select name="tahun_ajaran" class="form-control" id='tahun_ajaran'>
-                                        <option value="" selected="selected">Pilih Tahun Ajaran
+                                    <select name="tahun_ajaran" class="form-control" id='tahun_ajaran' required>
+                                        <option value="@if(isset($searchTahunAjaran)) {{ $searchTahunAjaran }} @else  @endif" selected="selected">@if(isset($searchTahunAjaran)) {{ $searchTahunAjaran }} @else Pilih Tahun Ajaran @endif</option>
                                         </option>
                                         @foreach ($tahunAjaran as $th)
                                             <option value="{{ $th->tahun_ajaran }}">{{ $th->tahun_ajaran }}
@@ -27,8 +27,8 @@
                             </div>
                             <div class="col-md-4 my-md-0">
                                 <div class="d-flex align-items-center">
-                                    <select class="form-control" name="hari" id='hari'>
-                                        <option value="" selected="selected" hidden>Pilih Hari
+                                    <select class="form-control" name="hari" id='hari' required>
+                                        <option value="@if(isset($searchHari)) {{ $searchHari }} @else  @endif" selected="selected" hidden> @if(isset($searchHari)) {{ $searchHari }} @else Pilih Hari @endif
                                         </option>
                                         <option value="Senin">Senin</option>
                                         <option value="Selasa">Selasa</option>
