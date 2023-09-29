@@ -14,7 +14,6 @@
   <div class="container">
       <div class="row justify-content-center mt-5">
           <div class="col-lg-6 col-md-8">
-
               @if ($waktu_absenDari == null && $waktu_absenSampai == null && $datenow == null)
               @elseif ($datenow >= $waktu_absenDari && $datenow <= $waktu_absenSampai)
                   <div class="alert alert-success text-center" role="alert">
