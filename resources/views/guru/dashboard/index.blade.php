@@ -13,7 +13,7 @@
         <div class="card-body box-profile card-outline shadow mb-3"
             style="height: 80vh; margin-left:15px; background-color:white;">
             <div class="text-center">
-                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Profil"
+                <img src="{{ asset('/storage/guru/images/' . $img) }}" alt="Profil"
                     style="border-radius: 50%; " height="160px" width="160px">
             </div>
 
