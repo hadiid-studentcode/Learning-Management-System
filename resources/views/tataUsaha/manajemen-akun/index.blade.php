@@ -1,17 +1,20 @@
 @extends('layouts.main')
 
 @section('main')
-    <div class="container">
-        <div class="card card-custom gutter-b">
-            <div class="card-body" style="text-align: center;">
-                <h2 class="text-dark-75 text-hover-success font-size-h1">Management Akun</h2>
-                <p class="text-dark-50 mt-2">Silahkan Atur Pembuatan akun baru SIMU Kampa Untuk Semua Warga Sekolah Yang
-                    Baru.</p>
+
+    <div class="">
+        <div class="card card-custom">
+            <div class="card-body">
+                <div class="d-flex flex-column align-items-center">
+                    <h2 class="text-dark-75 text-center ">Management Akun</h2>
+                    <p class="text-dark-50 text-center">Silahkan Atur Pembuatan akun baru SIMU Kampa Untuk Semua Warga Sekolah Yang
+                        Baru.</p>
+                </div>
             </div>
         </div>
-    </div>
+    </div
 
-    {{-- <div class="container">
+    {{-- <div class="">
         <div class="card card-custom gutter-b"> --}}
     {{-- <div class="card-body">
                 <button id="tambah-akun-btn" class="btn btn-success" data-toggle="modal" data-target="#tambahAkun">Tambah
@@ -90,7 +93,7 @@
         </div>
     </div> --}}
 
-    <div class="container">
+    <div class="">
         <div class="card card-custom gutter-b">
             <div class="card-body">
                 <div class="table-responsive">
@@ -103,10 +106,10 @@
                             </tr>
                             <tr>
                                 <th style="width: 5%;">No</th>
-                                <th style="width: 20%;">Nama</th>
-                                <th style="width: 20%;">Username</th>
-                                <th style="width: 20%;">Posisi</th>
-                                <th style="width: 15%;">Aksi</th>
+                                <th>Nama</th>
+                                <th>Username</th>
+                                <th>Posisi</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -116,29 +119,29 @@
                                         
                                         > --}}
 
-                                <tr>
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $a->nama_lengkap }}</td>
+                                            <td>{{ $a->userid }}</td>
+                                            <td>{{ $a->hak_akses }}</td>
+                                            <td>
+                                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#editAkun{{ $a->id }}">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                    
+                                                    <div style="width: 10px">
 
+                                                    </div>
 
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $a->nama_lengkap }}</td>
-                                    <td>{{ $a->userid }}</td>
-                                    <td>{{ $a->hak_akses }}</td>
-                                    <td>
-
-                                        <div class="btn-sm" role="group" aria-label="Basic mixed styles example">
-                                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                                data-target="#editAkun{{ $a->id }}">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                                data-target="#confirmDeleteModal{{ $a->id }}">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
-                                        </div>
-
-                                        </form>
-                                    </td>
-                                </tr>
+                                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal{{ $a->id }}">
+                                                        <i class="fa fa-trash"></i> 
+                                                    </button>
+                                                </div>
+                                                
+                                            </td>
+                                        </tr>
+                                        
 
                                 <div id="editAkun{{ $a->id }}" class="modal fade">
                                     <div class="modal-dialog modal-dialog-centered">

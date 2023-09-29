@@ -2,12 +2,12 @@
 
 @section('main')
 
-            <div class="container">
+            <div class="">
                 <div class="card card-custom gutter-b">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center">
                             <h2 class="text-dark-75 text-hover-success font-size-h1">Management Siswa</h2>
-                            <p class="text-dark-50 mt-2">Silahkan Atur Data Siswa berupa Mengatur Kelas Siswa dan Menambahkan Siswa
+                            <p class="text-dark-50 mt-2 text-center">Silahkan Atur Data Siswa berupa Mengatur Kelas Siswa dan Menambahkan Siswa
                                 Baru</p>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
 
 
 
-            <div class="container">
+            <div class="">
                 <div class="page" id="input">
                 <div class="card card-custom gutter-b">
                                 <div class="card-body">
@@ -303,8 +303,7 @@
                                 </div>
                             </div>
 
-                            <div class="container card card-custom gutter-b">
-
+                            <div class=" card card-custom gutter-b">
 
                                 <div class="table-responsive">
                                 <table id="data_table" class="table table-striped table-bordered">
@@ -317,7 +316,7 @@
                                             <th>Nama</th>
                                             <th>NISN</th>
                                             <th>Kelas</th>
-                                            <th>Jenis Kelamin</th>
+                                            <th>Kelamin</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -334,6 +333,8 @@
                                                     <button type="button" class="btn btn-success btn-sm view-button"
                                                         data-toggle="modal" data-target="#detailModal{{ $s->id }}"
                                                         data-index="<%= index %>"> <i class="fas fa-eye"></i></button>
+
+                                                       
 
                                                     <!-- Modal Detail Siswa -->
                                                     <div id="detailModal{{ $s->id }}" class="modal fade">
@@ -472,6 +473,8 @@
 
                                                     <button type="button" class="btn btn-warning btn-sm edit-button"
                                                         data-toggle="modal" data-target="#editModal{{ $s->id }}" style="color:white;"><i class="fas fa-edit"></i></button>
+
+                                                       
 
                                                     {{-- edit modal --}}
                                                     <div id="editModal{{ $s->id }}" class="modal fade">

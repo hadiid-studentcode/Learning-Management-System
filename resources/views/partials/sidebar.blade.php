@@ -444,7 +444,7 @@
                                     </a>
                                 </li>
                                 <hr>
-                                <li class="nav-item" style="margin-top:4%;">
+                                <li class="nav-item" style="margin-top:2%;">
                                     <a href="{{ asset('/' . $route . '/setting') }}"
                                         class="nav-link @if ($title == 'Setting') active @else '' @endif">
                                         <i class="fas fa-cogs"

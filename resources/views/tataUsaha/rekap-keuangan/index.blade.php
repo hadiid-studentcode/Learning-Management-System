@@ -1,51 +1,51 @@
 @extends('layouts.main')
 
 @section('main')
-    <div class="container">
+    <div class="">
         <div class="card card-custom gutter-b">
             <div class="card-body">
                 <div class="d-flex flex-column align-items-center">
                     <h2 class="text-dark-75 text-hover-success font-size-h1">Rekap Data Keuangan</h2>
-                    <p>Mohon Isi Data uang Keluar dengan benar dan Jujur.</p>
+                    <p class="text-dark-50 text-center">Mohon Isi Data uang Keluar dengan benar dan Jujur.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container" style="width:auto;">
+    <div class="" style="width:auto;">
         <div class="card card-custom" id="data_pertemuan">
             <div class="card-body">
                 <div class="card-toolbar">
                     <ul class="nav nav-tabs nav-bold nav-tabs-line nav-tabs-line-3x">
-                        <li class="nav-item mr-3">
+                        <li class="nav-item ">
                             <a class="nav-link" href="{{ url('/tata-usaha/pemasukan') }}" onclick="showPage('input')">
                                 <span class="nav-icon">
-                                    <span class="svg-icon mr-3"></span>
-                                  <i class="fas fa-layer-group"></i> 
-                                    <span class="nav-text font-size-lg">Input Pemasukan</span>
+                                    
+                                    <i class="fas fa-money-bill-wave"></i>
+                                    <span class="svg-icon ">Masuk</span>
                                 </span>
                             </a>
                         </li>
-                        <li class="nav-item mr-3">
+                        <li class="nav-item ">
                             <a class="nav-link" href="{{ url('/tata-usaha/pengeluaran') }}"
                                 onclick="showPage('pengeluaran')">
                                 <span class="nav-icon">
                                     <span class="nav-icon">
-                                        <span class="svg-icon mr-3"></span>
-                                        <i class="fas fa-layer-group"></i> 
-                                        <span class="nav-text font-size-lg">Input pengeluaran</span>
+                                       
+                                        <i class="fas fa-money-bill-alt"></i>
+                                        <span class="svg-icon">Keluar</span>
                                     </span>
                                 </span>
                             </a>
                         </li>
 
-                        <li class="nav-item mr-3">
+                        <li class="nav-item ">
                             <a class="nav-link active" href="{{ url('/tata-usaha/rekap-keuangan') }}"
                                 onclick="showPage('rekap')">
                                 <span class="nav-icon">
-                                    <span class="svg-icon mr-3"></span>
-                                  <i class="fas fa-layer-group"></i> 
-                                    <span class="nav-text font-size-lg">Rekap Keuangan</span>
+                                    
+                                    <i class="fas fa-clipboard-list"></i>
+                                    <span class="svg-icon ">Rekap</span>
                                 </span>
                             </a>
                         </li>
@@ -57,8 +57,8 @@
 
 
     <div class="page">
-        <div class="container">
-            <div class="container">
+        <div class="">
+            <div class="">
                 <div class="card card-custom">
                     <div class="card-body">
                         <form action="{{ url('/tata-usaha/rekap-keuangan/search?') }}" method="GET">

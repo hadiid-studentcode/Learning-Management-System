@@ -1,11 +1,11 @@
 @extends('layouts.main') 
 @section('main')
-    <div class="container">
+    <div class="">
         <div class="card card-custom gutter-b">
             <div class="card-body">
                 <div class="d-flex flex-column align-items-center">
                     <h2 class="text-dark-75 text-hover-success font-size-h1">Data Pembayaran</h2>
-                    <p class="text-dark-50 mt-2">Silakan pilih jenis data pembayaran dan lakukan pengisian data pembayaran di
+                    <p class="text-dark-50 mt-2 text-center">Silakan pilih jenis data pembayaran dan lakukan pengisian data pembayaran di
                         bawah ini.</p>
                 </div>
             </div>
@@ -15,7 +15,7 @@
 
 
 
-    <div class="container">
+    <div class="">
         <div class="card card-custom gutter-b">
             <div class="card-body">
                 <form action="{{ asset('/' . $route . '/pembayaran/cari-siswa') }}" method="get">
@@ -42,7 +42,7 @@
     @if (isset($search))
 
         @if ($route == 'tata-usaha')
-            <div class="container">
+            <div class="">
                 <div class="card-custom gutter-b">
                     <div id="hasilPencarian">
 
@@ -115,7 +115,7 @@
                                                     $jp->jenis == 'SPP KELAS 6')
                                             @else
                                                 <option value="{{ $jp->jenis }}-{{ $jp->nominal }}">
-                                                    {{ $jp->jenis }} TAHUN {{ $tahun_ajaran }} | RP
+                                                    {{ $jp->jenis }} TAHUN {{ $tahun_ajaran }} | Rp.
                                                     {{ number_format($jp->nominal, 0, ',', '.') }}
                                                 </option>
                                             @endif
@@ -137,7 +137,7 @@
                                                     $jp->jenis == 'SPP KELAS 5' ||
                                                     $jp->jenis == 'SPP KELAS 6')
                                                 <option value="{{ $jp->jenis }}-{{ $jp->nominal }}">
-                                                    {{ $jp->jenis }} TAHUN {{ $tahun_ajaran }} | RP
+                                                    {{ $jp->jenis }} TAHUN {{ $tahun_ajaran }} | Rp.
                                                     {{ number_format($jp->nominal, 0, ',', '.') }}
                                                 </option>
                                             @else
@@ -255,7 +255,7 @@
             </div>
             {{-- end --}}
         @else
-            <div class="container">
+            <div class="">
                 <div class="card-custom gutter-b">
                     <div id="hasilPencarian">
 
@@ -301,7 +301,7 @@
     </div>
 </div> --}}
 
-    <div class="container">
+    <div class="">
         <div class="card card-custom gutter-b">
             <div class="card-body">
                 <div id="siswaDetails">
@@ -314,7 +314,7 @@
                                     </th>
                                 </tr>
                                 <tr>
-                                    <th style="width: 20%">No Transaksi</th>
+                                    <th >No Transaksi</th>
                                     <th>Jenis</th>
                                     <th>Nominal</th>
                                     <th>Tanggal</th>

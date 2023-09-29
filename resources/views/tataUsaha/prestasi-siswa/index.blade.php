@@ -1,11 +1,11 @@
 @extends('layouts.main')
 
 @section('main')
-    <div class="container ">
+    <div class=" ">
         <div class="card card-custom">
             <div class="card-body">
                 <div class="d-flex flex-column align-items-center">
-                    <h2 class="text-dark-75 text-center text-uppercase">Data Prestasi Siswa</h2>
+                    <h2 class="text-dark-75 text-center">Data Prestasi Siswa</h2>
                     <p class="text-dark-50 text-center">Silakan Masukkan Prestasi Siswa di bawah ini.</p>
                 </div>
             </div>
@@ -54,7 +54,7 @@
         </div>
     </div>
 
-    <div class="container gutter-b">
+    <div class="gutter-b">
         <div class="card card-custom">
             <div class="card-body">
                 <div class="table-responsive">
@@ -338,10 +338,6 @@
                     margin-bottom: 5px;
                 }
             </style>
-
-
-
-
 
 
             <div class="modal fade" id="viewModal{{ $s->id }}">

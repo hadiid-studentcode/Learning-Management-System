@@ -2,19 +2,19 @@
 
 @section('main')
 
-            <div class="container">
+            <div class="">
                 <div class="card card-custo  gutter-b">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center">
                             <h2 class="text-dark-75 text-hover-success font-size-h1">Management Guru</h2>
-                            <p class="text-dark-50 mt-2">Silahkan Atur Data Guru berupa Mengatur Bidang Studi Keahlian dan
+                            <p class="text-dark-50 mt-2 text-center">Silahkan Atur Data Guru berupa Mengatur Bidang Studi Keahlian dan
                                 Menambahkan Guru Baru</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="container">
+            <div class="">
                 <div class="card card-custom gutter-b">
                     <div class="card-body">
                         <button id="tambah-guru-btn" class="btn btn-success" data-toggle='modal'
@@ -190,7 +190,7 @@
 
                             </div>
                             
-                <div class="container table-responsive card card-custom  gutter-b">
+                <div class=" table-responsive card card-custom  gutter-b">
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered" id="data_table" >
                             <thead>
@@ -198,20 +198,18 @@
                                     <th colspan="8"><h5 class="text-center">Data Guru</h5></th>
                                 </tr>
                                 <tr>
-                                    <th>No</th>
                                     <th>Nama</th>
                                     <th>NIK</th>
                                     <th>Status Kerja</th>
-                                    <th>Studi Keahlian</th>
-                                    <th>Jenis Kelamin</th>
-                                    <th>Nomor HP</th>
-                                    <th style="width: 20%">Action</th>
+                                    <th>Studi</th>
+                                    <th>Kelamin</th>
+                                    <th>HP</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($guru as $g)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ $g->nama }}</td>
                                         <td>{{ $g->nik }}</td>
                                         <td>{{ $g->status }}</td>
@@ -324,10 +322,9 @@
                                                 </div>
                                                 
     
-    
+                                    
                                                 <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
                                                     data-target="#editGuru{{ $g->id }}" style="color:white;"><i class="fas fa-edit"></i></button>
-    
     
                                                 {{-- edit modal --}}
                                                 <div class="modal fade" id="editGuru{{ $g->id }}">

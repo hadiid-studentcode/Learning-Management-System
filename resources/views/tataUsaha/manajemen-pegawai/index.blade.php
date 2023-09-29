@@ -1,19 +1,19 @@
 @extends('layouts.main')
 
 @section('main')
-    <div class="container">
+    <div class="">
         <div class="card card-custom gutter-b">
             <div class="card-body">
                 <div class="d-flex flex-column align-items-center">
                     <h2 class="text-dark-75 text-hover-success font-size-h1">Management pegawai</h2>
-                    <p class="text-dark-50 mt-2">Silahkan Atur Data pegawai berupa Mengatur Bidang Studi Keahlian dan
+                    <p class="text-dark-50 mt-2 text-center">Silahkan Atur Data pegawai berupa Mengatur Bidang Studi Keahlian dan
                         Menambahkan pegawai Baru</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container">
+    <div class="">
         <div class="card card-custom gutter-b">
             <div class="card-body">
                 <button class="btn btn-success" data-toggle="modal" data-target="#tambahPegawai">Tambah pegawai</button>
@@ -213,7 +213,7 @@
         </div>
 
 
-        <div class="container table-responsive card card-custom gutter-b">
+        <div class=" table-responsive card card-custom gutter-b">
             <div class="table-responsive">
                 <table class="table table-bordered table-striped " id="data_table">
                     <thead>

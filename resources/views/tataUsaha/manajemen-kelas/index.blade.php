@@ -1,16 +1,16 @@
 @extends('layouts.main')
 
 @section('main')
-    <div class="container">
+    <div class="">
         <div class="card card-custom gutter-b">
             <div class="card-body" style="text-align: center;">
                 <h2 class="text-dark-75 text-hover-success font-size-h1">Management Kelas</h2>
-                <p class="text-dark-50 mt-2">Silahkan Atur Kelas Baru yang akan disediakan untuk Peserta Didik Baru</p>
+                <p class="text-dark-50 mt-2 text-center">Silahkan Atur Kelas Baru yang akan disediakan untuk Peserta Didik Baru</p>
             </div>
         </div>
     </div>
 
-    <div class="container">
+    <div class="">
         <div class="card card-custom gutter-b">
             <div class="card-body">
                 <form action="{{ url('/tata-usaha/manajemen-kelas') }}" method="post">
@@ -102,18 +102,18 @@
                                 <td>{{ $koutaSiswa }}</td>
                                 <td>{{ $jumlahSiswa }}</td>
                                 <td>
-                                    <div class="btn-sm" role="group" aria-label="Basic mixed styles example">
-                                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                        data-target="#editkelas{{ $kls->id }}">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-
-                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                        data-target="#confirmDeleteModal{{ $kls->id }}">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-
+                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#editkelas{{ $kls->id }}">
+                                            <i class="fas fa-edit"></i> 
+                                        </button>
+                                        
+                                        <div class="mb-2 ml-2 ml-md-0"></div> 
+                                        
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal{{ $kls->id }}">
+                                            <i class="fas fa-trash"></i> 
+                                        </button>
                                     </div>
+                                    
 
                                 </td>
                             </tr>
