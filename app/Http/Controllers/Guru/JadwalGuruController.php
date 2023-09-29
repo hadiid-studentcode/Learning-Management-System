@@ -63,6 +63,8 @@ class JadwalGuruController extends GuruController
         $resultTahunAjaran = new TahunAjaran();
         $tahunAjaran = $resultTahunAjaran->getTahunAjaranAll();
 
+
+
         return view('guru.jadwal.index')
             ->with('title', 'Jadwal')
             ->with('role', $this->role)
