@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('main')
-    <div class="container">
+    <div class="">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card card-custom">
@@ -85,7 +85,7 @@
 
     @if ($kunci == null)
 
-        <div class="container">
+        <div class="">
 
             <div class="card card-custom">
                 <div class="table-responsive" id="isi_data">
@@ -167,7 +167,7 @@
             </div>
             {{-- alert segara lakukan pembayaran --}}
         @else
-            <div class="container">
+            <div class="">
 
                 <div class="card card-custom">
                     <div class="table-responsive" id="isi_data">

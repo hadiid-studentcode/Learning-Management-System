@@ -297,7 +297,7 @@
                                     </a>
                                 </li>
                               
-                                <li class="nav-item">
+                                <li class="nav-item" style="margin-top: 210%">
                                     <a href="{{ asset('/' . $route . '/logout') }}" class="nav-link">
                                         <i class="fas fa-sign-out-alt"
                                             style="font-size:20px;  width:25px; height:25px; color: black; margin-right: 23px;"></i>

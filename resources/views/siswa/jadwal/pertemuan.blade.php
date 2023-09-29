@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('main')
-    <div class="container">
+    <div class="">
         <div class="card card-custom gutter-b">
             <div class="card-body">
                 <div class="d-flex mr-3">
@@ -18,17 +18,13 @@
                             <td style="width: 80%">: <b>{{ $mapel->kelas }} {{ $mapel->rombel }}</b></td>
                         </tr>
                         <tr>
-                            <td>Kode Mapel</td>
+                            <td>Kode</td>
                             <td>: <b>{{ $mapel->kode }} </b></td>
                         </tr>
                         <tr>
-                            <td>Hari, Jam Mulai s/d Selesai</td>
+                            <td>Jadwal</td>
                             <td>: <b>{{ $mapel->hari }}, {{ substr($mapel->waktu_mulai, 0, 5) }} WIB s/d
                                     {{ substr($mapel->waktu_mulai, 0, 5) }} WIB</b></td>
-                        </tr>
-                        <tr>
-                            <td>Minggu Ke</td>
-                            <td>: <b>{{ $pertemuan->pertemuan_ke }}</b></td>
                         </tr>
                     </tbody>
                 </table>
@@ -37,27 +33,27 @@
     </div>
 
 
-    <div class="container">
+    <div class="">
         <div class="card card-custom" id="data_pertemuan">
             <div class="card-body">
                 <div class="card-toolbar">
                     <ul class="nav nav-tabs nav-bold nav-tabs-line nav-tabs-line-3x">
-                        <li class="nav-item mr-3">
+                        <li class="nav-item ">
                             <a class="nav-link active" data-toggle="tab" href="#kt_user_edit_tab_1"
                                 onclick="showPage('materi')">
                                 <span class="nav-icon">
-                                    <span class="svg-icon mr-3">
+                                    <span class="svg-icon ">
                                          <i class="fas fa-layer-group"></i>
                                     </span>
                                     <span class="nav-text font-size-lg">Materi Pertemuan</span>
                                 </span>
                             </a>
                         </li>
-                        <li class="nav-item mr-3">
+                        <li class="nav-item ">
                             <a class="nav-link" data-toggle="tab" href="#kt_user_edit_tab_nilai"
                                 onclick="showPage('nilai')">
                                 <span class="nav-icon">
-                                    <span class="svg-icon mr-3">
+                                    <span class="svg-icon ">
                                          <i class="fas fa-layer-group"></i>
                                     </span>
                                     <span class="nav-text font-size-lg">Data Nilai</span>
@@ -71,9 +67,9 @@
     </div>
 
     <div id="materi" class="page">
-        <div class="container" id="materi">
+        <div class="" id="materi">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 mt-2">
                     <div class="h-100 p-5 bg-white border rounded-3 shadow">
 
                         <h2>Materi : {{ $pertemuan->nama_materi }}</h2>
@@ -103,7 +99,7 @@
                 {{-- jika ada tugas --}}
 
                 @if (($pertemuan->nama_tugas && $pertemuan->deskripsi_tugas) || $pertemuan->file_tugas)
-                    <div class="col-md-6">
+                    <div class="col-md-6 mt-2">
                         <div class="h-100 p-5 bg-white border rounded-3 shadow">
                             <h2>TUGAS : {{ $pertemuan->nama_tugas }}</h2>
                             <p>
@@ -127,12 +123,7 @@
                                     <p>Terlambat</p>
                                 @endif
 
-
                                 <p>Waktu Batas Pengumpulan Tugas : {{ $pertemuan->tanggal_tugas }}</p>
-
-
-
-
                                 <form action="{{ url('/siswa/jadwal/cek/tugas/' . $kode) }}" method="post"
                                     enctype="multipart/form-data">
                                     @csrf
@@ -148,13 +139,16 @@
                                         </div>
                                     </div>
 
-                                    <div class="container">
+                                    <div class="">
                                         <div class="row">
                                             @if($pertemuan->file_tugas)
                                             <div class="col-md-6">
                                                 <a href="{{ asset('storage/guru/tugas/' . $pertemuan->file_tugas) }}"
                                                     target="_blank" class="btn btn-success btn-block">Lihat Tugas</a>
                                             </div>
+
+                                            <br>
+                                            <br>
                                             @endif
                                             <div class="col-md-6">
                                                 <button type="submit" class="btn btn-success btn-block">Submit</button>

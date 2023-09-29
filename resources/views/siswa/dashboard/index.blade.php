@@ -2,12 +2,6 @@
 
 @section('main')
 
-<style>
-    .custom-container {
-        width: 90%;
-        margin: 0 auto;
-    }
-</style>
 
 <div class="custom-container">
     <div class="row align-items-center">

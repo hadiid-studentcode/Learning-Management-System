@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('main')
-    <div class="container">
+    <div class="">
         <div class="card card-custom gutter-b">
             <div class="card-body">
                 <div class="d-flex mr-3">
@@ -18,11 +18,11 @@
                             <td style="width: 80%">: <b>{{ $mapel->kelas }} {{ $mapel->rombel }}</b></td>
                         </tr>
                         <tr>
-                            <td>Kode Mapel</td>
+                            <td>Kode </td>
                             <td>: <b>{{ $mapel->kode }} </b></td>
                         </tr>
                         <tr>
-                            <td>Hari, Jam Mulai s/d Selesai</td>
+                            <td>Jadwal</td>
                             <td>: <b>{{ $mapel->hari }}, {{ substr($mapel->waktu_mulai, 0, 5) }} WIB s/d {{ substr($mapel->waktu_selesai, 0, 5)}} WIB</b></td>
                         </tr>
                     </tbody>
@@ -32,27 +32,27 @@
     </div>
 
 
-    <div class="container">
+    <div class="">
         <div class="card card-custom" id="data_pertemuan">
             <div class="card-body">
                 <div class="card-toolbar">
                     <ul class="nav nav-tabs nav-bold nav-tabs-line nav-tabs-line-3x">
-                        <li class="nav-item mr-3">
+                        <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#kt_user_edit_tab_1"
                                 onclick="showPage('pertemuan')">
                                 <span class="nav-icon">
-                                    <span class="svg-icon mr-3">
+                                    <span class="svg-icon">
                                         <i class="fas fa-layer-group"></i>
                                     </span>
                                     <span class="nav-text font-size-lg">Pertemuan</span>
                                 </span>
                             </a>
                         </li>
-                        <li class="nav-item mr-3">
+                        <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#kt_user_edit_tab_nilai"
                                 onclick="showPage('nilai')">
                                 <span class="nav-icon">
-                                    <span class="svg-icon mr-3">
+                                    <span class="svg-icon">
                                         <i class="fas fa-layer-group"></i>
                                     </span>
                                     <span class="nav-text font-size-lg">Data Nilai</span>
@@ -66,7 +66,7 @@
     </div>
 
     <div id="pertemuan" class="page">
-        <div class="container">
+        <div class="">
             <div class="card card-custom gutter-b">
                 <div class="card-body">
 
@@ -131,7 +131,7 @@
     </div>
 
     <div id="nilai" class="page" style="display: none;">
-        <div class="container">
+        <div class="">
             <div class="card card-custom gutter-b">
                 <div class="card-body">
                     <div class="tab-content">
@@ -184,7 +184,7 @@
         }
     </script>
 
-    <div class="container d-flex justify-content-center mt-3">
+    <div class=" d-flex justify-content-center mt-3">
         <a href="{{ url('/siswa/jadwal') }}" class="btn btn-success w-100">Kembali</a>
     </div>
 @endsection
