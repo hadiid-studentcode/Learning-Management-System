@@ -287,10 +287,9 @@ class ManajemenPegawaiTataUsahaController extends TataUsahaController
     public function destroy(string $id)
     {
 
-
         // user id where pegawai
         $result = new Pegawai();
-        $pegawai = $result->getUserIdPegawai($id);       
+        $pegawai = $result->getUserIdPegawai($id);
 
         // deleted user dengan id
         $result = new User();

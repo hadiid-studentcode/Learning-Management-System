@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\TataUsaha;
 
-use App\Models\Pegawai;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -97,7 +96,6 @@ class ManajemenAkunTataUsahaController extends TataUsahaController
     {
         $result = new User();
         $result->deleteUser($id);
-
 
         return redirect('/tata-usaha/manajemen-akun')->with('success', 'Data berhasil dihapus');
     }
