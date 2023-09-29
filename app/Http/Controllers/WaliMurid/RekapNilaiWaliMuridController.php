@@ -59,6 +59,10 @@ class RekapNilaiWaliMuridController extends WaliMuridController
     public function show(Request $r, string $id)
     {
 
+        if ($r->kelas == null) {
+            return back()->with('error', 'Silakan Pilih Kelas');
+        }
+
         $id_siswa = $id;
         $id_kelas = $r->kelas;
 

@@ -134,14 +134,23 @@
 
                                                     </div>
 
-                                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal{{ $a->id }}">
-                                                        <i class="fa fa-trash"></i> 
-                                                    </button>
-                                                </div>
-                                                
-                                            </td>
-                                        </tr>
-                                        
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $a->nama_lengkap }}</td>
+                                    <td>{{ $a->userid }}</td>
+                                    <td>{{ $a->hak_akses }}</td>
+                                    <td>
+
+                                        <div class="btn-sm" role="group" aria-label="Basic mixed styles example">
+                                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                                data-target="#editAkun{{ $a->id }}">
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+                                          
+                                        </div>
+
+                                        </form>
+                                    </td>
+                                </tr>
 
                                 <div id="editAkun{{ $a->id }}" class="modal fade">
                                     <div class="modal-dialog modal-dialog-centered">
@@ -191,35 +200,7 @@
                                 </div>
 
                                 <!-- Confirmation Delete Modal -->
-                                <div class="modal fade" id="confirmDeleteModal{{ $a->id }}" tabindex="-1"
-                                    role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="confirmDeleteModalLabel">Konfirmasi Hapus Akun
-                                                </h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Apakah Anda yakin ingin menghapus akun ini?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Batal</button>
-                                                <form action="{{ url('/tata-usaha/manajemen-akun/' . $a->id) }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger"
-                                                        onclick="return showConfirmation('{{ $a->id }}')">Hapus</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                           
                             @endforeach
                         </tbody>
                     </table>
