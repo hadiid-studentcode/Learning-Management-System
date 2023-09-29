@@ -116,7 +116,7 @@
                 </div>
             </div>
 
-            <div id="tableContainer table-responsive" class="container">
+            <div id="tableContainer table-responsive" >
                 <div class="card card-custom gutter-b">
                     <div class="card-body">
                         <style>
@@ -216,45 +216,32 @@
                                                 </button>
                                                 {{-- Modal Laporkan --}}
 
-                                                <div class="modal fade" id="modalConfirmation_{{ $rks->no_transaksi }}"
-                                                    tabindex="-1" role="dialog"
-                                                    aria-labelledby="modalConfirmationLabel" aria-hidden="true">
-                                                    <div class="modal-dialog" role="document">
+                                                <div class="modal fade" id="modalConfirmation_{{ $rks->no_transaksi }}" tabindex="-1" role="dialog" aria-labelledby="modalConfirmationLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-sm" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="modalConfirmationLabel">
-                                                                    Konfirmasi Pelaporan Kesalahan
-                                                                    Input Keuangan</h5>
-                                                                <button type="button" class="close"
-                                                                    data-dismiss="modal" aria-label="Close">
+                                                                <h5 class="modal-title" id="modalConfirmationLabel">Konfirmasi Pelaporan </h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                Apakah Anda ingin melaporkan kesalahan input keuangan?
+                                                                Apakah Anda ingin melaporkan kesalahan input ?
                                                             </div>
-                                                            <form
-                                                                action="{{ url('/tata-usaha/rekap-keuangan/report/' . $rks->jenis . '/' . $rks->no_transaksi) }}"
-                                                                method="post">
+                                                            <form action="{{ url('/tata-usaha/rekap-keuangan/report/' . $rks->jenis . '/' . $rks->no_transaksi) }}" method="post">
                                                                 @csrf
-
-                                                                <input type="hidden" name="tahun_ajaran"
-                                                                    value="{{ $tahunAjaranWhereid->id }}">
-                                                                <input type="hidden" name="month_day"
-                                                                    value="{{ $montDay }}">
-                                                                <input type="hidden" name="month"
-                                                                    value="{{ $month }}">
-
+                                                                <input type="hidden" name="tahun_ajaran" value="{{ $tahunAjaranWhereid->id }}">
+                                                                <input type="hidden" name="month_day" value="{{ $montDay }}">
+                                                                <input type="hidden" name="month" value="{{ $month }}">
                                                                 <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-dismiss="modal">Tutup</button>
-                                                                    <button type="submit" class="btn btn-success">Ya,
-                                                                        Laporkan</button>
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                                                    <button type="submit" class="btn btn-success">Ya, Laporkan</button>
                                                                 </div>
                                                             </form>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                
                                             </td>
                                         </tr>
                                     @endforeach
@@ -357,15 +344,14 @@
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="modalConfirmationLabel">
-                                                                    Konfirmasi Pelaporan Kesalahan
-                                                                    Input Keuangan</h5>
+                                                                    Konfirmasi Pelaporan</h5>
                                                                 <button type="button" class="close"
                                                                     data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                Apakah Anda ingin melaporkan kesalahan input keuangan?
+                                                                Apakah Anda ingin melaporkan kesalahan input ?
                                                             </div>
                                                             <form
                                                                 action="{{ url('/tata-usaha/rekap-keuangan/report/' . $rk->jenis . '/' . $rk->no_transaksi) }}"
