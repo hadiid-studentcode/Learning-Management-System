@@ -11,19 +11,19 @@
                 </div>
                 <hr>
 
-                <table style="width:100%;">
+                <table>
                     <tbody>
                         <tr>
-                            <td style="width: 20%">Kelas</td>
-                            <td style="width: 80%">: {{ $mapel->kelas }} {{ $mapel->rombel }} <b></b></td>
+                            <td>Kelas</td>
+                            <td> : {{ $mapel->kelas }} {{ $mapel->rombel }} <b></b></td>
                         </tr>
                         <tr>
-                            <td>Kode Mapel</td>
-                            <td>: {{ $mapel->kode }} <b></b></td>
+                            <td>Kode </td>
+                            <td> : {{ $mapel->kode }} <b></b></td>
                         </tr>
                         <tr>
-                            <td>Hari, Jam Mulai s/d Selesai</td>
-                            <td>: {{ $mapel->hari }}, {{ substr($mapel->waktu_mulai, 0, 5) }} WIB - {{ substr($mapel->waktu_selesai, 0, 5) }} WIB <b></b></td>
+                            <td>jadwal</td>
+                            <td> : {{ $mapel->hari }}, {{ substr($mapel->waktu_mulai, 0, 5) }} WIB - {{ substr($mapel->waktu_selesai, 0, 5) }} WIB <b></b></td>
                         </tr>
                     </tbody>
                 </table>
@@ -39,20 +39,20 @@
             <div class="card-body">
                 <div class="card-toolbar">
                     <ul class="nav nav-tabs nav-bold nav-tabs-line nav-tabs-line-3x">
-                        <li class="nav-item mr-3">
+                        <li class="nav-item">
                             <a href="{{ url('guru/jadwal/cek/materi/' . $kode) }}" class="btn nav-link @if($jenis == 'materi') active @endif">
                                 <span class="nav-icon">
-                                    <span class="svg-icon mr-3">
+                                    <span class="svg-icon">
                                         <i class="fas fa-layer-group"></i>
                                     </span>
                                 </span>
                                 <span class="nav-text font-size-lg">Materi</span>
                             </a>
                         </li>
-                        <li class="nav-item mr-3">
+                        <li class="nav-item">
                             <a href="{{ url('guru/jadwal/cek/absensi/' . $kode) }}" class="btn nav-link @if($jenis == 'absensi') active @endif">
                                 <span class="nav-icon">
-                                    <span class="svg-icon mr-3">
+                                    <span class="svg-icon">
                                         <i class="fas fa-layer-group"></i>
                                     </span>
                                 </span>
@@ -60,10 +60,10 @@
                             </a>
                         </li>
     
-                        <li class="nav-item mr-3">
+                        <li class="nav-item">
                             <a href="{{ url('guru/jadwal/cek/nilai/' . $kode) }}" class="btn nav-link @if($jenis == 'nilai') active @endif">
                                 <span class="nav-icon">
-                                    <span class="svg-icon mr-3">
+                                    <span class="svg-icon">
                                         <i class="fas fa-layer-group"></i>
                                     </span>
                                 </span>

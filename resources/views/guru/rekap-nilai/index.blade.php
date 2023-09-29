@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('main')
-    <div class="container">
+    <div class="">
         <div class="card card-custom gutter-b">
             <div class="card-body">
                 <div class="d-flex flex-column align-items-center">
@@ -16,7 +16,7 @@
     </div>
 
     <div id="input" class="page">
-        <div class="container" id="input">
+        <div class="" id="input">
             <div class="card card-custom gutter-b">
                 <div class="card-body">
                     <form action="{{ url('/guru/rekap-nilai/create') }}" method="get" id="siswaForm">
@@ -50,7 +50,7 @@
             </div>
         </div>
         <div id="reportCardContainer">
-            <div class="container">
+            <div class="">
                 <div class="card card-custom gutter-b">
 
                         <div class="card-body" style="display: flex; flex-direction: column; align-items: flex-start;">
@@ -79,7 +79,7 @@
                             @endif
                         </div>
                         <div id="resultTable">
-                            <div class="container">
+                            <div class="">
 
                                 <div class="table-responsive">
                                     <table class="table table-bordered">

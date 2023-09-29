@@ -3,7 +3,7 @@
 @section('main')
 
 
-<div class="container">
+<div class="">
     <div class="card card-custom gutter-b">
         <div class="card-body">
             <h3 class="mb-2">Halaman Kelas</h3>
@@ -58,7 +58,7 @@
 
 
 
-    <div class="container">
+    <div class="">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card card-custom">

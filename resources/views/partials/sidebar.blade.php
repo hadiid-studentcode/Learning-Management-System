@@ -241,7 +241,8 @@
                                         <span style="font-family: arial; color: black;">Manajemen Nilai</span>
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                
+                                <li class="nav-item" style="margin-top: 140%;">
                                     <a href="{{ asset('/' . $route . '/setting') }}"
                                         class="nav-link @if ($title == 'Setting') active @else '' @endif">
                                         <i class="fas fa-cogs"

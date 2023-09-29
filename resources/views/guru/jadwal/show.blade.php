@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('main')
-    <div class="container">
+    <div class="">
         <div class="card card-custom gutter-b">
             <div class="card-body">
                 <div class="d-flex mr-3">
@@ -10,19 +10,19 @@
                 </div>
                 <hr>
 
-                <table style="width:100%;">
+                <table >
                     <tbody>
-                        <tr>
-                            <td style="width: 20%">Kelas</td>
-                            <td style="width: 80%">: <b>{{ $mapel->kelas }} {{ $mapel->rombel }}</b></td>
+                        <tr class="mb-2">
+                            <td >Kelas</td>
+                            <td > : <b>{{ $mapel->kelas }} {{ $mapel->rombel }}</b></td>
                         </tr>
                         <tr>
-                            <td>Kode Mapel</td>
-                            <td>: <b> {{ $mapel->kode }} </b></td>
+                            <td>Kode </td>
+                            <td> : <b> {{ $mapel->kode }} </b></td>
                         </tr>
-                        <tr>
-                            <td>Hari, Jam Mulai s/d Selesai</td>
-                            <td>: <b> {{ substr($mapel->waktu_mulai, 0, 5) }} WIB s/d {{ substr($mapel->waktu_selesai, 0, 5) }} WIB</b></td>
+                        <tr class="mt-2">
+                            <td>jadwal </td>
+                            <td> : <b> {{ substr($mapel->waktu_mulai, 0, 5) }} WIB s/d {{ substr($mapel->waktu_selesai, 0, 5) }} WIB</b></td>
                         </tr>
                     </tbody>
                 </table>
@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="">
         <div class="card card-custom gutter-b">
             <div class="card-body">
 
@@ -41,7 +41,7 @@
                                 <td class="pl-0">
                                     <h5 style="color: rgba(20, 103, 236, 0.884)"
                                         class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">
-                                        <a href="{{ asset('/guru/jadwal/cek/materi/' . $mapel->kode . '-'.$p->id) }}">MINGGU KE- {{ $loop->iteration }}</a>
+                                        <a href="{{ asset('/guru/jadwal/cek/materi/' . $mapel->kode . '-'.$p->id) }}">Minggu Ke - {{ $loop->iteration }}</a>
                                         
                                     </h5>
                                     <div>

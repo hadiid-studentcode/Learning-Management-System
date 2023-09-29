@@ -3,18 +3,18 @@
 {{-- sadas --}}
 
 @section('main')
-    <div class="container">
+    <div class="">
         <div class="card card-custom">
             <div class="card-body">
                 <div class="d-flex flex-column align-items-center">
-                    <h2 class="text-dark-75 text-center text-uppercase ">Mengatur Nilai KKM di Setiap Kelas</h2>
+                    <h2 class="text-dark-75 text-center  ">Mengatur Nilai KKM di Setiap Kelas</h2>
                     <p class="text-dark-50 text-center">Silakan input Nilai KKM dalam Mata Pelajaran</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container">
+    <div class="">
         <div class="card card-custom gutter-b">
             <div class="card-body">
 
@@ -25,7 +25,7 @@
                             <th colspan="5"><h5 class="text-center">Tabel Data Mata pelajaran</h5></th>
                         </tr>
                         <tr>
-                            <th style="width: 5%">Nomor</th>
+                            <th>No</th>
                             <th>Kelas</th>
                             <th>Mata Pelajaran</th>
                             <th>Nilai KKM</th>
