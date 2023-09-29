@@ -295,14 +295,7 @@
                                         <span style="font-family: arial; color: black;">Jadwal</span>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="{{ asset('/' . $route . '/setting') }}"
-                                        class="nav-link @if ($title == 'Setting') active @else '' @endif">
-                                        <i class="fas fa-cogs"
-                                            style="font-size:20px;  width:25px; height:25px; color: black; margin-right: 23px;"></i>
-                                        <span style="font-family: arial; color: black;">Setting</span>
-                                    </a>
-                                </li>
+                              
                                 <li class="nav-item">
                                     <a href="{{ asset('/' . $route . '/logout') }}" class="nav-link">
                                         <i class="fas fa-sign-out-alt"
