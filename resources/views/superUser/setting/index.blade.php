@@ -3,12 +3,6 @@
 @section('main')
 
 
-<style>
-    .custom-container {
-        width: 85%;
-        margin: 0 auto;
-    }
-</style>
 
   <div class="custom-container">
     <div class="card card-success">
