@@ -122,7 +122,14 @@
                     <div class="form-group">
                         <label for="tahun">Tahun Akademik:</label>
                         <select class="form-control" name="kelas" id="kelas" required>
-                            <option value="@if(isset($kelasSearch)) {{ $kelasSearch->id }} @else @endif" hidden>@if(isset($kelasSearch)) Kelas {{ $kelasSearch->kelas }} {{ $kelasSearch->rombel }} {{ $kelasSearch->tahun_ajaran }} @else Pilih Kelas @endif</option>
+                            <option value="@if (isset($kelasSearch)) {{ $kelasSearch->id }} @else @endif" hidden>
+                                @if (isset($kelasSearch))
+                                    Kelas {{ $kelasSearch->kelas }} {{ $kelasSearch->rombel }}
+                                    {{ $kelasSearch->tahun_ajaran }}
+                                @else
+                                    Pilih Kelas
+                                @endif
+                            </option>
                             @foreach ($kelas as $k)
                                 <option value="{{ $k->id }}">Kelas {{ $k->kelas }} {{ $k->rombel }} Tahun
                                     Ajaran {{ $k->tahun_ajaran }}</option>
@@ -133,7 +140,13 @@
                     <div class="form-group">
                         <label for="pelajaran">Pilih Pelajaran:</label>
                         <select class="form-control" name="pelajaran" id="pelajaran" required>
-                            <option value="@if(isset($mapelSearch)) {{ $mapelSearch->kode }} @else @endif" hidden>@if(isset($mapelSearch)) {{ $mapelSearch->nama }} @else Pilih Mata Pelajaran @endif</option>
+                            <option value="@if (isset($mapelSearch)) {{ $mapelSearch->kode }} @else @endif" hidden>
+                                @if (isset($mapelSearch))
+                                    {{ $mapelSearch->nama }}
+                                @else
+                                    Pilih Mata Pelajaran
+                                @endif
+                            </option>
                             @foreach ($mapel as $m)
                                 <option value="{{ $m->kode }}">{{ $m->nama }}</option>
                             @endforeach
@@ -152,41 +165,48 @@
         <div class="card card-custom">
             <div class="card-body">
 
-              <div class="table-responsive">
-                <table id="data_table" class="table table-bordered table-striped" style="text-align: center;">
-                  <thead>
-                    <tr>
-                      <th colspan="5"><h5 class="text-center">Materi Siswa</h5></th>
-                    </tr>
-                      <tr>
-                          <th style="width: 5%;">No</th>
-                          <th>Pertemuan</th>
-                          <th>Tanggal</th>
-                          <th>Nama Materi</th>
-                          <th>Action</th>
-                      </tr>
-                  </thead>
-                  <tbody id="materi-table">
+                <div class="table-responsive">
+                    <table id="data_table" class="table table-bordered table-striped" style="text-align: center;">
+                        <thead>
+                            <tr>
+                                <th colspan="5">
+                                    <h5 class="text-center">Materi Siswa</h5>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th style="width: 5%;">No</th>
+                                <th>Pertemuan</th>
+                                <th>Tanggal</th>
+                                <th>Nama Materi</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="materi-table">
 
-                      @if(isset($pertemuan))
-                      @foreach($pertemuan as $p)
-                        @if ($p->nama_materi == true && $p->tanggal_materi == true)
-                      <tr>
-                          <td>{{ $loop->iteration }}</td>
-                          <td>Pertemuan {{ $p->pertemuan_ke }}</td>
-                          <td>{{ $p->tanggal_materi }}</td>
-                          <td>Materi 1 Matematika</td>
-                          <td><a href="{{ asset('storage/guru/materi/' . $p->file_materi) }}" target="_blank" class="btn btn-success"><i class="fas fa-eye"></i></a> </td>
-                      </tr>
-                      @endif
-                      @endforeach
+                            @if (isset($pertemuan))
+                                @foreach ($pertemuan as $p)
+                                    @if ($p->nama_materi == true && $p->tanggal_materi == true)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>Pertemuan {{ $p->pertemuan_ke }}</td>
+                                            <td>{{ $p->tanggal_materi }}</td>
+                                            <td>{{ $p->nama_materi }}</td>
+                                            @if ($p->file_materi == null)
+                                                <td></td>
+                                            @else
+                                                <td><a href="{{ asset('storage/guru/materi/' . $p->file_materi) }}"
+                                                        target="_blank" class="btn btn-success"><i
+                                                            class="fas fa-eye"></i></a> </td>
+                                            @endif
+                                        </tr>
+                                    @endif
+                                @endforeach
+                            @endif
 
-                      @endif
-                     
-                    
-                  </tbody>
-              </table>
-              </div>
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
