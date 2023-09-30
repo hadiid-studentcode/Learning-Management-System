@@ -17,7 +17,7 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
 
         $this->img = $this->imageHeader();
 
-        return view('TataUsaha.Manajemen-absensi.Index')
+        return view('tataUsaha.manajemen-absensi.index')
             ->with('title', 'Manajemen Absensi')
             ->with('role', $this->role)
             ->with('folder', $this->folder)

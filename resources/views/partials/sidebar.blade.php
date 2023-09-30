@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-light-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ url('/' . $route) }}" class="brand-link">
-        <img src="{{ asset('assets/images/sistemhamkabs.jpg') }}" alt="AdminLTE Logo" class="brand-image">
+        <img src="{{ asset('Assets/images/sistemhamkabs.jpg') }}" alt="AdminLTE Logo" class="brand-image">
         <span class="brand-text text-success ">HAMKA BS</span>
     </a>
 
