@@ -1,5 +1,5 @@
  {{-- Tabel Absensi --}}
- <div class="container" id="absensi">
+ <div class="" id="absensi">
      <div class="card card-custom gutter-b">
          <div class="card-body">
              <div class="table-responsive">

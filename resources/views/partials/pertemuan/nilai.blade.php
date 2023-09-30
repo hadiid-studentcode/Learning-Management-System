@@ -1,5 +1,5 @@
    {{-- Tabel Nilai --}}
-   <div class="container" id="nilai">
+   <div class="" id="nilai">
        <div class="card card-kustom gutter-b">
            <div class="card-body">
                <div class="table-responsive">
@@ -34,8 +34,8 @@
                                            @if ($s->id == $t->id_siswa)
                                                <td>
                                                    <div class="d-flex justify-content-center">
-                                                       <button type="button" class="btn btn-primary">
-                                                        <i class="fas fa-check-circle"></i>
+                                                       <button type="button" class="btn btn-success">
+                                                        <i class="fas fa-eye"></i> 
                                                        </button>
                                                    </div>
                                                </td>
@@ -59,7 +59,7 @@
                                                        <div class="row">
                                                            <div class="d-flex justify-content-center">
                                                                <button type="submit"
-                                                                   class="btn btn-primary btn-sm mr-2 ml-2">
+                                                                   class="btn btn-success btn-sm mr-2 ml-2">
                                                                    <svg fill="#ffff" width="20px" height="25px"
                                                                        viewBox="0 0 24 24"
                                                                        xmlns="http://www.w3.org/2000/svg">

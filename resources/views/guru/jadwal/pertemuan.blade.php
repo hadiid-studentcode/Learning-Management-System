@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('main')
-    <div class="container">
+    <div class="">
         <div class="card card-custom gutter-b">
             <div class="card-body">
                 <div class="d-flex mr-3">
@@ -34,7 +34,7 @@
 
     {{-- menu materi dan Nilai --}}
 
-    <div class="container" style="width:auto;">
+    <div class="" style="width:auto;">
         <div class="card card-custom" id="data_pertemuan">
             <div class="card-body">
                 <div class="card-toolbar">
