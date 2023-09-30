@@ -20,16 +20,16 @@ class JadwalGuruController extends GuruController
     public function index()
     {
 
-        //    ---------------------------------------------------------
-
         $this->img = $this->imageHeader();
         $id_user = Auth()->user()->id;
 
+        $resultTahunAjaran = new TahunAjaran();
+        $tahunAjaranFirst = $resultTahunAjaran->getTahunAjaran();
+
         $result = new Mapel();
-        $getKelas = $result->ViewMapelWhereGuru($id_user);
+        $getKelas = $result->ViewMapelWhereGuru($id_user, $tahunAjaranFirst->id);
 
         // get tahun ajaran
-        $resultTahunAjaran = new TahunAjaran();
         $tahunAjaran = $resultTahunAjaran->getTahunAjaranAll();
 
         return view('guru.jadwal.index')
@@ -38,6 +38,7 @@ class JadwalGuruController extends GuruController
             ->with('route', $this->route)
             ->with('img', $this->img)
             ->with('kelas', $getKelas)
+            ->with('tahunAjaranFirst', $tahunAjaranFirst)
             ->with('tahunAjaran', $tahunAjaran)
             ->with('jenis', $this->jenisGuru())
 
