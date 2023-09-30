@@ -85,7 +85,6 @@ class MataPelajaranWaliMuridController extends WaliMuridController
         $resultPertemuan = new Pertemuan();
         $getPertemuan = $resultPertemuan->getPertemuanWhereIdKelas($r->pelajaran, $r->kelas);
 
-
         $kelasSearch = $resultKelas->firstKelasWhereIdKelas($r->kelas);
         $mapelSearch = $resultMapel->firstMapelWhereKodeMapel($r->pelajaran);
 
