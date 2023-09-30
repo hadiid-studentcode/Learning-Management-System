@@ -358,11 +358,12 @@ class Mapel extends Model
 
     }
 
-    public function firstMapeWhereHariAndWaktu($hari, $waktu_mulai, $waktu_selesai, $id_kelas)
+    public function firstMapeWhereHariAndWaktu($hari, $waktu_mulai, $waktu_selesai, $id_kelas, $id_tahun_ajaran)
     {
 
         $result = DB::table('mapel')
             ->select('hari', 'waktu_mulai', 'waktu_selesai', 'id_kelas')
+            ->where('id_tahun_ajaran', $id_tahun_ajaran)
             ->where('hari', $hari)
             ->where('id_kelas', $id_kelas)
             ->where('waktu_mulai', '<=', $waktu_selesai)

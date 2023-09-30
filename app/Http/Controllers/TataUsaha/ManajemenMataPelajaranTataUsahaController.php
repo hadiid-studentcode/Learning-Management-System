@@ -133,8 +133,9 @@ class ManajemenMataPelajaranTataUsahaController extends TataUsahaController
                 return back()->with('error', 'Jadwal Mapel Berada Diluar Jam Sekolah');
             }
 
+
             $resultMapel = new Mapel();
-            $mapel = $resultMapel->firstMapeWhereHariAndWaktu($hari, $waktu_mulai, $waktu_selesai, $id_kelas);
+            $mapel = $resultMapel->firstMapeWhereHariAndWaktu($hari, $waktu_mulai, $waktu_selesai, $id_kelas, $getLastIdTahunAjaran->id);
 
             if ($mapel) {
                 return back()->with('error', 'Bentrok ! Mata Pelajaran Sudah Ada');
