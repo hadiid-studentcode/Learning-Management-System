@@ -47,7 +47,6 @@ class PembayaranWaliMuridController extends WaliMuridController
             'tahun_ajaran.tahun_ajaran',
         ], $getSiswa->nisn);
 
-
         if (! empty($pembayaran)) {
 
             $tanggal['tanggal'] = '';

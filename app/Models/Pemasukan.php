@@ -91,7 +91,6 @@ class Pemasukan extends Model
             ->orderByDesc('id')
             ->get();
 
-
         return $result;
     }
 

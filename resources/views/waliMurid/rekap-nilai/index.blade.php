@@ -1,129 +1,131 @@
 @extends('layouts.main')
 
 @section('main')
-<div class=" ">
-    <div class="card card-custom">
-        <div class="card-body">
-            <div class="d-flex flex-column align-items-center">
-                <h3 class="jumbotron-heading">Data Rekapan Nilai Siswa</h3>
-                <p class="lead text-muted">Silahkan Kepada Wali Muird untuk melihat data Nilai anak sesuai tahun
-                    ajaran dan mata pelajaran.
-                </p>
+    <div class=" ">
+        <div class="card card-custom">
+            <div class="card-body">
+                <div class="d-flex flex-column align-items-center">
+                    <h3 class="jumbotron-heading">Data Rekapan Nilai Siswa</h3>
+                    <p class="lead text-muted">Silahkan Kepada Wali Muird untuk melihat data Nilai anak sesuai tahun
+                        ajaran dan mata pelajaran.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-        <div class="">
-            <div class="card card-custom gutter-b">
-                <div class="card-body">
-                    <form action="{{ url('/wali-murid/rekap-nilai/' . $id_siswa) }}" method="GET" id="siswaForm">
-                        @csrf
-                        <div class="form-group row">
-                            <label for="kelas" class="col-sm-2 col-form-label">Pilih Kelas</label>
-                            <div class="col-sm-10">
-                                <select id="kelas" name="kelas" class="form-control" required>
-                                    <option value="@if (isset($kelasSearch)) {{ $kelasSearch->id }} @else @endif"
-                                        hidden>
-                                        @if (isset($kelasSearch))
-                                            Kelas {{ $kelasSearch->kelas }} {{ $kelasSearch->rombel }}
-                                            {{ $kelasSearch->tahun_ajaran }}
-                                        @else
-                                            Pilih Kelas
-                                        @endif
-                                    </option>
-                                    @foreach ($kelas as $k)
-                                        <option value="{{ $k->id }}">kelas {{ $k->kelas }} {{ $k->rombel }}
-                                            {{ $k->tahun_ajaran }}</option>
+    <div class="">
+        <div class="card card-custom gutter-b">
+            <div class="card-body">
+                <form action="{{ url('/wali-murid/rekap-nilai/' . $id_siswa) }}" method="GET" id="siswaForm">
+                    @csrf
+                    <div class="form-group row">
+                        <label for="kelas" class="col-sm-2 col-form-label">Pilih Kelas</label>
+                        <div class="col-sm-10">
+                            <select id="kelas" name="kelas" class="form-control" required>
+                                <option value="@if (isset($kelasSearch)) {{ $kelasSearch->id }} @else @endif"
+                                    hidden>
+                                    @if (isset($kelasSearch))
+                                        Kelas {{ $kelasSearch->kelas }} {{ $kelasSearch->rombel }}
+                                        {{ $kelasSearch->tahun_ajaran }}
+                                    @else
+                                        Pilih Kelas
+                                    @endif
+                                </option>
+                                @foreach ($kelas as $k)
+                                    <option value="{{ $k->id }}">kelas {{ $k->kelas }} {{ $k->rombel }}
+                                        {{ $k->tahun_ajaran }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-10 offset-sm-2">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="" id="reportCard">
+        <div class="card card-custom">
+            <div class="card-body">
+                <div class="card-body" style="display: flex; flex-direction: column; align-items: flex-start;">
+                    <div style="flex-grow: 1;"></div>
+
+
+
+                    <div class="table-responsive">
+                        <table class="table" width="50%">
+                            @if (isset($rekapNilaiSiswa))
+                                <tr>
+                                    <td>Nama</td>
+                                    <td>:&nbsp;{{ $siswa->nama }}</td>
+                                </tr>
+                                <tr>
+                                    <td>NISN</td>
+                                    <td>:&nbsp;{{ $siswa->nisn }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Kelas</td>
+                                    <td>:&nbsp;{{ $siswa->kelas }} {{ $siswa->rombel }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Wali Kelas</td>
+                                    <td>:&nbsp;{{ $siswa->guru }}</td>
+                                </tr>
+                            @endif
+                        </table>
+                    </div>
+                </div>
+                <div id="resultTable">
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Mata Pelajaran</th>
+                                    <th>KKM</th>
+                                    <th>Nilai</th>
+                                    <th>Rata-rata</th>
+                                    <th>Catatan Guru</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (isset($rekapNilaiSiswa))
+                                    @foreach ($rekapNilaiSiswa as $rns)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td class="subject-name">{{ $rns->nama }}</td>
+                                            <td>{{ $rns->KKM }}</td>
+                                            <td>{{ $rns->nilai }}</td>
+                                            <td class="grade @if ($rns->rata_rata < $rns->KKM) text-danger @else @endif">
+                                                {{ $rns->rata_rata }}</td>
+
+                                            <td class="remarks">{{ $rns->catatan }}</td>
+                                        </tr>
                                     @endforeach
-                                </select>
-                            </div>
-                        </div>
+                                @endif
 
-                        <div class="form-group row">
-                            <div class="col-sm-10 offset-sm-2">
-                                <button type="submit" class="btn btn-success">Submit</button>
-                            </div>
-                        </div>
-                    </form>
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
             </div>
         </div>
-
-
-        <div class="" id="reportCard">  
-                <div class="card card-custom">
-                    <div class="card-body">
-                        <div class="card-body" style="display: flex; flex-direction: column; align-items: flex-start;">
-                            <div style="flex-grow: 1;"></div>
-
-                           
-
-                            <div class="table-responsive">
-                                <table class="table" width="50%">
-                                    @if (isset($rekapNilaiSiswa))
-                                    <tr>
-                                        <td>Nama</td>
-                                        <td>:&nbsp;{{ $siswa->nama }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>NISN</td>
-                                        <td>:&nbsp;{{ $siswa->nisn }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Kelas</td>
-                                        <td>:&nbsp;{{ $siswa->kelas }} {{ $siswa->rombel }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Wali Kelas</td>
-                                        <td>:&nbsp;{{ $siswa->guru }}</td>
-                                    </tr>
-                                @endif
-                            </table>
-                            </div>
-                        </div>
-                        <div id="resultTable">
-
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>No</th>
-                                                                        <th>Mata Pelajaran</th>
-                                                                        <th>KKM</th>
-                                                                        <th>Nilai</th>
-                                                                        <th>Rata-rata</th>
-                                                                        <th>Catatan Guru</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    @if (isset($rekapNilaiSiswa))
-                                                                        @foreach ($rekapNilaiSiswa as $rns)
-                                                                            <tr>
-                                                                                <td>{{ $loop->iteration }}</td>
-                                                                                <td class="subject-name">{{ $rns->nama }}</td>
-                                                                                <td>{{ $rns->KKM }}</td>
-                                                                                <td>{{ $rns->nilai }}</td>
-                                                                                <td class="grade">{{ $rns->rata_rata }}</td>
-                                                                                <td class="remarks">{{ $rns->catatan }}</td>
-                                                                            </tr>
-                                                                        @endforeach
-                                                                    @endif
-
-                                                                </tbody>
-                                                            </table>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
+    </div>
 
 
 
 
 
-        {{--
+    {{--
     <script>
         document.getElementById('siswaForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent form submission
@@ -255,4 +257,4 @@
             }
         });
     </script> --}}
-    @endsection
+@endsection
