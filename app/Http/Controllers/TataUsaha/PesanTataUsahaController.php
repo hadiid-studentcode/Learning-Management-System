@@ -40,6 +40,30 @@ class PesanTataUsahaController extends TataUsahaController
             ->with('route', $this->route);
     }
 
+    public function search(Request $request)
+    {
+
+        $this->role = auth()->user()->hak_akses;
+        $id_user = Auth::user()->id;
+
+        $result = new Pesan();
+        $pesan = $result->viewPesanSearch('Tata Usaha', $id_user, $request->data);
+        $this->img = $this->imageHeader();
+
+        foreach ($pesan as $p) {
+            $p->formattedTime = $result->timeDiff($p->created_at);
+            $p->shortenedMessage = Str::limit($p->isi_pesan, 50);
+        }
+
+        return view('tataUsaha.pesan.index')
+            ->with('title', 'Pesan')
+            ->with('role', $this->role)
+            ->with('img', $this->img)
+            ->with('folder', $this->folder)
+            ->with('pesan', $pesan)
+            ->with('route', $this->route);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

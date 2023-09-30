@@ -47,6 +47,32 @@ class PesanWaliMuridController extends WaliMuridController
             ->with('folder', $this->folder);
     }
 
+    public function search(Request $request)
+    {
+
+        $this->title = 'Pesan';
+
+        $id_user = Auth::user()->id;
+        $result = new Pesan();
+        $pesan = $result->viewPesanSearch('Wali Murid', $id_user, $request->data);
+
+        foreach ($pesan as $p) {
+            $p->formattedTime = $result->timeDiff($p->created_at);
+
+            $p->shortenedMessage = Str::limit($p->isi_pesan, 20);
+        }
+        $this->img = $this->imageHeader();
+
+        return view('waliMurid.pesan.index')
+            ->with('title', $this->title)
+            ->with('role', $this->role)
+            ->with('route', $this->route)
+
+            ->with('pesan', $pesan)
+            ->with('img', $this->img)
+            ->with('folder', $this->folder);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

@@ -99,6 +99,8 @@ Route::group(
         Route::resource('/guru/jadwal', JadwalGuruController::class);
 
         Route::resource('/guru/pesan', PesanGuruController::class);
+        Route::get('guru/pesan/search/inbox', [PesanGuruController::class, 'search']);
+
         Route::post('guru/pesan/balas/{id}', [PesanGuruController::class, 'balas']);
         Route::resource('/guru/rekap-nilai', RekapNilaiGuruController::class);
         Route::resource('/guru/manajemen-siswa', ManajemenSiswaGuruController::class);
@@ -140,6 +142,8 @@ Route::group(
         Route::resource('/wali-murid/dashboard', DashboardWaliMuridController::class);
         Route::resource('/wali-murid/profile-siswa', ProfileSiswaWaliMuridController::class);
         Route::resource('/wali-murid/pesan', PesanWaliMuridController::class);
+        Route::get('wali-murid/pesan/search/inbox', [PesanWaliMuridController::class, 'search']);
+
         Route::post('wali-murid/pesan/balas/{id}', [PesanWaliMuridController::class, 'balas']);
 
         Route::resource('/wali-murid/pembayaran', PembayaranWaliMuridController::class);
@@ -174,6 +178,8 @@ Route::group(
         });
         Route::resource('/pegawai/dashboard', DashboardPegawaiController::class);
         Route::resource('/pegawai/pesan', PesanPegawaiController::class);
+        Route::get('pegawai/pesan/search/inbox', [PesanPegawaiController::class, 'search']);
+
         Route::post('pegawai/pesan/balas/{id}', [PesanPegawaiController::class, 'balas']);
 
         Route::resource('/pegawai/setting', SettingsPegawaiController::class);
@@ -201,7 +207,9 @@ Route::group(
         // Route::post('/wali-murid/setting/siswa/{username}', [User_SiswaController::class, 'update']);
         Route::resource('/siswa/jadwal', JadwalSiswaController::class);
         Route::get('siswa/jadwal/cek/{kode_mapel}', [JadwalSiswaController::class, 'detailMapel']);
-        Route::resource('/siswa/pesan', PesanSiswaController::class);
+        // Route::resource('/siswa/pesan', PesanSiswaController::class);
+        // Route::get('siswa/pesan/search/inbox', [PesanSiswaController::class, 'search']);
+
         Route::get('siswa/jadwal/{mapel}/{pertemuan}', [JadwalSiswaController::class, 'detailMapel']);
         Route::post('/siswa/jadwal/cek/tugas/{kode}', [JadwalSiswaController::class, 'uploadTugas']);
 
@@ -227,6 +235,8 @@ Route::group(
         });
         Route::resource('/tata-usaha/dashboard', DashboardTataUsahaController::class);
         Route::resource('/tata-usaha/pesan', PesanTataUsahaController::class);
+        Route::get('tata-usaha/pesan/search/inbox', [PesanTataUsahaController::class, 'search']);
+
         Route::post('tata-usaha/pesan/balas/{id}', [PesanTataUsahaController::class, 'balas']);
 
         Route::resource('/tata-usaha/pembayaran', PembayaranTataUsahaController::class);
@@ -290,6 +300,8 @@ Route::group([
     Route::resource('/super-user/Nilai-siswa', NilaiSiswaSuperUserController::class);
 
     Route::resource('/super-user/pesan', PesanSuperUserController::class);
+    Route::get('super-user/pesan/search/inbox', [PesanSuperUserController::class, 'search']);
+
     Route::post('super-user/pesan/balas/{id}', [PesanSuperUserController::class, 'balas']);
 
     Route::resource('/super-user/rekap-keuangan', RekapKeuanganSuperUserController::class);

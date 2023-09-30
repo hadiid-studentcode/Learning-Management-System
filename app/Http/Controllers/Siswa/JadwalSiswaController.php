@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers\Siswa;
 
-use Carbon\Carbon;
-use App\Models\Mapel;
-use App\Models\Siswa;
 use App\Models\Calender;
+use App\Models\Mapel;
 use App\Models\Pemasukan;
 use App\Models\Pertemuan;
-use App\Models\tugasSiswa;
+use App\Models\Siswa;
 use App\Models\TahunAjaran;
+use App\Models\tugasSiswa;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Siswa\SiswaController;
 
 class JadwalSiswaController extends SiswaController
 {
@@ -29,13 +27,11 @@ class JadwalSiswaController extends SiswaController
 
         // get first tahun ajaran terkini
         $resultTahunAjaran = new TahunAjaran();
-        $tahunAjaranFirst  = $resultTahunAjaran->getTahunAjaran();
-
+        $tahunAjaranFirst = $resultTahunAjaran->getTahunAjaran();
 
         // get mapel where id_kelas
         $resultMapel = new Mapel();
         $getMapel = $resultMapel->getMapelWhereIdkelas($getidKelas->id_kelas, $tahunAjaranFirst->id);
-
 
         // get tahun ajaran
         $tahunAjaranAll = $resultTahunAjaran->getTahunAjaranAll();
@@ -43,7 +39,6 @@ class JadwalSiswaController extends SiswaController
         // akses kunci
 
         date_default_timezone_set('Asia/Jakarta'); // Set zona waktu ke Waktu Indonesia Barat
-
 
         setlocale(LC_TIME, 'id_ID');
 
@@ -59,12 +54,12 @@ class JadwalSiswaController extends SiswaController
 
         // $tanggalAwal = '2023-09-11';
         $tanggalAwal = $tanggalNow;
-        $tanggalAkhir = $tahunSekarang . '-' . $bulanNow . '-31';
+        $tanggalAkhir = $tahunSekarang.'-'.$bulanNow.'-31';
 
         // Logika untuk menentukan status
-        if ($tanggalAwal <= $tahunSekarang . '-' . $bulanNow . '-10' && $tanggalAkhir >= $tahunSekarang . '-' . $bulanNow . '-01') {
+        if ($tanggalAwal <= $tahunSekarang.'-'.$bulanNow.'-10' && $tanggalAkhir >= $tahunSekarang.'-'.$bulanNow.'-01') {
             $kunci = null;
-        } elseif ($tanggalAwal <= $tahunSekarang . '-' . $bulanNow . '-31' && $tanggalAkhir >= $tahunSekarang . '-' . $bulanNow . '-11') {
+        } elseif ($tanggalAwal <= $tahunSekarang.'-'.$bulanNow.'-31' && $tanggalAkhir >= $tahunSekarang.'-'.$bulanNow.'-11') {
             $resultPemasukan = new Pemasukan();
             $kunci = $resultPemasukan->getKunciAkunSiswa($id_user);
         } else {
@@ -125,12 +120,12 @@ class JadwalSiswaController extends SiswaController
 
         // $tanggalAwal = '2023-09-11';
         $tanggalAwal = $tanggalNow;
-        $tanggalAkhir = $tahunSekarang . '-' . $bulanNow . '-31';
+        $tanggalAkhir = $tahunSekarang.'-'.$bulanNow.'-31';
 
         // Logika untuk menentukan status
-        if ($tanggalAwal <= $tahunSekarang . '-' . $bulanNow . '-10' && $tanggalAkhir >= $tahunSekarang . '-' . $bulanNow . '-01') {
+        if ($tanggalAwal <= $tahunSekarang.'-'.$bulanNow.'-10' && $tanggalAkhir >= $tahunSekarang.'-'.$bulanNow.'-01') {
             $kunci = null;
-        } elseif ($tanggalAwal <= $tahunSekarang . '-' . $bulanNow . '-31' && $tanggalAkhir >= $tahunSekarang . '-' . $bulanNow . '-11') {
+        } elseif ($tanggalAwal <= $tahunSekarang.'-'.$bulanNow.'-31' && $tanggalAkhir >= $tahunSekarang.'-'.$bulanNow.'-11') {
             $resultPemasukan = new Pemasukan();
             $kunci = $resultPemasukan->getKunciAkunSiswa($id_user);
         } else {
@@ -232,8 +227,6 @@ class JadwalSiswaController extends SiswaController
     public function detailMapel(string $kodemapel)
     {
 
-
-
         $parts = explode('-', $kodemapel);
         $kode_mapel = $parts[0];
         $id_pertemuan = $parts[1];
@@ -269,8 +262,6 @@ class JadwalSiswaController extends SiswaController
     public function uploadTugas(Request $r, string $kode)
     {
 
-
-
         $r->validate([
 
             'file_tugas' => 'required',
@@ -295,9 +286,6 @@ class JadwalSiswaController extends SiswaController
 
             $datenow = date('Y-m-d H:i:s');
 
-
-           
-
             if ($datenow <= $r->tanggal_tugas) {
                 $status = 'Tepat Waktu';
             } else {
@@ -305,7 +293,7 @@ class JadwalSiswaController extends SiswaController
             }
 
             $file_tugas = $r->file('file_tugas');
-            $filename = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $file_tugas->getClientOriginalName());
+            $filename = round(microtime(true) * 1000).'-'.str_replace(' ', '-', $file_tugas->getClientOriginalName());
 
             $data = [
                 'id_siswa' => $siswa->id,
@@ -319,7 +307,7 @@ class JadwalSiswaController extends SiswaController
             $result->uploadTugasSiswa($file_tugas, $filename);
             $result->saveTugasSiswa($data);
 
-            return redirect('siswa/jadwal/cek/' . $kode)->with('success', 'Tugas berhasil diupload!');
+            return redirect('siswa/jadwal/cek/'.$kode)->with('success', 'Tugas berhasil diupload!');
         } else {
             return back()->with('error', 'File Tugas Tidak Boleh Kosong');
         }

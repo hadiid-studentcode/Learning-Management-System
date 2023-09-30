@@ -167,6 +167,32 @@ class PesanGuruController extends GuruController
     {
     }
 
+    public function search(Request $request)
+    {
+
+        $id_user = Auth::user()->id;
+        $result = new Pesan();
+        $pesan = $result->viewPesanSearch('Guru', $id_user, $request->data);
+
+        foreach ($pesan as $p) {
+            $p->formattedTime = $result->timeDiff($p->created_at);
+
+            $p->shortenedMessage = Str::limit($p->isi_pesan, 20);
+        }
+        $this->img = $this->imageHeader();
+
+        return view('guru.pesan.index')
+            ->with('title', $this->title)
+            ->with('role', $this->role)
+            ->with('route', $this->route)
+            ->with('img', $this->img)
+            ->with('folder', $this->folder)
+            ->with('jenis', $this->jenisGuru())
+
+            ->with('pesan', $pesan);
+
+    }
+
     /**
      * Remove the specified resource from storage.
      */

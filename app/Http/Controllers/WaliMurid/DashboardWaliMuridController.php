@@ -41,7 +41,6 @@ class DashboardWaliMuridController extends WaliMuridController
 
         date_default_timezone_set('Asia/Jakarta'); // Set zona waktu ke Waktu Indonesia Barat
 
-
         setlocale(LC_TIME, 'id_ID');
 
         $tanggalNow = date('Y-m-d');

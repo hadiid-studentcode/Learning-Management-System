@@ -90,7 +90,6 @@ class JadwalGuruController extends GuruController
     public function show(string $kode)
     {
 
-
         $this->img = $this->imageHeader();
         $id_user = Auth()->user()->id;
 
@@ -139,7 +138,6 @@ class JadwalGuruController extends GuruController
 
     public function detailMapel(string $jenis, string $kodemapel)
     {
-
 
         $this->img = $this->imageHeader();
 

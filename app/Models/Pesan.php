@@ -45,6 +45,23 @@ class Pesan extends Model
                 ->paginate(10);
     }
 
+    public function viewPesanSearch($penerima, $id_penerima, $keyword)
+    {
+        return DB::table('pesan')
+            ->select('pesan.id', 'pesan.perihal', 'pesan.created_at', 'pesan.isi_pesan', 'users.nama_lengkap as namaPengirim', 'pesan.status')
+            ->join('users', 'pesan.id_pengirim', '=', 'users.id')
+            ->where(function ($query) use ($penerima, $id_penerima, $keyword) {
+                $query->where('penerima', $penerima)
+                    ->where('id_penerima', $id_penerima)
+                    ->where(function ($query) use ($keyword) {
+                        $query->where('pesan.perihal', 'LIKE', '%'.$keyword.'%')
+                            ->orWhere('pesan.isi_pesan', 'LIKE', '%'.$keyword.'%');
+                    });
+            })
+            ->latest()
+            ->paginate(10);
+    }
+
     public function showPesan($penerima, $id_penerima, $id_pesan)
     {
         return

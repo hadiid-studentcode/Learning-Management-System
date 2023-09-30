@@ -38,6 +38,29 @@ class PesanSuperUserController extends SuperUserController
             ->with('folder', $this->folder);
     }
 
+    public function search(Request $request)
+    {
+
+        $this->role = auth()->user()->hak_akses;
+        $id_user = Auth::user()->id;
+
+        $result = new Pesan();
+        $pesan = $result->viewPesanSearch('Kepala Sekolah', $id_user, $request->data);
+
+        foreach ($pesan as $p) {
+            $p->formattedTime = $result->timeDiff($p->created_at);
+            $p->shortenedMessage = Str::limit($p->isi_pesan, 50);
+        }
+
+        return view('superuser.pesan.index')
+            ->with('title', $this->title = 'Pesan')
+            ->with('role', $this->role)
+            ->with('route', $this->route)
+            ->with('pesan', $pesan)
+            ->with('img', $this->img)
+            ->with('folder', $this->folder);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

@@ -52,6 +52,36 @@ class PesanPegawaiController extends PegawaiController
             ->with('photo', $this->photos);
     }
 
+    public function search(Request $request)
+    {
+        $this->title = 'Pesan';
+        $id = auth()->user()->id;
+        $this->role = auth()->user()->hak_akses;
+        $id_user = Auth::user()->id;
+
+        $result = new Pegawai();
+        $resultPhotos = $result->getPhotosUser($id);
+        $this->img = $resultPhotos->foto;
+
+        $result = new Pesan();
+        $pesan = $result->viewPesanSearch('Pegawai', $id_user, $request->data);
+
+        foreach ($pesan as $p) {
+            $p->formattedTime = $result->timeDiff($p->created_at);
+            $p->shortenedMessage = Str::limit($p->isi_pesan, 50);
+        }
+
+        return view('pegawai.pesan.index')
+            ->with('title', $this->title)
+            ->with('role', $this->role)
+            ->with('route', $this->route)
+            ->with('img', $this->img)
+            ->with('folder', $this->folder)
+            ->with('pesan', $pesan)
+            ->with('photo', $this->photos);
+
+    }
+
     /**
      * Show the form for creating a new resource.
      */
