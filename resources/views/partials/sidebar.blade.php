@@ -57,7 +57,7 @@
 
                                 <li class="nav-item" style="margin-top: 210%">
                                     <a href="{{ asset('/' . $route . '/setting') }}"
-                                        class="nav-link @if ($title == 'Setting') active @else '' @endif">
+                                        class="nav-link @if ($title == 'Settings') active @else '' @endif">
                                         <i class="fas fa-cogs"
                                             style="font-size:20px;  width:25px; height:25px; color: black; margin-right: 23px;"></i>
                                         <span style="font-family: arial; color: black;">Setting</span>
@@ -150,7 +150,7 @@
 
                                 <li class="nav-item" style="margin-top:130%;">
                                     <a href="{{ asset('/' . $route . '/setting') }}"
-                                        class="nav-link @if ($title == 'Setting') active @else '' @endif">
+                                        class="nav-link @if ($title == 'Settings') active @else '' @endif">
                                         <i class="fas fa-cogs"
                                             style="font-size:20px;  width:25px; height:25px; color: black; margin-right: 23px;"></i>
                                         <span style="font-family: arial; color: black;">Setting</span>
@@ -245,7 +245,7 @@
                                 
                                 <li class="nav-item" style="margin-top: 140%;">
                                     <a href="{{ asset('/' . $route . '/setting') }}"
-                                        class="nav-link @if ($title == 'Setting') active @else '' @endif">
+                                        class="nav-link @if ($title == 'Settings') active @else '' @endif">
                                         <i class="fas fa-cogs"
                                             style="font-size:20px;  width:25px; height:25px; color: black; margin-right: 23px;"></i>
                                         <span style="font-family: arial; color: black;">Setting</span>
@@ -441,7 +441,7 @@
                                 <hr>
                                 <li class="nav-item" style="margin-top:2%;">
                                     <a href="{{ asset('/' . $route . '/setting') }}"
-                                        class="nav-link @if ($title == 'Setting') active @else '' @endif">
+                                        class="nav-link @if ($title == 'Settings') active @else '' @endif">
                                         <i class="fas fa-cogs"
                                             style="font-size:20px;  width:25px; height:25px; color: black; margin-right: 23px;"></i>
                                         <span style="font-family: arial; color: black;">Setting</span>
@@ -533,7 +533,7 @@
 
                                 <li class="nav-item" style="margin-top: 135%">
                                     <a href="{{ asset('/' . $route . '/setting') }}"
-                                        class="nav-link @if ($title == 'Setting') active @else '' @endif">
+                                        class="nav-link @if ($title == 'Settings') active @else '' @endif">
                                         <i class="fas fa-cogs"
                                             style="font-size:20px;  width:25px; height:25px; color: black; margin-right: 23px;"></i>
                                         <span style="font-family: arial; color: black;">Setting</span>

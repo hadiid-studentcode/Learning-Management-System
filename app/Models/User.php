@@ -60,7 +60,7 @@ class User extends Authenticatable
     public function getSuperUser($id)
     {
         $result = DB::table('users')
-            ->select('id','userid')
+            ->select('id', 'userid')
             ->where('id', '=', $id)
             ->first();
 

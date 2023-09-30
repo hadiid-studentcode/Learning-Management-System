@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Users;
 
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\RedirectResponse;
-use App\Http\Controllers\Users\UserController;
 
 class User_SuperUserController extends UserController
 {
@@ -79,4 +78,5 @@ class User_SuperUserController extends UserController
         } else {
             return back()->with('error', 'Password Failed To Save');
         }
-    }}
+    }
+}

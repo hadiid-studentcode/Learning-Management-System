@@ -17,9 +17,6 @@ class SettingSuperUserController extends SuperUserController
         $result = new User();
         $getSuperUser = $result->getSuperUser($id);
 
-        
-
-
         return view('superUser.setting.index')
             ->with('title', 'Setting')
             ->with('userName', $this->userName)
@@ -68,7 +65,7 @@ class SettingSuperUserController extends SuperUserController
      */
     public function update(Request $request, string $id)
     {
-     
+
     }
 
     /**
