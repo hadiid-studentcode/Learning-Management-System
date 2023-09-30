@@ -2,187 +2,189 @@
 
 @section('main')
 
-        <div class=" ">
-            <div class="card card-custom">
-                <div class="card-body">
-                    <div class="d-flex flex-column align-items-center">
-                        <h2 class="jumbotron-heading">Data Raport Siswa</h2>
-                        <p class="lead text-muted text-center">Halaman Untuk melihat data nilai siswa.
-                        </p>
-                    </div>
+    <div class=" ">
+        <div class="card card-custom">
+            <div class="card-body">
+                <div class="d-flex flex-column align-items-center">
+                    <h2 class="jumbotron-heading">Data Raport Siswa</h2>
+                    <p class="lead text-muted text-center">Halaman Untuk melihat data nilai siswa.
+                    </p>
                 </div>
             </div>
         </div>
+    </div>
 
 
-        <div class="">
-            <div class="card card-custom gutter-b">
-                <div class="card-body">
-                    <form id="siswaForm" action="{{ url('/super-user/Nilai-siswa/create') }}" method="GET">
-                        @csrf
-                        <div class="form-group row">
-                            <label for="tahunAjaran" class="col-sm-2 col-form-label">Tahun Ajaran</label>
-                            <div class="col-sm-10">
-                                <select id="tahunAjaran" name="tahunAjaran" class="form-control" required>
-                                    <option
-                                        value="@if (isset($tahunAjaranSearch)) {{ $tahunAjaranSearch->id }} @else @endif"
-                                        hidden>
-                                        @if (isset($tahunAjaranSearch))
-                                            {{ $tahunAjaranSearch->tahun_ajaran }}
-                                        @else
-                                            Pilih Tahun Ajaran
-                                        @endif
+    <div class="">
+        <div class="card card-custom gutter-b">
+            <div class="card-body">
+                <form id="siswaForm" action="{{ url('/super-user/Nilai-siswa/create') }}" method="GET">
+                    @csrf
+                    <div class="form-group row">
+                        <label for="tahunAjaran" class="col-sm-2 col-form-label">Tahun Ajaran</label>
+                        <div class="col-sm-10">
+                            <select id="tahunAjaran" name="tahunAjaran" class="form-control" required>
+                                <option value="@if (isset($tahunAjaranSearch)) {{ $tahunAjaranSearch->id }} @else @endif"
+                                    hidden>
+                                    @if (isset($tahunAjaranSearch))
+                                        {{ $tahunAjaranSearch->tahun_ajaran }}
+                                    @else
+                                        Pilih Tahun Ajaran
+                                    @endif
+                                </option>
+                                @foreach ($tahunAjaran as $th)
+                                    <option value="{{ $th->id }}">{{ $th->tahun_ajaran }}</option>
+                                @endforeach
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="kelas" class="col-sm-2 col-form-label">Kelas</label>
+                        <div class="col-sm-10">
+                            <select id="kelas" name="kelas" class="form-control" required>
+                                <option value="@if (isset($kelasSearch)) {{ $kelasSearch->id }} @else @endif"
+                                    hidden>
+                                    @if (isset($kelasSearch))
+                                        Kelas {{ $kelasSearch->kelas }} {{ $kelasSearch->rombel }}
+                                    @else
+                                        Pilih Kelas
+                                    @endif
+                                </option>
+                                @foreach ($kelas as $k)
+                                    <option value="{{ $k->id }}">Kelas {{ $k->nama }} {{ $k->rombel }}
                                     </option>
-                                    @foreach ($tahunAjaran as $th)
-                                        <option value="{{ $th->id }}">{{ $th->tahun_ajaran }}</option>
-                                    @endforeach
+                                @endforeach
 
-                                </select>
-                            </div>
+                            </select>
                         </div>
+                    </div>
 
-                        <div class="form-group row">
-                            <label for="kelas" class="col-sm-2 col-form-label">Kelas</label>
-                            <div class="col-sm-10">
-                                <select id="kelas" name="kelas" class="form-control" required>
-                                    <option value="@if (isset($kelasSearch)) {{ $kelasSearch->id }} @else @endif"
-                                        hidden>
-                                        @if (isset($kelasSearch))
-                                            Kelas {{ $kelasSearch->kelas }} {{ $kelasSearch->rombel }}
-                                        @else
-                                            Pilih Kelas
-                                        @endif
-                                    </option>
-                                    @foreach ($kelas as $k)
-                                        <option value="{{ $k->id }}">Kelas {{ $k->nama }} {{ $k->rombel }}
-                                        </option>
-                                    @endforeach
 
-                                </select>
-                            </div>
+                    <div class="form-group row">
+                        <div class="col-sm-10 offset-sm-2">
+                            <button type="submit" class="btn btn-success">Submit</button>
                         </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 
-                        <div class="form-group row">
-                            <div class="col-sm-10 offset-sm-2">
-                                <button type="submit" class="btn btn-success">Submit</button>
-                            </div>
-                        </div>
-                    </form>
+    <div class="modal fade" id="kelasModal" tabindex="-1" role="dialog" aria-labelledby="kelasModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="kelasModalLabel">Penting</h5>
+                </div>
+                <div class="modal-body">
+                    Mohon Lengkapi data Terlebih Dahulu !
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
+    </div>
 
-
-        <div class="modal fade" id="kelasModal" tabindex="-1" role="dialog" aria-labelledby="kelasModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="kelasModalLabel">Penting</h5>
-                    </div>
-                    <div class="modal-body">
-                        Mohon Lengkapi data Terlebih Dahulu !
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="" id="reportCardContainer">
-            <div class="card card-custom gutter-b">
-                <div class="card-body">
-                    <div id="resultTable">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped" style="text-align: center">
-                                <thead>
-                                    <tr>
-                                        <th colspan="4" style="text-align: center">
-                                            <h4>Data Nilai Siswa</h4>
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama Siswa</th>
-                                        <th>NISN</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @if (isset($siswa))
-                                        @foreach ($siswa as $s)
-                                            <tr>
-                                                <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $s->nama }}</td>
-                                                <td>{{ $s->nisn }}</td>
-                                                <td><button type="button" class="btn btn-success" data-toggle="modal"
-                                                        data-target="#showReport_{{ $s->id }}">
-                                                        <i class="fa fa-eye"></i> 
-                                                    </button>
-                                                      <!-- Modal Lihat Nilai -->
-                                            <div class="modal fade" id="showReport_{{ $s->id }}" tabindex="-1"
-                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered modal-lg">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Data Nilai {{ $s->nama }}</h5>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <table class="table table-bordered">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>No</th>
-                                                                        <th>Mata Pelajaran</th>
-                                                                        <th>KKM</th>
-                                                                        <th>Nilai</th>
-                                                                        <th>Nilai Rata-rata</th>
-                                                                        <th>Catatan Guru</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    @foreach($raport as $r)
-                                                                    @if($r->id_siswa == $s->id)
-                                                                    <tr>
-                                                                        <td>{{ $loop->iteration }}</td>
-                                                                        <td class="subject-name">{{ $r->mapel }}</td>
-                                                                        <td>{{ $r->KKM }}</td>
-                                                                        <td>{{ $r->total_nilai }}</td>
-                                                                        <td class="grade">{{ $r->rata_rata }}</td>
-                                                                        <td class="remarks">{{ $r->catatan }}</td>
-                                                                    </tr>
-                                                                    @endif
-                                                                    @endforeach
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">Close</button>
+    <div class="" id="reportCardContainer">
+        <div class="card card-custom gutter-b">
+            <div class="card-body">
+                <div id="resultTable">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped" style="text-align: center">
+                            <thead>
+                                <tr>
+                                    <th colspan="4" style="text-align: center">
+                                        <h4>Data Nilai Siswa</h4>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama Siswa</th>
+                                    <th>NISN</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (isset($siswa))
+                                    @foreach ($siswa as $s)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $s->nama }}</td>
+                                            <td>{{ $s->nisn }}</td>
+                                            <td><button type="button" class="btn btn-success" data-toggle="modal"
+                                                    data-target="#showReport_{{ $s->id }}">
+                                                    <i class="fa fa-eye"></i>
+                                                </button>
+                                                <!-- Modal Lihat Nilai -->
+                                                <div class="modal fade" id="showReport_{{ $s->id }}" tabindex="-1"
+                                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Data Nilai
+                                                                    {{ $s->nama }}</h5>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <table class="table table-bordered">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>No</th>
+                                                                            <th>Mata Pelajaran</th>
+                                                                            <th>KKM</th>
+                                                                            <th>Nilai</th>
+                                                                            <th>Nilai Rata-rata</th>
+                                                                            <th>Catatan Guru</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        @foreach ($raport as $r)
+                                                                            @if ($r->id_siswa == $s->id)
+                                                                                <tr>
+                                                                                    <td>{{ $loop->iteration }}</td>
+                                                                                    <td class="subject-name">
+                                                                                        {{ $r->mapel }}</td>
+                                                                                    <td>{{ $r->KKM }}</td>
+                                                                                    <td>{{ $r->total_nilai }}</td>
+                                                                                    <td
+                                                                                        class="grade @if ($r->rata_rata >= $r->KKM) @else text-danger @endif">
+                                                                                        {{ $r->rata_rata }}</td>
+                                                                                    <td class="remarks">{{ $r->catatan }}
+                                                                                    </td>
+                                                                                </tr>
+                                                                            @endif
+                                                                        @endforeach
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">Close</button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                                </td>
-                                            </tr>
-    
-                                          
-                                        @endforeach
-                                    @endif
-                                </tbody>
-                            </table>
-                          </div>
-                        
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
+                            </tbody>
+                        </table>
                     </div>
+
                 </div>
-
             </div>
+
         </div>
+    </div>
 
 
 
-        {{-- 
+    {{-- 
 
     <div id="resultTable"></div>
 
@@ -320,4 +322,4 @@
 
 
 
-    @endsection
+@endsection

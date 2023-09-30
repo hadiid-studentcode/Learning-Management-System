@@ -323,6 +323,7 @@ Route::group([
     Route::post('super-user/laporan-keuangan/pengeluaran/ditolak/{noTransaksi}', [LaporanKeuanganSuperUserController::class, 'updatePengeluaranRejected']);
 
     Route::resource('/super-user/setting', SettingSuperUserController::class);
+    Route::post('/super-user/setting/akun/{id}', [User_SuperUserController::class, 'update']);
 
     Route::get('super-user/logout', [User_SuperUserController::class, 'logout']);
 });

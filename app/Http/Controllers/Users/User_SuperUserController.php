@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Users;
 
-use Illuminate\Http\RedirectResponse;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Controllers\Users\UserController;
 
 class User_SuperUserController extends UserController
 {
@@ -50,4 +52,31 @@ class User_SuperUserController extends UserController
 
         return redirect('/super-user');
     }
-}
+
+    public function update(Request $r, $id)
+    {
+
+        $validatedData = $r->validate([
+            'username' => ['required'],
+            'password' => ['required', 'min:6'],
+        ]);
+
+        if ($r->input('password') == $r->input('confirmPassword')) {
+
+            // enscripsi password
+            $password = bcrypt($validatedData['password']);
+
+            $data =
+                [
+                    'userid' => $validatedData['username'],
+                    'password' => $password,
+                ];
+
+            $result = new User();
+            $result->updateData($id, $data);
+
+            return back()->with('success', 'Account Successfully Updated');
+        } else {
+            return back()->with('error', 'Password Failed To Save');
+        }
+    }}
