@@ -88,7 +88,9 @@ class Pemasukan extends Model
             ->select($select)
             ->join('tahun_ajaran', 'pemasukan.id_tahun_ajaran', '=', 'tahun_ajaran.id')
             ->where('diterima_dari', '=', $nisn)
+            ->orderByDesc('id')
             ->get();
+
 
         return $result;
     }

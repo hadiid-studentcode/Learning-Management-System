@@ -31,11 +31,22 @@ class ProfileSiswaWaliMuridController extends WaliMuridController
         $result = new Pemasukan();
         $status_pembayaran = $result->getStatusPembayaran($nisn_siswa);
 
-        if ($status_pembayaran == null) {
-            $status = 'Lunas';
-        } else {
-            $status = 'Belum Lunas';
+
+
+        // status pembayaran spp
+        foreach($status_pembayaran as $s){
+            $status = $s->deskripsi;
+
+            if($status == 'Belum Lunas'){
+                $status = 'Belum Lunas';
+            }else{
+                $status = 'Lunas';
+            }
+
         }
+
+
+      
 
         $this->img = $this->imageHeader();
 
