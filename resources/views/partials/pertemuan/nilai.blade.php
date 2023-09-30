@@ -34,9 +34,9 @@
                                            @if ($s->id == $t->id_siswa)
                                                <td>
                                                    <div class="d-flex justify-content-center">
-                                                       <button type="button" class="btn btn-primary">
-                                                        <i class="fas fa-check-circle"></i>
-                                                       </button>
+                                                       <a href="{{ asset('storage/siswa/tugas/' . $t->file_tugas) }}" class="btn btn-primary" target="_blank">
+                                                        <i class="fas fa-tasks"></i>
+                                                       </a>
                                                    </div>
                                                </td>
                                                <td>{{ $t->status }}</td>

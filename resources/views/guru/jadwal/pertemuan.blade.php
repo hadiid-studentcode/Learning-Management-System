@@ -40,7 +40,7 @@
                 <div class="card-toolbar">
                     <ul class="nav nav-tabs nav-bold nav-tabs-line nav-tabs-line-3x">
                         <li class="nav-item">
-                            <a href="{{ url('guru/jadwal/cek/materi/' . $kode) }}" class="btn nav-link @if($jenis == 'materi') active @endif">
+                            <a href="{{ url('guru/jadwal/cek/materi/' . $kode) }}" class="btn nav-link @if($jenisPertemuan == 'materi') active @endif">
                                 <span class="nav-icon">
                                     <span class="svg-icon">
                                         <i class="fas fa-layer-group"></i>
@@ -50,7 +50,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('guru/jadwal/cek/absensi/' . $kode) }}" class="btn nav-link @if($jenis == 'absensi') active @endif">
+                            <a href="{{ url('guru/jadwal/cek/absensi/' . $kode) }}" class="btn nav-link @if($jenisPertemuan == 'absensi') active @endif">
                                 <span class="nav-icon">
                                     <span class="svg-icon">
                                         <i class="fas fa-layer-group"></i>
@@ -61,7 +61,7 @@
                         </li>
     
                         <li class="nav-item">
-                            <a href="{{ url('guru/jadwal/cek/nilai/' . $kode) }}" class="btn nav-link @if($jenis == 'nilai') active @endif">
+                            <a href="{{ url('guru/jadwal/cek/nilai/' . $kode) }}" class="btn nav-link @if($jenisPertemuan == 'nilai') active @endif">
                                 <span class="nav-icon">
                                     <span class="svg-icon">
                                         <i class="fas fa-layer-group"></i>
