@@ -15,7 +15,7 @@ class SettingsPegawaiController extends PegawaiController
      */
     public function index()
     {
-        $this->title = 'Setting';
+        $this->title = 'Settings';
         $id = auth()->user()->id;
 
         $email = auth()->user()->email;

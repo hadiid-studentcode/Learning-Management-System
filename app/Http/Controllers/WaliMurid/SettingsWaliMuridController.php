@@ -14,7 +14,7 @@ class SettingsWaliMuridController extends WaliMuridController
      */
     public function index()
     {
-        $this->title = 'Setting';
+        $this->title = 'Settings';
         $id = auth()->user()->id;
         // data siswa
         $result = new WaliMurid();

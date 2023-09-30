@@ -17,7 +17,7 @@
                 <p class="text-muted text-center">{{ $jenis }}</p>
 
                 <li class="list-group-item" style="border: none;">
-                    <b>No HP : </b> <a class="float-right">{{ $nohp }}</a>
+                    <b>No HP : </b> <a class="float-right text-dark">{{ $nohp }}</a>
                 </li>
 
                  @include('partials.dashboard.absensi')

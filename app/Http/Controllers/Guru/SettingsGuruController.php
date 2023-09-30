@@ -17,7 +17,7 @@ class SettingsGuruController extends GuruController
 
         // panggil fungsi hai di gurucontrooler
 
-        $this->title = 'Setting';
+        $this->title = 'Settings';
         $id = auth()->user()->id;
 
         $nama = auth()->user()->nama_lengkap;
