@@ -25,12 +25,17 @@ class JadwalSiswaController extends SiswaController
         $result = new Siswa();
         $getidKelas = $result->getIdKelas($id_user);
 
+        // get first tahun ajaran terkini
+        $resultTahunAjaran = new TahunAjaran();
+        $tahunAjaranFirst  = $resultTahunAjaran->getTahunAjaran();
+
+
         // get mapel where id_kelas
         $resultMapel = new Mapel();
-        $getMapel = $resultMapel->getMapelWhereIdkelas($getidKelas->id_kelas);
+        $getMapel = $resultMapel->getMapelWhereIdkelas($getidKelas->id_kelas, $tahunAjaranFirst->id);
+
 
         // get tahun ajaran
-        $resultTahunAjaran = new TahunAjaran();
         $tahunAjaranAll = $resultTahunAjaran->getTahunAjaranAll();
 
         // akses kunci
@@ -70,6 +75,7 @@ class JadwalSiswaController extends SiswaController
             ->with('folder', $this->folder)
             ->with('mapel', $getMapel)
             ->with('kunci', $kunci)
+            ->with('tahunAjaranFirst', $tahunAjaranFirst)
             ->with('tahunAjaran', $tahunAjaranAll)
             ->with('route', $this->route);
     }
