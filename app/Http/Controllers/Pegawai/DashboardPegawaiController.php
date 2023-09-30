@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Pegawai;
 
-use App\Models\Pegawai;
 use App\Models\AbsenPegawai;
-use Illuminate\Http\Request;
 use App\Models\KelolaAbsensi;
-use App\Http\Controllers\Pegawai\PegawaiController;
+use App\Models\Pegawai;
+use Illuminate\Http\Request;
 
 class DashboardPegawaiController extends PegawaiController
 {
@@ -97,6 +96,7 @@ class DashboardPegawaiController extends PegawaiController
     {
         //
     }
+
     public function absen()
     {
 

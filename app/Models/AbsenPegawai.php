@@ -51,6 +51,7 @@ class AbsenPegawai extends Model
 
         return $results;
     }
+
     public function saveAbsen($data)
     {
         return AbsenPegawai::create($data);

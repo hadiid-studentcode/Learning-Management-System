@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers\TataUsaha;
 
+use App\Models\AbsenPegawai;
 use App\Models\Guru;
 use App\Models\Kelas;
-use App\Models\Siswa;
+use App\Models\KelolaAbsensi;
 use App\Models\Pegawai;
-use App\Models\AbsenGuru;
+use App\Models\Siswa;
 use App\Models\TahunAjaran;
 use Illuminate\Http\Request;
-use App\Models\KelolaAbsensi;
-use App\Http\Controllers\TataUsaha\TataUsahaController;
-use App\Models\AbsenPegawai;
 
 class DashboardTataUsahaController extends TataUsahaController
 {
@@ -110,7 +108,8 @@ class DashboardTataUsahaController extends TataUsahaController
         //
     }
 
-    public function absen(){
+    public function absen()
+    {
 
         date_default_timezone_set('Asia/Jakarta'); // Set zona waktu ke Waktu Indonesia Barat
 

@@ -112,7 +112,6 @@ class DashboardGuruController extends GuruController
 
         setlocale(LC_TIME, 'id_ID');
 
-
         $waktu = date('Y-m-d H:i:s');
         // $waktu = '2023-07-17 07:15:00';
         $waktu_absen_hijau = '2023-07-17 06:00:00';
