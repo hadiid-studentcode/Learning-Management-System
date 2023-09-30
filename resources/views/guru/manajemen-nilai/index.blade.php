@@ -152,7 +152,7 @@
                                                     $rata_rata = $total_nilai / $jumlah_nilai;
                                                     $kkm = $kkm;
                                                 @endphp
-                                                @if ($rata_rata > $kkm)
+                                                @if ($rata_rata >= $kkm)
                                                     <p class="font-weight-bolder">Rata-rata nilai: <span>
                                                             {{ $rata_rata }}</span>
                                                     </p>

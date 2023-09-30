@@ -104,7 +104,7 @@
                                             <td class="subject-name">{{ $rns->nama }}</td>
                                             <td>{{ $rns->KKM }}</td>
                                             <td>{{ $rns->nilai }}</td>
-                                            <td class="grade @if ($rns->rata_rata < $rns->KKM) text-danger @else @endif">
+                                            <td class="grade @if ($rns->rata_rata >= $rns->KKM) @else text-danger @endif">
                                                 {{ $rns->rata_rata }}</td>
 
                                             <td class="remarks">{{ $rns->catatan }}</td>
