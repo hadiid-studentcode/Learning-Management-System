@@ -72,7 +72,9 @@
                     <table class="table table-striped table-bordered" style="text-align: center">
                         <thead>
                             <tr>
-                                <th colspan="5"><h5 class="text-center">Data Nilai Siswa</h5></th>
+                                <th colspan="5">
+                                    <h5 class="text-center">Data Nilai Siswa</h5>
+                                </th>
                             </tr>
                             <tr>
                                 <th style="width: 5%">Nomor</th>
@@ -106,61 +108,74 @@
         </div>
     </div>
 
-    <!-- Modal --> 
+    <!-- Modal -->
     @if (isset($searchMapel))
-    @foreach ($searchMapel as $sm)
-        <div class="modal fade" id="lihatnilai_{{ $sm->id_siswa }}" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header bg-success text-white">
-                        <h5 class="modal-title" id="exampleModalLabel">Data Nilai {{ $sm->nama }}</h5>
-                    </div>
-                    <div class="modal-body">
-                        @if (!empty($nilai))
-                            <ul class="list-group">
+        @foreach ($searchMapel as $sm)
+            <div class="modal fade" id="lihatnilai_{{ $sm->id_siswa }}" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-success text-white">
+                            <h5 class="modal-title" id="exampleModalLabel">Data Nilai {{ $sm->nama }}</h5>
+                        </div>
+                        <div class="modal-body">
+                            @if (!empty($nilai))
+                                <ul class="list-group">
 
-                                @php
-                                    $total_nilai = 0;
-                                    $jumlah_nilai = 0;
-                                @endphp
-                                @foreach ($nilai as $ni)
-                                    @foreach ($ni as $n)
-                                        @if ($n->id_siswa == $sm->id_siswa)
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                Minggu {{ $n->pertemuan_ke }} Nilai: <span>{{ $n->nilai }}</span>
-                                                @php
-                                                    $total_nilai += $n->nilai;
-                                                    $jumlah_nilai++;
-                                                @endphp
-                                            </li>
-                                        @endif
+                                    @php
+                                        $total_nilai = 0;
+                                        $jumlah_nilai = 0;
+                                        $kkm = 0;
+                                    @endphp
+                                    @foreach ($nilai as $ni)
+                                        @foreach ($ni as $n)
+                                            @if ($n->id_siswa == $sm->id_siswa)
+                                                <li
+                                                    class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Minggu {{ $n->pertemuan_ke }} Nilai: <span>{{ $n->nilai }}</span>
+
+                                                    @php
+                                                        $total_nilai += $n->nilai;
+                                                        $jumlah_nilai++;
+                                                        $kkm = $n->KKM;
+                                                    @endphp
+                                                </li>
+                                            @endif
+                                        @endforeach
                                     @endforeach
-                                @endforeach
-                            </ul>
-                            <div class="mt-4">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        @if ($jumlah_nilai > 0)
-                                            @php
-                                                $rata_rata = $total_nilai / $jumlah_nilai;
-                                            @endphp
-                                            <p>Rata-rata nilai: {{ $rata_rata }}</p>
-                                        @else
-                                            <p>Rata-rata nilai:</p>
-                                        @endif
+                                </ul>
+                                <div class="mt-4">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            @if ($jumlah_nilai > 0)
+                                                @php
+                                                    $rata_rata = $total_nilai / $jumlah_nilai;
+                                                    $kkm = $kkm;
+                                                @endphp
+                                                @if ($rata_rata > $kkm)
+                                                    <p class="font-weight-bolder">Rata-rata nilai: <span>
+                                                            {{ $rata_rata }}</span>
+                                                    </p>
+                                                @else
+                                                    <p class="font-weight-bolder">Rata-rata nilai: <span
+                                                            class=" text-red">{{ $rata_rata }}</span>
+                                                    </p>
+                                                @endif
+                                            @else
+                                                <p>Rata-rata nilai:</p>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endif
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            @endif
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    @endforeach
+        @endforeach
     @endif
 
     <script>

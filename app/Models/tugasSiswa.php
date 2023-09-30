@@ -106,6 +106,7 @@ class tugasSiswa extends Model
                 'tugas_siswa.id_siswa',
                 'pertemuan.pertemuan_ke',
                 'tugas_siswa.nilai',
+                'mapel.KKM',
             ])
 
             ->join('pertemuan', 'tugas_siswa.id_pertemuan', '=', 'pertemuan.id')
