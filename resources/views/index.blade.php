@@ -585,29 +585,27 @@
                 </div>
             </div>
 
-            <form action="" method="post" role="form" class="php-email-form">
-                <div class="row">
-                    <div class="col-md-6 form-group">
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Nama"
-                            required>
-                    </div>
-                    <div class="col-md-6 form-group mt-3 mt-md-0">
-                        <input type="email" class="form-control" name="email" id="email"
-                            placeholder="Email" required>
-                    </div>
-                </div>
-                <div class="form-group mt-3">
-                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subjek"
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Nama"
                         required>
                 </div>
-                <div class="form-group mt-3">
-                    <textarea class="form-control" name="message" rows="5" placeholder="Pesan" required></textarea>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Email"
+                        required>
                 </div>
-                <div class="text-center mt-3"><button class="btn btn-success" type="submit"> <a
-                            href="wa.me/6289652346039" style="color: white; text-decoration:none;">Send
-                            Message</a></button>
-                </div>
-            </form>
+            </div>
+            <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subjek"
+                    required>
+            </div>
+            <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="Pesan" id="message" required></textarea>
+            </div>
+            <div class="text-center mt-3">
+                <button class="btn btn-success" type="submit" onclick="send()">Send
+                    Message</button>
+            </div>
 
         </div>
     </section>
@@ -646,11 +644,32 @@
         </div>
     </footer>
 
+    <script>
+        function send() {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const subject = document.getElementById("subject").value;
+            const message = document.getElementById("message").value;
 
+            // send ke wa ini +6285381782497
+
+          window.open("https://api.whatsapp.com/send?phone=6289620569613&text=Nama%20%3A%20" + name + "%0AEmail%20%3A%20" + email + "%0ASubjek%3A%20" + subject + "%0APesan%20%3A%20" + message);
+
+
+
+
+
+            
+
+
+        }
+    </script>
+
+    <script src="{{ asset('Assets/dist/bootstrap/js/home.bootstrap.min.js') }}"></script>
 
 
 </body>
 
-<script src="{{ asset('Assets/dist/bootstrap/js/home.bootstrap.min.js') }}"></script>
+
 
 </html>

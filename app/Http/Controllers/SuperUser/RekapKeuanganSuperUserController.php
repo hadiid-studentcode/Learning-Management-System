@@ -79,7 +79,6 @@ class RekapKeuanganSuperUserController extends SuperUserController
     public function show(Request $r, string $id)
     {
 
-
         $string = $r->bulan;
         $parts = explode('-', $string);
         $monthDay = $parts[0];
@@ -95,7 +94,6 @@ class RekapKeuanganSuperUserController extends SuperUserController
         $pengeluaran = $resultRekapKeuangan->getRekapKeuanganWherePengeluaran();
 
         // $rekapKeuangan = array_merge($pemasukan->toArray(), $pengeluaran->toArray());
-
 
         // $total = $resultRekapKeuangan->totalPemasukkanDanPengeluaran($rekapKeuangan);
 
@@ -143,7 +141,7 @@ class RekapKeuanganSuperUserController extends SuperUserController
             ->with('totalPengeluaranSearch', $totalSearch['pengeluaran'])
             // ->with('tanggal', $tanggal)
             ->with('tanggalSearch', $tanggalSearch['tanggal']);
-            // ->with('rekapKeuangan', $rekapKeuangan);
+        // ->with('rekapKeuangan', $rekapKeuangan);
     }
 
     /**

@@ -120,7 +120,7 @@ class Mapel extends Model
         return $result;
     }
 
-    public function ViewMapelWhereGuru($id_user)
+    public function ViewMapelWhereGuru($id_user, $id_tahun_ajaran)
     {
         $result = DB::table('mapel')
             ->select(
@@ -136,6 +136,7 @@ class Mapel extends Model
             ->join('kelas', 'mapel.id_kelas', '=', 'kelas.id')
             ->join('guru', 'mapel.id_guru', '=', 'guru.id')
             ->where('guru.id_user', '=', $id_user)
+            ->where('mapel.id_tahun_ajaran', '=', $id_tahun_ajaran)
             ->get();
 
         return $result;
@@ -235,7 +236,7 @@ class Mapel extends Model
             ->join('tahun_ajaran', 'mapel.id_tahun_ajaran', '=', 'tahun_ajaran.id')
 
             ->where('tahun_ajaran.tahun_ajaran', '=', $seachTahunAjaran)
-            ->where('mapel.hari', '=', $searchHari)
+            ->Orwhere('mapel.hari', '=', $searchHari)
             ->where('guru.id_user', '=', $id_user)
             ->get();
 
