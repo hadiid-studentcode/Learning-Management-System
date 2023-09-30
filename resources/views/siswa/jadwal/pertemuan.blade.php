@@ -43,7 +43,7 @@
                                 onclick="showPage('materi')">
                                 <span class="nav-icon">
                                     <span class="svg-icon ">
-                                         <i class="fas fa-layer-group"></i>
+                                        <i class="fas fa-layer-group"></i>
                                     </span>
                                     <span class="nav-text font-size-lg">Materi Pertemuan</span>
                                 </span>
@@ -54,7 +54,7 @@
                                 onclick="showPage('nilai')">
                                 <span class="nav-icon">
                                     <span class="svg-icon ">
-                                         <i class="fas fa-layer-group"></i>
+                                        <i class="fas fa-layer-group"></i>
                                     </span>
                                     <span class="nav-text font-size-lg">Data Nilai</span>
                                 </span>
@@ -116,9 +116,20 @@
 
 
                             </p>
+                            @php
+                                date_default_timezone_set('Asia/Jakarta'); // Set zona waktu ke Waktu Indonesia Barat
+                                
+                                setlocale(LC_TIME, 'id_ID'); // Set lokal ke Bahasa Indonesia
+                                
+                                $waktuSekarang = strftime('%Y-%m-%d %H:%M:%S', time());
+                                
+                            @endphp
+                            <br>
+
+                           
 
                             @if (!$tugas)
-                                @if (date('Y-m-d H:i:s') < $pertemuan->tanggal_tugas)
+                                @if ($waktuSekarang < $pertemuan->tanggal_tugas)
                                 @else
                                     <p>Terlambat</p>
                                 @endif
@@ -133,7 +144,7 @@
                                     <div class="form-group">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="fileInput"
-                                                accept=".jpg, .png, .pdf" onchange="validateFile(this)" / required
+                                                accept=".jpg, .png, .pdf" onchange="validateFile(this)" required
                                                 name="file_tugas">
                                             <label class="custom-file-label" for="fileInput">Pilih File</label>
                                         </div>
@@ -141,14 +152,14 @@
 
                                     <div class="">
                                         <div class="row">
-                                            @if($pertemuan->file_tugas)
-                                            <div class="col-md-6">
-                                                <a href="{{ asset('storage/guru/tugas/' . $pertemuan->file_tugas) }}"
-                                                    target="_blank" class="btn btn-success btn-block">Lihat Tugas</a>
-                                            </div>
+                                            @if ($pertemuan->file_tugas)
+                                                <div class="col-md-6">
+                                                    <a href="{{ asset('storage/guru/tugas/' . $pertemuan->file_tugas) }}"
+                                                        target="_blank" class="btn btn-success btn-block">Lihat Tugas</a>
+                                                </div>
 
-                                            <br>
-                                            <br>
+                                                <br>
+                                                <br>
                                             @endif
                                             <div class="col-md-6">
                                                 <button type="submit" class="btn btn-success btn-block">Submit</button>
@@ -193,7 +204,7 @@
                                 @endif
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="tugas" readonly
-                                        value="{{ substr($tugas->file_tugas, strpos($tugas->file_tugas, "-") + 1) }}">
+                                        value="{{ substr($tugas->file_tugas, strpos($tugas->file_tugas, '-') + 1) }}">
                                     <div class="input-group-append">
                                         <a href="{{ asset('storage/siswa/tugas/' . $tugas->file_tugas) }}" target="_blank"
                                             class="btn btn-outline-secondary" type="button" id="viewButton">Lihat

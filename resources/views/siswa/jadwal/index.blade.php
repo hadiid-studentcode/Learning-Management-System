@@ -20,12 +20,11 @@
                                                 <div class="d-flex align-items-center">
                                                     <select name="tahun_ajaran" class="form-control" id='tahun_ajaran'>
                                                         <option
-                                                            value="@if (isset($searchTahunAjaran)) {{ $searchTahunAjaran }}@else @endif"
-                                                            selected="selected">
+                                                            value="@if (isset($searchTahunAjaran)) {{ $searchTahunAjaran }} @elseif($tahunAjaranFirst) {{ $tahunAjaranFirst->tahun_ajaran }} @else @endif"
+                                                            selected="selected" hidden>
                                                             @if (isset($searchTahunAjaran))
                                                                 {{ $searchTahunAjaran }}
-                                                            @else
-                                                                Pilih Tahun Ajaran
+                                                            @elseif($tahunAjaranFirst) {{ $tahunAjaranFirst->tahun_ajaran }} @else Pilih Tahun Ajaran
                                                             @endif
                                                         </option>
                                                         @foreach ($tahunAjaran as $th)

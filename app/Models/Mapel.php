@@ -152,7 +152,7 @@ class Mapel extends Model
         return $result;
     }
 
-    public function getMapelWhereIdkelas($id_kelas)
+    public function getMapelWhereIdkelas($id_kelas,$id_tahun_ajaran)
     {
 
         $result = DB::table('mapel')
@@ -168,6 +168,7 @@ class Mapel extends Model
             )
             ->join('kelas', 'mapel.id_kelas', '=', 'kelas.id')
             ->where('mapel.id_kelas', '=', $id_kelas)
+            ->where('mapel.id_tahun_ajaran', '=', $id_tahun_ajaran)
             ->get();
 
         return $result;
@@ -197,51 +198,65 @@ class Mapel extends Model
     public function searchMapelWheretahunAjaranAndHari($tahun_ajaran, $hari, $id_kelas)
     {
         $result = DB::table('mapel')
-            ->select(
-                'mapel.id',
-                'mapel.kode',
-                'mapel.nama',
-                'kelas.nama as kelas',
-                'kelas.rombel as rombel',
-                'mapel.waktu_mulai',
-                'mapel.waktu_selesai',
-                'mapel.hari'
-            )
-            ->join('kelas', 'mapel.id_kelas', '=', 'kelas.id')
-            ->join('tahun_ajaran', 'mapel.id_tahun_ajaran', '=', 'tahun_ajaran.id')
+        ->select(
+            'mapel.id',
+            'mapel.kode',
+            'mapel.nama',
+            'kelas.nama as kelas',
+            'kelas.rombel as rombel',
+            'mapel.waktu_mulai',
+            'mapel.waktu_selesai',
+            'mapel.hari'
+        )
+        ->join('kelas', 'mapel.id_kelas', '=', 'kelas.id')
+        ->join('tahun_ajaran', 'mapel.id_tahun_ajaran', '=', 'tahun_ajaran.id');
 
-            ->where('tahun_ajaran.tahun_ajaran', '=', $tahun_ajaran)
-            ->where('mapel.hari', '=', $hari)
-            ->where('mapel.id_kelas', '=', $id_kelas)
-            ->get();
+        if (!empty($tahun_ajaran)) {
+            $result->where('tahun_ajaran.tahun_ajaran', '=', $tahun_ajaran);
+        }
+
+        if (!empty($hari)) {
+            $result->where('mapel.hari', '=', $hari);
+        }
+
+        $result = $result->where('mapel.id_kelas', '=', $id_kelas)
+        ->get();
 
         return $result;
+
     }
 
     public function searchMapelWhereTahunAjaranAndHariAndIdUserGuru($seachTahunAjaran, $searchHari, $id_user)
     {
         $result = DB::table('mapel')
-            ->select(
-                'mapel.id',
-                'mapel.kode',
-                'mapel.nama',
-                'kelas.nama as kelas',
-                'kelas.rombel as rombel',
-                'mapel.waktu_mulai',
-                'mapel.waktu_selesai',
-                'mapel.hari'
-            )
+        ->select(
+            'mapel.id',
+            'mapel.kode',
+            'mapel.nama',
+            'kelas.nama as kelas',
+            'kelas.rombel as rombel',
+            'mapel.waktu_mulai',
+            'mapel.waktu_selesai',
+            'mapel.hari'
+        )
             ->join('kelas', 'mapel.id_kelas', '=', 'kelas.id')
             ->join('guru', 'mapel.id_guru', '=', 'guru.id')
-            ->join('tahun_ajaran', 'mapel.id_tahun_ajaran', '=', 'tahun_ajaran.id')
+            ->join('tahun_ajaran', 'mapel.id_tahun_ajaran', '=', 'tahun_ajaran.id');
 
-            ->where('tahun_ajaran.tahun_ajaran', '=', $seachTahunAjaran)
-            ->Orwhere('mapel.hari', '=', $searchHari)
-            ->where('guru.id_user', '=', $id_user)
+        if (!empty($seachTahunAjaran)) {
+            $result->where('tahun_ajaran.tahun_ajaran', '=', $seachTahunAjaran);
+        }
+
+        if (!empty($searchHari)) {
+            $result->where('mapel.hari', '=', $searchHari);
+        }
+
+        $result = $result->where('guru.id_user', '=', $id_user)
             ->get();
 
         return $result;
     }
+
 
     public function getMapelWhereNameGuru($name_guru)
     {
@@ -343,11 +358,12 @@ class Mapel extends Model
 
     }
 
-    public function firstMapeWhereHariAndWaktu($hari, $waktu_mulai, $waktu_selesai, $id_kelas)
+    public function firstMapeWhereHariAndWaktu($hari, $waktu_mulai, $waktu_selesai, $id_kelas, $id_tahun_ajaran)
     {
 
         $result = DB::table('mapel')
             ->select('hari', 'waktu_mulai', 'waktu_selesai', 'id_kelas')
+            ->where('id_tahun_ajaran', $id_tahun_ajaran)
             ->where('hari', $hari)
             ->where('id_kelas', $id_kelas)
             ->where('waktu_mulai', '<=', $waktu_selesai)

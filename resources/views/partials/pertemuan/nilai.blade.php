@@ -34,7 +34,7 @@
                                            @if ($s->id == $t->id_siswa)
                                                <td>
                                                    <div class="d-flex justify-content-center">
-                                                       <button type="button" class="btn btn-success">
+                                                       <button type="button" class="btn btn-primary">
                                                         <i class="fas fa-eye"></i> 
                                                        </button>
                                                    </div>

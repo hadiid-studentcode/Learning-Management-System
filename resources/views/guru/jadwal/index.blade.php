@@ -15,7 +15,7 @@
                             <div class="col-md-4 my-md-0 mb-2">
                                 <div class="d-flex align-items-center">
                                     <select name="tahun_ajaran" class="form-control" id='tahun_ajaran' required>
-                                        <option value="@if(isset($searchTahunAjaran)) {{ $searchTahunAjaran }} @elseif($tahunAjaranFirst) {{ $tahunAjaranFirst->tahun_ajaran }} @else  @endif" selected="selected" hidden>@if(isset($searchTahunAjaran)) {{ $searchTahunAjaran }} @elseif($tahunAjaranFirst) {{ $tahunAjaranFirst->tahun_ajaran }} @else  @endif</option>
+                                        <option value="@if(isset($searchTahunAjaran)) {{ $searchTahunAjaran }} @elseif($tahunAjaranFirst) {{ $tahunAjaranFirst->tahun_ajaran }} @else  @endif" selected="selected" hidden>@if(isset($searchTahunAjaran)) {{ $searchTahunAjaran }} @elseif($tahunAjaranFirst) {{ $tahunAjaranFirst->tahun_ajaran }} @else Pilih Tahun Ajaran  @endif</option>
                                         </option>
                                         @foreach ($tahunAjaran as $th)
                                             <option value="{{ $th->tahun_ajaran }}">{{ $th->tahun_ajaran }}
