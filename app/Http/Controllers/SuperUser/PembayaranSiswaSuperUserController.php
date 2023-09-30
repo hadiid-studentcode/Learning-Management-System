@@ -190,7 +190,21 @@ class PembayaranSiswaSuperUserController extends SuperUserController
         // tampilan rincian pembayaran berdasarkan search
 
         $result = new Pemasukan();
-        $pembayaran = $result->getPemasukanSiswaByNisn(['*'], $nisn_siswa);
+        $pembayaran = $result->getPemasukanSiswaByNisn([
+            'pemasukan.id',
+            'pemasukan.no_transaksi',
+            'pemasukan.tanggal',
+            'pemasukan.pembayaran',
+            'pemasukan.tarif',
+            'pemasukan.nominal',
+            'pemasukan.sisa',
+            'pemasukan.diterima_dari',
+            'pemasukan.metode_pembayaran',
+            'pemasukan.deskripsi',
+            'pemasukan.bukti_transaksi',
+            'pemasukan.id_tahun_ajaran',
+            'tahun_ajaran.tahun_ajaran',
+        ], $nisn_siswa);
 
         $this->img = $this->imageHeader();
 

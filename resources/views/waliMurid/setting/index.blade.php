@@ -204,7 +204,7 @@
                                     <label for="jenis_agama">Agama</label>
 
                                     <select class="form-control" id="jenis_agamaOrtu" name="agama">
-                                        <option value="" hidden>pilih Agama</option>
+                                        <option value="{{ $waliMurid->agama }}" hidden>{{ $waliMurid->agama }}</option>
                                         <option value="Islam">Islam</option>
                                         <option value="Kristen">Kristen</option>
                                         <option value="Katolik">Katolik</option>
@@ -242,11 +242,11 @@
                                 <div class="form-group">
                                     <label for="hubungan">Hubungan:</label>
                                     <select class="form-control" id="hubungan" name="hubungan" required>
-                                        <option value="" hidden>pilih</option>
-                                        <option value="OrtuKandung">Orang Tua Kandung</option>
-                                        <option value="OrtuAngkat">Orang Tua Angkat</option>
-                                        <option value="saudara">Saudara</option>
-                                        <option value="keponakan">Keponakan</option>
+                                        <option value="{{ $waliMurid->hubungan }}" hidden>{{ $waliMurid->hubungan }}</option>
+                                        <option value="Orang Tua Kandung">Orang Tua Kandung</option>
+                                        <option value="Orang Tua Angkat">Orang Tua Angkat</option>
+                                        <option value="Saudara">Saudara</option>
+                                        <option value="Keponakan">Keponakan</option>
                                     </select>
                                 </div>
 
