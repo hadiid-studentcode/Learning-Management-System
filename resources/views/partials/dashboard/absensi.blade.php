@@ -31,6 +31,7 @@
   </div>
   {{-- absen --}}
 
+
   <script>
       //mengambil elemen lokasi dan memasukannya ke dalam variabel lokasi
 
@@ -114,22 +115,22 @@
           //    koordinat posisi sekolah sd Muhammadiyah Kampa
 
           const latlng_kiri = {
-              lat: 0.34369,
-              lng: 101.190616,
+              lat: 0.343990,
+              lng: 101.188417,
           };
           const latlng_kanan = {
-              lat: 0.343766,
-              lng: 101.192971,
+              lat: 0.343895,
+              lng: 101.196351,
           };
 
           const latlng_bawah = {
-              lat: 0.342557,
-              lng: 101.192162,
+              lat: 0.339446,
+              lng: 101.192226,
           };
 
           const latlng_atas = {
-              lat: 0.344636,
-              lng: 101.192183,
+              lat: 0.348176,
+              lng: 101.192365,
           };
           // kondisi absensi jika user berada di sekolah
 
@@ -150,7 +151,7 @@
               // Membuat elemen form secara dinamis
               const form = document.createElement('form');
               form.method = 'GET';
-              form.action = '/guru/absen';
+              form.action = '{{ $route }}/absen';
 
 
               // Membuat elemen input untuk CSRF token

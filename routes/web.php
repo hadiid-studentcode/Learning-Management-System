@@ -177,6 +177,8 @@ Route::group(
             return redirect('/pegawai/dashboard');
         });
         Route::resource('/pegawai/dashboard', DashboardPegawaiController::class);
+        Route::get('pegawai/absen', [DashboardPegawaiController::class, 'absen']);
+
         Route::resource('/pegawai/pesan', PesanPegawaiController::class);
         Route::get('pegawai/pesan/search/inbox', [PesanPegawaiController::class, 'search']);
 
@@ -234,6 +236,8 @@ Route::group(
             return redirect('/tata-usaha/dashboard');
         });
         Route::resource('/tata-usaha/dashboard', DashboardTataUsahaController::class);
+        Route::get('tata-usaha/absen', [DashboardTataUsahaController::class, 'absen']);
+
         Route::resource('/tata-usaha/pesan', PesanTataUsahaController::class);
         Route::get('tata-usaha/pesan/search/inbox', [PesanTataUsahaController::class, 'search']);
 
