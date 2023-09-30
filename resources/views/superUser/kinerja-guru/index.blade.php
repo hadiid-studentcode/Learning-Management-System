@@ -14,7 +14,7 @@
 </div>
 
 
-<div class="container" id="table-container">
+<div class="" id="table-container">
     <div class="card card-custom gutter-b">
         <div class="card-body">
                         <div class="table-responsive">

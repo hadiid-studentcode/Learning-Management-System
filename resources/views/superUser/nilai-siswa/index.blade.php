@@ -2,22 +2,20 @@
 
 @section('main')
 
-
-    <div class="container">
-        <div class="card card-custom gutter-b">
-            <div class="card-body">
-                <div class="d-flex flex-column align-items-center">
-                    <h2 class="">
-                        <span style=" text-align: center; text-transform: uppercase;">
-                            Data Raport Siswa
-                        </span>
-                    </h2>
+        <div class=" ">
+            <div class="card card-custom">
+                <div class="card-body">
+                    <div class="d-flex flex-column align-items-center">
+                        <h2 class="jumbotron-heading">Data Raport Siswa</h2>
+                        <p class="lead text-muted text-center">Halaman Untuk melihat data nilai siswa.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
 
 
-        <div class="container">
+        <div class="">
             <div class="card card-custom gutter-b">
                 <div class="card-body">
                     <form id="siswaForm" action="{{ url('/super-user/Nilai-siswa/create') }}" method="GET">
@@ -93,7 +91,7 @@
             </div>
         </div>
 
-        <div class="container" id="reportCardContainer">
+        <div class="" id="reportCardContainer">
             <div class="card card-custom gutter-b">
                 <div class="card-body">
                     <div id="resultTable">
@@ -106,10 +104,10 @@
                                         </th>
                                     </tr>
                                     <tr>
-                                        <th style="width: 10%;">No</th>
-                                        <th style="width: 40%;">Nama Siswa</th>
-                                        <th style="width: 30%;">NISN</th>
-                                        <th style="width: 20%;">Action</th>
+                                        <th>No</th>
+                                        <th>Nama Siswa</th>
+                                        <th>NISN</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -121,7 +119,7 @@
                                                 <td>{{ $s->nisn }}</td>
                                                 <td><button type="button" class="btn btn-success" data-toggle="modal"
                                                         data-target="#showReport_{{ $s->id }}">
-                                                        <i class="fa fa-eye"></i> Lihat Nilai
+                                                        <i class="fa fa-eye"></i> 
                                                     </button>
                                                       <!-- Modal Lihat Nilai -->
                                             <div class="modal fade" id="showReport_{{ $s->id }}" tabindex="-1"

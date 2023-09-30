@@ -2,17 +2,10 @@
 
 @section('main')
 
-    <style>
-        .custom-container {
-            width: 90%;
-            margin: 0 auto;
-        }
-    </style>
-    
     <div class="custom-container">
         <div class="row align-items-center">
             <div class="card-body box-profile card-outline shadow mb-3"
-                style="height: 80vh; margin-left:15px; background-color:white;">
+                style="height: 108vh; margin-left:15px; background-color:white;">
 
 
                 <div class="text-center">
@@ -33,7 +26,7 @@
             <div class="col-md-4">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card card-success" style="height: 39vh;">
+                        <div class="card card-success" style="height: 53vh;">
                             <div class="card-header">
                                 <h3 class="card-title">Absen</h3>
                                 <div class="card-tools">
@@ -51,7 +44,7 @@
                     </div>
     
                     <div class="col-md-12">
-                        <div class="card card-warning" style="height: 39vh;">
+                        <div class="card card-warning" style="height: 53vh;">
                             <div class="card-header">
                                 <h3 class="card-title">Terlambat</h3>
                                 <div class="card-tools">
@@ -75,7 +68,7 @@
                 <div class="row">
                     
                   <div class="col-md-12">
-                        <div class="card card-secondary" style="height: 39vh;">
+                        <div class="card card-secondary" style="height: 53vh;">
                             <div class="card-header">
                                 <h3 class="card-title">Izin</h3>
                                 <div class="card-tools">
@@ -93,7 +86,7 @@
                     </div>
     
                     <div class="col-md-12">
-                        <div class="card card-danger" style="height: 39vh;">
+                        <div class="card card-danger" style="height: 53vh;">
                             <div class="card-header">
                                 <h3 class="card-title">Tidak Absen</h3>
                                 <div class="card-tools">

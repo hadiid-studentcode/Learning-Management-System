@@ -1,12 +1,6 @@
 @extends('layouts.main')
 
 @section('main')
-<style>
-    .container-custom {
-        width: 85%;
-        margin: 0 auto;
-    }
-</style>
 
     <section class="content container-custom">
         <div class="row">

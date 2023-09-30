@@ -1,27 +1,27 @@
 @extends('layouts.main')
 @section('main')
-    <div class="container ">
+    <div class=" ">
         <div class="card card-custom">
             <div class="card-body">
                 <div class="d-flex flex-column align-items-center">
-                    <h1 class="jumbotron-heading">Selamat Datang</h1>
-                    <p class="lead text-muted">Silahkan Nikmati momen-momen berharga dalam galeri foto SD Muhammadiyah Kampa.
+                    <h2 class="jumbotron-heading">Selamat Datang</h2>
+                    <p class="lead text-muted text-center">Silahkan Nikmati momen-momen berharga dalam galeri foto SD Muhammadiyah Kampa.
                     </p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container border rounded ">
+    <div class=" border rounded ">
         <div class="card-custom gutter-b">
             <div class="card-body">
                 <section class="text-center">
                     <div class="album py-5">
-                        <div class="container">
+                        <div class="">
                             <div class="row">
 
                                 @foreach ($gallery as $g)
-                                    <div class="col-md-4">
+                                    <div class="col-6 col-md-6 col-lg-4">
                                         <div class="card mb-4 shadow-sm">
                                             <a href="#" data-toggle="modal" data-target="#imageModal_{{ $g->id }}">
                                                 <img style="object-fit: cover; height: 400px; width: 100%;"
@@ -33,6 +33,27 @@
                                             </div>
                                         </div>
                                     </div>
+
+
+
+
+
+
+
+
+{{-- 
+                                    <div class="col-6 col-md-6 col-lg-4">
+                                        <div class="card mb-4 shadow-sm">
+                                            <div data-toggle="modal" data-target="#imageModal{{ $g->id }}">
+                                                <img style="object-fit: cover; height: 400px; width: 100%;"
+                                                    src="{{ asset('storage/gallery/' . $g->foto) }}"
+                                                    class="card-img-top img-fluid" alt="Lomba 1">
+                                            </div>
+                                            <div class="card-body">
+                                                <p class="card-text">{{ $g->deskripsi }}</p>
+                                            </div>
+                                        </div>
+                                    </div> --}}
 
 
                                     {{-- modal --}}
@@ -63,7 +84,7 @@
 
 
                 <footer class="text-muted border-top pt-3 mt-4">
-                    <div class="container">
+                    <div class="">
                         <p class="float-right">
                             <a href="#" onclick="scrollToTop(); return false;"><i class="fas fa-arrow-up"></i></a>
                         </p>

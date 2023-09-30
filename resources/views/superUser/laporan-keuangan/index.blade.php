@@ -1,12 +1,12 @@
 @extends('layouts.main')
 
 @section('main')
-    <div class="container ">
+    <div class="">
         <div class="card card-custom">
             <div class="card-body">
                 <div class="d-flex flex-column align-items-center">
-                    <h2 class="jumbotron-heading">Laporan Kesalahan Input Keuangan</h2>
-                    <p class="lead text-muted" style="font-size:18px;">Silahkan Pilih Waktu dan Cek laporan kesalahan input
+                    <h2 class="jumbotron-heading text-center">Laporan Kesalahan Input Keuangan</h2>
+                    <p class="lead text-muted text-center" style="font-size:18px;">Silahkan Pilih Waktu dan Cek laporan kesalahan input
                         dalam rekap Keuangan Sekolah.</p>
                 </div>
             </div>
@@ -39,7 +39,7 @@
         </div>
     </div> --}}
 
-    <div class="container mt-2" id="laporanContainer">
+    <div class="" id="laporanContainer">
         <div class="card card-custom gutter-b">
             <div class="card-body">
                 <div class="row">
@@ -164,7 +164,7 @@
 
 
 
-    <div class="container mt-2" id="laporanContainer">
+    <div class="" id="laporanContainer">
         <div class="card card-custom gutter-b">
             <div class="card-body">
                 <div class="row">

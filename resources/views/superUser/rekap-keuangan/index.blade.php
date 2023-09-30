@@ -1,12 +1,12 @@
 @extends('layouts.main')
 
 @section('main')
-    <div class="container">
+    <div class="">
         <div class="card card-custom gutter-b">
             <div class="card-body">
                 <div class="d-flex flex-column align-items-center">
                     <h2 class="text-dark-75 text-hover-success font-size-h1">Rekap Data Keuangan</h2>
-                    <p>Mohon Pilih Tahun Ajaran dan bulan yang ingin diliyhat rekap keuangannya.</p>
+                    <p class="lead text-muted text-center">Mohon Pilih Tahun Ajaran dan bulan yang ingin dilihat rekap keuangannya.</p>
                 </div>
             </div>
         </div>
@@ -14,8 +14,8 @@
 
 
     <div id="rekap" class="page">
-        <div class="container" id="rekap">
-            <div class="container">
+        <div class="" id="rekap">
+            <div class="">
                 <div class="card card-custom">
                     <div class="card-body">
                         <form action="{{ url('/super-user/rekap-keuangan/search?') }}" method="GET">
@@ -74,7 +74,7 @@
                 </div>
             </div>
 
-            <div id="tableContainer " class="container">
+            <div id="tableContainer " class="">
                 <div class="card card-custom gutter-b">
                     <div class="card-body">
                         <div class="table-responsive">

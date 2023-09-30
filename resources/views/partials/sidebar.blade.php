@@ -54,7 +54,8 @@
                                         @endif
                                     </a>
                                 </li>
-                                <li class="nav-item">
+
+                                <li class="nav-item" style="margin-top: 210%">
                                     <a href="{{ asset('/' . $route . '/setting') }}"
                                         class="nav-link @if ($title == 'Setting') active @else '' @endif">
                                         <i class="fas fa-cogs"
@@ -529,7 +530,8 @@
                                         <span style="font-family: Arial; color: black;">Laporan Keuangan</span>
                                     </a>
                                 </li>
-                                <li class="nav-item">
+
+                                <li class="nav-item" style="margin-top: 135%">
                                     <a href="{{ asset('/' . $route . '/setting') }}"
                                         class="nav-link @if ($title == 'Setting') active @else '' @endif">
                                         <i class="fas fa-cogs"
