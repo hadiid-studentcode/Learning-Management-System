@@ -139,7 +139,7 @@ class JadwalGuruController extends GuruController
 
     public function detailMapel(string $jenis, string $kodemapel)
     {
-        
+
 
         $this->img = $this->imageHeader();
 
