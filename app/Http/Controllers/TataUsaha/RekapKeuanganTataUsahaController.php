@@ -49,7 +49,7 @@ class RekapKeuanganTataUsahaController extends TataUsahaController
 
         }
 
-        return view('tataUsaha.rekap-Keuangan.index')
+        return view('tataUsaha.rekap-keuangan.index')
             ->with('title', 'Rekap Keuangan')
             ->with('role', $this->role)
             ->with('img', $this->img)
@@ -128,7 +128,7 @@ class RekapKeuanganTataUsahaController extends TataUsahaController
             $tanggalSearch = $result->TanggalBahasaIndonesia($rks->tanggal);
         }
 
-        return view('tataUsaha.rekap-Keuangan.index')
+        return view('tataUsaha.rekap-keuangan.index')
             ->with('title', 'Rekap Keuangan')
             ->with('role', $this->role)
             ->with('img', $this->img)
