@@ -46,7 +46,6 @@ class RekapKeuanganTataUsahaController extends TataUsahaController
             $result = new Calender();
 
             $tanggal = $result->TanggalBahasaIndonesia($rk->tanggal);
-
         }
 
         return view('tataUsaha.rekap-keuangan.index')
@@ -102,6 +101,12 @@ class RekapKeuanganTataUsahaController extends TataUsahaController
         $total = $resultRekapKeuangan->totalPemasukkanDanPengeluaran($rekapKeuangan);
 
         $totalSearch = $resultRekapKeuangan->totalPemasukkanDanPengeluaran($rekapKeuanganSearch);
+
+        if ($rekapKeuanganPemasukan == '[]' && $rekapKeuanganPengeluaran == '[]' && $pemasukan == '[]' && $pengeluaran == '[]') {
+
+            return back()->with('error', 'Data Tidak Ditemukan');
+
+        }
 
         // get tahun ajaran
         $result = new TahunAjaran();
@@ -179,12 +184,10 @@ class RekapKeuanganTataUsahaController extends TataUsahaController
 
             $resultPemasukkan = new Pemasukan();
             $resultPemasukkan->updatePemasukkan($no_transaksi, ['report' => 'Menunggu']);
-
         } elseif ($jenis == 'Pengeluaran') {
 
             $resultPengeluaran = new Pengeluaran();
             $resultPengeluaran->updatePengeluaran($no_transaksi, ['report' => 'Menunggu']);
-
         } else {
             return back();
         }
@@ -194,7 +197,6 @@ class RekapKeuanganTataUsahaController extends TataUsahaController
         }
 
         return redirect('/tata-usaha/rekap-keuangan/')->with('success', 'Data Berhasil Direport Silahkan Menunggu.');
-
     }
 
     public function cetak($date, $key)
@@ -230,7 +232,6 @@ class RekapKeuanganTataUsahaController extends TataUsahaController
                 ->with('rekapKeuangan', $rekapKeuangan)
                 ->with('total', $total)
                 ->with('jenis', 'rekap keuangan');
-
         } else {
 
             $string = $key;
@@ -268,8 +269,6 @@ class RekapKeuanganTataUsahaController extends TataUsahaController
                 ->with('bulan', $month)
                 ->with('tahunAjaran', $tahunAjaran->tahun_ajaran)
                 ->with('jenis', 'rekap keuangan search');
-
         }
-
     }
 }
