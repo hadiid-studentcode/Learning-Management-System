@@ -5,7 +5,7 @@
     <div class="card card-custom">
         <div class="card-body">
             <div class="d-flex flex-column align-items-center">
-                <h2 class="text-dark-75 text-center ">Jadwal Absensi Guru dan Karyawan</h2>
+                <h3 class="text-dark-75 text-center ">Jadwal Absensi Guru dan Karyawan</h3>
                 <p class="text-dark-50 text-center">Silakan Atur Jam Absensi dan atur keterangan Absensi Karyawan dan
                     guru.</p>
             </div>
@@ -60,16 +60,38 @@
                 <div class="col-md-12">
                     <div class="card card-custom gutter-b">
                         <div class="card-body ">
-                            <h2 class="text-dark-75 text-center mt-2">Buka Absensi</h2>
+                            <h3 class="text-dark-75 text-center mt-2">Buka Absensi</h3>
                             <hr>
-                            <div id="calendar"></div>
+                            <form action="proses_form.php" method="POST"> 
+                                <div class="form-group">
+                                    <label for="eventDate">Tanggal Hari Ini:</label>
+                                    <input type="date" id="eventDate" name="tanggal" class="form-control datepicker">
+                                </div>
+                                <div class="form-group">
+                                    <label for="startTime">Absen Dibuka :</label>
+                                    <input type="time" id="startTime" name="waktu_mulai" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="endTime">Absen Berakhir:</label>
+                                    <input type="time" id="endTime" name="waktu_selesai" class="form-control">
+                                </div>
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </form>
                         </div>
                     </div>
+                    
                 </div>
             </div>
-            <div class="modal fade" id="addEventModal" tabindex="-1" role="dialog" aria-labelledby="addEventModalLabel"
+
+
+            
+
+
+            
+            {{-- <div class="modal fade" id="addEventModal" tabindex="-1" role="dialog" aria-labelledby="addEventModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
+                
                     <form action="{{ url('tata-usaha/manajemen-absensi') }}" method="post">
                         @csrf
                         <div class="modal-content">
@@ -101,12 +123,13 @@
                             </div>
                         </div>
                     </form>
+                
 
                 </div>
-            </div>
+            </div> --}}
 
             <!-- Include FullCalendar and Bootstrap JS -->
-            <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@5.5.1/main.min.js"></script>
+            {{-- <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@5.5.1/main.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@5.5.0/main.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
             <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -114,79 +137,79 @@
 
            <script>
             document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        height: 650,
-        events: 'fetchEvents.php',
-        selectable: true,
-        eventStartEditable: true, // Menambahkan kemampuan untuk mengedit tanggal mulai
-        select: function(info) {
-            openAddEventModal(info.start);
-        },
-    });
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                height: 650,
+                events: 'fetchEvents.php',
+                selectable: true,
+                eventStartEditable: true, // Menambahkan kemampuan untuk mengedit tanggal mulai
+                select: function(info) {
+                    openAddEventModal(info.start);
+                },
+            });
 
-    calendar.render();
+            calendar.render();
 
-    function openAddEventModal(selectedDate) {
-        $('#addEventModal').modal('show');
+            function openAddEventModal(selectedDate) {
+                $('#addEventModal').modal('show');
 
-        var eventDateInput = document.getElementById('eventDate');
-        var formattedDate = formatDate(selectedDate);
-        eventDateInput.value = formattedDate;
+                var eventDateInput = document.getElementById('eventDate');
+                var formattedDate = formatDate(selectedDate);
+                eventDateInput.value = formattedDate;
 
-        document.getElementById('addEventButton').addEventListener('click', function() {
-            var startTime = document.getElementById('startTime').value;
-            var endTime = document.getElementById('endTime').value;
+                document.getElementById('addEventButton').addEventListener('click', function() {
+                    var startTime = document.getElementById('startTime').value;
+                    var endTime = document.getElementById('endTime').value;
 
-            var startDateTime = new Date(selectedDate);
-            var startTimeParts = startTime.split(':');
-            startDateTime.setHours(parseInt(startTimeParts[0], 10));
-            startDateTime.setMinutes(parseInt(startTimeParts[1], 10));
+                    var startDateTime = new Date(selectedDate);
+                    var startTimeParts = startTime.split(':');
+                    startDateTime.setHours(parseInt(startTimeParts[0], 10));
+                    startDateTime.setMinutes(parseInt(startTimeParts[1], 10));
 
-            var endDateTime = new Date(selectedDate);
-            var endTimeParts = endTime.split(':');
-            endDateTime.setHours(parseInt(endTimeParts[0], 10));
-            endDateTime.setMinutes(parseInt(endTimeParts[1], 10));
+                    var endDateTime = new Date(selectedDate);
+                    var endTimeParts = endTime.split(':');
+                    endDateTime.setHours(parseInt(endTimeParts[0], 10));
+                    endDateTime.setMinutes(parseInt(endTimeParts[1], 10));
 
-            fetch("eventHandler.php", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        request_type: 'addEvent',
-                        start: startDateTime.toISOString(),
-                        end: endDateTime.toISOString()
-                    }),
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status == 1) {
-                        Swal.fire('Event Add feature is disabled for this demo!', '',
-                        'warning');
-                    } else {
-                        Swal.fire(data.error, '', 'error');
-                    }
+                    fetch("eventHandler.php", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                request_type: 'addEvent',
+                                start: startDateTime.toISOString(),
+                                end: endDateTime.toISOString()
+                            }),
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.status == 1) {
+                                Swal.fire('Event Add feature is disabled for this demo!', '',
+                                'warning');
+                            } else {
+                                Swal.fire(data.error, '', 'error');
+                            }
 
-                    $('#addEventModal').modal('hide');
+                            $('#addEventModal').modal('hide');
 
-                    calendar.refetchEvents();
-                })
-                .catch(console.error);
+                            calendar.refetchEvents();
+                        })
+                        .catch(console.error);
+                });
+            }
+
+            function formatDate(date) {
+                var day = String(date.getDate()).padStart(2, '0');
+                var month = String(date.getMonth() + 1).padStart(2, '0');
+                var year = date.getFullYear();
+
+                return year + '-' + month + '-' + day;
+            }
         });
-    }
 
-    function formatDate(date) {
-        var day = String(date.getDate()).padStart(2, '0');
-        var month = String(date.getMonth() + 1).padStart(2, '0');
-        var year = date.getFullYear();
-
-        return year + '-' + month + '-' + day;
-    }
-});
-
-           </script>
+           </script> --}}
 
         </div>
     </div>
