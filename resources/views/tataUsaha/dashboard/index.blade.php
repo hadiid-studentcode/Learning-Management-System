@@ -6,7 +6,7 @@
 <div class="">
     <div class="row align-items-center">
         <div class="card-body box-profile card-outline shadow mb-3"
-            style="height: 100vh; margin-left:15px; background-color:white;">
+            style="height: 108vh; margin-left:15px; background-color:white;">
             <div class="text-center">
 
                 <img src="{{ asset('/storage/pegawai/images/' . $img) }} " alt="Profil"
@@ -29,7 +29,7 @@
             <div class="col-md-4">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card card-success" style="height: 49vh;">
+                        <div class="card card-success" style="height: 53vh;">
                             <div class="card-header">
                                 <h3 class="card-title">Jumlah Siswa</h3>
                                 <div class="card-tools">
@@ -47,7 +47,7 @@
                     </div>
     
                     <div class="col-md-12">
-                        <div class="card card-warning" style="height: 49vh;">
+                        <div class="card card-warning" style="height: 53vh;">
                             <div class="card-header">
                                 <h3 class="card-title">Jumlah Pegawai</h3>
                                 <div class="card-tools">
@@ -71,7 +71,7 @@
                 <div class="row">
                     
                   <div class="col-md-12">
-                        <div class="card card-secondary" style="height: 49vh;">
+                        <div class="card card-secondary" style="height: 53vh;">
                             <div class="card-header">
                                 <h3 class="card-title">Jumlah Guru</h3>
                                 <div class="card-tools">
@@ -89,7 +89,7 @@
                     </div>
     
                     <div class="col-md-12">
-                        <div class="card card-danger" style="height: 49vh;">
+                        <div class="card card-danger" style="height: 53vh;">
                             <div class="card-header">
                                 <h3 class="card-title">Jumlah kelas</h3>
                                 <div class="card-tools">
