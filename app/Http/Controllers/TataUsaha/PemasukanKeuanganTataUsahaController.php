@@ -147,6 +147,12 @@ class PemasukanKeuanganTataUsahaController extends TataUsahaController
 
         // simpan bukti transaksi
 
+        $folderPath = public_path('storage/tata_usaha/pemasukan');
+
+        if (! is_dir($folderPath)) {
+            mkdir($folderPath, 0777, true);
+        }
+
         Pdf::loadView('partials.cetak.pdf', [
             'diterima_dari' => $dataPemasukan['diterima_dari'],
             'tgl_bayar' => $dataPemasukan['tanggal'],
