@@ -9,7 +9,6 @@ use App\Models\KelolaAbsensi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-
 class DashboardGuruController extends GuruController
 {
     /**
@@ -110,23 +109,21 @@ class DashboardGuruController extends GuruController
     public function Absen(Request $request)
     {
 
-
         date_default_timezone_set('Asia/Jakarta'); // Set zona waktu ke Waktu Indonesia Barat
 
         setlocale(LC_TIME, 'id_ID');
 
         $waktu = date('Y-m-d H:i:s');
         //    $waktu = '2023-10-01 06:00:00';
-        $waktu_absen_hijau = date('Y-m-d') . ' 06:00:00';
-        $waktu_absen_kuning = date('Y-m-d') . ' 07:00:00';
-        $waktu_absen_merah = date('Y-m-d') . ' 07:15:00';
+        $waktu_absen_hijau = date('Y-m-d').' 06:00:00';
+        $waktu_absen_kuning = date('Y-m-d').' 07:00:00';
+        $waktu_absen_merah = date('Y-m-d').' 07:15:00';
 
         $id_user = Auth()->user()->id;
         // $result = new Guru();
         // $id_guru = $result->getGuruFirst(['id'], $id_user);
 
         $id_guru = DB::table('guru')->select('id')->where('id_user', $id_user)->first();
-
 
         if ($waktu >= $waktu_absen_hijau && $waktu <= $waktu_absen_kuning) {
             $status = 'Hadir';

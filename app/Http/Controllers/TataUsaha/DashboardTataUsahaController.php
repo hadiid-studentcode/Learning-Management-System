@@ -118,16 +118,13 @@ class DashboardTataUsahaController extends TataUsahaController
 
         $waktu = date('Y-m-d H:i:s');
         //    $waktu = '2023-10-01 06:00:00';
-        $waktu_absen_hijau = date('Y-m-d') . ' 06:00:00';
-        $waktu_absen_kuning = date('Y-m-d') . ' 07:00:00';
-        $waktu_absen_merah = date('Y-m-d') . ' 07:15:00';
-
-
+        $waktu_absen_hijau = date('Y-m-d').' 06:00:00';
+        $waktu_absen_kuning = date('Y-m-d').' 07:00:00';
+        $waktu_absen_merah = date('Y-m-d').' 07:15:00';
 
         $id_user = Auth()->user()->id;
 
         $pegawai = DB::table('pegawai')->select('id')->where('id_user', $id_user)->first();
-
 
         if ($waktu >= $waktu_absen_hijau && $waktu <= $waktu_absen_kuning) {
             $status = 'Hadir';
