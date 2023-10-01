@@ -39,7 +39,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12 col-sm-6 offset-sm-3 text-center mt-3">
-                                        <span style="font-size: 7rem; color: #28a745; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); display: inline-block; padding: 10px; border-radius: 10px; background-color: rgba(255, 255, 255, 0.1);">{{$jumlahSiswa}}</span>
+                                        <span style="font-size: 8rem; color: #28a745; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); display: inline-block; padding: 10px; border-radius: 10px; background-color: rgba(255, 255, 255, 0.1);">{{$jumlahSiswa}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -57,7 +57,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12 col-sm-6 offset-sm-3 text-center mt-3">
-                                        <span style="font-size: 7rem; color: #ffc107; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); display: inline-block; padding: 10px; border-radius: 10px; background-color: rgba(255, 255, 255, 0.1);">{{$jumlahPegawai}}</span>
+                                        <span style="font-size: 8rem; color: #ffc107; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); display: inline-block; padding: 10px; border-radius: 10px; background-color: rgba(255, 255, 255, 0.1);">{{$jumlahPegawai}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12 col-sm-6 offset-sm-3 text-center mt-3">
-                                        <span style="font-size: 7rem; color: #6c757d; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); display: inline-block; padding: 10px; border-radius: 10px; background-color: rgba(255, 255, 255, 0.1);">{{$jumlahGuru}}</span>
+                                        <span style="font-size: 8rem; color: #6c757d; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); display: inline-block; padding: 10px; border-radius: 10px; background-color: rgba(255, 255, 255, 0.1);">{{$jumlahGuru}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -99,7 +99,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12 col-sm-6 offset-sm-3 text-center mt-3">
-                                        <span style="font-size: 7rem; color: #dc3545; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); display: inline-block; padding: 10px; border-radius: 10px; background-color: rgba(255, 255, 255, 0.1);">{{$jumlahKelas}}</span>
+                                        <span style="font-size: 8rem; color: #dc3545; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); display: inline-block; padding: 10px; border-radius: 10px; background-color: rgba(255, 255, 255, 0.1);">{{$jumlahKelas}}</span>
                                     </div>
                                 </div>
                             </div>
