@@ -10,6 +10,7 @@ use App\Models\Pegawai;
 use App\Models\Siswa;
 use App\Models\TahunAjaran;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardTataUsahaController extends TataUsahaController
 {
@@ -116,14 +117,18 @@ class DashboardTataUsahaController extends TataUsahaController
         setlocale(LC_TIME, 'id_ID');
 
         $waktu = date('Y-m-d H:i:s');
-        // $waktu = '2023-07-17 07:15:00';
-        $waktu_absen_hijau = '2023-10-01 06:00:00';
-        $waktu_absen_kuning = '2023-10-01 07:00:00';
-        $waktu_absen_merah = '2023-10-10 07:15:00';
+        //    $waktu = '2023-10-01 06:00:00';
+        $waktu_absen_hijau = date('Y-m-d') . ' 06:00:00';
+        $waktu_absen_kuning = date('Y-m-d') . ' 07:00:00';
+        $waktu_absen_merah = date('Y-m-d') . ' 07:15:00';
+
+
 
         $id_user = Auth()->user()->id;
+
         $result = new Pegawai();
-        $pegawai = $result->getPegawaiFirst(['id'], $id_user);
+        $pegawai = DB::table('pegawai')->select('id')->where('id_user', $id_user)->first();
+
 
         if ($waktu >= $waktu_absen_hijau && $waktu <= $waktu_absen_kuning) {
             $status = 'Hadir';

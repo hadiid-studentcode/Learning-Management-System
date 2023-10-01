@@ -19,19 +19,19 @@
                   <div class="alert alert-success text-center" role="alert">
                       <strong>Absen Anda Dibuka!</strong>
                   </div>
-                  <button class="btn btn-primary btn-block mt-3" onclick="absen({{ $route }})">Lakukan Absensi</button>
+                  <button class="btn btn-primary btn-block mt-3" onclick="absen()">Lakukan Absensi</button>
               @elseif($datenow >= $waktu_absenDari && $datenow >= $waktu_absenSampai)
                   <div class="alert alert-danger text-center" role="alert">
                       <strong>Anda Terlambat!</strong>
                   </div>
-                  <button class="btn btn-primary btn-block mt-3" onclick="absen({{ $route }})">Lakukan Absensi</button>
+                  <button class="btn btn-primary btn-block mt-3" onclick="absen()">Lakukan Absensi</button>
               @endif
           </div>
       </div>
   </div>
   {{-- absen --}}
 
-
+	
   <script>
       //mengambil elemen lokasi dan memasukannya ke dalam variabel lokasi
 
@@ -64,7 +64,7 @@
               maxZoom: 18,
               attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
                   '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-                  'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                  'Imagery Â© <a href="https://www.mapbox.com/">Mapbox</a>',
               id: "mapbox/streets-v11",
               tileSize: 512,
               zoomOffset: -1,
@@ -87,7 +87,7 @@
 
 
 
-      function absen(route) {
+      function absen() {
           //jika browser mendukung navigator.geolocation maka akan menjalankan perintah di bawahnya
           if (navigator.geolocation) {
               // getCurrentPosition digunakan untuk mendapatkan lokasi pengguna
@@ -98,9 +98,11 @@
 
       function showPosition(position) {
           // posisi saya
-          const lat = position.coords.latitude;
-          const lng = position.coords.longitude;
-
+         
+	const posisiSaya = {
+    lat: position.coords.latitude,
+    lng: position.coords.longitude,
+};
 
           // posisi sekolah sd muhammadiyah kampa
 
@@ -134,24 +136,23 @@
           };
           // kondisi absensi jika user berada di sekolah
 
-          if (
-              (latlng_kiri.lat >= lat && // x
-                  lat <= latlng_kanan.lat && // x
-                  lng >= latlng_kiri.lng && // x
-                  lng <= latlng_kanan.lng && // x
-                  latlng_bawah.lat <= lat) || // y
-              (lat <= latlng_atas.lat && // y
-                  lng >= latlng_bawah.lng && // y
-                  lng <= lat.latlng_atas.lng) // y
-          ) {
-              Swal.fire("Absen Diterima", "Anda Berada Disekolah", "success");
+         if (
+    posisiSaya.lat >= latlng_bawah.lat &&
+    posisiSaya.lat <= latlng_atas.lat &&
+    posisiSaya.lng >= latlng_kiri.lng &&
+    posisiSaya.lng <= latlng_kanan.lng
+) {
+     Swal.fire("Absen Diterima", "Anda Berada Disekolah", "success");
+	
+	
+
 
 
 
               // Membuat elemen form secara dinamis
               const form = document.createElement('form');
               form.method = 'GET';
-              form.action = '{{ $route }}/absen';
+              form.action = '/tata-usaha/absen';
 
 
               // Membuat elemen input untuk CSRF token
@@ -182,15 +183,9 @@
               form.submit();
 
 
-
-
-
-
-
-          } else {
-              Swal.fire("Absen Tidak Diterima", "Anda Tidak Berada Disekolah", "error");
-          }
-
+} else {
+     Swal.fire("Absen Tidak Diterima", "Anda Tidak Berada Disekolah", "error");
+}
           //   var mymap = L.map("mapid").setView([lat, lng], 13);
 
           //   //setting maps menggunakan api mapbox bukan google maps, daftar dan dapatkan token
@@ -198,7 +193,7 @@
           //       maxZoom: 18,
           //       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
           //           '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-          //           'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+          //           'Imagery Â© <a href="https://www.mapbox.com/">Mapbox</a>',
           //       id: "mapbox/streets-v11",
           //       tileSize: 512,
           //       zoomOffset: -1,
