@@ -19,12 +19,12 @@
                   <div class="alert alert-success text-center" role="alert">
                       <strong>Absen Anda Dibuka!</strong>
                   </div>
-                  <button class="btn btn-primary btn-block mt-3" onclick="absen()">Lakukan Absensi</button>
+                  <button class="btn btn-primary btn-block mt-3" onclick="absen({{ $route }})">Lakukan Absensi</button>
               @elseif($datenow >= $waktu_absenDari && $datenow >= $waktu_absenSampai)
                   <div class="alert alert-danger text-center" role="alert">
                       <strong>Anda Terlambat!</strong>
                   </div>
-                  <button class="btn btn-primary btn-block mt-3" onclick="absen()">Lakukan Absensi</button>
+                  <button class="btn btn-primary btn-block mt-3" onclick="absen({{ $route }})">Lakukan Absensi</button>
               @endif
           </div>
       </div>
@@ -87,7 +87,7 @@
 
 
 
-      function absen() {
+      function absen(route) {
           //jika browser mendukung navigator.geolocation maka akan menjalankan perintah di bawahnya
           if (navigator.geolocation) {
               // getCurrentPosition digunakan untuk mendapatkan lokasi pengguna

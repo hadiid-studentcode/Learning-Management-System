@@ -117,9 +117,9 @@ class DashboardTataUsahaController extends TataUsahaController
 
         $waktu = date('Y-m-d H:i:s');
         // $waktu = '2023-07-17 07:15:00';
-        $waktu_absen_hijau = '2023-07-17 06:00:00';
-        $waktu_absen_kuning = '2023-07-17 07:00:00';
-        $waktu_absen_merah = '2023-07-17 07:15:00';
+        $waktu_absen_hijau = '2023-10-01 06:00:00';
+        $waktu_absen_kuning = '2023-10-01 07:00:00';
+        $waktu_absen_merah = '2023-10-10 07:15:00';
 
         $id_user = Auth()->user()->id;
         $result = new Pegawai();
@@ -143,6 +143,5 @@ class DashboardTataUsahaController extends TataUsahaController
         $result->saveAbsen($data);
 
         return redirect('/tata-usaha/dashboard')->with('success', 'Absen Berhasil');
-
     }
 }
