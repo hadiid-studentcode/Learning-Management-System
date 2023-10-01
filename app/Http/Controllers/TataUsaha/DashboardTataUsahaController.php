@@ -126,7 +126,6 @@ class DashboardTataUsahaController extends TataUsahaController
 
         $id_user = Auth()->user()->id;
 
-        $result = new Pegawai();
         $pegawai = DB::table('pegawai')->select('id')->where('id_user', $id_user)->first();
 
 

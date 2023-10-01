@@ -96,6 +96,8 @@ Route::group(
             return redirect('/guru/dashboard');
         });
         Route::resource('/guru/dashboard', DashboardGuruController::class);
+        Route::get('/guru/absen', [DashboardGuruController::class, 'absen']);
+
         Route::resource('/guru/jadwal', JadwalGuruController::class);
 
         Route::resource('/guru/pesan', PesanGuruController::class);

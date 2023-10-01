@@ -9,6 +9,17 @@
 
   {{-- <h1>{{ $datenow }}</h1> --}}
 
+  @php
+  
+  if($route == 'tata-usaha'){
+    $person = 1;
+  }elseif($route == 'guru'){
+    $person = 2;
+  }elseif($route == 'pegawai'){
+    $person = 3;
+  }
+  
+  @endphp
 
 
   <div class="container">
@@ -19,19 +30,21 @@
                   <div class="alert alert-success text-center" role="alert">
                       <strong>Absen Anda Dibuka!</strong>
                   </div>
-                  <button class="btn btn-primary btn-block mt-3" onclick="absen()">Lakukan Absensi</button>
+                  <button class="btn btn-primary btn-block mt-3" onclick="absen({{ $person }})">Lakukan
+                      Absensi</button>
               @elseif($datenow >= $waktu_absenDari && $datenow >= $waktu_absenSampai)
                   <div class="alert alert-danger text-center" role="alert">
                       <strong>Anda Terlambat!</strong>
                   </div>
-                  <button class="btn btn-primary btn-block mt-3" onclick="absen()">Lakukan Absensi</button>
+                  <button class="btn btn-primary btn-block mt-3" onclick="absen({{ $person }})">Lakukan
+                      Absensi</button>
               @endif
           </div>
       </div>
   </div>
   {{-- absen --}}
 
-	
+
   <script>
       //mengambil elemen lokasi dan memasukannya ke dalam variabel lokasi
 
@@ -87,22 +100,54 @@
 
 
 
-      function absen() {
+      function absen(route) {
           //jika browser mendukung navigator.geolocation maka akan menjalankan perintah di bawahnya
           if (navigator.geolocation) {
               // getCurrentPosition digunakan untuk mendapatkan lokasi pengguna
               //showPosition adalah fungsi yang akan dijalankan
-              navigator.geolocation.getCurrentPosition(showPosition);
+            //   navigator.geolocation.getCurrentPosition(showPosition);
+
+              navigator.geolocation.getCurrentPosition(function(position) {
+                  showPosition(position, route);
+              });
           }
       }
 
-      function showPosition(position) {
+
+      function showPosition(position,route) {
+
+        let person = '';
+
+       switch (route) {
+        case 1:
+            person = 'tata-usaha';
+            break;
+        case 2:
+            person = 'guru';
+            break;
+        case 3: 
+            person = 'pegawai';  
+            break;   
+       
+        default:
+            break;
+       }
+
+      
+
+      
+
           // posisi saya
-         
-	const posisiSaya = {
-    lat: position.coords.latitude,
-    lng: position.coords.longitude,
-};
+
+          const posisiSaya = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+		};
+
+        //   const posisiSaya = {
+        //       lat: 0.343895,
+        //       lng: 101.196351,
+        //   };
 
           // posisi sekolah sd muhammadiyah kampa
 
@@ -136,15 +181,14 @@
           };
           // kondisi absensi jika user berada di sekolah
 
-         if (
-    posisiSaya.lat >= latlng_bawah.lat &&
-    posisiSaya.lat <= latlng_atas.lat &&
-    posisiSaya.lng >= latlng_kiri.lng &&
-    posisiSaya.lng <= latlng_kanan.lng
-) {
-     Swal.fire("Absen Diterima", "Anda Berada Disekolah", "success");
-	
-	
+          if (
+              posisiSaya.lat >= latlng_bawah.lat &&
+              posisiSaya.lat <= latlng_atas.lat &&
+              posisiSaya.lng >= latlng_kiri.lng &&
+              posisiSaya.lng <= latlng_kanan.lng
+          ) {
+              Swal.fire("Absen Diterima", "Anda Berada Disekolah", "success");
+
 
 
 
@@ -152,10 +196,8 @@
               // Membuat elemen form secara dinamis
               const form = document.createElement('form');
               form.method = 'GET';
-              form.action = '/tata-usaha/absen';
+              form.action = '/' + person + '/absen';
 
-
-              // Membuat elemen input untuk CSRF token
 
 
 
@@ -183,9 +225,9 @@
               form.submit();
 
 
-} else {
-     Swal.fire("Absen Tidak Diterima", "Anda Tidak Berada Disekolah", "error");
-}
+          } else {
+              Swal.fire("Absen Tidak Diterima", "Anda Tidak Berada Disekolah", "error");
+          }
           //   var mymap = L.map("mapid").setView([lat, lng], 13);
 
           //   //setting maps menggunakan api mapbox bukan google maps, daftar dan dapatkan token
@@ -214,6 +256,3 @@
           }).addTo(mymap);
       }
   </script>
-
-
-
