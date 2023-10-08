@@ -258,7 +258,7 @@ class ManajemenSiswaTataUsahaController extends TataUsahaController
             }
         } catch (\Exception $e) {
 
-            return back()->with('warning', 'Terjadi Kesalaha');
+            return back()->with('warning', 'Terjadi Kesalahan');
         }
     }
 

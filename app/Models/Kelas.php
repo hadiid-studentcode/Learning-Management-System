@@ -108,7 +108,7 @@ class Kelas extends Model
     public function firstKelasAndRombelWhereIdUserGuru($id_user_guru)
     {
         $kelas = DB::table('kelas')
-            ->select('kelas.nama as kelas', 'kelas.rombel')
+            ->select('kelas.id', 'kelas.nama as kelas', 'kelas.rombel')
             ->join('guru', 'kelas.id_guru', '=', 'guru.id')
             ->where('guru.id_user', '=', $id_user_guru)
             ->first();
