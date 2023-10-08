@@ -225,6 +225,14 @@
                                             <span style="font-family: arial; color: black;">Manajemen Siswa</span>
                                         </a>
                                     </li>
+                                     <li class="nav-item">
+                                    <a href="{{ asset('/' . $route . '/prestasi-siswa') }}"
+                                        class="nav-link @if ($title == 'Prestasi Siswa') active @else '' @endif">
+                                        <i class="fas fa-award"
+                                            style="font-size:20px;  width:25px; height:25px; color: black; margin-right: 23px;"></i>
+                                        <span style="font-family: arial; color: black;">Prestasi Siswa</span>
+                                    </a>
+                                </li>
                                 @endif
                                 <li class="nav-item">
                                     <a href="{{ asset('/' . $route . '/atur-kkm') }}"
