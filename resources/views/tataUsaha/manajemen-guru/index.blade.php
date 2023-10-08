@@ -268,7 +268,7 @@
                                                                             <td>{{ $g->nig }}</td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <th>Jenis Pegawai:</th>
+                                                                            <th>Jenis Guru:</th>
                                                                             <td>{{ $g->jenis }}</td>
                                                                         </tr>
                                                                         <tr>
