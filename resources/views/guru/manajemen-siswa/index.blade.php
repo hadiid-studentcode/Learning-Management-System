@@ -444,18 +444,13 @@
 
                                                                     <div class="form-group">
                                                                         <label for="kelas">Kelas:</label>
-                                                                        <select class="form-control" id="kelas"
-                                                                            name="id_kelas" required>
-                                                                            <option value="{{ $s->id_kelas }}" hidden>
-                                                                                {{ $s->kelas }} {{ $s->rombel }}
-                                                                            </option>
-                                                                            @foreach ($getKelas as $k)
-                                                                                <option value="{{ $k->id }}">
-                                                                                    {{ $k->nama }}
-                                                                                    {{ $k->rombel }}</option>
-                                                                            @endforeach
 
-                                                                        </select>
+
+                                                                        <input type="text" class="form-control"
+                                                                            disabled
+                                                                            placeholder="Kelas {{ $kelas }} {{ $rombel }}">
+                                                                        <input type="hidden" name="id_kelas"
+                                                                            value="{{ $id_kelas }}">
                                                                     </div>
 
                                                                     <div class="form-group">
