@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Guru;
 
-use App\Models\User;
 use App\Models\Kelas;
 use App\Models\Siswa;
+use App\Models\User;
 use App\Models\WaliMurid;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Guru\GuruController;
 
 class ManajemenSiswaGuruController extends GuruController
 {
@@ -46,7 +45,6 @@ class ManajemenSiswaGuruController extends GuruController
         $resultKelas = new Kelas();
         $kelasFirst = $resultKelas->firstKelasAndRombelWhereIdUserGuru(Auth()->user()->id);
 
-
         $getkelas = $resultKelas->getKelasAll(['kelas.id', 'kelas.nama', 'kelas.rombel']);
 
         return view('guru.manajemen-siswa.index')
@@ -83,7 +81,7 @@ class ManajemenSiswaGuruController extends GuruController
 
         try {
             if ($request->hasFile('foto')) {
-                $foto = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
+                $foto = round(microtime(true) * 1000).'-'.str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
 
                 // simpan akun user siswa
                 $dataUser = [

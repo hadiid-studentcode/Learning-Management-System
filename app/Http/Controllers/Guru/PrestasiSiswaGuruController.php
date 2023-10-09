@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Guru;
 
-use App\Models\Guru;
 use App\Models\Kelas;
+use App\Models\PrestasiSiswa;
 use App\Models\Siswa;
 use App\Models\TahunAjaran;
 use Illuminate\Http\Request;
-use App\Models\PrestasiSiswa;
-use App\Http\Controllers\Guru\GuruController;
 
 class PrestasiSiswaGuruController extends GuruController
 {
@@ -53,10 +51,6 @@ class PrestasiSiswaGuruController extends GuruController
             'tahun_ajaran.tahun_ajaran as tahun_ajaran',
         ]);
 
-
-
-
-
         return view('guru.prestasi-siswa.index')
 
             ->with('jenis', $this->jenisGuru())
@@ -95,7 +89,7 @@ class PrestasiSiswaGuruController extends GuruController
 
         try {
 
-            $foto = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
+            $foto = round(microtime(true) * 1000).'-'.str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
 
             $data = [
                 'id_siswa' => $request->id_siswa,
