@@ -32,8 +32,6 @@ class ProfileSiswaWaliMuridController extends WaliMuridController
         $status_pembayaran = $result->getStatusPembayaran($nisn_siswa);
 
         $status = '';
-        
-
         // status pembayaran spp
         foreach ($status_pembayaran as $s) {
             $status = $s->deskripsi;
