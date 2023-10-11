@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('guru', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->string('nik')->unique();
-            $table->string('nig')->unique();
+            $table->string('nbm')->unique();
             $table->string('nama', 100);
             $table->string('jenis', 100);
             $table->string('status', 100);
-            $table->string('studi_keahlihan', 100);
+            $table->string('bidang_studi', 100);
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
             $table->string('nohp', 100);
             $table->string('tempat_lahir', 30);

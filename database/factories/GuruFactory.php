@@ -18,11 +18,11 @@ class GuruFactory extends Factory
     {
         return [
             'nik' => $this->faker->numerify('##########'),
-            'nig' => $this->faker->numerify('##########'),
+            'nbm' => $this->faker->numerify('##########'),
             'nama' => $this->faker->name(),
             'jenis' => 'Non Wali Kelas',
             'status' => $this->faker->randomElement(['Tetap', 'Kontrak']),
-            'studi_keahlihan' => $this->faker->randomElement(['pendidikan mtk', 'fisika', 'ilmu komputer', 'bahasa indonesia', 'bahasa inggris']),
+            'bidang_studi' => $this->faker->randomElement(['pendidikan mtk', 'fisika', 'ilmu komputer', 'bahasa indonesia', 'bahasa inggris']),
             'jenis_kelamin' => $this->faker->randomElement(['Laki-laki', 'Perempuan']),
             'nohp' => $this->faker->phoneNumber(),
             'tempat_lahir' => $this->faker->city(),

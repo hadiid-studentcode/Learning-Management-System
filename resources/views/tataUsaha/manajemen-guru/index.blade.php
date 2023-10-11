@@ -63,8 +63,8 @@
                                                             </div>
 
                                                             <div class="form-group">
-                                                                <label for="nig">NIG:</label>
-                                                                <input type="text" class="form-control" id="nig" name="nig" required>
+                                                                <label for="nbm">nbm:</label>
+                                                                <input type="text" class="form-control" id="nbm" name="nbm" required>
                                                             </div>
 
                                                             <div class="form-group">
@@ -147,8 +147,8 @@
                                                             </div>
 
                                                             <div class="form-group">
-                                                                <label for="studi-keahlian">Studi keahlihan</label>
-                                                                <input type="text" class="form-control" id="studi-keahlian" name="studi_keahlihan" required>
+                                                                <label for="bidang_studi">Bidang Studi</label>
+                                                                <input type="text" class="form-control" id="bidang_studi" name="bidang_studi" required>
                                                             </div>
 
                                                             <div class="form-group">
@@ -213,7 +213,7 @@
                                         <td>{{ $g->nama }}</td>
                                         <td>{{ $g->nik }}</td>
                                         <td>{{ $g->status }}</td>
-                                        <td>{{ $g->studi_keahlihan }}</td>
+                                        <td>{{ $g->bidang_studi }}</td>
                                         <td>{{ $g->jenis_kelamin }}</td>
                                         <td>{{ $g->nohp }}</td>
                                         <td>
@@ -257,15 +257,15 @@
                                                                         </tr>
                                                                         <tr>
                                                                             <th>Studi Keahlian :</th>
-                                                                            <td>{{ $g->studi_keahlihan }}</td>
+                                                                            <td>{{ $g->bidang_studi }}</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <th>Jenis Kelamin :</th>
                                                                             <td>{{ $g->jenis_kelamin }}</td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <th>NIG : </th>
-                                                                            <td>{{ $g->nig }}</td>
+                                                                            <th>nbm : </th>
+                                                                            <td>{{ $g->nbm }}</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <th>Jenis Guru:</th>
@@ -396,10 +396,10 @@
                                                                             </div>
     
                                                                             <div class="form-group">
-                                                                                <label for="nig">NIG:</label>
+                                                                                <label for="nbm">nbm:</label>
                                                                                 <input type="text" class="form-control"
-                                                                                    id="nig" name="nig" required
-                                                                                    value="{{ $g->nig }}">
+                                                                                    id="nbm" name="nbm" required
+                                                                                    value="{{ $g->nbm }}">
                                                                             </div>
     
                                                                             <div class="form-group">
@@ -510,12 +510,12 @@
                                                                             </div>
     
                                                                             <div class="form-group">
-                                                                                <label for="studi-keahlian">Studi
+                                                                                <label for="bidang_studi">Studi
                                                                                     keahlihan</label>
                                                                                 <input type="text" class="form-control"
-                                                                                    id="studi-keahlian" name="studi_keahlihan"
+                                                                                    id="bidang_studi" name="bidang_studi"
                                                                                     required
-                                                                                    value="{{ $g->studi_keahlihan }}">
+                                                                                    value="{{ $g->bidang_studi }}">
                                                                             </div>
     
                                                                             <div class="form-group">

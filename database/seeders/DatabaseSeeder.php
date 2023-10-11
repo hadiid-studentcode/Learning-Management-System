@@ -71,10 +71,10 @@ class DatabaseSeeder extends Seeder
         // \App\Models\Guru::factory()->create([
         //     'nik' => fake()->numerify('##########'),
         //     'nama' => 'Hadiid Andri Yulison',
-        //     'nig' => '12345',
+        //     'nbm' => '12345',
         //     'status' => 'Tetap',
         //     'jenis' => 'Wali Kelas',
-        //     'studi_keahlihan' => 'fisika',
+        //     'bidang_studi' => 'fisika',
         //     'jenis_kelamin' => 'laki-laki',
         //     'nohp' => fake()->phoneNumber(),
         //     'tempat_lahir' => fake()->city(),

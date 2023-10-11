@@ -35,9 +35,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="nig">NIG</label>
-                                    <input type="text" class="form-control" id="nig" placeholder="NIK"
-                                        name="nig" value="{{ $guru->nig }}" disabled>
+                                    <label for="nbm">nbm</label>
+                                    <input type="text" class="form-control" id="nbm" placeholder="NIK"
+                                        name="nbm" value="{{ $guru->nbm }}" disabled>
 
                                 </div>
 
@@ -272,7 +272,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="text">Username</label>
-                                    <input type="text" class="form-control" id="nig" placeholder="nig" name="username" disabled value="{{ $guruUser->userid }}">
+                                    <input type="text" class="form-control" id="nbm" placeholder="nbm" name="username" disabled value="{{ $guruUser->userid }}">
                                 </div>
 
                                 <div class="form-group">

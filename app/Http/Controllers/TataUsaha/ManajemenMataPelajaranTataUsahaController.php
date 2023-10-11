@@ -20,7 +20,7 @@ class ManajemenMataPelajaranTataUsahaController extends TataUsahaController
 
         // get guru
         $result = new Guru();
-        $getGuru = $result->viewGuru(['id', 'nama', 'studi_keahlihan']);
+        $getGuru = $result->viewGuru(['id', 'nama', 'bidang_studi']);
 
         // get kelas
         $result = new Kelas();

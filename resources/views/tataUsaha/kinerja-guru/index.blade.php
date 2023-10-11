@@ -28,7 +28,7 @@
                                         <tr class="success">
                                             <th>No</th>
                                             <th>Nama</th>
-                                            <th>NIG</th>
+                                            <th>nbm</th>
                                             <th>Bidang Studi</th>
                                             <th>Absensi</th>
                                             <th>Upload Materi</th>
@@ -42,8 +42,8 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $g->nama }}</td>
-                                                <td>{{ $g->nig }}</td>
-                                                <td>{{ $g->studi_keahlihan }}</td>
+                                                <td>{{ $g->nbm }}</td>
+                                                <td>{{ $g->bidang_studi }}</td>
                                                 <td>0</td>
 
                                                 {{-- Inisialisasi total materi dan tugas --}}

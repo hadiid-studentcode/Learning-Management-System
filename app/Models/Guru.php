@@ -16,11 +16,11 @@ class Guru extends Model
 
     protected $fillable = [
         'nik',
-        'nig',
+        'nbm',
         'nama',
         'jenis',
         'status',
-        'studi_keahlihan',
+        'bidang_studi',
         'jenis_kelamin',
         'nohp',
         'tempat_lahir',

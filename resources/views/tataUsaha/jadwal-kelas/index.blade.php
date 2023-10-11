@@ -76,7 +76,7 @@
                                                         <option value="">Pilih Guru Pengajar</option>
                                                         @foreach ($guru as $g)
                                                             <option value="{{ $g->id }}">{{ $g->nama }} ||
-                                                                {{ $g->studi_keahlihan }}</option>
+                                                                {{ $g->bidang_studi }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -300,13 +300,13 @@
                                                                                         <option
                                                                                             value="{{ $m->id_guru }}">
                                                                                             {{ $m->guru }} ||
-                                                                                            {{ $g->studi_keahlihan }}
+                                                                                            {{ $g->bidang_studi }}
                                                                                         </option>
                                                                                         @foreach ($guru as $g)
                                                                                             <option
                                                                                                 value="{{ $g->id }}">
                                                                                                 {{ $g->nama }} ||
-                                                                                                {{ $g->studi_keahlihan }}
+                                                                                                {{ $g->bidang_studi }}
                                                                                             </option>
                                                                                         @endforeach
                                                                                     </select>

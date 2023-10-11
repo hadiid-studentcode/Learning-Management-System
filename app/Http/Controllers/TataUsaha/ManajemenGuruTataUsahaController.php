@@ -53,8 +53,8 @@ class ManajemenGuruTataUsahaController extends TataUsahaController
                 $dataUser = [
                     'nama_lengkap' => ucwords($request->nama),
                     'email' => null,
-                    'userid' => $request->nig,
-                    'password' => bcrypt($request->nig),
+                    'userid' => $request->nbm,
+                    'password' => bcrypt($request->nbm),
                     'foto' => $foto,
                     'hak_akses' => 'Guru',
                 ];
@@ -69,11 +69,11 @@ class ManajemenGuruTataUsahaController extends TataUsahaController
 
                 $dataGuru = [
                     'nik' => $request->nik,
-                    'nig' => $request->nig,
+                    'nbm' => $request->nbm,
                     'nama' => ucwords($request->nama),
                     'jenis' => 'Non Wali Kelas',
                     'status' => $request->status,
-                    'studi_keahlihan' => ucwords($request->studi_keahlihan),
+                    'bidang_studi' => ucwords($request->bidang_studi),
                     'jenis_kelamin' => $request->jenis_kelamin,
                     'nohp' => $request->nohp,
                     'tempat_lahir' => ucwords($request->tempat_lahir),
@@ -102,8 +102,8 @@ class ManajemenGuruTataUsahaController extends TataUsahaController
                 $dataUser = [
                     'nama_lengkap' => ucwords($request->nama),
                     'email' => null,
-                    'userid' => $request->nig,
-                    'password' => bcrypt($request->nig),
+                    'userid' => $request->nbm,
+                    'password' => bcrypt($request->nbm),
                     'foto' => null,
                     'hak_akses' => 'Guru',
                 ];
@@ -117,11 +117,11 @@ class ManajemenGuruTataUsahaController extends TataUsahaController
 
                 $dataGuru = [
                     'nik' => $request->nik,
-                    'nig' => $request->nig,
+                    'nbm' => $request->nbm,
                     'nama' => ucwords($request->nama),
                     'jenis' => 'Non Wali Kelas',
                     'status' => $request->status,
-                    'studi_keahlihan' => ucwords($request->studi_keahlihan),
+                    'bidang_studi' => ucwords($request->bidang_studi),
                     'jenis_kelamin' => $request->jenis_kelamin,
                     'nohp' => $request->nohp,
                     'tempat_lahir' => ucwords($request->tempat_lahir),
@@ -186,8 +186,8 @@ class ManajemenGuruTataUsahaController extends TataUsahaController
                 $dataUser = [
                     'nama_lengkap' => ucwords($request->nama),
 
-                    'userid' => $request->nig,
-                    'password' => bcrypt($request->nig),
+                    'userid' => $request->nbm,
+                    'password' => bcrypt($request->nbm),
                     'foto' => $foto,
                     'hak_akses' => 'Guru',
                 ];
@@ -202,10 +202,10 @@ class ManajemenGuruTataUsahaController extends TataUsahaController
 
                 $dataGuru = [
                     'nik' => $request->nik,
-                    'nig' => $request->nig,
+                    'nbm' => $request->nbm,
                     'nama' => ucwords($request->nama),
                     'status' => $request->status,
-                    'studi_keahlihan' => ucwords($request->studi_keahlihan),
+                    'bidang_studi' => ucwords($request->bidang_studi),
                     'jenis_kelamin' => $request->jenis_kelamin,
                     'nohp' => $request->nohp,
                     'tempat_lahir' => ucwords($request->tempat_lahir),
@@ -234,8 +234,8 @@ class ManajemenGuruTataUsahaController extends TataUsahaController
                 $dataUser = [
                     'nama_lengkap' => ucwords($request->nama),
 
-                    'userid' => $request->nig,
-                    'password' => bcrypt($request->nig),
+                    'userid' => $request->nbm,
+                    'password' => bcrypt($request->nbm),
 
                     'hak_akses' => 'Guru',
                 ];
@@ -250,10 +250,10 @@ class ManajemenGuruTataUsahaController extends TataUsahaController
 
                 $dataGuru = [
                     'nik' => $request->nik,
-                    'nig' => $request->nig,
+                    'nbm' => $request->nbm,
                     'nama' => ucwords($request->nama),
                     'status' => $request->status,
-                    'studi_keahlihan' => ucwords($request->studi_keahlihan),
+                    'bidang_studi' => ucwords($request->bidang_studi),
                     'jenis_kelamin' => $request->jenis_kelamin,
                     'nohp' => $request->nohp,
                     'tempat_lahir' => ucwords($request->tempat_lahir),
