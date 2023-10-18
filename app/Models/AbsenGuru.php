@@ -57,4 +57,13 @@ class AbsenGuru extends Model
 
         return $results;
     }
+
+    public function getPoinAbsen()
+    {
+        $result = DB::table('absen_guru')
+            ->select('id_guru', 'poin_absensi')
+            ->get();
+
+        return $result;
+    }
 }

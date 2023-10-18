@@ -143,8 +143,19 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
     {
         if ($request->jenis == 'guru') {
 
+            if ($request->status == 'hadir') {
+                $poin_absen = 0.5;
+            } elseif ($request->status == 'izin') {
+                $poin_absen = 0.3;
+            } elseif ($request->status == 'sakit') {
+                $poin_absen = 0.3;
+            } elseif ($request->status == 'mangkir') {
+                $poin_absen = 0;
+            }
+
             $dataGuru = [
                 'status' => $request->status,
+                'poin_absensi' => $poin_absen,
             ];
 
             $result = new AbsenGuru();

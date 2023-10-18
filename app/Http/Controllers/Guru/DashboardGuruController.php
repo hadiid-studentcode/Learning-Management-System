@@ -127,16 +127,20 @@ class DashboardGuruController extends GuruController
 
         if ($waktu >= $waktu_absen_hijau && $waktu <= $waktu_absen_kuning) {
             $status = 'Hadir';
+            $poin_absensi = 0.5;
         } elseif ($waktu >= $waktu_absen_kuning && $waktu <= $waktu_absen_merah) {
             $status = 'Terlambat';
+            $poin_absensi = 0.1;
         } else {
             $status = 'mangkir';
+            $poin_absensi = 0;
         }
 
         $data = [
             'id_guru' => $id_guru->id,
             'waktu' => $waktu,
             'status' => $status,
+            'poin_absensi' => $poin_absensi,
         ];
 
         $result = new AbsenGuru();

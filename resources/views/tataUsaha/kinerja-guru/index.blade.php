@@ -44,14 +44,27 @@
                                                 <td>{{ $g->nama }}</td>
                                                 <td>{{ $g->nbm }}</td>
                                                 <td>{{ $g->bidang_studi }}</td>
-                                                <td>0</td>
+                                               
 
                                                 {{-- Inisialisasi total materi dan tugas --}}
                                                 @php
+                                                    $total_absensi = 0;
                                                     $total_materi = 0;
                                                     $total_tugas = 0;
                                                     $jumlahPertemuan = 0;
                                                 @endphp
+
+                                                @foreach($poinAbsen as $absen)
+                                                    @if ($absen->id_guru == $g->id)
+                                                        {{-- Tambahkan total absensi --}}
+                                                        @php
+                                                            $total_absensi += $absen->poin_absensi;
+                                                            
+                                                        @endphp
+                                                    @endif
+
+                                                @endforeach
+                                                   <td>{{ $total_absensi }}</td>
 
                                                 @foreach ($poin as $p)
                                                     @if ($p->id_guru == $g->id)
@@ -68,12 +81,13 @@
                                                 @endforeach
 
                                                 {{-- Tampilkan total materi dan tugas --}}
+                                             
                                                 <td>{{ $total_materi }}</td>
                                                 <td>{{ $total_tugas }}</td>
 
                                                 {{-- Hitung total kinerja --}}
                                                 @php
-                                                    $total_kinerja = 0 + $total_materi + $total_tugas;
+                                                    $total_kinerja = $total_absensi + $total_materi + $total_tugas;
                                                     $total_kinerja_percent = $jumlahPertemuan > 0 ? ($total_kinerja / $jumlahPertemuan) * 100 : 0;
                                                 @endphp
 

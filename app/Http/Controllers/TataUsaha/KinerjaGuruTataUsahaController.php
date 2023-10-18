@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\TataUsaha;
 
+use App\Models\AbsenGuru;
 use App\Models\Guru;
 use App\Models\Kinerja;
 use App\Models\Pertemuan;
@@ -26,6 +27,8 @@ class KinerjaGuruTataUsahaController extends TataUsahaController
         // get poin upload tugas dan upload materi
         $resultPertemuan = new Pertemuan();
         $poin = $resultPertemuan->getPoinUploadMateriDanTugas();
+        $resultAbsensiGuru = new AbsenGuru();
+        $poinAbsen = $resultAbsensiGuru->getPoinAbsen();
 
         return view('tataUsaha.kinerja-guru.index')
             ->with('title', 'Kinerja Guru')
@@ -35,6 +38,7 @@ class KinerjaGuruTataUsahaController extends TataUsahaController
             ->with('route', $this->route)
             ->with('guru', $guru)
             ->with('poin', $poin)
+            ->with('poinAbsen', $poinAbsen)
             ->with('kinerjaGuru', $kinerjaGuru);
     }
 
