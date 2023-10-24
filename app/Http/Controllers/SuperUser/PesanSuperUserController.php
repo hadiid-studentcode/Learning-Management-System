@@ -78,7 +78,7 @@ class PesanSuperUserController extends SuperUserController
         // get pegawai dan id Users
         $resultPegawai = new Pegawai();
         $pegawai = $resultPegawai->viewPegawai(['id_user', 'nama']);
-        $tataUsaha = $resultPegawai->viewTataUsaha(['id_user', 'nama']);
+        $tataUsaha = $resultPegawai->getTataUsahaIdandName();
 
         return view('superUser.pesan.create')
             ->with('title', $this->title)
