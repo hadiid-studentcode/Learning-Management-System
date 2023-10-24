@@ -12,7 +12,7 @@
                 </div>
             </div>
         </div>
-    </div {{-- <div class="">
+    </div> {{-- <div class="">
         <div class="card card-custom gutter-b"> --}} {{-- <div class="card-body">
                 <button id="tambah-akun-btn" class="btn btn-success" data-toggle="modal" data-target="#tambahAkun">Tambah
                     Akun</button>
@@ -85,8 +85,8 @@
                 </div>
             </div>
         </div>
-    </div> --}} <div
-        class="">
+    </div> --}}
+     
     <div class="card card-custom gutter-b">
         <div class="card-body">
             <div class="table-responsive">

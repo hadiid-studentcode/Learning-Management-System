@@ -30,10 +30,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\User::factory()->create([       // 15
-            'nama_lengkap' => 'Tata Usaha',
+            'nama_lengkap' => 'admin tatausaha',
             'email' => fake()->unique()->safeEmail(),
-            'userid' => 'fikri',
-            'password' => bcrypt('fikri'),
+            'userid' => 'admintu',
+            'password' => bcrypt('admintu'),
             'foto' => null,
             'hak_akses' => 'Tata Usaha',
             'remember_token' => Str::random(10),
@@ -41,8 +41,8 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Pegawai::factory()->create([
             'nik' => fake()->numerify('##########'),
-            'nama' => 'Tata Usaha',
-            'jenis' => 'Ketua Tata Usaha',
+            'nama' => 'admin',
+            'jenis' => 'admin',
             'no_hp' => fake()->phoneNumber(),
             'tempat_lahir' => fake()->city(),
             'tanggal_lahir' => fake()->date(),

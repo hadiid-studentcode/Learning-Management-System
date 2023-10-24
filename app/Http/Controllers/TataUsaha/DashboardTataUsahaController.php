@@ -28,7 +28,6 @@ class DashboardTataUsahaController extends TataUsahaController
         //   ambil data nama,jenis,nbm,nohp pegawai
         $resultPegawai = new Pegawai();
         $tataUsaha = $resultPegawai->getPegawaiFirst(['nama', 'jenis', 'no_hp'], Auth()->user()->id);
-
         $resultKelolaAbsensi = new KelolaAbsensi();
         $absen = $resultKelolaAbsensi->absensi();
 
@@ -47,6 +46,7 @@ class DashboardTataUsahaController extends TataUsahaController
 
         return view('tataUsaha.dashboard.index')
             ->with('title', 'Dashboard')
+            ->with('jenis',$tataUsaha->jenis)
             ->with('role', $this->role)
             ->with('img', $this->img)
             ->with('folder', $this->folder)

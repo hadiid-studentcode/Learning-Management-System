@@ -72,6 +72,7 @@ class Pegawai extends Model
             ->select('pegawai.id_user', 'pegawai.nama')
             ->join('users', 'Pegawai.id_user', '=', 'users.id')
             ->where('users.hak_akses', '=', 'Tata Usaha')
+            ->whereNot('pegawai.jenis', '=', 'admin')
             ->get();
 
         return $result;
@@ -102,12 +103,12 @@ class Pegawai extends Model
         return $result;
     }
 
-    public function getKetuaTataUsaha()
+    public function getTataUsahaBagianHumas()
     {
         $result = DB::table('pegawai')
             ->select('users.id')
             ->join('users', 'pegawai.id_user', '=', 'users.id')
-            ->where('jenis', '=', 'Ketua Tata Usaha')
+            ->where('jenis', '=', 'Bagian Hubungan Masyarakat')
             ->where('users.hak_akses', '=', 'Tata Usaha')
             ->first();
 

@@ -148,9 +148,19 @@ class User extends Authenticatable
     public function getUsers()
     {
         $result = DB::table('users')
-            ->select('id', 'nama_lengkap', 'userid', 'hak_akses')
+            ->select('id', 'nama_lengkap', 'userid', 'hak_akses',)
             ->WhereNot('users.hak_akses', '=', 'Super User')
+            ->WhereNot('users.userid', '=', 'admintu')
+
             ->get();
+
+        return $result;
+    }
+    public function getUsersAdmintu()
+    {
+        $result = DB::table('users')
+        ->select('id', 'nama_lengkap', 'userid', 'hak_akses')
+        ->get();
 
         return $result;
     }

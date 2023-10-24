@@ -159,13 +159,13 @@ class PesanWaliMuridController extends WaliMuridController
             // tata usaha
             // id user ketua tata usaha
             $result = new Pegawai();
-            $id_user_ketuaTataUsaha = $result->getKetuaTataUsaha();
+            $id_user_tataUsahaBagianHumas = $result->getTataUsahaBagianHumas();
 
             $data = [
                 'perihal' => $perihal,
                 'id_pengirim' => $id_user,
                 'penerima' => $penerima,
-                'id_penerima' => $id_user_ketuaTataUsaha->id,
+                'id_penerima' => $id_user_tataUsahaBagianHumas->id,
                 'isi_pesan' => $pesan,
                 'status' => 'Pesan Belum Dibaca',
                 'tanggal' => $date,

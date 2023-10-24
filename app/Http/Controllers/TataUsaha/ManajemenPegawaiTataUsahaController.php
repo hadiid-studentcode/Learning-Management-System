@@ -5,6 +5,8 @@ namespace App\Http\Controllers\TataUsaha;
 use App\Models\Pegawai;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class ManajemenPegawaiTataUsahaController extends TataUsahaController
 {
@@ -14,10 +16,30 @@ class ManajemenPegawaiTataUsahaController extends TataUsahaController
     public function index()
     {
         $this->img = $this->imageHeader();
+        $userid = auth()->user()->userid;
+
 
         // get pegawai
         $result = new Pegawai();
-        $getPegawai = $result->getPegawai();
+
+        if($userid == 'admintu'){
+
+            $getPegawai = $result->getPegawai();
+
+           
+        }else{
+            $getPegawai =
+                $result = DB::table('pegawai')
+                ->select('*')
+                ->WhereNot('pegawai.nama', '=', 'admin')
+                ->get();
+
+        }
+
+
+
+      
+       
 
         return view('tataUsaha.manajemen-pegawai.index')
             ->with('title', 'Manajemen Pegawai')
@@ -50,11 +72,11 @@ class ManajemenPegawaiTataUsahaController extends TataUsahaController
         if (ucwords($request->jenis) == 'Tata Usaha') {
             // ubah hak akses menjadi tata usaha
             $hak_akses = 'Tata Usaha';
-            $jenis = $request->jenis;
+            $jenis = $request->posisi_tataUsaha;
         } else {
             //    ubah hak akses menjadi pegawai
             $hak_akses = 'Pegawai';
-            $jenis = $request->posisi;
+            $jenis = $request->posisi_pegawai;
         }
 
         try {

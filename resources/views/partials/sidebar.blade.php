@@ -24,8 +24,27 @@
                         $id_user = Auth::user()->id;
                         $resultPesan = new App\Models\Pesan();
                         $pesan = $resultPesan->jumlahPesanBelumDibaca($id_user);
+
                         
+
+                        // get pegawai jenis where id_user
+                        $resultPegawai = new App\Models\Pegawai();
+
                     
+
+                        $tataUsaha = $resultPegawai->getPegawaiFirst(['jenis'], $id_user);
+
+                        if($tataUsaha == null){
+                            $jenis ='';
+                        }else{
+                              $jenis = $tataUsaha->jenis;   
+
+                        }
+
+                      
+
+                     
+
                     @endphp
 
                     @switch($role)
@@ -46,11 +65,12 @@
                                         <i class="fas fa-envelope"
                                             style="font-size:20px;  width:25px; height:25px; color: black; margin-right: 23px;"></i>
                                         <span style="font-family: arial; color: black;">Pesan</span>
-                                          @if($pesan > 0)
-                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="margin-left: 5px;">
+                                        @if ($pesan > 0)
+                                            <span
+                                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                                style="margin-left: 5px;">
                                                 {{ $pesan }}
                                             </span>
-                                         
                                         @endif
                                     </a>
                                 </li>
@@ -103,8 +123,10 @@
                                         <i class="fas fa-envelope"
                                             style="font-size:20px;  width:25px; height:25px; color: black; margin-right: 23px;"></i>
                                         <span style="font-family: arial; color: black;">Pesan</span>
-                                          @if($pesan > 0)
-                                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="margin-left: 5px;">
+                                        @if ($pesan > 0)
+                                            <span
+                                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                                style="margin-left: 5px;">
                                                 {{ $pesan }}
                                             </span>
                                         @endif
@@ -198,8 +220,10 @@
                                         <i class="fas fa-envelope"
                                             style="width:25px; font-size:20px; height:25px; color: black; margin-right: 23px;"></i>
                                         <span style="font-family: arial; color: black;">Pesan</span>
-                                          @if($pesan > 0)
-                                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="margin-left: 5px;">
+                                        @if ($pesan > 0)
+                                            <span
+                                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                                style="margin-left: 5px;">
                                                 {{ $pesan }}
                                             </span>
                                         @endif
@@ -225,14 +249,14 @@
                                             <span style="font-family: arial; color: black;">Manajemen Siswa</span>
                                         </a>
                                     </li>
-                                     <li class="nav-item">
-                                    <a href="{{ asset('/' . $route . '/prestasi-siswa') }}"
-                                        class="nav-link @if ($title == 'Prestasi Siswa') active @else '' @endif">
-                                        <i class="fas fa-award"
-                                            style="font-size:20px;  width:25px; height:25px; color: black; margin-right: 23px;"></i>
-                                        <span style="font-family: arial; color: black;">Prestasi Siswa</span>
-                                    </a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a href="{{ asset('/' . $route . '/prestasi-siswa') }}"
+                                            class="nav-link @if ($title == 'Prestasi Siswa') active @else '' @endif">
+                                            <i class="fas fa-award"
+                                                style="font-size:20px;  width:25px; height:25px; color: black; margin-right: 23px;"></i>
+                                            <span style="font-family: arial; color: black;">Prestasi Siswa</span>
+                                        </a>
+                                    </li>
                                 @endif
                                 <li class="nav-item">
                                     <a href="{{ asset('/' . $route . '/atur-kkm') }}"
@@ -250,7 +274,7 @@
                                         <span style="font-family: arial; color: black;">Manajemen Nilai</span>
                                     </a>
                                 </li>
-                                
+
                                 <li class="nav-item" style="margin-top: 140%;">
                                     <a href="{{ asset('/' . $route . '/setting') }}"
                                         class="nav-link @if ($title == 'Settings') active @else '' @endif">
@@ -305,7 +329,7 @@
                                         <span style="font-family: arial; color: black;">Jadwal</span>
                                     </a>
                                 </li>
-                              
+
                                 <li class="nav-item" style="margin-top: 210%">
                                     <a href="{{ asset('/' . $route . '/logout') }}" class="nav-link">
                                         <i class="fas fa-sign-out-alt"
@@ -333,119 +357,130 @@
                                     </a>
                                 </li>
 
+
+
                                 <li class="nav-item">
                                     <a href="{{ asset('/' . $route . '/pesan') }}"
                                         class="nav-link @if ($title == 'Pesan') active @else '' @endif">
                                         <i class="fas fa-envelope"
                                             style="font-size:20px;  width:25px; height:25px; color: black; margin-right: 23px;"></i>
                                         <span style="font-family: arial; color: black;">Pesan </span>
-                                        @if($pesan > 0)
-                                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="margin-left: 5px;">
+                                        @if ($pesan > 0)
+                                            <span
+                                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                                style="margin-left: 5px;">
                                                 {{ $pesan }}
                                             </span>
                                         @endif
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="{{ asset('/' . $route . '/manajemen-guru') }}"
-                                        class="nav-link @if ($title == 'Manajemen Guru') active @endif">
-                                        <i class="fas fa-chalkboard-teacher"
-                                            style="font-size: 20px; width: 25px; height: 25px; color: black; margin-right: 23px;"></i>
-                                        <span style="font-family: Arial; color: black;">Manajemen Guru</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ asset('/' . $route . '/manajemen-kelas') }}"
-                                        class="nav-link @if ($title == 'Manajemen Kelas') active @endif">
-                                        <i class="fas fa-chalkboard-teacher"
-                                            style="font-size: 20px; width: 25px; height: 25px; color: black; margin-right: 23px;"></i>
-                                        <span style="font-family: Arial; color: black;">Manajemen Kelas</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ asset('/' . $route . '/manajemen-siswa') }}"
-                                        class="nav-link @if ($title == 'Manajemen Siswa') active @endif">
-                                        <i class="fas fa-user-plus"
-                                            style="font-size: 20px; width: 25px; height: 25px; color: black; margin-right: 23px;"></i>
-                                        <span style="font-family: Arial; color: black;">Manajemen Siswa</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ asset('/' . $route . '/manajemen-mata-pelajaran') }}"
-                                        class="nav-link @if ($title == 'Manajemen Mata Pelajaran') active @endif">
-                                        <i class="fas fa-calendar-alt"
-                                            style="font-size:20px; width:25px; height:25px; color: black; margin-right: 23px;"></i>
-                                        <span style="font-family: arial; color: black;">Manajemen Mapel</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ asset('/' . $route . '/manajemen-pegawai') }}"
-                                        class="nav-link @if ($title == 'Manajemen Pegawai') active @endif">
-                                        <i class="fas fa-user-plus"
-                                            style="font-size: 20px; width: 25px; height: 25px; color: black; margin-right: 23px;"></i>
-                                        <span style="font-family: Arial; color: black;">Manajemen Pegawai</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ asset('/' . $route . '/manajemen-akun') }}"
-                                        class="nav-link @if ($title == 'Manajemen Akun') active @endif">
-                                        <i class="fas fa-user-cog"
-                                            style="font-size: 20px; width: 25px; height: 25px; color: black; margin-right: 23px;"></i>
-                                        <span style="font-family: Arial; color: black;">Manajemen Akun</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ asset('/' . $route . '/manajemen-absensi') }}"
-                                        class="nav-link @if ($title == 'Manajemen Absensi') active @endif">
-                                        <i class="far fa-clock"
-                                            style="font-size: 20px; width: 25px; height: 25px; color: black; margin-right: 23px;"></i>
-                                        <span style="font-family: Arial; color: black;"> Absensi</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ asset('/' . $route . '/prestasi-siswa') }}"
-                                        class="nav-link @if ($title == 'Prestasi Siswa') active @else '' @endif">
-                                        <i class="fas fa-award"
-                                            style="font-size:20px;  width:25px; height:25px; color: black; margin-right: 23px;"></i>
-                                        <span style="font-family: arial; color: black;">Prestasi Siswa</span>
-                                    </a>
-                                </li>
 
-                                <li class="nav-item">
-                                    <a href="{{ asset('/' . $route . '/pembayaran') }}"
-                                        class="nav-link @if ($title == 'Pembayaran') active @else '' @endif">
-                                        <i class="fas fa-credit-card"
-                                            style="font-size:20px;  width:25px; height:25px; color: black; margin-right: 23px;"></i>
-                                        <span style="font-family: arial; color: black;">Pembayaran</span>
-                                    </a>
-                                </li>
+                                @if ($jenis == 'Bagian Administrasi' || $jenis == 'admin')
+                                    <li class="nav-item">
+                                        <a href="{{ asset('/' . $route . '/manajemen-guru') }}"
+                                            class="nav-link @if ($title == 'Manajemen Guru') active @endif">
+                                            <i class="fas fa-chalkboard-teacher"
+                                                style="font-size: 20px; width: 25px; height: 25px; color: black; margin-right: 23px;"></i>
+                                            <span style="font-family: Arial; color: black;">Manajemen Guru</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ asset('/' . $route . '/manajemen-kelas') }}"
+                                            class="nav-link @if ($title == 'Manajemen Kelas') active @endif">
+                                            <i class="fas fa-chalkboard-teacher"
+                                                style="font-size: 20px; width: 25px; height: 25px; color: black; margin-right: 23px;"></i>
+                                            <span style="font-family: Arial; color: black;">Manajemen Kelas</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ asset('/' . $route . '/manajemen-siswa') }}"
+                                            class="nav-link @if ($title == 'Manajemen Siswa') active @endif">
+                                            <i class="fas fa-user-plus"
+                                                style="font-size: 20px; width: 25px; height: 25px; color: black; margin-right: 23px;"></i>
+                                            <span style="font-family: Arial; color: black;">Manajemen Siswa</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ asset('/' . $route . '/manajemen-mata-pelajaran') }}"
+                                            class="nav-link @if ($title == 'Manajemen Mata Pelajaran') active @endif">
+                                            <i class="fas fa-calendar-alt"
+                                                style="font-size:20px; width:25px; height:25px; color: black; margin-right: 23px;"></i>
+                                            <span style="font-family: arial; color: black;">Manajemen Mapel</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ asset('/' . $route . '/manajemen-pegawai') }}"
+                                            class="nav-link @if ($title == 'Manajemen Pegawai') active @endif">
+                                            <i class="fas fa-user-plus"
+                                                style="font-size: 20px; width: 25px; height: 25px; color: black; margin-right: 23px;"></i>
+                                            <span style="font-family: Arial; color: black;">Manajemen Pegawai</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ asset('/' . $route . '/manajemen-akun') }}"
+                                            class="nav-link @if ($title == 'Manajemen Akun') active @endif">
+                                            <i class="fas fa-user-cog"
+                                                style="font-size: 20px; width: 25px; height: 25px; color: black; margin-right: 23px;"></i>
+                                            <span style="font-family: Arial; color: black;">Manajemen Akun</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ asset('/' . $route . '/manajemen-absensi') }}"
+                                            class="nav-link @if ($title == 'Manajemen Absensi') active @endif">
+                                            <i class="far fa-clock"
+                                                style="font-size: 20px; width: 25px; height: 25px; color: black; margin-right: 23px;"></i>
+                                            <span style="font-family: Arial; color: black;"> Absensi</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ asset('/' . $route . '/prestasi-siswa') }}"
+                                            class="nav-link @if ($title == 'Prestasi Siswa') active @else '' @endif">
+                                            <i class="fas fa-award"
+                                                style="font-size:20px;  width:25px; height:25px; color: black; margin-right: 23px;"></i>
+                                            <span style="font-family: arial; color: black;">Prestasi Siswa</span>
+                                        </a>
+                                    </li>
+                                @endif
+                                @if ($jenis == 'Bagian Keuangan' || $jenis == 'admin')
+                                    <li class="nav-item">
+                                        <a href="{{ asset('/' . $route . '/pembayaran') }}"
+                                            class="nav-link @if ($title == 'Pembayaran') active @else '' @endif">
+                                            <i class="fas fa-credit-card"
+                                                style="font-size:20px;  width:25px; height:25px; color: black; margin-right: 23px;"></i>
+                                            <span style="font-family: arial; color: black;">Pembayaran</span>
+                                        </a>
+                                    </li>
 
-                                <li class="nav-item">
-                                    <a href="{{ asset('/' . $route . '/rekap-keuangan') }}"
-                                        class="nav-link  @if ($title == 'Rekap Keuangan') active @else '' @endif"">
-                                        <i class="fas fa-file-invoice"
-                                            style="font-size:20px;  width:25px; height:25px; color: black; margin-right: 23px;"></i>
-                                        <span style="font-family: arial; color: black;">Rekap Keuangan</span>
-                                    </a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a href="{{ asset('/' . $route . '/rekap-keuangan') }}"
+                                            class="nav-link  @if ($title == 'Rekap Keuangan') active @else '' @endif"">
+                                            <i class="fas fa-file-invoice"
+                                                style="font-size:20px;  width:25px; height:25px; color: black; margin-right: 23px;"></i>
+                                            <span style="font-family: arial; color: black;">Rekap Keuangan</span>
+                                        </a>
+                                    </li>
+                                @endif
 
-                                <li class="nav-item">
-                                    <a href="{{ asset('/' . $route . '/gallery') }}"
-                                        class="nav-link @if ($title == 'Gallery') active @else '' @endif">
-                                        <i class="fas fa-images"
-                                            style="font-size:20px;  width:25px; height:25px; color: black; margin-right: 23px;"></i>
-                                        <span style="font-family: arial; color: black;">Gallery</span>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="{{ asset('/' . $route . '/kinerja-guru') }}"
-                                        class="nav-link @if ($title == 'Kinerja Guru') active @else '' @endif">
-                                        <i class="fas fa-chalkboard-teacher"
-                                            style="font-size:20px;  width:25px; height:25px; color: black; margin-right: 23px;"></i>
-                                        <span style="font-family: arial; color: black;">Kinerja Guru</span>
-                                    </a>
-                                </li>
+                                @if ($jenis == 'Bagian Hubungan Masyarakat' || $jenis == 'admin')
+                                    <li class="nav-item">
+                                        <a href="{{ asset('/' . $route . '/gallery') }}"
+                                            class="nav-link @if ($title == 'Gallery') active @else '' @endif">
+                                            <i class="fas fa-images"
+                                                style="font-size:20px;  width:25px; height:25px; color: black; margin-right: 23px;"></i>
+                                            <span style="font-family: arial; color: black;">Gallery</span>
+                                        </a>
+                                    </li>
+                                @endif
+                                @if ($jenis == 'Bagian Administrasi' || $jenis == 'admin')
+                                    <li class="nav-item">
+                                        <a href="{{ asset('/' . $route . '/kinerja-guru') }}"
+                                            class="nav-link @if ($title == 'Kinerja Guru') active @else '' @endif">
+                                            <i class="fas fa-chalkboard-teacher"
+                                                style="font-size:20px;  width:25px; height:25px; color: black; margin-right: 23px;"></i>
+                                            <span style="font-family: arial; color: black;">Kinerja Guru</span>
+                                        </a>
+                                    </li>
+                                @endif
                                 <hr>
                                 <li class="nav-item" style="margin-top:2%;">
                                     <a href="{{ asset('/' . $route . '/setting') }}"
@@ -486,8 +521,10 @@
                                         <i class="fas fa-envelope"
                                             style="font-size: 20px; width: 25px; height: 25px; color: black; margin-right: 23px;"></i>
                                         <span style="font-family: Arial; color: black;">Pesan</span>
-                                          @if($pesan > 0)
-                                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="margin-left: 5px;">
+                                        @if ($pesan > 0)
+                                            <span
+                                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                                style="margin-left: 5px;">
                                                 {{ $pesan }}
                                             </span>
                                         @endif

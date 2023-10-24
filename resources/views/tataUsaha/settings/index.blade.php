@@ -237,11 +237,19 @@
                                         name="email" value="{{ $tataUsaha->user_email }}">
 
                                 </div>
+                                @if($tataUsaha->user_username == 'admintu')
                                 <div class="form-group">
+                                    <label for="text">Username</label>
+                                    <input type="text" class="form-control" id="username" placeholder="Username" name="username"
+                                        value="{{ $tataUsaha->user_username }}" disabled>
+                                </div>
+                                @else
+                                 <div class="form-group">
                                     <label for="text">Username</label>
                                     <input type="text" class="form-control" id="username" placeholder="Username" name="username"
                                         value="{{ $tataUsaha->user_username }}">
                                 </div>
+                                @endif
 
                                 <div class="form-group">
                                     <label for="password">Password</label>
