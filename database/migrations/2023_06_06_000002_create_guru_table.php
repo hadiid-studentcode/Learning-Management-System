@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('kecamatan', 50);
             $table->string('kabupatenKota', 50);
             $table->string('provinsi', 50);
-            $table->string('alamat', 100);
+            $table->text('alamat', 100);
             $table->string('foto')->nullable();
             $table->foreignId('id_user')->nullable()->references('id')->on('users')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
