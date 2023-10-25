@@ -95,6 +95,17 @@ class PesanGuruController extends GuruController
     public function store(Request $request)
     {
 
+        try {
+            $this->validate($request, [
+                'perihal' => 'required',
+                'penerima' => 'required',
+                'isi_pesan' => 'required',
+            ]);
+        } catch (\Throwable $th) {
+          return back()->with('message', 'Pesan Gagal Dikirim');
+        }
+
+
         $id_user = Auth::user()->id;
 
         if ($request->input('id_walimurid') != null) {

@@ -50,12 +50,12 @@
 
                             <div class="card-body">
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Perihal:" name="perihal" type="text">
+                                    <input class="form-control" placeholder="Perihal:" name="perihal" type="text" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="recipient">Penerima:</label>
-                                    <select class="form-control" id="recipient" onchange="showOptions()" name="penerima">
+                                    <select class="form-control" id="recipient" onchange="showOptions()" name="penerima" required>
                                         <option value="" hidden>Pilih penerima</option>
                                         <option value="Kepala Sekolah">Kepala Sekolah (Kepsek)</option>
                                         <option value="Tata Usaha">Tata Usaha (TU)</option>
@@ -110,7 +110,7 @@
                                 </script>
 
                                 <div class="form-group">
-                                    <textarea id="compose-textarea" class="form-control" style="height: 300px" name="isi_pesan"></textarea>
+                                    <textarea id="compose-textarea" class="form-control" style="height: 300px" name="isi_pesan" required></textarea>
                                 </div>
                             </div>
                             <!-- /.card-body -->
