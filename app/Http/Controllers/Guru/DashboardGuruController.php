@@ -6,6 +6,7 @@ use App\Models\AbsenGuru;
 use App\Models\Guru;
 use App\Models\Kelas;
 use App\Models\KelolaAbsensi;
+use App\Models\Kinerja;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -22,6 +23,8 @@ class DashboardGuruController extends GuruController
         // tampilkan user guru
         $result = new Guru();
         $user_guru = $result->getGuruFirst(['id', 'nama', 'nohp', 'foto', 'jenis'], $id);
+
+    
 
         $this->img = $user_guru->foto;
 
@@ -42,6 +45,31 @@ class DashboardGuruController extends GuruController
         $result = new KelolaAbsensi();
         $absen = $result->absensi();
 
+        // jumlah kehadiran guru
+        $resultKinerja = new Kinerja();
+        $hadir = $resultKinerja->JumlahAbsen($user_guru->id,'Hadir');
+
+      
+        // jumlah izin guru
+        $izin = $resultKinerja->JumlahAbsen($user_guru->id,'Izin');
+        // jumlah terlambat
+        $terlambat = $resultKinerja->JumlahAbsen($user_guru->id,'Terlambat');
+        // jumlah mangkir
+        $mangkir = $resultKinerja->JumlahAbsen($user_guru->id,'Mangkir');
+       
+        $jumlahAbsen = [
+            'hadir' => $hadir->jumlah,
+            'izin' => $izin->jumlah,
+            'terlambat' => $terlambat->jumlah,
+            'mangkir' => $mangkir->jumlah,
+        ];
+
+
+      
+
+        
+
+
         return view('guru.dashboard.index')
             ->with('title', $this->title = 'Dashboard')
             ->with('role', $this->role)
@@ -49,6 +77,7 @@ class DashboardGuruController extends GuruController
             ->with('img', $this->img)
             ->with('folder', $this->folder)
             ->with('jenis', $this->jenisGuru())
+            ->with('jumlahAbsen', $jumlahAbsen)
 
             ->with('guru', $user_guru)
             ->with('datenow', $absen['date_now'])

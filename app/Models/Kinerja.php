@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+
 
 class Kinerja extends Model
 {
@@ -76,4 +78,17 @@ class Kinerja extends Model
 
         return $point;
     }
+
+    public function JumlahAbsen($id_guru,$status){
+        $hadir = DB::table('absen_guru')
+            ->select( DB::raw('count(status) as jumlah'))
+            ->where('status', $status)
+            ->where('id_guru', $id_guru)
+          
+            ->first();
+
+            return $hadir;
+    }
+
+
 }
