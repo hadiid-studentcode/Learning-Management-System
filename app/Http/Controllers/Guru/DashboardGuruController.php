@@ -46,16 +46,16 @@ class DashboardGuruController extends GuruController
         $absen = $result->absensi();
 
         // jumlah kehadiran guru
-        $resultKinerja = new Kinerja();
-        $hadir = $resultKinerja->JumlahAbsen($user_guru->id,'Hadir');
+        $resultAbsenGuru = new AbsenGuru();
+        $hadir = $resultAbsenGuru->JumlahAbsen($user_guru->id,'Hadir');
 
       
         // jumlah izin guru
-        $izin = $resultKinerja->JumlahAbsen($user_guru->id,'Izin');
+        $izin = $resultAbsenGuru->JumlahAbsen($user_guru->id,'Izin');
         // jumlah terlambat
-        $terlambat = $resultKinerja->JumlahAbsen($user_guru->id,'Terlambat');
+        $terlambat = $resultAbsenGuru->JumlahAbsen($user_guru->id,'Terlambat');
         // jumlah mangkir
-        $mangkir = $resultKinerja->JumlahAbsen($user_guru->id,'Mangkir');
+        $mangkir = $resultAbsenGuru->JumlahAbsen($user_guru->id,'Mangkir');
        
         $jumlahAbsen = [
             'hadir' => $hadir->jumlah,

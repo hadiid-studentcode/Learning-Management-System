@@ -23,6 +23,9 @@ class DashboardPegawaiController extends PegawaiController
 
         $result = new Pegawai();
         $getNoHpAndJenis = $result->getNoHpAndJenisAttribute($id);
+        // get id pegawai
+        $pegawai = $result->getPegawaiFirst(['pegawai.id'], $id);
+    
 
         $getphotos = $result->getPhotosUser($id);
 
@@ -33,6 +36,32 @@ class DashboardPegawaiController extends PegawaiController
 
         $this->img = $this->imageHeader();
 
+        
+
+
+
+
+        // jumlah kehadiran pegawai
+        $resultAbsenPegawai = new AbsenPegawai();
+        $hadir = $resultAbsenPegawai->JumlahAbsen($pegawai->id, 'Hadir');
+
+
+        // jumlah izin pegawai
+        $izin = $resultAbsenPegawai->JumlahAbsen($pegawai->id, 'Izin');
+        // jumlah terlambat
+        $terlambat = $resultAbsenPegawai->JumlahAbsen($pegawai->id, 'Terlambat');
+        // jumlah mangkir
+        $mangkir = $resultAbsenPegawai->JumlahAbsen($pegawai->id, 'Mangkir');
+
+        $jumlahAbsen = [
+            'hadir' => $hadir->jumlah,
+            'izin' => $izin->jumlah,
+            'terlambat' => $terlambat->jumlah,
+            'mangkir' => $mangkir->jumlah,
+        ];
+
+
+
         return view('pegawai.dashboard.index')
             ->with('title', $this->title)
             ->with('role', $this->role)
@@ -40,6 +69,7 @@ class DashboardPegawaiController extends PegawaiController
             ->with('datenow', $absen['date_now'])
             ->with('waktu_absenDari', $absen['waktu_mulai'])
             ->with('waktu_absenSampai', $absen['waktu_selesai'])
+            ->with('jumlahAbsen', $jumlahAbsen)
 
             ->with('nohp', $getNoHpAndJenis->no_hp)
             ->with('jenis', $getNoHpAndJenis->jenis)
