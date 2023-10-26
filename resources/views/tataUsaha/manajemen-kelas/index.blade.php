@@ -24,7 +24,7 @@
                             <select class="form-control" id="kelas" required name="kelas">
                                 <option value="">Pilih Kelas</option>
                                 @php
-                                    $kelas = [1, 2, 3, 4, 5, 6];
+                                    $kelas = [1, 2, 3, 4, 5, 6, 7];
                                 @endphp
 
                                 @foreach ($kelas as $k)
