@@ -17,7 +17,7 @@ class User_SuperUserController extends UserController
         $this->role = 'Super User';
         $this->route = 'super-user';
 
-        return view('superUser.login')
+        return view('superuser.login')
             ->with('title', $this->title)
             ->with('role', $this->role)
             ->with('route', $this->route);

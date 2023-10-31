@@ -25,7 +25,7 @@ class LaporanKeuanganSuperUserController extends SuperUserController
         $resultPengeluaran = new Pengeluaran();
         $pengeluaranReport = $resultPengeluaran->getPengeluaranReport();
 
-        return view('superUser.laporan-keuangan.index')
+        return view('superuser.laporan-keuangan.index')
             ->with('title', 'Laporan Keuangan')
             ->with('role', $this->role)
             ->with('img', $this->img)
