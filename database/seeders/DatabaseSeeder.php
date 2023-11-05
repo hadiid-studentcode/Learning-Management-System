@@ -243,12 +243,13 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
-        // \App\Models\User::factory(10)->create();
+        // \App\Models\User::factory(54)->create();
         // \App\Models\Pegawai::factory(5)->create();
-        // \App\Models\Guru::factory(3)->create();
-        // \App\Models\Kelas::factory(4)->create();
+        // \App\Models\Guru::factory(50)->create();
+        // \App\Models\Kelas::factory(50)->create();
         // \App\Models\Siswa::factory(2)->create();
         // \App\Models\WaliMurid::factory(2)->create();
         // \App\Models\Gallery::factory(50)->create();
+        // \App\Models\Mapel::factory(50)->create();
     }
 }

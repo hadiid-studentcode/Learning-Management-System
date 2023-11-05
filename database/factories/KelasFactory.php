@@ -19,7 +19,7 @@ class KelasFactory extends Factory
         return [
             'nama' => $this->faker->numberBetween(1, 6),
             'rombel' => $this->faker->city(),
-            'id_guru' => null,
+            'id_guru' => $this->faker->numberBetween(1, 50),
             'kouta_siswa' => $this->faker->numberBetween(20, 30),
             'id_tahun_ajaran' => 1,
 
