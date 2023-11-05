@@ -365,7 +365,7 @@
                                                     <table style="margin: 0px;">
                                                         <tr>
                                                             <td style="padding: 5px;">Status Prestasi</td>
-                                                            <td style="padding: 5px;">: Akademik</td>
+                                                            <td style="padding: 5px;">: {{ $p->status }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td style="padding: 5px;">Nama Prestasi</td>

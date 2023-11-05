@@ -16,6 +16,8 @@ class PrestasiSiswaTataUsahaController extends TataUsahaController
     public function index()
     {
 
+    
+
         $this->img = $this->imageHeader();
 
         // get kelas
@@ -50,6 +52,7 @@ class PrestasiSiswaTataUsahaController extends TataUsahaController
             'prestasi_siswa.tanggal',
             'tahun_ajaran.tahun_ajaran as tahun_ajaran',
         ]);
+        
 
         return view('tataUsaha.prestasi-siswa.index')
             ->with('title', 'Prestasi Siswa')
@@ -99,6 +102,7 @@ class PrestasiSiswaTataUsahaController extends TataUsahaController
                 'id_tahun_ajaran' => $gettahunAjaran->id,
 
             ];
+
 
             // insert data prestasi siswa
             $result = new PrestasiSiswa();
