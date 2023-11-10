@@ -7,7 +7,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-
 class ManajemenPegawaiTataUsahaController extends TataUsahaController
 {
     /**
@@ -18,28 +17,21 @@ class ManajemenPegawaiTataUsahaController extends TataUsahaController
         $this->img = $this->imageHeader();
         $userid = auth()->user()->userid;
 
-
         // get pegawai
         $result = new Pegawai();
 
-        if($userid == 'admintu'){
+        if ($userid == 'admintu') {
 
             $getPegawai = $result->getPegawai();
 
-           
-        }else{
+        } else {
             $getPegawai =
                 $result = DB::table('pegawai')
-                ->select('*')
-                ->WhereNot('pegawai.nama', '=', 'admin')
-                ->get();
+                    ->select('*')
+                    ->WhereNot('pegawai.nama', '=', 'admin')
+                    ->get();
 
         }
-
-
-
-      
-       
 
         return view('tataUsaha.manajemen-pegawai.index')
             ->with('title', 'Manajemen Pegawai')

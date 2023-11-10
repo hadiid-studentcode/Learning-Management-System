@@ -6,7 +6,6 @@ use App\Models\AbsenGuru;
 use App\Models\Guru;
 use App\Models\Kelas;
 use App\Models\KelolaAbsensi;
-use App\Models\Kinerja;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -23,9 +22,6 @@ class DashboardGuruController extends GuruController
         // tampilkan user guru
         $result = new Guru();
         $user_guru = $result->getGuruFirst(['id', 'nama', 'nohp', 'foto', 'jenis'], $id);
-        
-
-    
 
         $this->img = $user_guru->foto;
 
@@ -48,26 +44,21 @@ class DashboardGuruController extends GuruController
 
         // jumlah kehadiran guru
         $resultAbsenGuru = new AbsenGuru();
-        $hadir = $resultAbsenGuru->JumlahAbsen($user_guru->id,'Hadir');
+        $hadir = $resultAbsenGuru->JumlahAbsen($user_guru->id, 'Hadir');
 
-      
         // jumlah izin guru
-        $izin = $resultAbsenGuru->JumlahAbsen($user_guru->id,'Izin');
+        $izin = $resultAbsenGuru->JumlahAbsen($user_guru->id, 'Izin');
         // jumlah terlambat
-        $terlambat = $resultAbsenGuru->JumlahAbsen($user_guru->id,'Terlambat');
+        $terlambat = $resultAbsenGuru->JumlahAbsen($user_guru->id, 'Terlambat');
         // jumlah mangkir
-        $mangkir = $resultAbsenGuru->JumlahAbsen($user_guru->id,'Mangkir');
-       
+        $mangkir = $resultAbsenGuru->JumlahAbsen($user_guru->id, 'Mangkir');
+
         $jumlahAbsen = [
             'hadir' => $hadir->jumlah,
             'izin' => $izin->jumlah,
             'terlambat' => $terlambat->jumlah,
             'mangkir' => $mangkir->jumlah,
         ];
-
-
-      
-   
 
         return view('guru.dashboard.index')
             ->with('title', $this->title = 'Dashboard')

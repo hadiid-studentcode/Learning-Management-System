@@ -25,7 +25,6 @@ class DashboardPegawaiController extends PegawaiController
         $getNoHpAndJenis = $result->getNoHpAndJenisAttribute($id);
         // get id pegawai
         $pegawai = $result->getPegawaiFirst(['pegawai.id'], $id);
-    
 
         $getphotos = $result->getPhotosUser($id);
 
@@ -36,15 +35,9 @@ class DashboardPegawaiController extends PegawaiController
 
         $this->img = $this->imageHeader();
 
-        
-
-
-
-
         // jumlah kehadiran pegawai
         $resultAbsenPegawai = new AbsenPegawai();
         $hadir = $resultAbsenPegawai->JumlahAbsen($pegawai->id, 'Hadir');
-
 
         // jumlah izin pegawai
         $izin = $resultAbsenPegawai->JumlahAbsen($pegawai->id, 'Izin');
@@ -59,8 +52,6 @@ class DashboardPegawaiController extends PegawaiController
             'terlambat' => $terlambat->jumlah,
             'mangkir' => $mangkir->jumlah,
         ];
-
-
 
         return view('pegawai.dashboard.index')
             ->with('title', $this->title)

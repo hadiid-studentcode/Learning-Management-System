@@ -46,7 +46,7 @@ class DashboardTataUsahaController extends TataUsahaController
 
         return view('tataUsaha.dashboard.index')
             ->with('title', 'Dashboard')
-            ->with('jenis',$tataUsaha->jenis)
+            ->with('jenis', $tataUsaha->jenis)
             ->with('role', $this->role)
             ->with('img', $this->img)
             ->with('folder', $this->folder)

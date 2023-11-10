@@ -275,12 +275,11 @@ class ManajemenGuruTataUsahaController extends TataUsahaController
                 return redirect('/tata-usaha/manajemen-guru')->with('success', 'Data berhasil disimpan');
             } else {
                 dd('sdsad');
+
                 return back()
                     ->with('warning', 'Data Guru Gagal Disimpan');
             }
         } catch (\Throwable $th) {
-
-            
 
             return back()->with('warning', 'Terjadi Kesalahan foto tidak valid');
         }

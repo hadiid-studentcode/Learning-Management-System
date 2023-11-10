@@ -15,17 +15,13 @@ class ManajemenAkunTataUsahaController extends TataUsahaController
         $this->img = $this->imageHeader();
         $userid = auth()->user()->userid;
 
-
-        
-
         $result = new User();
-        if($userid == 'admintu'){
-        $getAkun = $result->getUsersAdmintu();
-        }else{
+        if ($userid == 'admintu') {
+            $getAkun = $result->getUsersAdmintu();
+        } else {
             $getAkun = $result->getUsers();
-          
-        }
 
+        }
 
         return view('tataUsaha.manajemen-akun.index')
             ->with('title', 'Manajemen Akun')

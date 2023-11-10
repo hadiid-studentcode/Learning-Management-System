@@ -102,9 +102,8 @@ class PesanGuruController extends GuruController
                 'isi_pesan' => 'required',
             ]);
         } catch (\Throwable $th) {
-          return back()->with('message', 'Pesan Gagal Dikirim');
+            return back()->with('message', 'Pesan Gagal Dikirim');
         }
-
 
         $id_user = Auth::user()->id;
 

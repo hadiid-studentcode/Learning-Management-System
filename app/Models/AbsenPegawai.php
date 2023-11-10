@@ -60,8 +60,8 @@ class AbsenPegawai extends Model
     public function JumlahAbsen($id_pegawai, $status)
     {
         $jumlah = DB::table('absen_pegawai')
-        ->select(DB::raw('count(status) as jumlah'))
-        ->where('status', $status)
+            ->select(DB::raw('count(status) as jumlah'))
+            ->where('status', $status)
             ->where('id_pegawai', $id_pegawai)
 
             ->first();

@@ -67,12 +67,11 @@ class AbsenGuru extends Model
         return $result;
     }
 
-
     public function JumlahAbsen($id_guru, $status)
     {
         $jumlah = DB::table('absen_guru')
-        ->select(DB::raw('count(status) as jumlah'))
-        ->where('status', $status)
+            ->select(DB::raw('count(status) as jumlah'))
+            ->where('status', $status)
             ->where('id_guru', $id_guru)
 
             ->first();
