@@ -28,7 +28,7 @@ class AturKkmGuruController extends GuruController
             ->with('route', $this->route)
             ->with('img', $this->img)
             ->with('mapel', $mapelGuru)
-            ->with('jenis', $this->jenisGuru())
+            ->with('jenisGuru', $this->jenisGuru())
             ->with('folder', $this->folder);
     }
 

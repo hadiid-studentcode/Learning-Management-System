@@ -40,7 +40,7 @@ class JadwalGuruController extends GuruController
             ->with('kelas', $getKelas)
             ->with('tahunAjaranFirst', $tahunAjaranFirst)
             ->with('tahunAjaran', $tahunAjaran)
-            ->with('jenis', $this->jenisGuru())
+            ->with('jenisGuru', $this->jenisGuru())
 
             ->with('folder', $this->folder);
     }
@@ -73,7 +73,7 @@ class JadwalGuruController extends GuruController
             ->with('tahunAjaran', $tahunAjaran)
             ->with('searchTahunAjaran', $SearchtahunAjaran)
             ->with('searchHari', $Searchhari)
-            ->with('jenis', $this->jenisGuru())
+            ->with('jenisGuru', $this->jenisGuru())
             ->with('route', $this->route);
     }
 
@@ -108,7 +108,7 @@ class JadwalGuruController extends GuruController
             ->with('img', $this->img)
             ->with('mapel', $getMapel)
             ->with('pertemuan', $getPertemuan)
-            ->with('jenis', $this->jenisGuru())
+            ->with('jenisGuru', $this->jenisGuru())
             ->with('folder', $this->folder);
     }
 
@@ -191,7 +191,7 @@ class JadwalGuruController extends GuruController
             ->with('absen', $getAbsenSiswa)
             ->with('tugas', $getTugasSiswa)
             ->with('tugasSiswa', $getTugasSiswaFirst)
-            ->with('jenis', $this->jenisGuru())
+            ->with('jenisGuru', $this->jenisGuru())
             ->with('folder', $this->folder);
     }
 

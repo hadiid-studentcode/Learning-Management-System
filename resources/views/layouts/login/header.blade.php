@@ -3,7 +3,7 @@
      <img src="{{ asset('Assets/images/cover2.jpg') }}" alt="Gambar" class="image"> 
       <div class="overlay">
         <div id="welcome-text" class="text-white text-5xl mb-4">Selamat Datang di Sistem HAMKA BS</div>
-        <div id="date-time" class="text-white text-lg"></div>
+   
       </div>
     </div>
   </div>
@@ -44,14 +44,4 @@
     }
   </style>
 
-  <script>
-    function updateDateTime() {
-      const dateTimeElement = document.getElementById('date-time');
-      const currentDate = new Date();
-      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
-      const formattedDateTime = currentDate.toLocaleDateString('id-ID', options);
-      dateTimeElement.textContent = formattedDateTime;
-    }
-    setInterval(updateDateTime, 1000);
-    
-  </script>
+ 

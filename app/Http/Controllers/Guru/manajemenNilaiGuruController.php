@@ -31,7 +31,7 @@ class manajemenNilaiGuruController extends GuruController
             ->with('img', $this->img)
             ->with('kelas', $KelasGuru)
             ->with('mapel', $mapelGuru)
-            ->with('jenis', $this->jenisGuru())
+            ->with('jenisGuru', $this->jenisGuru())
 
             ->with('folder', $this->folder);
     }
@@ -110,7 +110,7 @@ class manajemenNilaiGuruController extends GuruController
             ->with('kelas', $KelasGuru)
             ->with('mapel', $mapelGuru)
             ->with('nilai', $nilai)
-            ->with('jenis', $this->jenisGuru())
+            ->with('jenisGuru', $this->jenisGuru())
             ->with('searchMapel', $searchMapel)
             ->with('folder', $this->folder);
     }

@@ -31,7 +31,7 @@ class RekapNilaiGuruController extends GuruController
             ->with('route', $this->route)
             ->with('img', $this->img)
             ->with('siswa', $siswa)
-            ->with('jenis', $this->jenisGuru())
+            ->with('jenisGuru', $this->jenisGuru())
 
             ->with('folder', $this->folder);
     }
@@ -85,7 +85,7 @@ class RekapNilaiGuruController extends GuruController
             ->with('siswaSearch', $siswaSearch)
             ->with('rekapNilaiAkhir', $rekapNilaiAkhir)
             ->with('rekapNilai', $rekapNilai)
-            ->with('jenis', $this->jenisGuru())
+            ->with('jenisGuru', $this->jenisGuru())
 
             ->with('folder', $this->folder);
     }

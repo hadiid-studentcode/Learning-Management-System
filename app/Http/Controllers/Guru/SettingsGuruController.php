@@ -43,8 +43,7 @@ class SettingsGuruController extends GuruController
             ->with('folder', $this->folder)
             ->with('filename', $filename)
             ->with('guru', $getGuruFirst)
-            ->with('jenis', $this->jenisGuru())
-
+            ->with('jenisGuru', $this->jenisGuru())
             ->with('guruUser', $getGuruUser);
 
     }

@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <a href="{{ url('/' . $route) }}" class="brand-link">
         <img src="{{ asset('Assets/images/sistemhamkabs.jpg') }}" alt="AdminLTE Logo" class="brand-image">
-        <span class="brand-text text-success ">HAMKA BS</span>
+        <span class="brand-text text-success ">HAMKA BS </span>
     </a>
 
     <!-- Sidebar -->
@@ -204,13 +204,14 @@
                                         <span style="font-family: arial; color: black;">Dashboard</span>
                                     </a>
                                 </li>
+                                
 
                                 <li class="nav-item">
                                     <a href="{{ asset('/' . $route . '/jadwal') }}"
                                         class="nav-link @if ($title == 'Jadwal') active @else '' @endif">
                                         <i class="fas fa-book"
                                             style="width:25px; font-size:20px; height:25px; color: black; margin-right: 23px;"></i>
-                                        <span style="font-family: arial; color: black;">Jadwal</span>
+                                        <span style="font-family: arial; color: black;">Jadwal </span>
                                     </a>
                                 </li>
 
@@ -230,7 +231,7 @@
                                     </a>
                                 </li>
 
-                                @if ($jenis == 'Wali Kelas')
+                                @if ($jenisGuru == 'Wali Kelas')
                                     <li class="nav-item">
                                         <a href="{{ asset('/' . $route . '/rekap-nilai') }}"
                                             class="nav-link @if ($title == 'Rekap Nilai') active @else '' @endif">
@@ -240,7 +241,7 @@
                                         </a>
                                     </li>
                                 @endif
-                                @if ($jenis == 'Wali Kelas')
+                                @if ($jenisGuru == 'Wali Kelas')
                                     <li class="nav-item">
                                         <a href="{{ asset('/' . $route . '/manajemen-siswa') }}"
                                             class="nav-link @if ($title == 'Manajemen Siswa') active @else '' @endif">

@@ -57,7 +57,7 @@ class ManajemenSiswaGuruController extends GuruController
             ->with('kelas', $kelasFirst->kelas)
             ->with('rombel', $kelasFirst->rombel)
             ->with('id_kelas', $kelasFirst->id)
-            ->with('jenis', $this->jenisGuru())
+            ->with('jenisGuru', $this->jenisGuru())
 
             ->with('folder', $this->folder);
     }

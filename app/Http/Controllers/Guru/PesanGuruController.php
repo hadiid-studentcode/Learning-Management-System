@@ -36,7 +36,7 @@ class PesanGuruController extends GuruController
             ->with('route', $this->route)
             ->with('img', $this->img)
             ->with('folder', $this->folder)
-            ->with('jenis', $this->jenisGuru())
+            ->with('jenisGuru', $this->jenisGuru())
 
             ->with('pesan', $pesan);
     }
@@ -62,7 +62,7 @@ class PesanGuruController extends GuruController
             ->with('img', $this->img)
             ->with('folder', $this->folder)
             ->with('waliMurid', $getWalimurid)
-            ->with('jenis', $this->jenisGuru())
+            ->with('jenisGuru', $this->jenisGuru())
 
             ->with('tatausaha', $getTataUsaha);
     }
@@ -157,7 +157,7 @@ class PesanGuruController extends GuruController
             ->with('img', $this->img)
             ->with('folder', $this->folder)
             ->with('id', $id)
-            ->with('jenis', $this->jenisGuru())
+            ->with('jenisGuru', $this->jenisGuru())
 
             ->with('showPesan', $showPesan)
             ->with('formattedTime', $formattedTime);
@@ -198,7 +198,7 @@ class PesanGuruController extends GuruController
             ->with('route', $this->route)
             ->with('img', $this->img)
             ->with('folder', $this->folder)
-            ->with('jenis', $this->jenisGuru())
+            ->with('jenisGuru', $this->jenisGuru())
 
             ->with('pesan', $pesan);
 

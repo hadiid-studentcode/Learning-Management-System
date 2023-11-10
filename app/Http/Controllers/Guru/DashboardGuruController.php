@@ -23,6 +23,7 @@ class DashboardGuruController extends GuruController
         // tampilkan user guru
         $result = new Guru();
         $user_guru = $result->getGuruFirst(['id', 'nama', 'nohp', 'foto', 'jenis'], $id);
+        
 
     
 
@@ -66,9 +67,7 @@ class DashboardGuruController extends GuruController
 
 
       
-
-        
-
+   
 
         return view('guru.dashboard.index')
             ->with('title', $this->title = 'Dashboard')
@@ -76,7 +75,7 @@ class DashboardGuruController extends GuruController
             ->with('route', $this->route)
             ->with('img', $this->img)
             ->with('folder', $this->folder)
-            ->with('jenis', $this->jenisGuru())
+            ->with('jenisGuru', $this->jenisGuru())
             ->with('jumlahAbsen', $jumlahAbsen)
 
             ->with('guru', $user_guru)

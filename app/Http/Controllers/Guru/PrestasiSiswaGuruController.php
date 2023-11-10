@@ -53,7 +53,7 @@ class PrestasiSiswaGuruController extends GuruController
 
         return view('guru.prestasi-siswa.index')
 
-            ->with('jenis', $this->jenisGuru())
+            ->with('jenisGuru', $this->jenisGuru())
             ->with('title', 'Prestasi Siswa')
             ->with('role', $this->role)
             ->with('img', $this->img)
