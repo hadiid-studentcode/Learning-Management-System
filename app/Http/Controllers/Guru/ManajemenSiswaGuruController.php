@@ -150,7 +150,7 @@ class ManajemenSiswaGuruController extends GuruController
 
                 $dataWaliMurid = [
                     'nik' => $request->nik,
-                    'nama' => ucwords($request->nama_ortu),
+                    'nama' => $request->nama_ortu,
                     'hubungan' => ucwords($request->hubungan),
                     'jenis_kelamin' => $request->jenis_kelamin_ortu,
                     'agama' => ucwords($request->agama_ortu),
@@ -238,7 +238,7 @@ class ManajemenSiswaGuruController extends GuruController
 
                 $dataWaliMurid = [
                     'nik' => $request->nik,
-                    'nama' => ucwords($request->nama_ortu),
+                    'nama' => $request->nama_ortu,
                     'hubungan' => ucwords($request->hubungan),
                     'jenis_kelamin' => $request->jenis_kelamin_ortu,
                     'agama' => ucwords($request->agama),

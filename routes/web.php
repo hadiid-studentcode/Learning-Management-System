@@ -3,6 +3,7 @@
 use App\Http\Controllers\Guru\AturKkmGuruController;
 use App\Http\Controllers\Guru\DashboardGuruController;
 use App\Http\Controllers\Guru\JadwalGuruController;
+use App\Http\Controllers\Guru\ManajemenAkunGuruController;
 use App\Http\Controllers\Guru\manajemenNilaiGuruController;
 use App\Http\Controllers\Guru\ManajemenSiswaGuruController;
 use App\Http\Controllers\Guru\PesanGuruController;
@@ -108,6 +109,7 @@ Route::group(
         Route::post('guru/pesan/balas/{id}', [PesanGuruController::class, 'balas']);
         Route::resource('/guru/rekap-nilai', RekapNilaiGuruController::class);
         Route::resource('/guru/manajemen-siswa', ManajemenSiswaGuruController::class);
+        Route::resource('/guru/manajemen-akun', ManajemenAkunGuruController::class);
 
         Route::resource('/guru/atur-kkm', AturKkmGuruController::class);
         Route::resource('/guru/manajemen-nilai', manajemenNilaiGuruController::class);

@@ -173,4 +173,17 @@ class WaliMurid extends Model
 
         return $result;
     }
+
+    public function getSiswaAndWaliMuridWhereIdUserGuru($id_guru)
+    {
+        $result = DB::table('wali_murid')
+            ->select('siswa.nama as nama_siswa', 'wali_murid.nama as nama_waliMurid')
+            ->join('siswa', 'wali_murid.id_siswa', '=', 'siswa.id')
+            ->join('kelas', 'siswa.id_kelas', '=', 'kelas.id')
+            ->join('guru', 'kelas.id_guru', '=', 'guru.id')
+            ->where('guru.id_user', '=', $id_guru)
+            ->get();
+
+        return $result;
+    }
 }
