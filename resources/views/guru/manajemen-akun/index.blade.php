@@ -6,13 +6,15 @@
             <div class="card-body">
                 <div class="d-flex flex-column align-items-center">
                     <h2 class="text-dark-75 text-center ">Management Akun</h2>
-                    <p class="text-dark-50 text-center">Silahkan Atur Pembuatan akun baru SIMU Kampa Untuk Semua Warga
+                    <p class="text-dark-50 text-center">Silahkan Atur Pembuatan akun baru Hamka BS Untuk Siswa Dan Walimurid
                         Sekolah Yang
                         Baru.</p>
                 </div>
             </div>
         </div>
-    </div> {{-- <div class="">
+    </div>
+
+    {{-- <div class="">
         <div class="card card-custom gutter-b"> --}} {{-- <div class="card-body">
                 <button id="tambah-akun-btn" class="btn btn-success" data-toggle="modal" data-target="#tambahAkun">Tambah
                     Akun</button>
@@ -86,8 +88,8 @@
             </div>
         </div>
     </div> --}}
-     
-    <div class="card card-custom gutter-b">
+
+    {{-- <div class="card card-custom gutter-b">
         <div class="card-body">
             <div class="table-responsive">
                 <table id="data_table" class="table table-bordered table-striped" style="text-align: center">
@@ -128,7 +130,7 @@
                                 </td>
 
                                 {{-- sda --}}
-                            </tr>
+                            {{-- </tr>
                             @endif
 
                             <div id="editAkun{{ $a->id }}" class="modal fade">
@@ -182,8 +184,204 @@
                 </table>
             </div>
         </div>
+        </div>
+    </div> --}}
+
+
+    <div class="container-fluid">
+        <div class="card card-custom gutter-b">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <!-- Table for Data Akun Siswa -->
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped" style="text-align: center">
+                                <!-- Table headers -->
+                                <thead>
+                                    <tr>
+                                        <th colspan="4">
+                                            <h5 class="text-center">Data Akun Siswa</h5>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th style="width: 5%;">No</th>
+                                        <th>Nama</th>
+                                        <th>Username</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <!-- Table body -->
+                                <tbody>
+                                    <!-- Loop through $akun and $siswaAndWaliMurid to populate the table -->
+                                    @foreach ($akun as $a)
+                                    @foreach($siswaAndWaliMurid as $sw)
+                                    @if($a->nama_lengkap === $sw->nama_siswa || $a->nama_lengkap === $sw->nama_waliMurid )
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $a->nama_lengkap }}</td>
+                                        <td>{{ $a->hak_akses }}</td>
+                                        <td>
+                                            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                                    data-target="#editAkun{{ $a->id }}">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Modal for editing Akun -->
+                                    <div id="editAkun{{ $a->id }}" class="modal fade">
+                                        <!-- Modal content -->
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Formulir Edit Akun</h5>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <!-- Form for editing Akun -->
+                                                    <form action="{{ url('/guru/manajemen-akun/' . $a->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <div class="form-group">
+                                                            <label for="edit-nama">Nama:</label>
+                                                            <input type="text" class="form-control"
+                                                                value="{{ $a->nama_lengkap }}" name="nama_lengkap" disabled>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="edit-username">Username:</label>
+                                                            <input type="text" class="form-control" value="{{ $a->userid }}"
+                                                                name="username" disabled>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="edit-password">Password:</label>
+                                                            <div class="input-group">
+                                                                <input type="password" class="form-control"
+                                                                    id="edit_password_{{ $a->id }}" name="password">
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text">
+                                                                        <i id="password_toggle_{{ $a->id }}"
+                                                                            class="fa fa-eye"
+                                                                            onclick="eye({{ $a->id }})"></i>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-success">Update</button>
+                                                        <button type="button" class="btn btn-success"
+                                                            data-dismiss="modal">Cancel</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endif
+                                    @endforeach
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Repeat the structure for Data Akun Wali Murid -->
+                    <div class="col-md-6">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped" style="text-align: center">
+                                <!-- Table headers -->
+                                <thead>
+                                    <tr>
+                                        <th colspan="4">
+                                            <h5 class="text-center">Data Akun Wali Murid</h5>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th style="width: 5%;">No</th>
+                                        <th>Nama</th>
+                                        <th>Username</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <!-- Table body -->
+                                <tbody>
+                                    <!-- Loop through $akun and $siswaAndWaliMurid to populate the table -->
+                                    @foreach ($akun as $a)
+                                    @foreach($siswaAndWaliMurid as $sw)
+                                    @if($a->nama_lengkap === $sw->nama_siswa || $a->nama_lengkap === $sw->nama_waliMurid )
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $a->nama_lengkap }}</td>
+                                        <td>{{ $a->hak_akses }}</td>
+                                        <td>
+                                            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                                    data-target="#editAkun{{ $a->id }}">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Modal for editing Akun -->
+                                    <div id="editAkun{{ $a->id }}" class="modal fade">
+                                        <!-- Modal content -->
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Formulir Edit Akun</h5>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <!-- Form for editing Akun -->
+                                                    <form action="{{ url('/guru/manajemen-akun/' . $a->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <div class="form-group">
+                                                            <label for="edit-nama">Nama:</label>
+                                                            <input type="text" class="form-control"
+                                                                value="{{ $a->nama_lengkap }}" name="nama_lengkap" disabled>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="edit-username">Username:</label>
+                                                            <input type="text" class="form-control" value="{{ $a->userid }}"
+                                                                name="username" disabled>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="edit-password">Password:</label>
+                                                            <div class="input-group">
+                                                                <input type="password" class="form-control"
+                                                                    id="edit_password_{{ $a->id }}" name="password">
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text">
+                                                                        <i id="password_toggle_{{ $a->id }}"
+                                                                            class="fa fa-eye"
+                                                                            onclick="eye({{ $a->id }})"></i>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-success">Update</button>
+                                                        <button type="button" class="btn btn-success"
+                                                            data-dismiss="modal">Cancel</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endif
+                                    @endforeach
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    </div>
+
+
+
+
+
 
     <script>
         function eye(id) {

@@ -159,8 +159,9 @@
 
                                                                 <div class="form-group">
                                                                     <label for="alamat">Alamat:</label>
-                                                                    <textarea class="form-control" id="alamat" name="alamat" required></textarea>
+                                                                    <textarea class="form-control" id="alamat" name="alamat" required maxlength="100"></textarea>
                                                                 </div>
+
 
                                                                 <div class="form-group">
                                                                     <label for="editFoto">Photo:</label>
@@ -334,7 +335,7 @@
                                                         data-toggle="modal" data-target="#detailModal{{ $s->id }}"
                                                         data-index="<%= index %>"> <i class="fas fa-eye"></i></button>
 
-                                                       
+
 
                                                     <!-- Modal Detail Siswa -->
                                                     <div id="detailModal{{ $s->id }}" class="modal fade">
@@ -350,7 +351,7 @@
                                                                     <div class="container-fluid">
                                                                         <div class="row">
                                                                             <!-- Foto Profil -->
-                                                                            <div class="col-md-12 text-center mb-4">
+                                                                            <div class="col-md-12 text-center mt-4 mb-4 ">
                                                                                 <img src="{{ asset('storage/siswa/images/'.$s->foto) }}"
                                                                                     alt="Foto Profil" class="img-fluid" style="max-width: 300px;">
                                                                             </div>
@@ -358,108 +359,118 @@
 
                                                                         <div class="row">
                                                                             <!-- Data Siswa -->
-                                                                            <div class="col-md-6">
-                                                                                <table class="table mt-4 table-bordered">
+                                                                            <div class="col-md-12">
+                                                                                <table class="table ">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <td colspan="2"> <h4>Data Siswa</h4></td>
+                                                                                        </tr>
+                                                                                    </thead>
                                                                                     <tbody>
                                                                                         <tr>
-                                                                                            <th>Nama:</th>
-                                                                                            <td>{{ $s->nama }}</td>
+                                                                                            <th style="width: 15%;"    >Nama</th>
+                                                                                            <td> {{ $s->nama }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th>NISN:</th>
-                                                                                            <td>{{ $s->nisn }}</td>
+                                                                                            <th style="width: 15%;"   >NISN</th>
+                                                                                            <td> : {{ $s->nisn }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th>Kelas:</th>
-                                                                                            <td>{{ $s->kelas }}</td>
+                                                                                            <th style="width: 15%;"   >Kelas</th>
+                                                                                            <td> {{ $s->kelas }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th>Jenis Kelamin:</th>
-                                                                                            <td>{{ $s->jenis_kelamin }}</td>
+                                                                                            <th style="width: 15%;"   >Jenis Kelamin</th>
+                                                                                            <td> {{ $s->jenis_kelamin }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th>Agama:</th>
-                                                                                            <td>{{ $s->agama }}</td>
+                                                                                            <th style="width: 15%;"   >Agama</th>
+                                                                                            <td> {{ $s->agama }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th>Tempat Lahir:</th>
-                                                                                            <td>{{ $s->tempat_lahir }}</td>
+                                                                                            <th style="width: 15%;"   >Tempat Lahir</th>
+                                                                                            <td> {{ $s->tempat_lahir }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th>Kelurahan:</th>
-                                                                                            <td>{{ $s->kelurahan }}</td>
+                                                                                            <th style="width: 15%;"   >Kelurahan</th>
+                                                                                            <td> {{ $s->kelurahan }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th>Kecamatan:</th>
-                                                                                            <td>{{ $s->kecamatan }}</td>
+                                                                                            <th style="width: 15%;"   >Kecamatan</th>
+                                                                                            <td> {{ $s->kecamatan }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th>Provinsi:</th>
-                                                                                            <td>{{ $s->provinsi }}</td>
+                                                                                            <th style="width: 15%;"   >Provinsi</th>
+                                                                                            <td> {{ $s->provinsi }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th>Alamat:</th>
-                                                                                            <td>{{ $s->alamat }}</td>
+                                                                                            <th style="width: 15%;"   >Alamat</th>
+                                                                                            <td> {{ $s->alamat }}</td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
-                                                                            </div>
 
-                                                                            <!-- Data Orang Tua -->
-                                                                            <div class="col-md-6">
-                                                                                <table class="table mt-4 table-bordered">
+
+                                                                             <!-- Data Orang Tua -->
+
+                                                                                <table class="table ">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <td colspan="2"><h4>Data Wali Murid</h4></td>
+                                                                                        </tr>
+                                                                                    </thead>
                                                                                     <tbody>
                                                                                         <tr>
-                                                                                            <th>NIK Orang Tua:</th>
-                                                                                            <td>{{ $s->nik }}</td>
+                                                                                            <th style="width: 15%;"   >NIK Orang Tua</th>
+                                                                                            <td> {{ $s->nik }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th>Nama Orang Tua:</th>
-                                                                                            <td>{{ $s->wm }}</td>
+                                                                                            <th style="width: 15%;"   >Nama Orang Tua</th>
+                                                                                            <td> {{ $s->wm }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th>Hubungan dengan siswa:</th>
-                                                                                            <td>{{ $s->hubungan_wm }}</td>
+                                                                                            <th style="width: 15%;"   >Hubungan dengan siswa</th>
+                                                                                            <td> {{ $s->hubungan_wm }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th>Agama</th>
-                                                                                            <td>{{ $s->agama_wm }}</td>
+                                                                                            <th style="width: 15%;"   >Agama</th>
+                                                                                            <td> {{ $s->agama_wm }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th>Jenis Kelamin :</th>
-                                                                                            <td>{{ $s->jk_wm }}</td>
+                                                                                            <th style="width: 15%;"   >Jenis Kelamin</th>
+                                                                                            <td> {{ $s->jk_wm }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th>Nomor HP :</th>
-                                                                                            <td>{{ $s->hp_wm }}</td>
+                                                                                            <th style="width: 15%;"   >Nomor HP</th>
+                                                                                            <td> {{ $s->hp_wm }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th>Kelurahan :</th>
-                                                                                            <td>{{ $s->kelurahan_wm }}</td>
+                                                                                            <th style="width: 15%;"   >Kelurahan</th>
+                                                                                            <td> {{ $s->kelurahan_wm }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th>Kecamatan :</th>
-                                                                                            <td>{{ $s->kecamatan_wm }}</td>
+                                                                                            <th style="width: 15%;"   >Kecamatan</th>
+                                                                                            <td> {{ $s->kecamatan_wm }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th>Kabupaten/Kota :</th>
-                                                                                            <td>{{ $s->kabupatenKota_wm }}</td>
+                                                                                            <th style="width: 15%;"   >Kabupaten/Kota</th>
+                                                                                            <td> {{ $s->kabupatenKota_wm }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th>Provinsi :</th>
-                                                                                            <td>{{ $s->provinsi_wm }}</td>
+                                                                                            <th style="width: 15%;"   >Provinsi</th>
+                                                                                            <td> {{ $s->provinsi_wm }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th>Email :</th>
-                                                                                            <td>{{ $s->email_wm }}</td>
+                                                                                            <th style="width: 15%;"   >Email</th>
+                                                                                            <td> {{ $s->email_wm }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th>Pekerjaan :</th>
-                                                                                            <td>{{ $s->pekerjaan_wm }}</td>
+                                                                                            <th style="width: 15%;"   >Pekerjaan</th>
+                                                                                            <td> {{ $s->pekerjaan_wm }}</td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <th>Alamat :</th>
-                                                                                            <td>{{ $s->alamat_wm }}</td>
+                                                                                            <th style="width: 15%;"   >Alamat</th>
+                                                                                            <td> {{ $s->alamat_wm }}</td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -474,7 +485,7 @@
                                                     <button type="button" class="btn btn-warning btn-sm edit-button"
                                                         data-toggle="modal" data-target="#editModal{{ $s->id }}" style="color:white;"><i class="fas fa-edit"></i></button>
 
-                                                       
+
 
                                                     {{-- edit modal --}}
                                                     <div id="editModal{{ $s->id }}" class="modal fade">
