@@ -6,7 +6,7 @@
             <div class="card-body">
                 <div class="d-flex flex-column align-items-center">
                     <h2 class="text-dark-75 text-center ">Management Akun</h2>
-                    <p class="text-dark-50 text-center">Silahkan Atur Pembuatan akun baru SIMU Kampa Untuk Semua Warga
+                    <p class="text-dark-50 text-center">Silahkan Atur Pembuatan akun baru Hamka BS Untuk Semua Warga
                         Sekolah Yang
                         Baru.</p>
                 </div>
@@ -86,7 +86,7 @@
             </div>
         </div>
     </div> --}}
-     
+
     <div class="card card-custom gutter-b">
         <div class="card-body">
             <div class="table-responsive">

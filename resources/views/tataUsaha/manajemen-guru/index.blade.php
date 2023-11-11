@@ -63,7 +63,7 @@
                                                             </div>
 
                                                             <div class="form-group">
-                                                                <label for="nbm">nbm:</label>
+                                                                <label for="nbm">NBM:</label>
                                                                 <input type="text" class="form-control" id="nbm" name="nbm" required>
                                                             </div>
 
@@ -189,7 +189,7 @@
                                 </div>
 
                             </div>
-                            
+
                 <div class=" table-responsive card card-custom  gutter-b">
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered" id="data_table" >
@@ -220,7 +220,7 @@
                                             <div class="btn-sm" role="group" aria-label="Basic mixed styles example">
                                                 <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
                                                     data-target="#detailGuru{{ $g->id }}"> <i class="fas fa-eye"></i></button>
-    
+
                                                 <!--  view Modal -->
                                                 <div class="modal fade" id="detailGuru{{ $g->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                                     aria-hidden="true">
@@ -237,10 +237,10 @@
                                                                     <img src="{{ asset('storage/guru/images/'.$g->foto) }}" alt="Foto Profil"
                                                                         class="img-fluid" style="width: 200px;">
 
-                                                            
-                                                                        
+
+
                                                                 </div>
-                                                
+
                                                                 <table class="table table-bordered">
                                                                     <tbody>
                                                                         <tr>
@@ -320,12 +320,12 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
-    
-                                    
+
+
+
                                                 <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
                                                     data-target="#editGuru{{ $g->id }}" style="color:white;"><i class="fas fa-edit"></i></button>
-    
+
                                                 {{-- edit modal --}}
                                                 <div class="modal fade" id="editGuru{{ $g->id }}">
                                                     <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -336,7 +336,7 @@
                                                                     <span>&times;</span>
                                                                 </button>
                                                             </div>
-    
+
                                                             <div class="modal-body">
                                                                 <form action="{{ url('/tata-usaha/manajemen-guru/' . $g->id) }}"
                                                                     method="POST" id="guru-form"
@@ -351,14 +351,14 @@
                                                                                     id="nama" name="nama" required
                                                                                     value="{{ $g->nama }}">
                                                                             </div>
-    
+
                                                                             <div class="form-group">
                                                                                 <label for="nik">NIK:</label>
                                                                                 <input type="number" class="form-control"
                                                                                     id="nik" name="nik" required
                                                                                     value="{{ $g->nik }}">
                                                                             </div>
-    
+
                                                                             <div class="form-group">
                                                                                 <label for="posisi">Jenis Guru:</label>
                                                                                 <select class="form-control" id="jenis"
@@ -372,21 +372,21 @@
                                                                                         Kelas</option>
                                                                                 </select>
                                                                             </div>
-    
+
                                                                             <div class="form-group">
                                                                                 <label for="hp">Nomor HP:</label>
                                                                                 <input type="text" class="form-control"
                                                                                     id="hp" name="nohp" required
                                                                                     value="{{ $g->nohp }}">
                                                                             </div>
-    
+
                                                                             <div class="form-group">
                                                                                 <label for="tempat-lahir">Tempat Lahir:</label>
                                                                                 <input type="text" class="form-control"
                                                                                     id="tempat-lahir" name="tempat_lahir"
                                                                                     required value="{{ $g->tempat_lahir }}">
                                                                             </div>
-    
+
                                                                             <div class="form-group">
                                                                                 <label for="tanggal-lahir">Tanggal
                                                                                     Lahir:</label>
@@ -394,14 +394,14 @@
                                                                                     id="tanggal-lahir" name="tanggal_lahir"
                                                                                     required value="{{ $g->tanggal_lahir }}">
                                                                             </div>
-    
+
                                                                             <div class="form-group">
                                                                                 <label for="nbm">nbm:</label>
                                                                                 <input type="text" class="form-control"
                                                                                     id="nbm" name="nbm" required
                                                                                     value="{{ $g->nbm }}">
                                                                             </div>
-    
+
                                                                             <div class="form-group">
                                                                                 <label for="kelamin">Jenis Kelamin:</label>
                                                                                 <select class="form-control"
@@ -427,7 +427,7 @@
                                                                                         <label class="custom-file-label"
                                                                                             for="exampleInputFile"
                                                                                             id="file-label_{{ $g->id }}">
-    
+
                                                                                             {{ $g->foto }}
                                                                                         </label>
                                                                                     </div>
@@ -437,22 +437,22 @@
                                                                                     <img id="preview-image_{{ $g->id }}"
                                                                                         class="img-fluid" src="#" alt="Preview" width="50%">
                                                                                 </div>
-    
+
                                                                                 <script>
                                                                                     function showFileName(event, id) {
                                                                                         var input = event.target;
                                                                                         var fileName = input.files[0].name;
                                                                                         document.getElementById("file-label_" + id).textContent = fileName;
-    
+
                                                                                         var previewContainer = document.getElementById("preview-container_" + id);
                                                                                         var previewImage = document.getElementById("preview-image_" + id);
                                                                                         if (input.files && input.files[0]) {
                                                                                             var reader = new FileReader();
-    
+
                                                                                             reader.onload = function(e) {
                                                                                                 previewImage.src = e.target.result;
                                                                                             };
-    
+
                                                                                             previewContainer.style.display = "block";
                                                                                             reader.readAsDataURL(input.files[0]);
                                                                                         } else {
@@ -462,7 +462,7 @@
                                                                                 </script>
                                                                             </div>
                                                                         </div>
-    
+
                                                                         <div class="col-md-6">
                                                                             <div class="form-group">
                                                                                 <label for="agama">Agama:</label>
@@ -479,7 +479,7 @@
                                                                                     <option value="Konghucu">Konghucu</option>
                                                                                 </select>
                                                                             </div>
-    
+
                                                                             <div class="form-group">
                                                                                 <label for="status-perkawinan">Status
                                                                                     Perkawinan:</label>
@@ -496,7 +496,7 @@
                                                                                     <option value="Cerai">Cerai</option>
                                                                                 </select>
                                                                             </div>
-    
+
                                                                             <div class="form-group">
                                                                                 <label for="status-kerja">Status Kerja:</label>
                                                                                 <select class="form-control" id="status-kerja"
@@ -508,7 +508,7 @@
                                                                                     <option value="Kontrak">Kontrak</option>
                                                                                 </select>
                                                                             </div>
-    
+
                                                                             <div class="form-group">
                                                                                 <label for="bidang_studi">Studi
                                                                                     keahlihan</label>
@@ -517,21 +517,21 @@
                                                                                     required
                                                                                     value="{{ $g->bidang_studi }}">
                                                                             </div>
-    
+
                                                                             <div class="form-group">
                                                                                 <label for="kelurahan">Kelurahan:</label>
                                                                                 <input type="text" class="form-control"
                                                                                     id="kelurahan" name="kelurahan" required
                                                                                     value="{{ $g->kelurahan }}">
                                                                             </div>
-    
+
                                                                             <div class="form-group">
                                                                                 <label for="kecamatan">Kecamatan:</label>
                                                                                 <input type="text" class="form-control"
                                                                                     id="kecamatan" name="kecamatan" required
                                                                                     value="{{ $g->kecamatan }}">
                                                                             </div>
-    
+
                                                                             <div class="form-group">
                                                                                 <label
                                                                                     for="kabupatenKota">Kabupaten/Kota:</label>
@@ -539,7 +539,7 @@
                                                                                     id="kabupatenKota" name="kabupatenKota"
                                                                                     required value="{{ $g->kabupatenKota }}">
                                                                             </div>
-    
+
                                                                             <div class="form-group">
                                                                                 <label for="provinsi">Provinsi:</label>
                                                                                 <input type="text" class="form-control"
@@ -552,7 +552,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-    
+
                                                                     <div class="form-group">
                                                                         <button type="submit"
                                                                             class="btn btn-success">Tambah</button>
@@ -564,7 +564,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-    
+
                                                 <!-- Tombol Hapus -->
                                                 {{-- <form action="{{ url('/tata-usaha/manajemen-guru/' . $g->id) }}"
                                                     method="post">
@@ -575,7 +575,7 @@
                                                         <i class="fas fa-trash"></i>
                                                     </button>
                                                 {{-- </form> --}}
-    
+
                                                 {{-- Modal Hapus --}}
                                                 <div class="modal fade" id="deletePegawai{{ $g->id }}" tabindex="-1"
                                                     role="dialog" aria-labelledby="confirmDeleteModalLabel"
@@ -607,7 +607,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-    
+
                                             </div>
                                         </td>
                                     </tr>
@@ -615,7 +615,7 @@
                             </tbody>
                         </table>
                       </div>
-                
+
                 </div>
             </div>
 @endsection
