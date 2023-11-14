@@ -351,7 +351,9 @@
                                                             <span>&times;</span>
                                                         </button>
                                                     </div>
-                                                    <div class="modal-body">
+
+                                                    {{-- Modal Awal Start--}}
+                                                    {{-- <div class="modal-body">
                                                         <div class="text-center">
                                                             <img src="{{ asset('storage/siswa/images/' . $s->foto) }}"
                                                                 alt="Foto Profil" class="img-fluid">
@@ -400,7 +402,142 @@
                                                                 </tr>
                                                             </tbody>
                                                         </table>
+                                                    </div> --}}
+
+                                                    {{-- Moddal baru --}}
+                                                    <div class="modal-body">
+                                                        <div class="container-fluid">
+                                                            <div class="row">
+                                                                <!-- Foto Profil -->
+                                                                <div class="col-md-12 text-center mt-4 mb-4 ">
+                                                                    <img src="{{ asset('storage/siswa/images/'.$s->foto) }}"
+                                                                        alt="Foto Profil" class="img-fluid" style="max-width: 300px;">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <!-- Data Siswa -->
+                                                                <div class="col-md-12">
+                                                                    <table class="table ">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <td colspan="2"> <h4>Data Siswa</h4></td>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <th style="width: 15%;"    >Nama</th>
+                                                                                <td> {{ $s->nama }}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width: 15%;"   >NISN</th>
+                                                                                <td> : {{ $s->nisn }}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width: 15%;"   >Kelas</th>
+                                                                                <td> {{ $s->kelas }}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width: 15%;"   >Jenis Kelamin</th>
+                                                                                <td> {{ $s->jenis_kelamin }}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width: 15%;"   >Agama</th>
+                                                                                <td> {{ $s->agama }}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width: 15%;"   >Tempat Lahir</th>
+                                                                                <td> {{ $s->tempat_lahir }}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width: 15%;"   >Kelurahan</th>
+                                                                                <td> {{ $s->kelurahan }}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width: 15%;"   >Kecamatan</th>
+                                                                                <td> {{ $s->kecamatan }}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width: 15%;"   >Provinsi</th>
+                                                                                <td> {{ $s->provinsi }}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width: 15%;"   >Alamat</th>
+                                                                                <td> {{ $s->alamat }}</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+
+
+                                                                 <!-- Data Orang Tua -->
+
+                                                                    <table class="table ">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <td colspan="2"><h4>Data Wali Murid</h4></td>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <th style="width: 15%;"   >NIK Orang Tua</th>
+                                                                                <td> 2301230913290</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width: 15%;"   >Nama Orang Tua</th>
+                                                                                <td> qweqe</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width: 15%;"   >Hubungan dengan siswa</th>
+                                                                                <td> qweqwe</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width: 15%;"   >Agama</th>
+                                                                                <td> wqeeqqwe</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width: 15%;"   >Jenis Kelamin</th>
+                                                                                <td> qweqweqwe</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width: 15%;"   >Nomor HP</th>
+                                                                                <td> qweqwe</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width: 15%;"   >Kelurahan</th>
+                                                                                <td> qweqwe</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width: 15%;"   >Kecamatan</th>
+                                                                                <td> qweqwe</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width: 15%;"   >Kabupaten/Kota</th>
+                                                                                <td> qweqwe</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width: 15%;"   >Provinsi</th>
+                                                                                <td> qweqwewqe</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width: 15%;"   >Email</th>
+                                                                                <td> qweqweq</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width: 15%;"   >Pekerjaan</th>
+                                                                                <td> qweqwe</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th style="width: 15%;"   >Alamat</th>
+                                                                                <td> qweqweqe</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
+                                                    {{-- Modal Detail END --}}
+
                                                 </div>
                                             </div>
                                         </div>
@@ -410,7 +547,7 @@
                                             data-toggle="modal" data-target="#editModal_{{ $s->nisn }}"> <i
                                                 class="fas fa-edit" style="color: white"></i></button>
 
-                                        <!-- Modal Input Siswa -->
+                                        <!-- Modal edit Siswa -->
                                         <div id="editModal_{{ $s->nisn }}" class="modal fade">
                                             <div class="modal-dialog modal-dialog-centered modal-lg">
                                                 <div class="modal-content">
@@ -536,9 +673,7 @@
                                                                             }
                                                                         </script>
                                                                     </div>
-                                                                </div>
 
-                                                                <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <label for="tanggal-lahir">Tanggal Lahir:</label>
                                                                         <input type="date" class="form-control"
@@ -583,6 +718,98 @@
 
                                                                     <img id="previewImage" src="#" alt="Preview"
                                                                         style="display: none; max-width: 200px; margin-top: 10px;">
+
+
+                                                                </div>
+
+                                                                <div class="col-md-6">
+
+
+                                                                        <h5>Data Orang Tua</h5>
+                                                                        <div class="form-group">
+                                                                            <label for="nik">NIK:</label>
+                                                                            <input type="text" class="form-control" id="nik" name="nik" required value="">
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label for="nama_ortu">Nama Orang Tua:</label>
+                                                                            <input type="text" class="form-control" id="nama_ortu" name="nama_ortu" required value="">
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label for="hubungan">Hubungan:</label>
+                                                                            <select class="form-control" id="hubungan" name="hubungan_ortu" required>
+                                                                                <option value="" hidden></option>
+                                                                                <option value="OrtuKandung">Orang Tua Kandung</option>
+                                                                                <option value="OrtuAngkat">Orang Tua Angkat</option>
+                                                                                <option value="saudara">Saudara</option>
+                                                                                <option value="keponakan">Keponakan</option>
+                                                                            </select>
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label for="agama">Agama:</label>
+                                                                            <select class="form-control" id="agama" name="agama_ortu" required>
+                                                                                <option value="" hidden></option>
+                                                                                <option value="Islam">Islam</option>
+                                                                                <option value="Kristen">Kristen</option>
+                                                                                <option value="Katolik">Katolik</option>
+                                                                                <option value="Hindu">Hindu</option>
+                                                                                <option value="Budha">Budha</option>
+                                                                                <option value="Konghucu">Konghucu</option>
+                                                                            </select>
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label for="jenis_kelamin_ortu">Jenis Kelamin Orang Tua:</label>
+                                                                            <select class="form-control" id="jenis_kelamin_ortu" name="jenis_kelamin_ortu" required>
+                                                                                <option value="" hidden></option>
+                                                                                <option value="Laki-laki">Laki-laki</option>
+                                                                                <option value="Perempuan">Perempuan</option>
+                                                                            </select>
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label for="no_hp_ortu">Nomor HP Orang Tua:</label>
+                                                                            <input type="number" class="form-control" id="no_hp_ortu" name="no_hp_ortu" required value="">
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label for="kelurahan_ortu">Kelurahan Orang Tua:</label>
+                                                                            <input type="text" class="form-control" id="kelurahan_ortu" name="kelurahan_ortu" required value="">
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label for="kecamatan_ortu">Kecamatan Orang Tua:</label>
+                                                                            <input type="text" class="form-control" id="kecamatan_ortu" name="kecamatan_ortu" required value="">
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label for="kabupaten_kota_ortu">Kabupaten/Kota Orang Tua:</label>
+                                                                            <input type="text" class="form-control" id="kabupaten_kota_ortu" name="kabupaten_kota_ortu" required value="">
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label for="provinsi_ortu">Provinsi Orang Tua:</label>
+                                                                            <input type="text" class="form-control" id="provinsi_ortu" name="provinsi_ortu" required value="">
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label for="email_ortu">Email Orang Tua:</label>
+                                                                            <input type="email" class="form-control" id="email_ortu" name="email_ortu" value="">
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label for="pekerjaan_ortu">Pekerjaan Orang Tua:</label>
+                                                                            <input type="text" class="form-control" id="pekerjaan_ortu" name="pekerjaan_ortu" required value="">
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label for="alamat_ortu">Alamat Orang Tua:</label>
+                                                                            <textarea class="form-control" id="alamat_ortu" name="alamat_ortu" required></textarea>
+                                                                        </div>
+
+
                                                                 </div>
                                                             </div>
 
@@ -597,6 +824,8 @@
                                                 </div>
                                             </div>
                                         </div>
+
+
                                     </td>
                                 </tr>
                             @endforeach
