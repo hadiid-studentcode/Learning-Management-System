@@ -37,6 +37,19 @@ class ManajemenSiswaGuruController extends GuruController
                 'siswa.provinsi',
                 'siswa.alamat',
                 'siswa.foto',
+                'wali_murid.nik as walimurid_nik',
+                'wali_murid.nama as walimurid_nama',
+                'wali_murid.hubungan as walimurid_hubungan',
+                'wali_murid.agama as walimurid_agama',
+                'wali_murid.jenis_kelamin as walimurid_jenis_kelamin',
+                'wali_murid.no_hp as walimurid_no_hp',
+                'wali_murid.kelurahan as walimurid_kelurahan',
+                'wali_murid.kecamatan as walimurid_kecamatan',
+                'wali_murid.kabupatenKota as walimurid_kabupatenKota',
+                'wali_murid.provinsi as walimurid_provinsi',
+                'wali_murid.email as walimurid_email',
+                'wali_murid.pekerjaan as walimurid_pekerjaan',
+                'wali_murid.alamat as walimurid_alamat',
             ],
 
             Auth()->user()->id
@@ -46,6 +59,8 @@ class ManajemenSiswaGuruController extends GuruController
         $kelasFirst = $resultKelas->firstKelasAndRombelWhereIdUserGuru(Auth()->user()->id);
 
         $getkelas = $resultKelas->getKelasAll(['kelas.id', 'kelas.nama', 'kelas.rombel']);
+
+       
 
         return view('guru.manajemen-siswa.index')
             ->with('title', $this->title = 'Manajemen Siswa')
@@ -289,15 +304,15 @@ class ManajemenSiswaGuruController extends GuruController
      */
     public function update(Request $request, string $id)
     {
-        $resultSiswa = new Siswa();
-        $resultUser = new User();
 
         $request->validate([
+
             'foto' => 'mimes:jpg,jpeg,png|max:5000',
         ]);
 
-        if ($request->hasFile('foto')) {
-            $foto = round(microtime(true) * 1000).'-'.str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
+        if ($request->hasfile('foto')) {
+
+            $foto = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
 
             $dataSiswa = [
                 'nisn' => $request->nisn,
@@ -316,11 +331,11 @@ class ManajemenSiswaGuruController extends GuruController
 
             ];
 
-            // save foto
-            $resultSiswa->uploadFotoSiswa($request->file('foto'), $foto, $id);
+            // panggil foto di database
+            $result = new Siswa();
+            $result->uploadFotoSiswa($request->file('foto'), $foto, $id);
 
-            // save user siswa
-
+            //    save user siswa
             $dataUserSiswa = [
                 'nama_lengkap' => ucwords($request->nama),
                 'userid' => $request->nisn,
@@ -328,15 +343,55 @@ class ManajemenSiswaGuruController extends GuruController
             ];
 
             // panggil user_id siswa
-            $user_id = $resultSiswa->getUserIdSiswa($id);
+            $result = new Siswa();
+            $user_id = $result->getUserIdSiswa($id);
+
             // update user
-            $resultUser->updateUser($user_id->id_user, $dataUserSiswa);
+            $result = new User();
+            $result->updateUser($user_id->id_user, $dataUserSiswa);
 
             // simpan siswa ke database
+            $resultSiswa = new Siswa();
             $resultSiswa->updateSiswa($id, $dataSiswa);
 
-            return back()->with('success', 'Data siswa berhasil diubah');
+            // get id user wali murid
+            $resultWaliMurid = new WaliMurid();
+            $waliMurid = $resultWaliMurid->getIdUserWhereIdSiswa($id);
+
+            // data wali murid
+
+            $dataUserWaliMurid = [
+                'nama_lengkap' => $request->nama_ortu,
+                'email' => $request->email_ortu,
+            ];
+
+            // simpan user wali murid
+            $result = new User();
+            $result->updateUser($waliMurid->id_user, $dataUserWaliMurid);
+
+            $dataWaliMurid = [
+                'nik' => $request->nik,
+                'nama' => ucwords($request->nama_ortu),
+                'hubungan' => ucwords($request->hubungan_ortu),
+                'jenis_kelamin' => $request->jenis_kelamin_ortu,
+                'agama' => ucwords($request->agama_ortu),
+                'no_hp' => $request->no_hp_ortu,
+                'kelurahan' => ucwords($request->kelurahan_ortu),
+                'kecamatan' => ucwords($request->kecamatan_ortu),
+                'kabupatenKota' => ucwords($request->kabupaten_kota_ortu),
+                'provinsi' => ucwords($request->provinsi_ortu),
+                'email' => $request->email_ortu,
+                'pekerjaan' => ucwords($request->pekerjaan_ortu),
+                'alamat' => ucwords($request->alamat_ortu),
+            ];
+
+            // save data wali murid
+            $result = new WaliMurid();
+            $result->updateWaliMurid($dataWaliMurid, $waliMurid->id_user);
+
+            return redirect('/guru/manajemen-siswa');
         } elseif ($request->hasfile('foto') == false) {
+
             $data = [
                 'nisn' => $request->nisn,
                 'nama' => ucwords($request->nama),
@@ -352,11 +407,12 @@ class ManajemenSiswaGuruController extends GuruController
                 'tanggal_lahir' => $request->tanggal_lahir,
 
             ];
-
             // simpan siswa ke database
-            $resultSiswa->updateSiswa($id, $data);
+            $result = new Siswa();
+            $result->updateSiswa($id, $data);
 
-            // save user siswa
+            //    save user siswa
+
             $dataUserSiswa = [
                 'nama_lengkap' => ucwords($request->nama),
                 'email' => null,
@@ -367,14 +423,52 @@ class ManajemenSiswaGuruController extends GuruController
             ];
 
             // panggil user_id siswa
-            $user_id = $resultSiswa->getUserIdSiswa($id);
+            $result = new Siswa();
+            $user_id = $result->getUserIdSiswa($id);
+
             // update user
-            $resultUser->updateUser($user_id->id_user, $dataUserSiswa);
+            $result = new User();
+            $result->updateUser($user_id->id_user, $dataUserSiswa);
 
-            return back()->with('success', 'Data siswa berhasil diubah');
+            // get id user wali murid
+            $resultWaliMurid = new WaliMurid();
+            $waliMurid = $resultWaliMurid->getIdUserWhereIdSiswa($id);
 
+            // data wali murid
+
+            $dataUserWaliMurid = [
+                'nama_lengkap' => $request->nama_ortu,
+                'email' => $request->email_ortu,
+            ];
+
+            // simpan user wali murid
+            $result = new User();
+            $result->updateUser($waliMurid->id_user, $dataUserWaliMurid);
+
+            $dataWaliMurid = [
+                'nik' => $request->nik,
+                'nama' => ucwords($request->nama_ortu),
+                'hubungan' => ucwords($request->hubungan_ortu),
+                'jenis_kelamin' => $request->jenis_kelamin_ortu,
+                'agama' => ucwords($request->agama_ortu),
+                'no_hp' => $request->no_hp_ortu,
+                'kelurahan' => ucwords($request->kelurahan_ortu),
+                'kecamatan' => ucwords($request->kecamatan_ortu),
+                'kabupatenKota' => ucwords($request->kabupaten_kota_ortu),
+                'provinsi' => ucwords($request->provinsi_ortu),
+                'email' => $request->email_ortu,
+                'pekerjaan' => ucwords($request->pekerjaan_ortu),
+                'alamat' => ucwords($request->alamat_ortu),
+            ];
+
+            // save data wali murid
+            $result = new WaliMurid();
+            $result->updateWaliMurid($dataWaliMurid, $waliMurid->id_user);
+
+            return redirect('/guru/manajemen-siswa');
         } else {
-            return back()->with('error', 'Data siswa gagal diubah');
+            return back()
+                ->with('warning', 'Data Siswa Gagal Disimpan');
         }
     }
 

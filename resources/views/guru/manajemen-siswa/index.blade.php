@@ -352,7 +352,7 @@
                                                         </button>
                                                     </div>
 
-                                                    {{-- Modal Awal Start--}}
+                                                    {{-- Modal Awal Start --}}
                                                     {{-- <div class="modal-body">
                                                         <div class="text-center">
                                                             <img src="{{ asset('storage/siswa/images/' . $s->foto) }}"
@@ -410,8 +410,9 @@
                                                             <div class="row">
                                                                 <!-- Foto Profil -->
                                                                 <div class="col-md-12 text-center mt-4 mb-4 ">
-                                                                    <img src="{{ asset('storage/siswa/images/'.$s->foto) }}"
-                                                                        alt="Foto Profil" class="img-fluid" style="max-width: 300px;">
+                                                                    <img src="{{ asset('storage/siswa/images/' . $s->foto) }}"
+                                                                        alt="Foto Profil" class="img-fluid"
+                                                                        style="max-width: 300px;">
                                                                 </div>
                                                             </div>
 
@@ -421,114 +422,119 @@
                                                                     <table class="table ">
                                                                         <thead>
                                                                             <tr>
-                                                                                <td colspan="2"> <h4>Data Siswa</h4></td>
+                                                                                <td colspan="2">
+                                                                                    <h4>Data Siswa</h4>
+                                                                                </td>
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
                                                                             <tr>
-                                                                                <th style="width: 15%;"    >Nama</th>
+                                                                                <th style="width: 15%;">Nama</th>
                                                                                 <td> {{ $s->nama }}</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th style="width: 15%;"   >NISN</th>
+                                                                                <th style="width: 15%;">NISN</th>
                                                                                 <td> : {{ $s->nisn }}</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th style="width: 15%;"   >Kelas</th>
+                                                                                <th style="width: 15%;">Kelas</th>
                                                                                 <td> {{ $s->kelas }}</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th style="width: 15%;"   >Jenis Kelamin</th>
+                                                                                <th style="width: 15%;">Jenis Kelamin</th>
                                                                                 <td> {{ $s->jenis_kelamin }}</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th style="width: 15%;"   >Agama</th>
+                                                                                <th style="width: 15%;">Agama</th>
                                                                                 <td> {{ $s->agama }}</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th style="width: 15%;"   >Tempat Lahir</th>
+                                                                                <th style="width: 15%;">Tempat Lahir</th>
                                                                                 <td> {{ $s->tempat_lahir }}</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th style="width: 15%;"   >Kelurahan</th>
+                                                                                <th style="width: 15%;">Kelurahan</th>
                                                                                 <td> {{ $s->kelurahan }}</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th style="width: 15%;"   >Kecamatan</th>
+                                                                                <th style="width: 15%;">Kecamatan</th>
                                                                                 <td> {{ $s->kecamatan }}</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th style="width: 15%;"   >Provinsi</th>
+                                                                                <th style="width: 15%;">Provinsi</th>
                                                                                 <td> {{ $s->provinsi }}</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th style="width: 15%;"   >Alamat</th>
+                                                                                <th style="width: 15%;">Alamat</th>
                                                                                 <td> {{ $s->alamat }}</td>
                                                                             </tr>
                                                                         </tbody>
                                                                     </table>
 
 
-                                                                 <!-- Data Orang Tua -->
+                                                                    <!-- Data Orang Tua -->
 
                                                                     <table class="table ">
                                                                         <thead>
                                                                             <tr>
-                                                                                <td colspan="2"><h4>Data Wali Murid</h4></td>
+                                                                                <td colspan="2">
+                                                                                    <h4>Data Wali Murid</h4>
+                                                                                </td>
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
                                                                             <tr>
-                                                                                <th style="width: 15%;"   >NIK Orang Tua</th>
-                                                                                <td> 2301230913290</td>
+                                                                                <th style="width: 15%;">NIK Orang Tua</th>
+                                                                                <td> {{ $s->walimurid_nik }}</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th style="width: 15%;"   >Nama Orang Tua</th>
-                                                                                <td> qweqe</td>
+                                                                                <th style="width: 15%;">Nama Orang Tua</th>
+                                                                                <td> {{ $s->walimurid_nama }}</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th style="width: 15%;"   >Hubungan dengan siswa</th>
-                                                                                <td> qweqwe</td>
+                                                                                <th style="width: 15%;">Hubungan dengan
+                                                                                    siswa</th>
+                                                                                <td> {{ $s->walimurid_hubungan }}</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th style="width: 15%;"   >Agama</th>
-                                                                                <td> wqeeqqwe</td>
+                                                                                <th style="width: 15%;">Agama</th>
+                                                                                <td>{{ $s->walimurid_agama }}</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th style="width: 15%;"   >Jenis Kelamin</th>
-                                                                                <td> qweqweqwe</td>
+                                                                                <th style="width: 15%;">Jenis Kelamin</th>
+                                                                                <td>{{ $s->walimurid_jenis_kelamin }}</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th style="width: 15%;"   >Nomor HP</th>
-                                                                                <td> qweqwe</td>
+                                                                                <th style="width: 15%;">Nomor HP</th>
+                                                                                <td>{{ $s->walimurid_no_hp }}</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th style="width: 15%;"   >Kelurahan</th>
-                                                                                <td> qweqwe</td>
+                                                                                <th style="width: 15%;">Kelurahan</th>
+                                                                                <td>{{ $s->walimurid_kelurahan }}</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th style="width: 15%;"   >Kecamatan</th>
-                                                                                <td> qweqwe</td>
+                                                                                <th style="width: 15%;">Kecamatan</th>
+                                                                                <td>{{ $s->walimurid_kecamatan }}</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th style="width: 15%;"   >Kabupaten/Kota</th>
-                                                                                <td> qweqwe</td>
+                                                                                <th style="width: 15%;">Kabupaten/Kota</th>
+                                                                                <td>{{ $s->walimurid_kabupatenKota }}</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th style="width: 15%;"   >Provinsi</th>
-                                                                                <td> qweqwewqe</td>
+                                                                                <th style="width: 15%;">Provinsi</th>
+                                                                                <td>{{ $s->walimurid_provinsi }}</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th style="width: 15%;"   >Email</th>
-                                                                                <td> qweqweq</td>
+                                                                                <th style="width: 15%;">Email</th>
+                                                                                <td>{{ $s->walimurid_email }}</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th style="width: 15%;"   >Pekerjaan</th>
-                                                                                <td> qweqwe</td>
+                                                                                <th style="width: 15%;">Pekerjaan</th>
+                                                                                <td>{{ $s->walimurid_pekerjaan }}</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <th style="width: 15%;"   >Alamat</th>
-                                                                                <td> qweqweqe</td>
+                                                                                <th style="width: 15%;">Alamat</th>
+                                                                                <td>{{ $s->walimurid_alamat }}</td>
                                                                             </tr>
                                                                         </tbody>
                                                                     </table>
@@ -725,89 +731,120 @@
                                                                 <div class="col-md-6">
 
 
-                                                                        <h5>Data Orang Tua</h5>
-                                                                        <div class="form-group">
-                                                                            <label for="nik">NIK:</label>
-                                                                            <input type="text" class="form-control" id="nik" name="nik" required value="">
-                                                                        </div>
+                                                                    <h5>Data Orang Tua</h5>
+                                                                    <div class="form-group">
+                                                                        <label for="nik">NIK:</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="nik" name="nik" required
+                                                                            value="{{ $s->walimurid_nik }}">
+                                                                    </div>
 
-                                                                        <div class="form-group">
-                                                                            <label for="nama_ortu">Nama Orang Tua:</label>
-                                                                            <input type="text" class="form-control" id="nama_ortu" name="nama_ortu" required value="">
-                                                                        </div>
+                                                                    <div class="form-group">
+                                                                        <label for="nama_ortu">Nama Orang Tua:</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="nama_ortu" name="nama_ortu" required
+                                                                            value="{{ $s->walimurid_nama }}">
+                                                                    </div>
 
-                                                                        <div class="form-group">
-                                                                            <label for="hubungan">Hubungan:</label>
-                                                                            <select class="form-control" id="hubungan" name="hubungan_ortu" required>
-                                                                                <option value="" hidden></option>
-                                                                                <option value="OrtuKandung">Orang Tua Kandung</option>
-                                                                                <option value="OrtuAngkat">Orang Tua Angkat</option>
-                                                                                <option value="saudara">Saudara</option>
-                                                                                <option value="keponakan">Keponakan</option>
-                                                                            </select>
-                                                                        </div>
+                                                                    <div class="form-group">
+                                                                        <label for="hubungan">Hubungan:</label>
+                                                                        <select class="form-control" id="hubungan"
+                                                                            name="hubungan_ortu" required>
+                                                                            <option value="{{ $s->walimurid_hubungan }}" hidden>{{ $s->walimurid_hubungan }}</option>
+                                                                            <option value="OrtuKandung">Orang Tua Kandung
+                                                                            </option>
+                                                                            <option value="OrtuAngkat">Orang Tua Angkat
+                                                                            </option>
+                                                                            <option value="saudara">Saudara</option>
+                                                                            <option value="keponakan">Keponakan</option>
+                                                                        </select>
+                                                                    </div>
 
-                                                                        <div class="form-group">
-                                                                            <label for="agama">Agama:</label>
-                                                                            <select class="form-control" id="agama" name="agama_ortu" required>
-                                                                                <option value="" hidden></option>
-                                                                                <option value="Islam">Islam</option>
-                                                                                <option value="Kristen">Kristen</option>
-                                                                                <option value="Katolik">Katolik</option>
-                                                                                <option value="Hindu">Hindu</option>
-                                                                                <option value="Budha">Budha</option>
-                                                                                <option value="Konghucu">Konghucu</option>
-                                                                            </select>
-                                                                        </div>
+                                                                    <div class="form-group">
+                                                                        <label for="agama">Agama:</label>
+                                                                        <select class="form-control" id="agama"
+                                                                            name="agama_ortu" required>
+                                                                            <option value="{{ $s->walimurid_agama }}" hidden>{{ $s->walimurid_agama }}</option>
+                                                                            <option value="Islam">Islam</option>
+                                                                            <option value="Kristen">Kristen</option>
+                                                                            <option value="Katolik">Katolik</option>
+                                                                            <option value="Hindu">Hindu</option>
+                                                                            <option value="Budha">Budha</option>
+                                                                            <option value="Konghucu">Konghucu</option>
+                                                                        </select>
+                                                                    </div>
 
-                                                                        <div class="form-group">
-                                                                            <label for="jenis_kelamin_ortu">Jenis Kelamin Orang Tua:</label>
-                                                                            <select class="form-control" id="jenis_kelamin_ortu" name="jenis_kelamin_ortu" required>
-                                                                                <option value="" hidden></option>
-                                                                                <option value="Laki-laki">Laki-laki</option>
-                                                                                <option value="Perempuan">Perempuan</option>
-                                                                            </select>
-                                                                        </div>
+                                                                    <div class="form-group">
+                                                                        <label for="jenis_kelamin_ortu">Jenis Kelamin Orang
+                                                                            Tua:</label>
+                                                                        <select class="form-control"
+                                                                            id="jenis_kelamin_ortu"
+                                                                            name="jenis_kelamin_ortu" required>
+                                                                            <option value="{{ $s->walimurid_jenis_kelamin }}" hidden>{{ $s->walimurid_jenis_kelamin }}</option>
+                                                                            <option value="Laki-laki">Laki-laki</option>
+                                                                            <option value="Perempuan">Perempuan</option>
+                                                                        </select>
+                                                                    </div>
 
-                                                                        <div class="form-group">
-                                                                            <label for="no_hp_ortu">Nomor HP Orang Tua:</label>
-                                                                            <input type="number" class="form-control" id="no_hp_ortu" name="no_hp_ortu" required value="">
-                                                                        </div>
+                                                                    <div class="form-group">
+                                                                        <label for="no_hp_ortu">Nomor HP Orang Tua:</label>
+                                                                        <input type="number" class="form-control"
+                                                                            id="no_hp_ortu" name="no_hp_ortu" required
+                                                                            value="{{ $s->walimurid_no_hp }}">
+                                                                    </div>
 
-                                                                        <div class="form-group">
-                                                                            <label for="kelurahan_ortu">Kelurahan Orang Tua:</label>
-                                                                            <input type="text" class="form-control" id="kelurahan_ortu" name="kelurahan_ortu" required value="">
-                                                                        </div>
+                                                                    <div class="form-group">
+                                                                        <label for="kelurahan_ortu">Kelurahan Orang
+                                                                            Tua:</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="kelurahan_ortu" name="kelurahan_ortu"
+                                                                            required value="{{ $s->walimurid_kelurahan }}">
+                                                                    </div>
 
-                                                                        <div class="form-group">
-                                                                            <label for="kecamatan_ortu">Kecamatan Orang Tua:</label>
-                                                                            <input type="text" class="form-control" id="kecamatan_ortu" name="kecamatan_ortu" required value="">
-                                                                        </div>
+                                                                    <div class="form-group">
+                                                                        <label for="kecamatan_ortu">Kecamatan Orang
+                                                                            Tua:</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="kecamatan_ortu" name="kecamatan_ortu"
+                                                                            required value="{{ $s->walimurid_kecamatan }}">
+                                                                    </div>
 
-                                                                        <div class="form-group">
-                                                                            <label for="kabupaten_kota_ortu">Kabupaten/Kota Orang Tua:</label>
-                                                                            <input type="text" class="form-control" id="kabupaten_kota_ortu" name="kabupaten_kota_ortu" required value="">
-                                                                        </div>
+                                                                    <div class="form-group">
+                                                                        <label for="kabupaten_kota_ortu">Kabupaten/Kota
+                                                                            Orang Tua:</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="kabupaten_kota_ortu"
+                                                                            name="kabupaten_kota_ortu" required
+                                                                            value="{{ $s->walimurid_kabupatenKota }}">
+                                                                    </div>
 
-                                                                        <div class="form-group">
-                                                                            <label for="provinsi_ortu">Provinsi Orang Tua:</label>
-                                                                            <input type="text" class="form-control" id="provinsi_ortu" name="provinsi_ortu" required value="">
-                                                                        </div>
+                                                                    <div class="form-group">
+                                                                        <label for="provinsi_ortu">Provinsi Orang
+                                                                            Tua:</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="provinsi_ortu" name="provinsi_ortu"
+                                                                            required value="{{ $s->walimurid_provinsi }}">
+                                                                    </div>
 
-                                                                        <div class="form-group">
-                                                                            <label for="email_ortu">Email Orang Tua:</label>
-                                                                            <input type="email" class="form-control" id="email_ortu" name="email_ortu" value="">
-                                                                        </div>
+                                                                    <div class="form-group">
+                                                                        <label for="email_ortu">Email Orang Tua:</label>
+                                                                        <input type="email" class="form-control"
+                                                                            id="email_ortu" name="email_ortu"
+                                                                            value="{{ $s->walimurid_email }}">
+                                                                    </div>
 
-                                                                        <div class="form-group">
-                                                                            <label for="pekerjaan_ortu">Pekerjaan Orang Tua:</label>
-                                                                            <input type="text" class="form-control" id="pekerjaan_ortu" name="pekerjaan_ortu" required value="">
-                                                                        </div>
+                                                                    <div class="form-group">
+                                                                        <label for="pekerjaan_ortu">Pekerjaan Orang
+                                                                            Tua:</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="pekerjaan_ortu" name="pekerjaan_ortu"
+                                                                            required value="{{ $s->walimurid_pekerjaan }}">
+                                                                    </div>
 
-                                                                        <div class="form-group">
-                                                                            <label for="alamat_ortu">Alamat Orang Tua:</label>
-                                                                            <textarea class="form-control" id="alamat_ortu" name="alamat_ortu" required></textarea>
-                                                                        </div>
+                                                                    <div class="form-group">
+                                                                        <label for="alamat_ortu">Alamat Orang Tua:</label>
+                                                                        <textarea class="form-control" id="alamat_ortu" name="alamat_ortu" required>{{ $s->walimurid_alamat }}</textarea>
+                                                                    </div>
 
 
                                                                 </div>

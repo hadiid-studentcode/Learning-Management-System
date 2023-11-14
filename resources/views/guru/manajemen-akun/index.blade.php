@@ -195,7 +195,7 @@
                     <div class="col-md-6 mb-4">
                         <!-- Table for Data Akun Siswa -->
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped" style="text-align: center">
+                            <table class="table table-bordered table-striped" style="text-align: center"  id="data_table">
                                 <!-- Table headers -->
                                 <thead>
                                     <tr>
@@ -215,7 +215,7 @@
                                     <!-- Loop through $akun and $siswaAndWaliMurid to populate the table -->
                                     @foreach ($akun as $a)
                                     @foreach($siswaAndWaliMurid as $sw)
-                                    @if($a->nama_lengkap === $sw->nama_siswa || $a->nama_lengkap === $sw->nama_waliMurid )
+                                    @if($a->nama_lengkap === $sw->nama_siswa )
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $a->nama_lengkap }}</td>
@@ -286,7 +286,7 @@
                     <!-- Repeat the structure for Data Akun Wali Murid -->
                     <div class="col-md-6">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped" style="text-align: center">
+                            <table class="table table-bordered table-striped" style="text-align: center" id="data_table1">
                                 <!-- Table headers -->
                                 <thead>
                                     <tr>
@@ -306,7 +306,7 @@
                                     <!-- Loop through $akun and $siswaAndWaliMurid to populate the table -->
                                     @foreach ($akun as $a)
                                     @foreach($siswaAndWaliMurid as $sw)
-                                    @if($a->nama_lengkap === $sw->nama_siswa || $a->nama_lengkap === $sw->nama_waliMurid )
+                                    @if($a->nama_lengkap === $sw->nama_waliMurid )
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $a->nama_lengkap }}</td>
