@@ -348,4 +348,23 @@ class Siswa extends Model
 
         return $results;
     }
+
+    public function HapusFotoSiswa($id)
+    {
+        $result = new Siswa();
+        $getfoto =  $result->getPhotoSiswa($id);
+
+        if (!empty($getfoto->foto)) {
+            $fotoPath = $getfoto->foto;
+
+            $image_path = 'storage/siswa/images/' . $fotoPath;
+
+            if (File::exists($image_path)) {
+                File::delete($image_path);
+            }
+
+
+        }
+      
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\WaliMurid;
 
+use App\Models\AbsenSiswa;
 use App\Models\Pemasukan;
 use App\Models\WaliMurid;
 use Illuminate\Http\Request;
@@ -46,6 +47,14 @@ class ProfileSiswaWaliMuridController extends WaliMuridController
 
         $this->img = $this->imageHeader();
 
+
+
+        // get absensi siswa
+        $resultAbsensiSiswa = new AbsenSiswa();
+        $poinAbsen = $resultAbsensiSiswa->getPoinAbsen();
+      
+
+
         return view('waliMurid.profile-siswa.index')
             ->with('title', $this->title)
             ->with('role', $this->role)
@@ -53,6 +62,7 @@ class ProfileSiswaWaliMuridController extends WaliMuridController
             ->with('img', $this->img)
             ->with('folder', $this->folder)
             ->with('siswa', $siswa)
+            ->with('poinAbsen', $poinAbsen)
 
             ->with('status', $status);
 
