@@ -10,6 +10,7 @@ use App\Http\Controllers\Guru\PesanGuruController;
 use App\Http\Controllers\Guru\PrestasiSiswaGuruController;
 use App\Http\Controllers\Guru\RekapNilaiGuruController;
 use App\Http\Controllers\Guru\SettingsGuruController;
+use App\Http\Controllers\Guru\TutorialGuruController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\Pegawai\DashboardPegawaiController;
@@ -120,6 +121,12 @@ Route::group(
         Route::post('guru/jadwal/cek/tugas/{kode}', [JadwalGuruController::class, 'uploadTugas']);
         Route::post('guru/jadwal/cek/absensi/{kode}/{id_siswa}', [JadwalGuruController::class, 'absen']);
         Route::post('guru/jadwal/cek/nilai/{kode}/{id_siswa}', [JadwalGuruController::class, 'nilai']);
+
+        Route::resource('/guru/tutorial', TutorialGuruController::class);
+
+      
+
+        // end tutorial
 
         Route::post('guru/setting/{id}', [User_GuruController::class, 'update']);
         // absen
