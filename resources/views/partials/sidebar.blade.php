@@ -266,6 +266,7 @@
                                             <span style="font-family: arial; color: black;">Prestasi Siswa</span>
                                         </a>
                                     </li>
+                                    
                                 @endif
                                 <li class="nav-item">
                                     <a href="{{ asset('/' . $route . '/atur-kkm') }}"
@@ -283,6 +284,18 @@
                                         <span style="font-family: arial; color: black;">Manajemen Nilai</span>
                                     </a>
                                 </li>
+                                 @if ($jenisGuru == 'Wali Kelas')
+                                    {{-- tutorial --}}
+                                      <li class="nav-item">
+                                        <a href="{{ asset('/' . $route . '/tutorial') }}"
+                                            class="nav-link @if ($title == 'Tutorial') active @else '' @endif">
+                                            <i class="fas fa-award"
+                                                style="font-size:20px;  width:25px; height:25px; color: black; margin-right: 23px;"></i>
+                                            <span style="font-family: arial; color: black;">Tutorial</span>
+                                        </a>
+                                    </li>
+                                    {{-- end tutorial --}}
+                                @endif
 
                                 <li class="nav-item" style="margin-top: 140%;">
                                     <a href="{{ asset('/' . $route . '/setting') }}"
