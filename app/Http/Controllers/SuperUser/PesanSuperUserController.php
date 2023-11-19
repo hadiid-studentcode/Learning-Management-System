@@ -80,7 +80,7 @@ class PesanSuperUserController extends SuperUserController
         $pegawai = $resultPegawai->viewPegawai(['id_user', 'nama']);
         $tataUsaha = $resultPegawai->getTataUsahaIdandName();
 
-        return view('superUser.pesan.create')
+        return view('superuser.pesan.create')
             ->with('title', $this->title)
             ->with('role', $this->role)
             ->with('route', $this->route)
