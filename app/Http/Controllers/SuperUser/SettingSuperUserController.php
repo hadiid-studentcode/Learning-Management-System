@@ -17,7 +17,7 @@ class SettingSuperUserController extends SuperUserController
         $result = new User();
         $getSuperUser = $result->getSuperUser($id);
 
-        return view('superUser.setting.index')
+        return view('superuser.setting.index')
             ->with('title', 'Setting')
             ->with('userName', $this->userName)
             ->with('role', $this->role)
