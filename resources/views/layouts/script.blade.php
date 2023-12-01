@@ -62,7 +62,7 @@
   <script src="{{ asset('Assets/dist/AdminLTE-3.2.0/plugins/moment/moment.min.js') }}"></script>
   <script src="{{ asset('Assets/dist/AdminLTE-3.2.0/plugins/fullcalendar/main.js') }}"></script>
 
-
+{{-- 
   <script>
     $(function () {
 
@@ -188,7 +188,7 @@
         $('#new-event').val('')
       })
     })
-  </script>
+  </script> --}}
 
 
 
