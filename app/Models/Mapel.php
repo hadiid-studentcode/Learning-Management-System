@@ -371,4 +371,17 @@ class Mapel extends Model
 
         return $result;
     }
+
+    public function searchMapel($select,$kelas,$rombel,$hari){
+        $query = DB::table('mapel')
+        ->select($select)
+        ->join('guru', 'mapel.id_guru', '=', 'guru.id')
+        ->join('kelas', 'mapel.id_kelas', '=', 'kelas.id')
+        ->join('tahun_ajaran', 'mapel.id_tahun_ajaran', '=', 'tahun_ajaran.id')
+        ->where('kelas.nama', $kelas)
+        ->where('kelas.rombel', $rombel)
+        ->where('mapel.hari', $hari);
+
+        return $query;
+    }
 }

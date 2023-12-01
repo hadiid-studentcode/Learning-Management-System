@@ -152,36 +152,29 @@
 
     <div class="card card-custom gutter-b">
         <div class="card-body">
-            <form>
+            <form action="{{ url('/tata-usaha/manajemen-mata-pelajaran/search') }}">
                 <div class="form-group">
                     <label for="selectKelas">Pilih Kelas:</label>
-                    <select class="form-control" id="selectKelas">
-                        <option hidden>--Pilih Kelas--</option>
-                        <option>Kelas A</option>
-                        <option>Kelas B</option>
-                        <option>Kelas C</option>
+                    <select class="form-control" id="selectKelas" name="kelas" required>
+                        <option value="{{ isset($isShow)? $searchKelas.'-'.$searchRombel : ''}}" hidden>{{ isset($isShow)? $searchKelas.' '.$searchRombel : '--Pilih Kelas--'}}</option>
+                        @foreach ($kelas as $k)
+                            <option value="{{ $k->nama }}-{{ $k->rombel }}">{{ $k->nama }} {{ $k->rombel }}</option>
+                        @endforeach
+
 
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="selectRuang">Pilih Romble:</label>
-                    <select class="form-control" id="selectRuang">
-                        <option hidden>--Pilih Romble--</option>
-                        <option>Romble 1</option>
-                        <option>Romble 2</option>
-                        <option>Romble 3</option>
 
-                    </select>
-                </div>
                 <div class="form-group">
                     <label for="selectHari">Pilih Hari:</label>
-                    <select class="form-control" id="selectHari">
-                        <option hidden>--Pilih Hari--</option>
-                        <option>Senin</option>
-                        <option>Selasa</option>
-                        <option>Rabu</option>
-                        <option>Kamis</option>
-                        <option>Jumat</option>
+                    <select class="form-control" id="selectHari" name="hari" required>
+                        <option value="{{ isset($isShow)? $searchHari : '' }}" hidden> {{ isset($isShow)? $searchHari : '--Pilih Hari--' }}</option>
+                        <option value="Senin">Senin</option>
+                        <option value="Selasa">Selasa</option>
+                        <option value="Rabu"> Rabu</option>
+                        <option value="Kamis">Kamis</option>
+                        <option value="Jumat">Jumat</option>
+                        <option value="Sabtu">Sabtu</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-success">Lihat Jadwal</button>
@@ -536,7 +529,7 @@
 
 
 
-
+                            @if(!isset($isShow))
                             @if ($mapel->lastPage() > 1)
                                 <nav aria-label="Page navigation">
                                     <ul class="pagination justify-content-end">
@@ -572,6 +565,7 @@
                                         @endif
                                     </ul>
                                 </nav>
+                            @endif
                             @endif
 
 
