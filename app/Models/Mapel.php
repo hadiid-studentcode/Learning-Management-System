@@ -49,7 +49,7 @@ class Mapel extends Model
             ->join('kelas', 'mapel.id_kelas', '=', 'kelas.id')
             ->join('guru', 'mapel.id_guru', '=', 'guru.id')
             ->join('tahun_ajaran', 'mapel.id_tahun_ajaran', '=', 'tahun_ajaran.id')
-            ->get();
+          ;
 
         return $result;
     }

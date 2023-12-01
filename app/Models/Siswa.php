@@ -85,7 +85,7 @@ class Siswa extends Model
         return $result;
     }
 
-    public function getSiswaOrNisn($search)
+    public function  getSiswaOrNisn($search)
     {
         $result = DB::table('siswa')
             ->select('siswa.*', 'kelas.nama as kelas', 'kelas.rombel')
