@@ -16,6 +16,8 @@ class ManajemenMataPelajaranTataUsahaController extends TataUsahaController
      */
     public function index()
     {
+
+
         $this->img = $this->imageHeader();
 
         // get guru
@@ -34,7 +36,7 @@ class ManajemenMataPelajaranTataUsahaController extends TataUsahaController
             'guru.nama as guru',
             'tahun_ajaran.tahun_ajaran',
 
-        ]);
+        ])->paginate(10);
 
         // tahun ajaran
         $tahun_mulai = date('Y');
