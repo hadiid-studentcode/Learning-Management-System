@@ -10,15 +10,15 @@
   {{-- <h1>{{ $datenow }}</h1> --}}
 
   @php
-  
-  if($route == 'tata-usaha'){
-    $person = 1;
-  }elseif($route == 'guru'){
-    $person = 2;
-  }elseif($route == 'pegawai'){
-    $person = 3;
-  }
-  
+
+      if ($route == 'tata-usaha') {
+          $person = 1;
+      } elseif ($route == 'guru') {
+          $person = 2;
+      } elseif ($route == 'pegawai') {
+          $person = 3;
+      }
+
   @endphp
 
 
@@ -67,6 +67,11 @@
           const lat = position.coords.latitude;
           const lng = position.coords.longitude;
 
+          const sdmkampa = {
+              lat: 0.343488,
+              lng: 101.192119,
+          };
+
           //   const lat = 0.343488,
           //       const lng = 0.343482,
 
@@ -87,15 +92,15 @@
               .addTo(mymap)
               .bindPopup("<b>Hai!</b><br />Ini adalah lokasi mu");
 
-          L.marker([sdmkampa.lat, sdmkampa.lng])
-              .addTo(mymap)
-              .bindPopup("<b>Hai!</b><br />Ini adalah sekolah mu");
-          var circle = L.circle([sdmkampa.lat, sdmkampa.lng], {
-              color: "red",
-              fillColor: "#f03",
-              fillOpacity: 0.5,
-              radius: 200,
-          }).addTo(mymap);
+        //   L.marker([sdmkampa.lat, sdmkampa.lng])
+        //       .addTo(mymap)
+        //       .bindPopup("<b>Hai!</b><br />Ini adalah sekolah mu");
+        //   var circle = L.circle([sdmkampa.lat, sdmkampa.lng], {
+        //       color: "red",
+        //       fillColor: "#f03",
+        //       fillOpacity: 0.5,
+        //       radius: 100,
+        //   }).addTo(mymap);
       }
 
 
@@ -105,7 +110,7 @@
           if (navigator.geolocation) {
               // getCurrentPosition digunakan untuk mendapatkan lokasi pengguna
               //showPosition adalah fungsi yang akan dijalankan
-            //   navigator.geolocation.getCurrentPosition(showPosition);
+              //   navigator.geolocation.getCurrentPosition(showPosition);
 
               navigator.geolocation.getCurrentPosition(function(position) {
                   showPosition(position, route);
@@ -114,50 +119,50 @@
       }
 
 
-      function showPosition(position,route) {
+      function showPosition(position, route) {
 
-        let person = '';
+          let person = '';
 
-       switch (route) {
-        case 1:
-            person = 'tata-usaha';
-            break;
-        case 2:
-            person = 'guru';
-            break;
-        case 3: 
-            person = 'pegawai';  
-            break;   
-       
-        default:
-            break;
-       }
+          switch (route) {
+              case 1:
+                  person = 'tata-usaha';
+                  break;
+              case 2:
+                  person = 'guru';
+                  break;
+              case 3:
+                  person = 'pegawai';
+                  break;
 
-      
+              default:
+                  break;
+          }
 
-      
+
+
+
 
           // posisi saya
 
           const posisiSaya = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-		};
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+          };
 
-        //   const posisiSaya = {
-        //       lat: 0.343895,
-        //       lng: 101.196351,
-        //   };
+          //   const posisiSaya = {
+          //       lat: 0.343895,
+          //       lng: 101.196351,
+          //   };
 
           // posisi sekolah sd muhammadiyah kampa
 
-          // const sdmkampa = {
-          //     lat: 0.343488,
-          //     lng: 101.192119,
-          // };
+          //   const sdmkampa = {
+          //       lat: 0.343488,
+          //       lng: 101.192119,
+          //   };
 
-          // const lat = sdmkampa.lat;
-          // const lng = sdmkampa.lng;
+          //   const lat = sdmkampa.lat;
+          //   const lng = sdmkampa.lng;
 
           //    koordinat posisi sekolah sd Muhammadiyah Kampa
 
@@ -245,14 +250,14 @@
               .addTo(mymap)
               .bindPopup("<b>Hai!</b><br />Ini adalah lokasi mu");
 
-          L.marker([sdmkampa.lat, sdmkampa.lng])
-              .addTo(mymap)
-              .bindPopup("<b>Hai!</b><br />Ini adalah sekolah mu");
-          var circle = L.circle([sdmkampa.lat, sdmkampa.lng], {
-              color: "red",
-              fillColor: "#f03",
-              fillOpacity: 0.5,
-              radius: 200,
-          }).addTo(mymap);
+        //   L.marker([sdmkampa.lat, sdmkampa.lng])
+        //       .addTo(mymap)
+        //       .bindPopup("<b>Hai!</b><br />Ini adalah sekolah mu");
+        //   var circle = L.circle([sdmkampa.lat, sdmkampa.lng], {
+        //       color: "red",
+        //       fillColor: "#f03",
+        //       fillOpacity: 0.5,
+        //       radius: 200,
+        //   }).addTo(mymap);
       }
   </script>
