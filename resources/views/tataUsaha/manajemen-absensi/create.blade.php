@@ -72,7 +72,7 @@
                                                 value="@if (isset($tanggal)){{ $tanggal }}@else @endif">
                                         </div>
                                     </div>
-                                    
+
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-success mb-4">Tampilkan Absensi</button>
                                     </div>
@@ -84,7 +84,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row gutetr-b">
             <div class="col-md-6">
                 <div class="card card-custom gutter-b">
                     <div class="card-body">
@@ -178,9 +178,9 @@
 
 
                             </tbody>
-                        </table>  
+                        </table>
                           </div>
-                       
+
                     </div>
                 </div>
             </div>
@@ -278,14 +278,16 @@
                             </tbody>
                         </table>
                           </div>
-                        
+
                     </div>
                 </div>
             </div>
 
 
 
-
+                <button type="button" class="btn btn-success container mb-3" style="width: 20%; backround-color:#7ED7C1;">
+                    <i class="fas fa-print"></i> Print
+                </button>
 
         </div>
 

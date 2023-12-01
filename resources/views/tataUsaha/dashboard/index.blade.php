@@ -22,6 +22,7 @@
                 </li>
             </ul>
 
+
             @include('partials.dashboard.absensi')
 
         </div>
@@ -45,7 +46,7 @@
                             </div>
                         </div>
                     </div>
-    
+
                     <div class="col-md-12">
                         <div class="card card-warning" style="height: 53vh;">
                             <div class="card-header">
@@ -63,13 +64,13 @@
                             </div>
                         </div>
                     </div>
-    
+
                 </div>
             </div>
-    
+
             <div class="col-md-4">
                 <div class="row">
-                    
+
                   <div class="col-md-12">
                         <div class="card card-secondary" style="height: 53vh;">
                             <div class="card-header">
@@ -87,7 +88,7 @@
                             </div>
                         </div>
                     </div>
-    
+
                     <div class="col-md-12">
                         <div class="card card-danger" style="height: 53vh;">
                             <div class="card-header">
@@ -105,7 +106,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
     </div>
@@ -115,5 +116,5 @@
 
 
 
- 
+
 @endsection

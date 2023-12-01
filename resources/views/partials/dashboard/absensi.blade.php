@@ -10,7 +10,7 @@
   {{-- <h1>{{ $datenow }}</h1> --}}
 
   @php
-  
+
   if($route == 'tata-usaha'){
     $person = 1;
   }elseif($route == 'guru'){
@@ -18,30 +18,55 @@
   }elseif($route == 'pegawai'){
     $person = 3;
   }
-  
+
   @endphp
 
 
-  <div class="container">
-      <div class="row justify-content-center mt-5">
-          <div class="col-lg-6 col-md-8">
-              @if ($waktu_absenDari == null && $waktu_absenSampai == null && $datenow == null)
-              @elseif ($datenow >= $waktu_absenDari && $datenow <= $waktu_absenSampai)
-                  <div class="alert alert-success text-center" role="alert">
-                      <strong>Absen Anda Dibuka!</strong>
-                  </div>
-                  <button class="btn btn-primary btn-block mt-3" onclick="absen({{ $person }})">Lakukan
-                      Absensi</button>
-              @elseif($datenow >= $waktu_absenDari && $datenow >= $waktu_absenSampai)
-                  <div class="alert alert-danger text-center" role="alert">
-                      <strong>Anda Terlambat!</strong>
-                  </div>
-                  <button class="btn btn-primary btn-block mt-3" onclick="absen({{ $person }})">Lakukan
-                      Absensi</button>
-              @endif
-          </div>
-      </div>
-  </div>
+<style>
+    /* CSS contoh */
+.container {
+    padding-top: 30px;
+}
+
+.alert {
+    margin-bottom: 20px;
+}
+
+.btn {
+    border-radius: 8px;
+}
+
+/* Tambahkan aturan media query untuk responsivitas */
+@media (max-width: 768px) {
+    .col-lg-6 {
+        /* Sesuaikan lebar kolom pada perangkat dengan lebar maksimum 768px */
+        width: 100%;
+    }
+}
+
+</style>
+
+
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-lg-6 col-md-8">
+            @if ($waktu_absenDari == null && $waktu_absenSampai == null && $datenow == null)
+                <!-- Tidak ada kondisi -->
+            @elseif ($datenow >= $waktu_absenDari && $datenow <= $waktu_absenSampai)
+                <div class="alert alert-success text-center" role="alert">
+                    <strong>Absen Anda Dibuka!</strong>
+                </div>
+                <button class="btn btn-primary btn-block mt-3" onclick="absen({{ $person }})">Lakukan Absensi</button>
+            @elseif($datenow >= $waktu_absenDari && $datenow >= $waktu_absenSampai)
+                <div class="alert alert-danger text-center" role="alert">
+                    <strong>Anda Terlambat!</strong>
+                </div>
+                <button class="btn btn-primary btn-block mt-3" onclick="absen({{ $person }})">Lakukan Absensi</button>
+            @endif
+        </div>
+    </div>
+</div>
+
   {{-- absen --}}
 
 
@@ -125,17 +150,17 @@
         case 2:
             person = 'guru';
             break;
-        case 3: 
-            person = 'pegawai';  
-            break;   
-       
+        case 3:
+            person = 'pegawai';
+            break;
+
         default:
             break;
        }
 
-      
 
-      
+
+
 
           // posisi saya
 
