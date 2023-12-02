@@ -84,6 +84,60 @@
                 </div>
             </div>
 
+            <div class="card card-custom gutter-b mt-3">
+                <div class="card-body">
+                    <h5 class="text-center text-uppercase">Data Absensi</h5>
+                    <hr>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered" style="text-align: center; font-size:90%;">
+                            <thead>
+                                <tr>
+                                    <th style="width: 5%;">Nomor</th>
+                                    <th style="width: 20%;">Tanggal</th>
+                                    <th style="width: 20%;">Waktu Mulai</th>
+                                    <th style="width: 20%;">Waktu Selesai</th>
+                                    <th style="width: 15%;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>17-02-1982</td>
+                                    <td>08:00</td>
+                                    <td>19:00</td>
+                                    <td>
+                                        <button class="btn btn-danger delete-btn" data-toggle="modal" data-target="#deleteModal">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Hapus</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Apakah kamu yakin ingin menghapus data ini?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger">Hapus</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>
