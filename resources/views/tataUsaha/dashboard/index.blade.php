@@ -22,8 +22,10 @@
                 </li>
             </ul>
 
+            <div class="container">
+                 @include('partials.dashboard.absensi')
+            </div>
 
-            @include('partials.dashboard.absensi')
 
         </div>
 

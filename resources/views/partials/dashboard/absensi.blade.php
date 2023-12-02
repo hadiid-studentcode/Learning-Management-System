@@ -3,7 +3,7 @@
 
 
 
-  <div id="mapid" style="border-radius: 10px; width:100%; height: 300px"></div>
+  <div id="mapid" style="border-radius: 10px; width:100%; height: 25vh;"></div>
 
 
 
@@ -22,50 +22,23 @@
   @endphp
 
 
-<style>
-    /* CSS contoh */
-.container {
-    padding-top: 30px;
-}
-
-.alert {
-    margin-bottom: 20px;
-}
-
-.btn {
-    border-radius: 8px;
-}
-
-/* Tambahkan aturan media query untuk responsivitas */
-@media (max-width: 768px) {
-    .col-lg-6 {
-        /* Sesuaikan lebar kolom pada perangkat dengan lebar maksimum 768px */
-        width: 100%;
-    }
-}
-
-</style>
 
 
-<div class="container">
-    <div class="row justify-content-center mt-5">
-        <div class="col-lg-6 col-md-8">
+
+
             @if ($waktu_absenDari == null && $waktu_absenSampai == null && $datenow == null)
                 <!-- Tidak ada kondisi -->
             @elseif ($datenow >= $waktu_absenDari && $datenow <= $waktu_absenSampai)
-                <div class="alert alert-success text-center" role="alert">
+                <div class="alert alert-success text-center mt-3 " role="alert">
                     <strong>Absen Anda Dibuka!</strong>
                 </div>
-                <button class="btn btn-primary btn-block mt-3" onclick="absen({{ $person }})">Lakukan Absensi</button>
+                <button class="btn btn-primary btn-block mt-3 " onclick="absen({{ $person }})">Lakukan Absensi</button>
             @elseif($datenow >= $waktu_absenDari && $datenow >= $waktu_absenSampai)
-                <div class="alert alert-danger text-center" role="alert">
+                <div class="alert alert-danger text-center mt-3 " role="alert">
                     <strong>Anda Terlambat!</strong>
                 </div>
-                <button class="btn btn-primary btn-block mt-3" onclick="absen({{ $person }})">Lakukan Absensi</button>
+                <button class="btn btn-primary btn-block " onclick="absen({{ $person }})">Lakukan Absensi</button>
             @endif
-        </div>
-    </div>
-</div>
 
   {{-- absen --}}
 
