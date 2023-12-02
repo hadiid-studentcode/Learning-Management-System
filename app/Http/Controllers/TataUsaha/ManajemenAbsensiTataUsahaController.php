@@ -116,7 +116,6 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
         ]);
 
      
-        
 
         return view('tataUsaha.manajemen-absensi.create')
             ->with('title', 'Manajemen Absensi')
