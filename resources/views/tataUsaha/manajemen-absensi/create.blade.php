@@ -128,7 +128,7 @@
                                                         <option value="hadir">Hadir</option>
                                                         <option value="izin">Izin</option>
                                                         <option value="sakit">Sakit</option>
-                                                        <option value="mangkir">Mangkir</option>
+                                                        <option value="mangkir">Terlambat</option>
                                                     </select>
                                                 </td>
                                                 <td><button type="submit" class="btn btn-sm btn-success"><i
@@ -162,7 +162,7 @@
                                                         <option value="hadir">Hadir</option>
                                                         <option value="izin">Izin</option>
                                                         <option value="sakit">Sakit</option>
-                                                        <option value="mangkir">Mangkir</option>
+                                                        <option value="mangkir">Terlambat</option>
                                                     </select>
                                                 </td>
                                                 <td><button type="submit" class="btn btn-sm btn-success"><i
@@ -228,7 +228,7 @@
                                                         <option value="hadir">Hadir</option>
                                                         <option value="izin">Izin</option>
                                                         <option value="sakit">Sakit</option>
-                                                        <option value="mangkir">Mangkir</option>
+                                                        <option value="mangkir">Terlambat</option>
                                                     </select>
                                                 </td>
                                                 <td><button type="submit" class="btn btn-sm btn-success"><i
@@ -261,7 +261,7 @@
                                                         <option value="hadir">Hadir</option>
                                                         <option value="izin">Izin</option>
                                                         <option value="sakit">Sakit</option>
-                                                        <option value="mangkir">Mangkir</option>
+                                                        <option value="mangkir">Terlambat</option>
                                                     </select>
                                                 </td>
                                                 <td><button type="submit" class="btn btn-sm btn-success"><i
