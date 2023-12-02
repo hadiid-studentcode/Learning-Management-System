@@ -13,7 +13,7 @@
 
 
             <h3 class="profile-username text-center">{{ $guru->nama }}</h3>
-            <h5 class="text-muted text-center">Guru Bahasa Indonesia</h5>
+            <h5 class="text-muted text-center">Guru {{ $guru->bidang_studi }}</h5>
             <ul class="list-group list-group-unbordered mb-3">
                 <li class="list-group-item">
                     <b>Wali kelas :</b> <span class="float-right">

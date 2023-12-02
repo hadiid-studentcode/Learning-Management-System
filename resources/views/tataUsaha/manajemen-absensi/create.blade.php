@@ -1,8 +1,9 @@
 @extends('layouts.main')
 
 @section('main')
-
+    @include('partials.alert')
     <div class="">
+
         <div class="card card-custom">
             <div class="card-body">
                 <div class="d-flex flex-column align-items-center">
@@ -67,9 +68,9 @@
 
                                     <div class="form-group">
                                         <label for="tanggal" style="margin-left:10%">Pilih Tanggal:</label>
-                                        <div class="input-group" style="width: 80%; margin-left:10%;" >
+                                        <div class="input-group" style="width: 80%; margin-left:10%;">
                                             <input type="date" class="form-control" id="tanggal" name="tanggal"
-                                                value="@if (isset($tanggal)){{ $tanggal }}@else @endif">
+                                                value="{{ isset($tanggal) ? $tanggal : '' }}">
                                         </div>
                                     </div>
 
@@ -88,98 +89,106 @@
             <div class="col-md-6">
                 <div class="card card-custom gutter-b">
                     <div class="card-body">
-                        <h5 class="text-center text-uppercase">Data Absensi Guru DD-MM-YYY</h5>
+                        @php
+                            use Carbon\Carbon;
+
+                            $tanggal = $tanggal;
+                            $tanggalSearch = Carbon::createFromFormat('Y-m-d', $tanggal)->format('d F Y');
+                           
+                        @endphp
+                        <h5 class="text-center text-uppercase">Data Absensi Guru
+                            {{ isset($tanggal) ? $tanggalSearch : 'DD-MM-YYY' }}</h5>
                         <hr>
                         <div class="table-responsive">
-                           <table id="data_table" class="table table-striped table-bordered "
-                            style="text-align: center; font-size:90%;">
-                            <thead>
-                                <tr>
-                                    <th>Nama</th>
-                                    <th>Waktu</th>
-                                    <th>Status</th>
-                                    <th>Edit</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                            <table id="data_table" class="table table-striped table-bordered "
+                                style="text-align: center; font-size:90%;">
+                                <thead>
+                                    <tr>
+                                        <th>Nama</th>
+                                        <th>Waktu</th>
+                                        <th>Status</th>
+                                        <th>Edit</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
-                                @if (isset($getGuruSearch))
-                                    @foreach ($getGuruSearch as $gs)
-                                        <tr>
-                                            <td>{{ $gs->nama }}</td>
-                                            <td>{{ $gs->waktu }}</td>
-                                            <td>{{ $gs->status }}</td>
+                                    @if (isset($getGuruSearch))
+                                        @foreach ($getGuruSearch as $gs)
+                                            <tr>
+                                                <td>{{ $gs->nama }}</td>
+                                                <td>{{ $gs->waktu }}</td>
+                                                <td>{{ $gs->status }}</td>
 
-                                            <form action="{{ url('tata-usaha/manajemen-absensi/' . $gs->id) }}"
-                                                method="post">
-                                                @csrf
-                                                @method('put')
+                                                <form action="{{ url('tata-usaha/manajemen-absensi/' . $gs->id) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    @method('put')
 
-                                                <input type="hidden" name="jenis" value="guru">
-                                                  @if (isset($tanggal))
-                                                    <input type="hidden" name="tanggal" value="{{ $tanggal }}">
-                                                @else
-                                                @endif
+                                                    <input type="hidden" name="jenis" value="guru">
+                                                    @if (isset($tanggal))
+                                                        <input type="hidden" name="tanggal" value="{{ $tanggal }}">
+                                                    @else
+                                                    @endif
 
-                                                <td>
-                                                    <select class="form-control" name="status">
-                                                        <option value="" hidden>Pilih</option>
-                                                        <option value="hadir">Hadir</option>
-                                                        <option value="izin">Izin</option>
-                                                        <option value="sakit">Sakit</option>
-                                                        <option value="mangkir">Terlambat</option>
-                                                    </select>
-                                                </td>
-                                                <td><button type="submit" class="btn btn-sm btn-success"><i
-                                                            class="fas fa-check"></i></button>
-                                                </td>
-                                            </form>
+                                                    <td>
+                                                        <select class="form-control" name="status">
+                                                            <option value="" hidden>Pilih</option>
+                                                            <option value="hadir">Hadir</option>
+                                                            <option value="izin">Izin</option>
+                                                            <option value="sakit">Sakit</option>
+                                                            <option value="mangkir">Terlambat</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><button type="submit" class="btn btn-sm btn-success"><i
+                                                                class="fas fa-check"></i></button>
+                                                    </td>
+                                                </form>
 
-                                        </tr>
-                                    @endforeach
-                                @else
-                                    @foreach ($guru as $g)
-                                        <tr>
-                                            <td>{{ $g->nama }}</td>
-                                            <td>{{ $g->waktu }}</td>
-                                            <td>{{ $g->status }}</td>
+                                            </tr>
+                                        @endforeach
+                                    @else
+                                        @foreach ($guru as $g)
+                                            <tr>
+                                                <td>{{ $g->nama }}</td>
+                                                <td>{{ $g->waktu }}</td>
+                                                <td>{{ $g->status }}</td>
 
-                                            <form action="{{ url('tata-usaha/manajemen-absensi/' . $g->id) }}"
-                                                method="post">
-                                                @csrf
-                                                @method('put')
+                                                <form action="{{ url('tata-usaha/manajemen-absensi/' . $g->id) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    @method('put')
 
-                                                <input type="hidden" name="jenis" value="guru">
-                                                  @if (isset($tanggal))
-                                                    <input type="hidden" name="tanggal" value="{{ $tanggal }}">
-                                                @else
-                                                @endif
+                                                    <input type="hidden" name="jenis" value="guru">
+                                                    @if (isset($tanggal))
+                                                        <input type="hidden" name="tanggal" value="{{ $tanggal }}">
+                                                    @else
+                                                    @endif
 
-                                                <td>
-                                                    <select class="form-control" name="status">
-                                                        <option value="" hidden>Pilih</option>
-                                                        <option value="hadir">Hadir</option>
-                                                        <option value="izin">Izin</option>
-                                                        <option value="sakit">Sakit</option>
-                                                        <option value="mangkir">Terlambat</option>
-                                                    </select>
-                                                </td>
-                                                <td><button type="submit" class="btn btn-sm btn-success"><i
-                                                            class="fas fa-check"></i></button>
-                                                </td>
-                                            </form>
+                                                    <td>
+                                                        <select class="form-control" name="status">
+                                                            <option value="" hidden>Pilih</option>
+                                                            <option value="hadir">Hadir</option>
+                                                            <option value="izin">Izin</option>
+                                                            <option value="sakit">Sakit</option>
+                                                            <option value="mangkir">Terlambat</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><button type="submit" class="btn btn-sm btn-success"><i
+                                                                class="fas fa-check"></i></button>
+                                                    </td>
+                                                </form>
 
-                                        </tr>
-                                    @endforeach
-                                @endif
-
-
+                                            </tr>
+                                        @endforeach
+                                    @endif
 
 
-                            </tbody>
-                        </table>
-                          </div>
+
+
+                                </tbody>
+                            </table>
+                        </div>
 
                     </div>
                 </div>
@@ -189,95 +198,97 @@
             <div class="col-md-6">
                 <div class="card card-custom gutter-b">
                     <div class="card-body">
-                        <h5 class="text-center text-uppercase">Data Absensi Pegawai DD-MM-YYY</h5>
+                        <h5 class="text-center text-uppercase">Data Absensi Pegawai  {{ isset($tanggal) ? $tanggalSearch : 'DD-MM-YYY' }}</h5>
                         <hr>
                         <div class="table-responsive">
-                          <table id="data_table1" class="table table-striped table-bordered "
-                            style="text-align: center; font-size:90%;">
-                            <thead>
-                                <tr>
-                                    <th>Nama</th>
-                                    <th>Waktu</th>
-                                    <th>Status</th>
-                                    <th>Edit</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                            <table id="data_table1" class="table table-striped table-bordered "
+                                style="text-align: center; font-size:90%;">
+                                <thead>
+                                    <tr>
+                                        <th>Nama</th>
+                                        <th>Waktu</th>
+                                        <th>Status</th>
+                                        <th>Edit</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
-                                @if (isset($pegawaiSearch))
-                                    @foreach ($pegawaiSearch as $ps)
-                                        <tr>
-                                            <td>{{ $ps->nama }}</td>
-                                            <td>{{ $ps->waktu }}</td>
-                                            <td>{{ $ps->status }}</td>
+                                    @if (isset($pegawaiSearch))
+                                        @foreach ($pegawaiSearch as $ps)
+                                            <tr>
+                                                <td>{{ $ps->nama }}</td>
+                                                <td>{{ $ps->waktu }}</td>
+                                                <td>{{ $ps->status }}</td>
 
-                                            <form action="{{ url('tata-usaha/manajemen-absensi/' . $ps->id) }}"
-                                                method="post">
-                                                @csrf
-                                                @method('put')
+                                                <form action="{{ url('tata-usaha/manajemen-absensi/' . $ps->id) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    @method('put')
 
-                                                <input type="hidden" name="jenis" value="pegawai">
-                                                @if (isset($tanggal))
-                                                    <input type="hidden" name="tanggal" value="{{ $tanggal }}">
-                                                @else
-                                                @endif
-                                                <td>
-                                                    <select class="form-control" name="status">
-                                                        <option value="" hidden>Pilih</option>
-                                                        <option value="hadir">Hadir</option>
-                                                        <option value="izin">Izin</option>
-                                                        <option value="sakit">Sakit</option>
-                                                        <option value="mangkir">Terlambat</option>
-                                                    </select>
-                                                </td>
-                                                <td><button type="submit" class="btn btn-sm btn-success"><i
-                                                            class="fas fa-check"></i></button>
-                                                </td>
-                                            </form>
+                                                    <input type="hidden" name="jenis" value="pegawai">
+                                                    @if (isset($tanggal))
+                                                        <input type="hidden" name="tanggal"
+                                                            value="{{ $tanggal }}">
+                                                    @else
+                                                    @endif
+                                                    <td>
+                                                        <select class="form-control" name="status">
+                                                            <option value="" hidden>Pilih</option>
+                                                            <option value="hadir">Hadir</option>
+                                                            <option value="izin">Izin</option>
+                                                            <option value="sakit">Sakit</option>
+                                                            <option value="mangkir">Terlambat</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><button type="submit" class="btn btn-sm btn-success"><i
+                                                                class="fas fa-check"></i></button>
+                                                    </td>
+                                                </form>
 
-                                        </tr>
-                                    @endforeach
-                                @else
-                                    @foreach ($pegawai as $p)
-                                        <tr>
-                                            <td>{{ $p->nama }}</td>
-                                            <td>{{ $p->waktu }}</td>
-                                            <td>{{ $p->status }}</td>
+                                            </tr>
+                                        @endforeach
+                                    @else
+                                        @foreach ($pegawai as $p)
+                                            <tr>
+                                                <td>{{ $p->nama }}</td>
+                                                <td>{{ $p->waktu }}</td>
+                                                <td>{{ $p->status }}</td>
 
-                                            <form action="{{ url('tata-usaha/manajemen-absensi/' . $p->id) }}"
-                                                method="post">
-                                                @csrf
-                                                @method('put')
+                                                <form action="{{ url('tata-usaha/manajemen-absensi/' . $p->id) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    @method('put')
 
-                                                <input type="hidden" name="jenis" value="pegawai">
-                                                @if (isset($tanggal))
-                                                    <input type="hidden" name="tanggal" value="{{ $tanggal }}">
-                                                @else
-                                                @endif
-                                                <td>
-                                                    <select class="form-control" name="status">
-                                                        <option value="" hidden>Pilih</option>
-                                                        <option value="hadir">Hadir</option>
-                                                        <option value="izin">Izin</option>
-                                                        <option value="sakit">Sakit</option>
-                                                        <option value="mangkir">Terlambat</option>
-                                                    </select>
-                                                </td>
-                                                <td><button type="submit" class="btn btn-sm btn-success"><i
-                                                            class="fas fa-check"></i></button>
-                                                </td>
-                                            </form>
+                                                    <input type="hidden" name="jenis" value="pegawai">
+                                                    @if (isset($tanggal))
+                                                        <input type="hidden" name="tanggal"
+                                                            value="{{ $tanggal }}">
+                                                    @else
+                                                    @endif
+                                                    <td>
+                                                        <select class="form-control" name="status">
+                                                            <option value="" hidden>Pilih</option>
+                                                            <option value="hadir">Hadir</option>
+                                                            <option value="izin">Izin</option>
+                                                            <option value="sakit">Sakit</option>
+                                                            <option value="mangkir">Terlambat</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><button type="submit" class="btn btn-sm btn-success"><i
+                                                                class="fas fa-check"></i></button>
+                                                    </td>
+                                                </form>
 
-                                        </tr>
-                                    @endforeach
-                                @endif
+                                            </tr>
+                                        @endforeach
+                                    @endif
 
 
 
-                            </tbody>
-                        </table>
-                          </div>
+                                </tbody>
+                            </table>
+                        </div>
 
                     </div>
                 </div>
@@ -285,9 +296,9 @@
 
 
 
-                <button type="button" class="btn btn-success container mb-3" style="width: 20%; backround-color:#7ED7C1;">
-                    <i class="fas fa-print"></i> Print
-                </button>
+            <button type="button" class="btn btn-success container mb-3" style="width: 20%; backround-color:#7ED7C1;">
+                <i class="fas fa-print"></i> Print
+            </button>
 
         </div>
 

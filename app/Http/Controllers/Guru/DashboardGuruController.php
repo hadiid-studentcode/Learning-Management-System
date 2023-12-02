@@ -21,7 +21,7 @@ class DashboardGuruController extends GuruController
 
         // tampilkan user guru
         $result = new Guru();
-        $user_guru = $result->getGuruFirst(['id', 'nama', 'nohp', 'foto', 'jenis'], $id);
+        $user_guru = $result->getGuruFirst(['id', 'nama', 'nohp', 'foto', 'jenis','bidang_studi'], $id);
 
         $this->img = $user_guru->foto;
 
