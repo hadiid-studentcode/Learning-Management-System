@@ -91,9 +91,10 @@
                     <div class="card-body">
                         @php
                             use Carbon\Carbon;
-
+                            if(isset($tanggal)){
                             $tanggal = $tanggal;
                             $tanggalSearch = Carbon::createFromFormat('Y-m-d', $tanggal)->format('d F Y');
+                            }
                            
                         @endphp
                         <h5 class="text-center text-uppercase">Data Absensi Guru
