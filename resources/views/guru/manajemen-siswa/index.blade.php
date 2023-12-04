@@ -430,43 +430,43 @@
                                                                         <tbody>
                                                                             <tr>
                                                                                 <th style="width: 15%;">Nama</th>
-                                                                                <td> {{ $s->nama }}</td>
+                                                                                <td>{{ $s->nama }}</td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th style="width: 15%;">NISN</th>
-                                                                                <td> : {{ $s->nisn }}</td>
+                                                                                <td>{{ $s->nisn }}</td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th style="width: 15%;">Kelas</th>
-                                                                                <td> {{ $s->kelas }} {{ $s->rombel }}</td>
+                                                                                <td>{{ $s->kelas }} {{ $s->rombel }}</td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th style="width: 15%;">Jenis Kelamin</th>
-                                                                                <td> {{ $s->jenis_kelamin }}</td>
+                                                                                <td>{{ $s->jenis_kelamin }}</td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th style="width: 15%;">Agama</th>
-                                                                                <td> {{ $s->agama }}</td>
+                                                                                <td>{{ $s->agama }}</td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th style="width: 15%;">Tempat Lahir</th>
-                                                                                <td> {{ $s->tempat_lahir }}</td>
+                                                                                <td>{{ $s->tempat_lahir }}</td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th style="width: 15%;">Kelurahan</th>
-                                                                                <td> {{ $s->kelurahan }}</td>
+                                                                                <td>{{ $s->kelurahan }}</td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th style="width: 15%;">Kecamatan</th>
-                                                                                <td> {{ $s->kecamatan }}</td>
+                                                                                <td>{{ $s->kecamatan }}</td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th style="width: 15%;">Provinsi</th>
-                                                                                <td> {{ $s->provinsi }}</td>
+                                                                                <td>{{ $s->provinsi }}</td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th style="width: 15%;">Alamat</th>
-                                                                                <td> {{ $s->alamat }}</td>
+                                                                                <td>{{ $s->alamat }}</td>
                                                                             </tr>
                                                                         </tbody>
                                                                     </table>
@@ -485,16 +485,16 @@
                                                                         <tbody>
                                                                             <tr>
                                                                                 <th style="width: 15%;">NIK Orang Tua</th>
-                                                                                <td> {{ $s->walimurid_nik }}</td>
+                                                                                <td>{{ $s->walimurid_nik }}</td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th style="width: 15%;">Nama Orang Tua</th>
-                                                                                <td> {{ $s->walimurid_nama }}</td>
+                                                                                <td>{{ $s->walimurid_nama }}</td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th style="width: 15%;">Hubungan dengan
                                                                                     siswa</th>
-                                                                                <td> {{ $s->walimurid_hubungan }}</td>
+                                                                                <td>{{ $s->walimurid_hubungan }}</td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th style="width: 15%;">Agama</th>
