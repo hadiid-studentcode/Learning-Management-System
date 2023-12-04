@@ -17,7 +17,6 @@ class ManajemenMataPelajaranTataUsahaController extends TataUsahaController
     public function index()
     {
 
-
         $this->img = $this->imageHeader();
 
         // get guru
@@ -182,20 +181,19 @@ class ManajemenMataPelajaranTataUsahaController extends TataUsahaController
     public function show(Request $r, string $id)
     {
 
-     
-        try{
-        $parts = explode("-", $r->kelas);
-        $kelas = $parts[0];
-        $rombel = $parts[1];
-        $hari = $r->hari;
-        $isShow = true;
-        }catch(\Throwable $th){
+        try {
+            $parts = explode('-', $r->kelas);
+            $kelas = $parts[0];
+            $rombel = $parts[1];
+            $hari = $r->hari;
+            $isShow = true;
+        } catch (\Throwable $th) {
 
             dd($th->getMessage());
 
-          return back()->with('error', 'Data Tidak Ditemukan');
+            return back()->with('error', 'Data Tidak Ditemukan');
         }
-        
+
         $result = new Mapel();
         $searchMapel = $result->searchMapel([
             'mapel.*',
@@ -204,9 +202,7 @@ class ManajemenMataPelajaranTataUsahaController extends TataUsahaController
             'guru.nama as guru',
             'tahun_ajaran.tahun_ajaran',
 
-        ],$kelas,$rombel,$hari)->paginate(10);
-
-
+        ], $kelas, $rombel, $hari)->paginate(10);
 
         $this->img = $this->imageHeader();
 
@@ -223,26 +219,20 @@ class ManajemenMataPelajaranTataUsahaController extends TataUsahaController
         $tahun_selesai = date('Y') + 1;
 
         return view('tataUsaha.jadwal-kelas.index')
-        ->with('title', 'Manajemen Mata Pelajaran')
-        ->with('role', $this->role)
-        ->with('img', $this->img)
-        ->with('folder', $this->folder)
-        ->with('route', $this->route)
-        ->with('guru', $getGuru)
-        ->with('mapel', $searchMapel)
-        ->with('tahun_mulai', $tahun_mulai)
-        ->with('tahun_selesai', $tahun_selesai)
-        ->with('kelas', $getKelas)
-        ->with('searchKelas', $kelas)
-        ->with('searchRombel', $rombel)
-        ->with('searchHari', $hari)
-        ->with('isShow', $isShow)
-        
-        
-        ;
-       
-
-    
+            ->with('title', 'Manajemen Mata Pelajaran')
+            ->with('role', $this->role)
+            ->with('img', $this->img)
+            ->with('folder', $this->folder)
+            ->with('route', $this->route)
+            ->with('guru', $getGuru)
+            ->with('mapel', $searchMapel)
+            ->with('tahun_mulai', $tahun_mulai)
+            ->with('tahun_selesai', $tahun_selesai)
+            ->with('kelas', $getKelas)
+            ->with('searchKelas', $kelas)
+            ->with('searchRombel', $rombel)
+            ->with('searchHari', $hari)
+            ->with('isShow', $isShow);
 
     }
 

@@ -186,15 +186,15 @@
 
           // posisi saya
 
-            const posisiSaya = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude,
-            };
+            // const posisiSaya = {
+            //     lat: position.coords.latitude,
+            //     lng: position.coords.longitude,
+            // };
 
-        //   const posisiSaya = {
-        //       lat: 0.343895,
-        //       lng: 101.196351,
-        //   };
+          const posisiSaya = {
+              lat: 0.343895,
+              lng: 101.196351,
+          };
 
           // posisi sekolah sd muhammadiyah kampa
 

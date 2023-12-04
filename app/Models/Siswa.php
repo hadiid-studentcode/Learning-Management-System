@@ -85,13 +85,13 @@ class Siswa extends Model
         return $result;
     }
 
-    public function  getSiswaOrNisn($search)
+    public function getSiswaOrNisn($search)
     {
         $result = DB::table('siswa')
             ->select('siswa.*', 'kelas.nama as kelas', 'kelas.rombel')
             ->join('kelas', 'siswa.id_kelas', '=', 'kelas.id')
-            ->where('siswa.nama', 'LIKE', '%' . $search . '%')
-            ->orWhere('siswa.nisn', 'LIKE', '%' . $search . '%')
+            ->where('siswa.nama', 'LIKE', '%'.$search.'%')
+            ->orWhere('siswa.nisn', 'LIKE', '%'.$search.'%')
             ->first();
 
         return $result;
@@ -108,10 +108,10 @@ class Siswa extends Model
         $result = new Siswa();
         $getfoto = $result->getPhotoSiswa($id);
 
-        if (!empty($getfoto->foto)) {
+        if (! empty($getfoto->foto)) {
             $fotoPath = $getfoto->foto;
 
-            $image_path = 'storage/siswa/images/' . $fotoPath;
+            $image_path = 'storage/siswa/images/'.$fotoPath;
             if (File::exists($image_path)) {
                 File::delete($image_path);
             }
@@ -119,7 +119,7 @@ class Siswa extends Model
 
         $folderPath = public_path('storage/siswa/images');
 
-        if (!is_dir($folderPath)) {
+        if (! is_dir($folderPath)) {
             mkdir($folderPath, 0777, true);
         }
 
@@ -129,7 +129,7 @@ class Siswa extends Model
         // kompres gambar
         $img->filesize();
 
-        return $img->save('storage/siswa/images/' . $dbfoto, 10);
+        return $img->save('storage/siswa/images/'.$dbfoto, 10);
     }
 
     public function updateSiswaId_users($data, $userid)
@@ -352,19 +352,18 @@ class Siswa extends Model
     public function HapusFotoSiswa($id)
     {
         $result = new Siswa();
-        $getfoto =  $result->getPhotoSiswa($id);
+        $getfoto = $result->getPhotoSiswa($id);
 
-        if (!empty($getfoto->foto)) {
+        if (! empty($getfoto->foto)) {
             $fotoPath = $getfoto->foto;
 
-            $image_path = 'storage/siswa/images/' . $fotoPath;
+            $image_path = 'storage/siswa/images/'.$fotoPath;
 
             if (File::exists($image_path)) {
                 File::delete($image_path);
             }
 
-
         }
-      
+
     }
 }

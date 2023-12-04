@@ -23,12 +23,9 @@ class WaliMuridController extends Controller
 
         $id_user = Auth()->user()->id;
 
-     
-
         // panggil nisn siswa
         $result = new WaliMurid();
         $siswa = $result->getSiswa($id_user);
-     
 
         if ($siswa == null) {
             $siswa = $result->firstSiswa($id_user);

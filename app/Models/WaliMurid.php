@@ -186,10 +186,11 @@ class WaliMurid extends Model
 
         return $result;
     }
+
     public function deleteWaliMurid($id_user)
     {
         $result = DB::table('wali_murid')
-        ->where('id_user', $id_user)
+            ->where('id_user', $id_user)
             ->delete();
 
         return $result;

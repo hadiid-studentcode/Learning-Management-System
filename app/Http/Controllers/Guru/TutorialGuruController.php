@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Guru;;
+namespace App\Http\Controllers\Guru;
 
 use Illuminate\Http\Request;
 
@@ -12,15 +12,14 @@ class TutorialGuruController extends GuruController
     public function index()
     {
         $this->img = $this->imageHeader();
+
         return view('guru.tutorial.index')
             ->with('title', $this->title = 'Tutorial')
             ->with('role', $this->role)
             ->with('route', $this->route)
             ->with('img', $this->img)
             ->with('folder', $this->folder)
-            ->with('jenisGuru', $this->jenisGuru())
-        
-        ;
+            ->with('jenisGuru', $this->jenisGuru());
     }
 
     /**

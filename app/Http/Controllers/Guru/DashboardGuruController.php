@@ -21,7 +21,7 @@ class DashboardGuruController extends GuruController
 
         // tampilkan user guru
         $result = new Guru();
-        $user_guru = $result->getGuruFirst(['id', 'nama', 'nohp', 'foto', 'jenis','bidang_studi'], $id);
+        $user_guru = $result->getGuruFirst(['id', 'nama', 'nohp', 'foto', 'jenis', 'bidang_studi'], $id);
 
         $this->img = $user_guru->foto;
 
@@ -61,8 +61,6 @@ class DashboardGuruController extends GuruController
         ];
 
         $isAbsenGuru = $resultAbsenGuru->isAbsenGuru(Auth()->user()->id, $absen['waktu_mulai']);
-
-      
 
         return view('guru.dashboard.index')
             ->with('title', $this->title = 'Dashboard')
@@ -149,10 +147,9 @@ class DashboardGuruController extends GuruController
         // $waktu_absen_kuning = date('Y-m-d').' 07:00:00';
         // $waktu_absen_merah = date('Y-m-d').' 07:15:00';
 
-        $waktu_absen_hijau = $absen->tanggal . ' ' . $absen->waktu_mulai;
-        $waktu_absen_kuning = $absen->tanggal . ' ' . date('H:i:s', strtotime($absen->waktu_mulai . '+1 hour'));
-        $waktu_absen_merah = $absen->tanggal . ' ' . $absen->waktu_selesai;
-
+        $waktu_absen_hijau = $absen->tanggal.' '.$absen->waktu_mulai;
+        $waktu_absen_kuning = $absen->tanggal.' '.date('H:i:s', strtotime($absen->waktu_mulai.'+1 hour'));
+        $waktu_absen_merah = $absen->tanggal.' '.$absen->waktu_selesai;
 
         $id_user = Auth()->user()->id;
         // $result = new Guru();
@@ -170,7 +167,6 @@ class DashboardGuruController extends GuruController
         //     $status = 'mangkir';
         //     $poin_absensi = 0;
         // }
-
 
         if ($waktu >= $waktu_absen_hijau && $waktu <= $waktu_absen_kuning) {
             $status = 'Hadir';

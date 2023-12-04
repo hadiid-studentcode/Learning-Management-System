@@ -51,19 +51,19 @@ class Pegawai extends Model
 
         return
             DB::table('pegawai')
-            ->select($Select)
-            ->join('users', 'pegawai.id_user', '=', 'users.id')
-            ->where('id_user', $id)
-            ->first();
+                ->select($Select)
+                ->join('users', 'pegawai.id_user', '=', 'users.id')
+                ->where('id_user', $id)
+                ->first();
     }
 
     public function getPhotosUser($id)
     {
         return
             DB::table('pegawai')
-            ->select('foto')
-            ->where('id_user', $id)
-            ->first();
+                ->select('foto')
+                ->where('id_user', $id)
+                ->first();
     }
 
     public function getTataUsahaIdandName()
@@ -146,10 +146,10 @@ class Pegawai extends Model
         $result = new Pegawai();
         $getfoto = $result->getfotoPegawai($id);
 
-        if (!empty($getfoto->foto)) {
+        if (! empty($getfoto->foto)) {
             $fotoPath = $getfoto->foto;
 
-            $image_path = 'storage/pegawai/images/' . $fotoPath;
+            $image_path = 'storage/pegawai/images/'.$fotoPath;
 
             // dd($image_path);
 
@@ -165,7 +165,7 @@ class Pegawai extends Model
 
         $folderPath = public_path('storage/pegawai/images');
 
-        if (!is_dir($folderPath)) {
+        if (! is_dir($folderPath)) {
 
             mkdir($folderPath, 0777, true);
         }
@@ -176,7 +176,7 @@ class Pegawai extends Model
         // kompres gambar
         $img->filesize();
 
-        return $img->save('storage/pegawai/images/' . $dbfoto, 10);
+        return $img->save('storage/pegawai/images/'.$dbfoto, 10);
     }
 
     public function getUserIdPegawai($id)
@@ -230,10 +230,10 @@ class Pegawai extends Model
         $result = new Pegawai();
         $getfoto = $result->getPegawaiFirstWhereId(['foto'], $id);
 
-        if (!empty($getfoto->foto)) {
+        if (! empty($getfoto->foto)) {
             $fotoPath = $getfoto->foto;
 
-            $image_path = 'storage/pegawai/images/' . $fotoPath;
+            $image_path = 'storage/pegawai/images/'.$fotoPath;
 
             if (File::exists($image_path)) {
                 File::delete($image_path);

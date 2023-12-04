@@ -55,8 +55,6 @@ class DashboardPegawaiController extends PegawaiController
 
         $isAbsenPegawai = $resultAbsenPegawai->isAbsenPegawai(Auth()->user()->id, $absen['waktu_mulai']);
 
-
-
         return view('pegawai.dashboard.index')
             ->with('title', $this->title)
             ->with('role', $this->role)
@@ -143,10 +141,9 @@ class DashboardPegawaiController extends PegawaiController
         // $waktu_absen_kuning = date('Y-m-d').' 07:00:00';
         // $waktu_absen_merah = date('Y-m-d').' 07:15:00';
 
-        $waktu_absen_hijau = $absen->tanggal . ' ' . $absen->waktu_mulai;
-        $waktu_absen_kuning = $absen->tanggal . ' ' . date('H:i:s', strtotime($absen->waktu_mulai . '+1 hour'));
-        $waktu_absen_merah = $absen->tanggal . ' ' . $absen->waktu_selesai;
-
+        $waktu_absen_hijau = $absen->tanggal.' '.$absen->waktu_mulai;
+        $waktu_absen_kuning = $absen->tanggal.' '.date('H:i:s', strtotime($absen->waktu_mulai.'+1 hour'));
+        $waktu_absen_merah = $absen->tanggal.' '.$absen->waktu_selesai;
 
         $id_user = Auth()->user()->id;
         $pegawai = DB::table('pegawai')->select('id')->where('id_user', $id_user)->first();

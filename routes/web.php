@@ -101,9 +101,6 @@ Route::group(
         Route::resource('/guru/dashboard', DashboardGuruController::class);
         Route::get('/guru/absen', [DashboardGuruController::class, 'absen']);
 
-      
-
-
         Route::resource('/guru/prestasi-siswa', PrestasiSiswaGuruController::class);
 
         Route::resource('/guru/jadwal', JadwalGuruController::class);
@@ -127,8 +124,6 @@ Route::group(
         Route::post('guru/jadwal/cek/nilai/{kode}/{id_siswa}', [JadwalGuruController::class, 'nilai']);
 
         Route::resource('/guru/tutorial', TutorialGuruController::class);
-
-      
 
         // end tutorial
 

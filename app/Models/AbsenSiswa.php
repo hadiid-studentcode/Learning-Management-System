@@ -39,18 +39,16 @@ class AbsenSiswa extends Model
     public function getPoinAbsen()
     {
 
-        $hadir =  AbsenSiswa::where('status', 'Hadir')->count();
-        $sakit =  AbsenSiswa::where('status', 'Sakit')->count();
-        $izin =  AbsenSiswa::where('status', 'Izin')->count();
-        $tidak_hadir =  AbsenSiswa::where('status', 'Tidak Hadir')->count();
-
-
+        $hadir = AbsenSiswa::where('status', 'Hadir')->count();
+        $sakit = AbsenSiswa::where('status', 'Sakit')->count();
+        $izin = AbsenSiswa::where('status', 'Izin')->count();
+        $tidak_hadir = AbsenSiswa::where('status', 'Tidak Hadir')->count();
 
         $data = [
             'hadir' => $hadir,
             'sakit' => $sakit,
             'izin' => $izin,
-            'tidak_hadir' => $tidak_hadir
+            'tidak_hadir' => $tidak_hadir,
         ];
 
         return $data;

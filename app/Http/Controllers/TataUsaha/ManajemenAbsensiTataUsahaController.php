@@ -15,10 +15,8 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
     public function index()
     {
 
-    $result = new KelolaAbsensi();
-    $kelolaAbsensi = $result->getAbsensiAll();
-
-    
+        $result = new KelolaAbsensi();
+        $kelolaAbsensi = $result->getAbsensiAll();
 
         $this->img = $this->imageHeader();
 
@@ -121,8 +119,6 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
 
         ]);
 
-     
-
         return view('tataUsaha.manajemen-absensi.create')
             ->with('title', 'Manajemen Absensi')
             ->with('role', $this->role)
@@ -153,7 +149,7 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
 
             if ($request->status == 'Hadir') {
                 $poin_absen = 0.5;
-            } elseif($request->status == 'Terlambat') {
+            } elseif ($request->status == 'Terlambat') {
                 $poin_absen = 0.1;
             } elseif ($request->status == 'Izin') {
                 $poin_absen = 0.3;
@@ -193,9 +189,9 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
      */
     public function destroy(string $id)
     {
-      $result = new KelolaAbsensi();
-      $result->getDelete($id);
+        $result = new KelolaAbsensi();
+        $result->getDelete($id);
 
-      return back();
+        return back();
     }
 }

@@ -74,7 +74,7 @@ class ManajemenSiswaTataUsahaController extends TataUsahaController
 
         try {
             if ($request->hasFile('foto')) {
-                $foto = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
+                $foto = round(microtime(true) * 1000).'-'.str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
 
                 // simpan akun user siswa
                 $dataUser = [
@@ -291,7 +291,7 @@ class ManajemenSiswaTataUsahaController extends TataUsahaController
 
         if ($request->hasfile('foto')) {
 
-            $foto = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
+            $foto = round(microtime(true) * 1000).'-'.str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
 
             $dataSiswa = [
                 'nisn' => $request->nisn,
@@ -461,27 +461,21 @@ class ManajemenSiswaTataUsahaController extends TataUsahaController
         $resultWaliMurid = new WaliMurid();
         $resultUser = new User();
 
-
         $user_id = $resultSiswa->getUserIdSiswa($id);
         $waliMurid = $resultWaliMurid->getIdUserWhereIdSiswa($id);
 
-
         // hapus user wali murid
         $resultUser->deleteUser($waliMurid->id_user);
-      
+
         $resultSiswa->HapusFotoSiswa($id);
         $resultUser->deleteUser($user_id->id_user);
 
         $resultSiswa->deleteSiswa($id);
 
-
         // // get userid wali murid
-      
-        
 
         // // hapus wali murid
         // $resultWaliMurid->deleteWaliMurid($waliMurid->id_user);
-
 
         return redirect('/tata-usaha/manajemen-siswa')->with('warning', 'Data Siswa Berhasil Dihapus');
     }

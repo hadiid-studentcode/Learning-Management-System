@@ -60,8 +60,6 @@ class ManajemenSiswaGuruController extends GuruController
 
         $getkelas = $resultKelas->getKelasAll(['kelas.id', 'kelas.nama', 'kelas.rombel']);
 
-       
-
         return view('guru.manajemen-siswa.index')
             ->with('title', $this->title = 'Manajemen Siswa')
             ->with('role', $this->role)
@@ -312,7 +310,7 @@ class ManajemenSiswaGuruController extends GuruController
 
         if ($request->hasfile('foto')) {
 
-            $foto = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
+            $foto = round(microtime(true) * 1000).'-'.str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
 
             $dataSiswa = [
                 'nisn' => $request->nisn,

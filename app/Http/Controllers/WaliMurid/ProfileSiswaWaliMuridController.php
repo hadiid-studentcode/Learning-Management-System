@@ -47,13 +47,9 @@ class ProfileSiswaWaliMuridController extends WaliMuridController
 
         $this->img = $this->imageHeader();
 
-
-
         // get absensi siswa
         $resultAbsensiSiswa = new AbsenSiswa();
         $poinAbsen = $resultAbsensiSiswa->getPoinAbsen();
-      
-
 
         return view('waliMurid.profile-siswa.index')
             ->with('title', $this->title)
