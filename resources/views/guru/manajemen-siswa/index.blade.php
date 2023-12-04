@@ -438,7 +438,7 @@
                                                                             </tr>
                                                                             <tr>
                                                                                 <th style="width: 15%;">Kelas</th>
-                                                                                <td> {{ $s->kelas }}</td>
+                                                                                <td> {{ $s->kelas }} {{ $s->rombel }}</td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th style="width: 15%;">Jenis Kelamin</th>
