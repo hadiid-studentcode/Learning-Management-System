@@ -16,6 +16,7 @@ class AbsenGuru extends Model
         'id_guru',
         'waktu',
         'status',
+        'poin_absensi',
 
     ];
 
