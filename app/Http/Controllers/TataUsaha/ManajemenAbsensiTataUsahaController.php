@@ -15,6 +15,11 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
     public function index()
     {
 
+    $result = new KelolaAbsensi();
+    $kelolaAbsensi = $result->getAbsensiAll();
+
+    
+
         $this->img = $this->imageHeader();
 
         return view('tataUsaha.manajemen-absensi.index')
@@ -22,6 +27,7 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
             ->with('role', $this->role)
             ->with('folder', $this->folder)
             ->with('img', $this->img)
+            ->with('kelolaAbsensi', $kelolaAbsensi)
             ->with('route', $this->route);
     }
 
@@ -145,13 +151,15 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
     {
         if ($request->jenis == 'guru') {
 
-            if ($request->status == 'hadir') {
+            if ($request->status == 'Hadir') {
                 $poin_absen = 0.5;
-            } elseif ($request->status == 'izin') {
+            } elseif($request->status == 'Terlambat') {
+                $poin_absen = 0.1;
+            } elseif ($request->status == 'Izin') {
                 $poin_absen = 0.3;
-            } elseif ($request->status == 'sakit') {
+            } elseif ($request->status == 'Sakit') {
                 $poin_absen = 0.3;
-            } elseif ($request->status == 'mangkir') {
+            } elseif ($request->status == 'Mangkir') {
                 $poin_absen = 0;
             }
 
@@ -185,6 +193,9 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
      */
     public function destroy(string $id)
     {
-        //
+      $result = new KelolaAbsensi();
+      $result->getDelete($id);
+
+      return back();
     }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('main')
-    @include('partials.alert')
+    {{-- @include('partials.alert') --}}
     <div class="">
 
         <div class="card card-custom">
@@ -91,11 +91,11 @@
                     <div class="card-body">
                         @php
                             use Carbon\Carbon;
-                            if(isset($tanggal)){
-                            $tanggal = $tanggal;
-                            $tanggalSearch = Carbon::createFromFormat('Y-m-d', $tanggal)->format('d F Y');
+                            if (isset($tanggal)) {
+                                $tanggal = $tanggal;
+                                $tanggalSearch = Carbon::createFromFormat('Y-m-d', $tanggal)->format('d F Y');
                             }
-                           
+
                         @endphp
                         <h5 class="text-center text-uppercase">Data Absensi Guru
                             {{ isset($tanggal) ? $tanggalSearch : 'DD-MM-YYY' }}</h5>
@@ -135,10 +135,11 @@
                                                     <td>
                                                         <select class="form-control" name="status">
                                                             <option value="" hidden>Pilih</option>
-                                                            <option value="hadir">Hadir</option>
-                                                            <option value="izin">Izin</option>
-                                                            <option value="sakit">Sakit</option>
-                                                            <option value="mangkir">Terlambat</option>
+                                                            <option value="Hadir">Hadir</option>
+                                                            <option value="Izin">Izin</option>
+                                                            <option value="Sakit">Sakit</option>
+                                                            <option value="Terlambat">Terlambat</option>
+                                                            <option value="Mangkir">Mangkir</option>
                                                         </select>
                                                     </td>
                                                     <td><button type="submit" class="btn btn-sm btn-success"><i
@@ -169,10 +170,11 @@
                                                     <td>
                                                         <select class="form-control" name="status">
                                                             <option value="" hidden>Pilih</option>
-                                                            <option value="hadir">Hadir</option>
-                                                            <option value="izin">Izin</option>
-                                                            <option value="sakit">Sakit</option>
-                                                            <option value="mangkir">Terlambat</option>
+                                                            <option value="Hadir">Hadir</option>
+                                                            <option value="Izin">Izin</option>
+                                                            <option value="Sakit">Sakit</option>
+                                                            <option value="Terlambat">Terlambat</option>
+                                                            <option value="Mangkir">Mangkir</option>
                                                         </select>
                                                     </td>
                                                     <td><button type="submit" class="btn btn-sm btn-success"><i
@@ -199,7 +201,8 @@
             <div class="col-md-6">
                 <div class="card card-custom gutter-b">
                     <div class="card-body">
-                        <h5 class="text-center text-uppercase">Data Absensi Pegawai  {{ isset($tanggal) ? $tanggalSearch : 'DD-MM-YYY' }}</h5>
+                        <h5 class="text-center text-uppercase">Data Absensi Pegawai
+                            {{ isset($tanggal) ? $tanggalSearch : 'DD-MM-YYY' }}</h5>
                         <hr>
                         <div class="table-responsive">
                             <table id="data_table1" class="table table-striped table-bordered "
@@ -236,10 +239,11 @@
                                                     <td>
                                                         <select class="form-control" name="status">
                                                             <option value="" hidden>Pilih</option>
-                                                            <option value="hadir">Hadir</option>
-                                                            <option value="izin">Izin</option>
-                                                            <option value="sakit">Sakit</option>
-                                                            <option value="mangkir">Terlambat</option>
+                                                            <option value="Hadir">Hadir</option>
+                                                            <option value="Izin">Izin</option>
+                                                            <option value="Sakit">Sakit</option>
+                                                            <option value="Terlambat">Terlambat</option>
+                                                            <option value="Mangkir">Mangkir</option>
                                                         </select>
                                                     </td>
                                                     <td><button type="submit" class="btn btn-sm btn-success"><i
@@ -270,10 +274,11 @@
                                                     <td>
                                                         <select class="form-control" name="status">
                                                             <option value="" hidden>Pilih</option>
-                                                            <option value="hadir">Hadir</option>
-                                                            <option value="izin">Izin</option>
-                                                            <option value="sakit">Sakit</option>
-                                                            <option value="mangkir">Terlambat</option>
+                                                            <option value="Hadir">Hadir</option>
+                                                            <option value="Izin">Izin</option>
+                                                            <option value="Sakit">Sakit</option>
+                                                            <option value="Terlambat">Terlambat</option>
+                                                            <option value="Mangkir">Mangkir</option>
                                                         </select>
                                                     </td>
                                                     <td><button type="submit" class="btn btn-sm btn-success"><i
@@ -296,10 +301,10 @@
             </div>
 
 
-
+{{-- 
             <button type="button" class="btn btn-success container mb-3" style="width: 20%; backround-color:#7ED7C1;">
                 <i class="fas fa-print"></i> Print
-            </button>
+            </button> --}}
 
         </div>
 

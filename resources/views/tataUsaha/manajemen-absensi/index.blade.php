@@ -86,13 +86,13 @@
 
             <div class="card card-custom gutter-b mt-3">
                 <div class="card-body">
-                    <h5 class="text-center text-uppercase">Data Absensi</h5>
+                    <h5 class="text-center text-uppercase">Manajemen Kelola Absensi</h5>
                     <hr>
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered" style="text-align: center; font-size:90%;">
+                        <table class="table table-striped table-bordered" style="text-align: center; font-size:90%;" id="data_table">
                             <thead>
                                 <tr>
-                                    <th style="width: 5%;">Nomor</th>
+                                    <th style="width: 5%;">No</th>
                                     <th style="width: 20%;">Tanggal</th>
                                     <th style="width: 20%;">Waktu Mulai</th>
                                     <th style="width: 20%;">Waktu Selesai</th>
@@ -100,17 +100,23 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>17-02-1982</td>
-                                    <td>08:00</td>
-                                    <td>19:00</td>
-                                    <td>
-                                        <button class="btn btn-danger delete-btn" data-toggle="modal" data-target="#deleteModal">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
-                                    </td>
-                                </tr>
+                                @php
+                                    use Carbon\Carbon;
+                                @endphp
+                                @foreach ($kelolaAbsensi as $ka)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{  Carbon::createFromFormat('Y-m-d', $ka->tanggal)->format('d F Y'); }}</td>
+                                        <td>{{ date('H:i', strtotime($ka->waktu_mulai)) }} WIB</td>
+                                        <td>{{ date('H:i', strtotime($ka->waktu_selesai)) }} WIB</td>
+                                        <td>
+                                            <button class="btn btn-danger delete-btn" data-toggle="modal"
+                                                data-target="#delete{{ $ka->id }}">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -118,7 +124,8 @@
             </div>
 
             <!-- Modal -->
-            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            @foreach($kelolaAbsensi as $ka)
+            <div class="modal fade" id="delete{{ $ka->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -133,11 +140,16 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-danger">Hapus</button>
+                            <form action="{{ url('tata-usaha/manajemen-absensi/'.$ka->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Hapus</button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
+            @endforeach
 
         </div>
     </div>

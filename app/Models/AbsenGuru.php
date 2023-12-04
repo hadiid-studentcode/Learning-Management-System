@@ -78,4 +78,39 @@ class AbsenGuru extends Model
 
         return $jumlah;
     }
+    public function isAbsenGuru($id_user,$absen_waktuMulai)
+    {
+        date_default_timezone_set('Asia/Jakarta'); // Set zona waktu ke Waktu Indonesia Barat
+
+        setlocale(LC_TIME, 'id_ID');
+        // get jika pegawai sudah absen pada hari ini
+        $resultPegawai = new guru();
+        $guru = $resultPegawai->getGuruFirst(['guru.id'], $id_user);
+        $date = date('Y-m-d');
+
+
+
+        $absenGuru = DB::table('absen_guru')
+        ->where('id_guru', $guru->id)
+            ->where('waktu', '<', $date . ' 23:59:59')
+            ->first();
+
+        if (!empty($absenGuru)) {
+            if (explode(" ", $absenGuru->waktu)[0] == explode(" ", $absen_waktuMulai)[0]) {
+
+
+                $isAbsenGuru = $absenGuru;
+            } else {
+
+                $isAbsenGuru = null;
+            }
+        } else {
+
+            $isAbsenGuru = null;
+        }
+
+
+
+        return $isAbsenGuru;
+    }
 }

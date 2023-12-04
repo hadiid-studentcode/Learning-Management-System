@@ -20,6 +20,8 @@ class DashboardTataUsahaController extends TataUsahaController
     public function index()
     {
 
+
+
         $resultTahunAjaran = new TahunAjaran();
         $resultTahunAjaran->updateAutoTahunAjaran();
 
@@ -28,6 +30,7 @@ class DashboardTataUsahaController extends TataUsahaController
         //   ambil data nama,jenis,nbm,nohp pegawai
         $resultPegawai = new Pegawai();
         $tataUsaha = $resultPegawai->getPegawaiFirst(['nama', 'jenis', 'no_hp'], Auth()->user()->id);
+
         $resultKelolaAbsensi = new KelolaAbsensi();
         $absen = $resultKelolaAbsensi->absensi();
 
@@ -44,6 +47,18 @@ class DashboardTataUsahaController extends TataUsahaController
         $resultKelas = new Kelas();
         $kelas = $resultKelas->getKelasCount();
 
+
+
+        $resultAbsenPegawai = new AbsenPegawai();
+        $isAbsenPegawai = $resultAbsenPegawai->isAbsenPegawai(Auth()->user()->id, $absen['waktu_mulai']);
+
+       
+
+
+
+
+
+
         return view('tataUsaha.dashboard.index')
             ->with('title', 'Dashboard')
             ->with('jenis', $tataUsaha->jenis)
@@ -58,6 +73,7 @@ class DashboardTataUsahaController extends TataUsahaController
             ->with('datenow', $absen['date_now'])
             ->with('waktu_absenDari', $absen['waktu_mulai'])
             ->with('waktu_absenSampai', $absen['waktu_selesai'])
+            ->with('isAbsen', $isAbsenPegawai)
             ->with('route', $this->route);
     }
 
@@ -111,20 +127,36 @@ class DashboardTataUsahaController extends TataUsahaController
 
     public function absen()
     {
-
         date_default_timezone_set('Asia/Jakarta'); // Set zona waktu ke Waktu Indonesia Barat
 
         setlocale(LC_TIME, 'id_ID');
 
+
+
+
+        // get kelola absensi
+        $resultKelolaAbsen = new KelolaAbsensi();
+        $absen = $resultKelolaAbsen->getAbsenWhereDateNow(date('Y-m-d'));
+        // $absen = $resultKelolaAbsen->getAbsenWhereDateNow(date('2023-12-05'));
+
+
+
+
+
+
         $waktu = date('Y-m-d H:i:s');
-        //    $waktu = '2023-10-01 06:00:00';
-        $waktu_absen_hijau = date('Y-m-d').' 06:00:00';
-        $waktu_absen_kuning = date('Y-m-d').' 07:00:00';
-        $waktu_absen_merah = date('Y-m-d').' 07:15:00';
+        //    $waktu = date('2023-12-05 07:00:00');
+        // $waktu_absen_hijau = date('Y-m-d') . ' 06:00:00';
+        // $waktu_absen_kuning = date('Y-m-d') . ' 07:00:00';
+        // $waktu_absen_merah = date('Y-m-d') . ' 07:15:00';
+        $waktu_absen_hijau = $absen->tanggal . ' ' . $absen->waktu_mulai;
+        $waktu_absen_kuning = $absen->tanggal . ' ' . date('H:i:s', strtotime($absen->waktu_mulai . '+1 hour'));
+        $waktu_absen_merah = $absen->tanggal . ' ' . $absen->waktu_selesai;
 
         $id_user = Auth()->user()->id;
 
         $pegawai = DB::table('pegawai')->select('id')->where('id_user', $id_user)->first();
+
 
         if ($waktu >= $waktu_absen_hijau && $waktu <= $waktu_absen_kuning) {
             $status = 'Hadir';

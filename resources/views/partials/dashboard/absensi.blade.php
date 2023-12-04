@@ -11,22 +11,26 @@
 
   @php
 
-  if($route == 'tata-usaha'){
-    $person = 1;
-  }elseif($route == 'guru'){
-    $person = 2;
-  }elseif($route == 'pegawai'){
-    $person = 3;
-  }
+      if ($route == 'tata-usaha') {
+          $person = 1;
+      } elseif ($route == 'guru') {
+          $person = 2;
+      } elseif ($route == 'pegawai') {
+          $person = 3;
+      }
 
   @endphp
 
 
 
+  @if ($isAbsen)
 
-
-
-            @if ($waktu_absenDari == null && $waktu_absenSampai == null && $datenow == null)
+      {{-- <div class="alert alert-success text-center mt-3 " role="alert">
+          <strong>Anda Sudah Melakukan Absensi</strong>
+      </div> --}}
+      <strong class="btn btn-primary btn-block mt-3 ">Status Absen : {{ $isAbsen->status }}</strong>
+  @else
+      {{-- @if ($waktu_absenDari == null && $waktu_absenSampai == null && $datenow == null)
                 <!-- Tidak ada kondisi -->
             @elseif ($datenow >= $waktu_absenDari && $datenow <= $waktu_absenSampai)
                 <div class="alert alert-success text-center mt-3 " role="alert">
@@ -38,7 +42,48 @@
                     <strong>Anda Terlambat!</strong>
                 </div>
                 <button class="btn btn-primary btn-block " onclick="absen({{ $person }})">Lakukan Absensi</button>
-            @endif
+
+                @elseif($waktu_absenSampai <= $datenow)
+                <div class="alert alert-danger text-center mt-3 " role="alert">
+                    <strong>Absen Anda Ditutup!</strong>
+                </div>
+              
+            @endif --}}
+
+
+      @if ($waktu_absenDari == null && $waktu_absenSampai == null && $datenow == null)
+          <!-- Tidak ada kondisi -->
+      @elseif ($datenow >= $waktu_absenDari && $datenow <= date('Y-m-d H:i:s', strtotime($waktu_absenDari . '+1 hour')))
+          <div class="alert alert-success text-center mt-3 " role="alert">
+              <strong>Absen Anda Dibuka!</strong>
+
+          </div>
+          <button class="btn btn-primary btn-block mt-3 " onclick="absen({{ $person }})">Lakukan Absensi</button>
+          {{-- <p>{{ $waktu_absenDari }} s/d {{ date('Y-m-d H:i:s', strtotime($waktu_absenDari . '+1 hour')) }}</p> --}}
+      @elseif ($datenow >= date('Y-m-d H:i:s', strtotime($waktu_absenDari . '+1 hour')) && $datenow <= $waktu_absenSampai)
+          <div class="alert alert-danger text-center mt-3 " role="alert">
+              <strong>Anda Terlambat!</strong>
+          </div>
+          <button class="btn btn-primary btn-block " onclick="absen({{ $person }})">Lakukan Absensi</button>
+          {{-- <p>{{ date('Y-m-d H:i:s', strtotime($waktu_absenDari . '+1 hour')) }} s/d {{ $waktu_absenSampai }}</p> --}}
+      @elseif($datenow >= $waktu_absenDari && $datenow >= $waktu_absenSampai)
+      {{-- 09:00 wib >= 08:00 && 06:00 wib <= 12:00 --}}
+          <div class="alert alert-danger text-center mt-3 " role="alert" id="myAlert">
+              <strong>Absen Anda Ditutup!</strong>
+              <script>
+                  window.onload = function() {
+                      window.location.href = "/{{ $route }}/absen"
+
+                  };
+              </script>
+          </div>
+          @else
+
+          {{-- {{ $datenow }}   >=   {{ $waktu_absenDari }} && {{ $datenow }}   <=   {{ $waktu_absenSampai }} --}}
+      @endif
+
+
+  @endif
 
   {{-- absen --}}
 
@@ -53,7 +98,6 @@
           if (navigator.geolocation) {
               // getCurrentPosition digunakan untuk mendapatkan lokasi pengguna
               //showPosition adalah fungsi yang akan dijalankan
-
 
               navigator.geolocation.getCurrentPosition(viewMaps);
           }
@@ -90,15 +134,15 @@
               .addTo(mymap)
               .bindPopup("<b>Hai!</b><br />Ini adalah lokasi mu");
 
-        //   L.marker([sdmkampa.lat, sdmkampa.lng])
-        //       .addTo(mymap)
-        //       .bindPopup("<b>Hai!</b><br />Ini adalah sekolah mu");
-        //   var circle = L.circle([sdmkampa.lat, sdmkampa.lng], {
-        //       color: "red",
-        //       fillColor: "#f03",
-        //       fillOpacity: 0.5,
-        //       radius: 100,
-        //   }).addTo(mymap);
+          //   L.marker([sdmkampa.lat, sdmkampa.lng])
+          //       .addTo(mymap)
+          //       .bindPopup("<b>Hai!</b><br />Ini adalah sekolah mu");
+          //   var circle = L.circle([sdmkampa.lat, sdmkampa.lng], {
+          //       color: "red",
+          //       fillColor: "#f03",
+          //       fillOpacity: 0.5,
+          //       radius: 100,
+          //   }).addTo(mymap);
       }
 
 
@@ -121,20 +165,20 @@
 
           let person = '';
 
-       switch (route) {
-        case 1:
-            person = 'tata-usaha';
-            break;
-        case 2:
-            person = 'guru';
-            break;
-        case 3:
-            person = 'pegawai';
-            break;
+          switch (route) {
+              case 1:
+                  person = 'tata-usaha';
+                  break;
+              case 2:
+                  person = 'guru';
+                  break;
+              case 3:
+                  person = 'pegawai';
+                  break;
 
-        default:
-            break;
-       }
+              default:
+                  break;
+          }
 
 
 
@@ -142,15 +186,15 @@
 
           // posisi saya
 
-          const posisiSaya = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude,
-          };
+            const posisiSaya = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+            };
 
-          //   const posisiSaya = {
-          //       lat: 0.343895,
-          //       lng: 101.196351,
-          //   };
+        //   const posisiSaya = {
+        //       lat: 0.343895,
+        //       lng: 101.196351,
+        //   };
 
           // posisi sekolah sd muhammadiyah kampa
 
@@ -248,14 +292,14 @@
               .addTo(mymap)
               .bindPopup("<b>Hai!</b><br />Ini adalah lokasi mu");
 
-        //   L.marker([sdmkampa.lat, sdmkampa.lng])
-        //       .addTo(mymap)
-        //       .bindPopup("<b>Hai!</b><br />Ini adalah sekolah mu");
-        //   var circle = L.circle([sdmkampa.lat, sdmkampa.lng], {
-        //       color: "red",
-        //       fillColor: "#f03",
-        //       fillOpacity: 0.5,
-        //       radius: 200,
-        //   }).addTo(mymap);
+          //   L.marker([sdmkampa.lat, sdmkampa.lng])
+          //       .addTo(mymap)
+          //       .bindPopup("<b>Hai!</b><br />Ini adalah sekolah mu");
+          //   var circle = L.circle([sdmkampa.lat, sdmkampa.lng], {
+          //       color: "red",
+          //       fillColor: "#f03",
+          //       fillOpacity: 0.5,
+          //       radius: 200,
+          //   }).addTo(mymap);
       }
   </script>

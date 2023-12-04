@@ -46,7 +46,7 @@ class AbsenPegawai extends Model
             ->select($select)
             ->join('pegawai', 'absen_pegawai.id_pegawai', '=', 'pegawai.id')
 
-            ->where('waktu', 'like', '%'.$tanggal.'%')
+            ->where('waktu', 'like', '%' . $tanggal . '%')
             ->get();
 
         return $results;
@@ -67,5 +67,47 @@ class AbsenPegawai extends Model
             ->first();
 
         return $jumlah;
+    }
+
+   
+
+    public function isAbsenPegawai($id_user,$absen_waktuMulai){
+        date_default_timezone_set('Asia/Jakarta'); // Set zona waktu ke Waktu Indonesia Barat
+
+        setlocale(LC_TIME, 'id_ID');
+        // get jika pegawai sudah absen pada hari ini
+        $resultPegawai = new Pegawai();
+        $pegawai = $resultPegawai->getPegawaiFirst(['pegawai.id'], $id_user);
+        $date = date('Y-m-d');
+
+        // $date = date('2023-12-05');
+        
+      
+
+
+        $absenPegawai = DB::table('absen_pegawai')
+            ->where('id_pegawai', $pegawai->id)
+            ->where('waktu', '<', $date . ' 23:59:59')
+            ->latest()
+            ->first();
+
+
+        if (!empty($absenPegawai)) {
+            if (explode(" ", $absenPegawai->waktu)[0] == explode(" ", $absen_waktuMulai)[0]) {
+
+
+                $isAbsenPegawai = $absenPegawai;
+            } else {
+
+                $isAbsenPegawai = null;
+            }
+        } else {
+
+            $isAbsenPegawai = null;
+        }
+
+
+
+        return $isAbsenPegawai;
     }
 }

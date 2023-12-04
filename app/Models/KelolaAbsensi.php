@@ -44,9 +44,16 @@ class KelolaAbsensi extends Model
     {
         $date = date('Y-m-d');
 
+        // $date = date('2023-12-04');
+
+
         date_default_timezone_set('Asia/Jakarta');
 
         $date_now = date('Y-m-d H:i:s');
+
+        // $date_now = date('2023-12-04 17:01:00');
+
+        
 
         // data absensi guru
         $result = new KelolaAbsensi();
@@ -70,5 +77,15 @@ class KelolaAbsensi extends Model
 
         ];
 
+    }
+    public function getAbsensiAll(){
+        $result = KelolaAbsensi::all();
+        return $result;
+    }
+
+    public function getDelete($id){
+
+        $result = KelolaAbsensi::find($id);
+       return $result->delete();
     }
 }
