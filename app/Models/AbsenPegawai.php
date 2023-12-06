@@ -46,7 +46,7 @@ class AbsenPegawai extends Model
             ->select($select)
             ->join('pegawai', 'absen_pegawai.id_pegawai', '=', 'pegawai.id')
 
-            ->where('waktu', 'like', '%'.$tanggal.'%')
+            ->where('waktu', 'like', '%' . $tanggal . '%')
             ->get();
 
         return $results;
@@ -83,11 +83,11 @@ class AbsenPegawai extends Model
 
         $absenPegawai = DB::table('absen_pegawai')
             ->where('id_pegawai', $pegawai->id)
-            ->where('waktu', '<', $date.' 23:59:59')
+            ->where('waktu', '<', $date . ' 23:59:59')
             ->latest()
             ->first();
 
-        if (! empty($absenPegawai)) {
+        if (!empty($absenPegawai)) {
             if (explode(' ', $absenPegawai->waktu)[0] == explode(' ', $absen_waktuMulai)[0]) {
 
                 $isAbsenPegawai = $absenPegawai;
@@ -101,5 +101,12 @@ class AbsenPegawai extends Model
         }
 
         return $isAbsenPegawai;
+    }
+    public function getDelete($id)
+    {
+
+        $result = AbsenPegawai::find($id);
+
+        return $result->delete();
     }
 }

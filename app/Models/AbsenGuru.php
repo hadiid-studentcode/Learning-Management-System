@@ -110,4 +110,13 @@ class AbsenGuru extends Model
 
         return $isAbsenGuru;
     }
+
+
+    public function getDelete($id)
+    {
+
+        $result = AbsenGuru::find($id);
+
+        return $result->delete();
+    }
 }
