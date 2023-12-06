@@ -177,9 +177,32 @@
                                                             <option value="Mangkir">Mangkir</option>
                                                         </select>
                                                     </td>
-                                                    <td><button type="submit" class="btn btn-sm btn-success"><i
-                                                                class="fas fa-check"></i></button>
+                                                    <td>
+                                                        <button type="submit" class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal"><i class="fas fa-check"></i></button>
+                                                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i></button>
                                                     </td>
+
+                                                    <!-- Modal untuk konfirmasi hapus -->
+                                                    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Apakah Anda yakin ingin menghapus ini?
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                                    <button type="button" class="btn btn-danger">Hapus</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                 </form>
 
                                             </tr>
@@ -246,9 +269,32 @@
                                                             <option value="Mangkir">Mangkir</option>
                                                         </select>
                                                     </td>
-                                                    <td><button type="submit" class="btn btn-sm btn-success"><i
-                                                                class="fas fa-check"></i></button>
+                                                    <td>
+                                                        <button type="submit" class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal"><i class="fas fa-check"></i></button>
+                                                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteConfirmationModal"><i class="fas fa-trash"></i></button>
                                                     </td>
+
+                                                    <!-- Modal untuk konfirmasi hapus -->
+                                                    <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="deleteConfirmationModalLabel">Konfirmasi Hapus</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Apakah Anda yakin ingin menghapus ini?
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                                    <button type="button" class="btn btn-danger">Hapus</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                 </form>
 
                                             </tr>
@@ -301,7 +347,7 @@
             </div>
 
 
-{{-- 
+{{--
             <button type="button" class="btn btn-success container mb-3" style="width: 20%; backround-color:#7ED7C1;">
                 <i class="fas fa-print"></i> Print
             </button> --}}
