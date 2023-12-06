@@ -28,7 +28,9 @@
       {{-- <div class="alert alert-success text-center mt-3 " role="alert">
           <strong>Anda Sudah Melakukan Absensi</strong>
       </div> --}}
-      <strong class="btn btn-primary btn-block mt-3 ">Status Absen : {{ $isAbsen->status }}</strong>
+      <div class="alert mt-3 text-center" style=" backround-color:#C5FFF8;" role="alert">
+        Status Absen : {{ $isAbsen->status }}
+      </div>
   @else
       {{-- @if ($waktu_absenDari == null && $waktu_absenSampai == null && $datenow == null)
                 <!-- Tidak ada kondisi -->
@@ -47,7 +49,7 @@
                 <div class="alert alert-danger text-center mt-3 " role="alert">
                     <strong>Absen Anda Ditutup!</strong>
                 </div>
-              
+
             @endif --}}
 
 
@@ -132,7 +134,7 @@
           //menambahkan marker letak posisi dengan lat dan lng yang telah didapat sebelumnya
           L.marker([lat, lng])
               .addTo(mymap)
-              .bindPopup("<b>Hai!</b><br />Ini adalah lokasi mu");
+              .bindPopup("<b>Hai!</b><br />Ini adalah lokasi Kamu Saat ini");
 
           //   L.marker([sdmkampa.lat, sdmkampa.lng])
           //       .addTo(mymap)
