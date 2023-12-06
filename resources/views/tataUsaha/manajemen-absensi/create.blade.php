@@ -70,7 +70,7 @@
                                         <label for="tanggal" style="margin-left:10%">Pilih Tanggal:</label>
                                         <div class="input-group" style="width: 80%; margin-left:10%;">
                                             <input type="date" class="form-control" id="tanggal" name="tanggal"
-                                                value="{{ isset($tanggal) ? $tanggal : '' }}">
+                                                value="{{ isset($tanggal) ? $tanggal : '' }}" required>
                                         </div>
                                     </div>
 
@@ -142,9 +142,31 @@
                                                             <option value="Mangkir">Mangkir</option>
                                                         </select>
                                                     </td>
-                                                    <td><button type="submit" class="btn btn-sm btn-success"><i
-                                                                class="fas fa-check"></i></button>
+                                                    <td>
+                                                        <button type="submit" class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal"><i class="fas fa-check"></i> </button>
+                                                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#hapusabsensi"><i class="fas fa-trash"></i> </button>
                                                     </td>
+
+                                                    <!-- Modal untuk konfirmasi hapus -->
+                                                    <div class="modal fade" id="hapusabsensi" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="deleteConfirmationModalLabel">Konfirmasi Hapus</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Apakah Anda yakin ingin menghapus data ini?
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                                    <button type="button" class="btn btn-danger">Hapus</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </form>
 
                                             </tr>
@@ -178,22 +200,22 @@
                                                         </select>
                                                     </td>
                                                     <td>
-                                                        <button type="submit" class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal"><i class="fas fa-check"></i></button>
-                                                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i></button>
+                                                        <button type="submit" class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal"><i class="fas fa-check"></i> </button>
+                                                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#hapusabsensi"><i class="fas fa-trash"></i> </button>
                                                     </td>
 
                                                     <!-- Modal untuk konfirmasi hapus -->
-                                                    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="hapusabsensi" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h5>
+                                                                    <h5 class="modal-title" id="deleteConfirmationModalLabel">Konfirmasi Hapus</h5>
                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    Apakah Anda yakin ingin menghapus ini?
+                                                                    Apakah Anda yakin ingin menghapus data ini?
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
@@ -208,10 +230,6 @@
                                             </tr>
                                         @endforeach
                                     @endif
-
-
-
-
                                 </tbody>
                             </table>
                         </div>
@@ -270,12 +288,12 @@
                                                         </select>
                                                     </td>
                                                     <td>
-                                                        <button type="submit" class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal"><i class="fas fa-check"></i></button>
-                                                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteConfirmationModal"><i class="fas fa-trash"></i></button>
+                                                        <button type="submit" class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal"><i class="fas fa-check"></i> </button>
+                                                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i> </button>
                                                     </td>
 
                                                     <!-- Modal untuk konfirmasi hapus -->
-                                                    <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
@@ -285,7 +303,7 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    Apakah Anda yakin ingin menghapus ini?
+                                                                    Apakah Anda yakin ingin menghapus data ini?
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
@@ -294,7 +312,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                 </form>
 
                                             </tr>
@@ -327,9 +344,31 @@
                                                             <option value="Mangkir">Mangkir</option>
                                                         </select>
                                                     </td>
-                                                    <td><button type="submit" class="btn btn-sm btn-success"><i
-                                                                class="fas fa-check"></i></button>
+                                                    <td>
+                                                        <button type="submit" class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal"><i class="fas fa-check"></i> </button>
+                                                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i> </button>
                                                     </td>
+
+                                                    <!-- Modal untuk konfirmasi hapus -->
+                                                    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="deleteConfirmationModalLabel">Konfirmasi Hapus</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Apakah Anda yakin ingin menghapus data ini?
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                                    <button type="button" class="btn btn-danger">Hapus</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </form>
 
                                             </tr>

@@ -192,6 +192,7 @@
 
                 <div class=" table-responsive card card-custom  gutter-b">
                     <div class="table-responsive">
+                      <div class="card-body">
                         <table class="table table-striped table-bordered" id="data_table" >
                             <thead>
                                 <tr>
@@ -614,6 +615,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                      </div>
                       </div>
 
                 </div>

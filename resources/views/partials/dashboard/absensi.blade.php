@@ -69,7 +69,7 @@
           <div class="mt-3 " style="border: 1px solid #d4edda; color: #155724; background-color: #d4edda; padding: .75rem 1.25rem; border-radius: .25rem; text-align: center;" role="alert">
               <strong>Anda Terlambat!</strong>
           </div>
-          <button class="btn btn-primary btn-block " onclick="absen({{ $person }})">Lakukan Absensi</button>
+          <button class="btn btn-primary btn-block mt-3 " onclick="absen({{ $person }})">Lakukan Absensi</button>
           {{-- <p>{{ date('Y-m-d H:i:s', strtotime($waktu_absenDari . '+1 hour')) }} s/d {{ $waktu_absenSampai }}</p> --}}
       @elseif($datenow >= $waktu_absenDari && $datenow >= $waktu_absenSampai)
       {{-- 09:00 wib >= 08:00 && 06:00 wib <= 12:00 --}}
