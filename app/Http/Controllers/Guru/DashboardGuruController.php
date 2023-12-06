@@ -132,8 +132,6 @@ class DashboardGuruController extends GuruController
     public function Absen(Request $request)
     {
 
-     
-
         date_default_timezone_set('Asia/Jakarta'); // Set zona waktu ke Waktu Indonesia Barat
 
         setlocale(LC_TIME, 'id_ID');
@@ -187,7 +185,6 @@ class DashboardGuruController extends GuruController
             'status' => $status,
             'poin_absensi' => $poin_absensi,
         ];
-
 
         $result = new AbsenGuru();
         $result->saveAbsen($data);

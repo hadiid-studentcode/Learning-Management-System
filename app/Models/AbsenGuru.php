@@ -111,7 +111,6 @@ class AbsenGuru extends Model
         return $isAbsenGuru;
     }
 
-
     public function getDelete($id)
     {
 
