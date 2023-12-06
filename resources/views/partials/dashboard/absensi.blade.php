@@ -28,7 +28,7 @@
       {{-- <div class="alert alert-success text-center mt-3 " role="alert">
           <strong>Anda Sudah Melakukan Absensi</strong>
       </div> --}}
-      <div class="alert mt-3 text-center" style=" backround-color:#C5FFF8;" role="alert">
+      <div class="mt-3 " style="border: 1px solid #d4edda; color: #155724; background-color: #d4edda; padding: .75rem 1.25rem; border-radius: .25rem; text-align: center;">
         Status Absen : {{ $isAbsen->status }}
       </div>
   @else
@@ -56,14 +56,17 @@
       @if ($waktu_absenDari == null && $waktu_absenSampai == null && $datenow == null)
           <!-- Tidak ada kondisi -->
       @elseif ($datenow >= $waktu_absenDari && $datenow <= date('Y-m-d H:i:s', strtotime($waktu_absenDari . '+1 hour')))
-          <div class="alert alert-success text-center mt-3 " role="alert">
-              <strong>Absen Anda Dibuka!</strong>
 
-          </div>
+
+      <div class="mt-3" style="border: 1px solid #d4edda; color: #155724; background-color: #d4edda; padding: .75rem 1.25rem; border-radius: .25rem; text-align: center;" role="alert">
+        <strong>Absen Anda Dibuka!</strong>
+    </div>
+
+
           <button class="btn btn-primary btn-block mt-3 " onclick="absen({{ $person }})">Lakukan Absensi</button>
           {{-- <p>{{ $waktu_absenDari }} s/d {{ date('Y-m-d H:i:s', strtotime($waktu_absenDari . '+1 hour')) }}</p> --}}
       @elseif ($datenow >= date('Y-m-d H:i:s', strtotime($waktu_absenDari . '+1 hour')) && $datenow <= $waktu_absenSampai)
-          <div class="alert alert-danger text-center mt-3 " role="alert">
+          <div class="mt-3 " style="border: 1px solid #d4edda; color: #155724; background-color: #d4edda; padding: .75rem 1.25rem; border-radius: .25rem; text-align: center;" role="alert">
               <strong>Anda Terlambat!</strong>
           </div>
           <button class="btn btn-primary btn-block " onclick="absen({{ $person }})">Lakukan Absensi</button>
