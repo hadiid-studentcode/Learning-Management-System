@@ -70,7 +70,7 @@
                                         <label for="tanggal" style="margin-left:10%">Pilih Tanggal:</label>
                                         <div class="input-group" style="width: 80%; margin-left:10%;">
                                             <input type="date" class="form-control" id="tanggal" name="tanggal"
-                                                value="{{ isset($tanggal) ? $tanggal : '' }}" required>
+                                                value="{{ isset($tanggal) ? $tanggal : '' }}" >
                                         </div>
                                     </div>
 
