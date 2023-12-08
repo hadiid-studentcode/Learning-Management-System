@@ -280,6 +280,9 @@ Route::group(
         Route::resource('/tata-usaha/manajemen-pegawai', ManajemenPegawaiTataUsahaController::class);
         Route::resource('/tata-usaha/manajemen-guru', ManajemenGuruTataUsahaController::class);
         Route::resource('/tata-usaha/manajemen-absensi', ManajemenAbsensiTataUsahaController::class);
+        Route::post('/tata-usaha/manajemen-absensi/data-absen-guru/delete/{id_userGuru}', [ManajemenAbsensiTataUsahaController::class, 'destroyAbsenGuru']);
+
+        Route::post('/tata-usaha/manajemen-absensi/data-absen-pegawai/delete/{id_userGuru}', [ManajemenAbsensiTataUsahaController::class, 'destroyAbsenPegawai']);
 
         Route::resource('/tata-usaha/setting', SettingsTataUsahaController::class);
         Route::post('/tata-usaha/setting/{nama}/{userid}', [User_TataUsahaController::class, 'update']);

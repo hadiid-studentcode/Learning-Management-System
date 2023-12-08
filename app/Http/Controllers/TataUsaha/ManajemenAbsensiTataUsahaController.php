@@ -34,6 +34,7 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
      */
     public function create()
     {
+
         $this->img = $this->imageHeader();
 
         // get absen guru
@@ -190,6 +191,24 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
     public function destroy(string $id)
     {
         $result = new KelolaAbsensi();
+        $result->getDelete($id);
+
+        return back();
+    }
+
+    public function destroyAbsenGuru(string $id)
+    {
+
+        $result = new AbsenGuru();
+        $result->getDelete($id);
+
+        return back();
+    }
+
+    public function destroyAbsenPegawai(string $id)
+    {
+
+        $result = new AbsenPegawai();
         $result->getDelete($id);
 
         return back();

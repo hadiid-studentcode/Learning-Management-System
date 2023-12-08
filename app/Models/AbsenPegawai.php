@@ -102,4 +102,12 @@ class AbsenPegawai extends Model
 
         return $isAbsenPegawai;
     }
+
+    public function getDelete($id)
+    {
+
+        $result = AbsenPegawai::find($id);
+
+        return $result->delete();
+    }
 }
