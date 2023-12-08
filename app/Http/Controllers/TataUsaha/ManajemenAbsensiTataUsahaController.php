@@ -68,18 +68,25 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
      */
     public function store(Request $request)
     {
-        $data = [
 
-            'tanggal' => $request->tanggal,
-            'waktu_mulai' => $request->waktu_mulai,
-            'waktu_selesai' => $request->waktu_selesai,
+        try {
 
-        ];
 
-        $result = new KelolaAbsensi();
-        $result->saveAbsensi($data);
+            $data = [
 
-        return redirect('tata-usaha/manajemen-absensi');
+                'tanggal' => $request->tanggal,
+                'waktu_mulai' => $request->waktu_mulai,
+                'waktu_selesai' => $request->waktu_selesai,
+
+            ];
+
+            $result = new KelolaAbsensi();
+            $result->saveAbsensi($data);
+
+            return back();
+        } catch (\Throwable $th) {
+            return back();
+        }
     }
 
     /**
@@ -181,7 +188,7 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
             return redirect('tata-usaha/manajemen-absensi/create');
         } else {
 
-            return redirect('tata-usaha/manajemen-absensi/Search?tanggal='.$request->tanggal);
+            return redirect('tata-usaha/manajemen-absensi/Search?tanggal=' . $request->tanggal);
         }
     }
 
@@ -190,27 +197,41 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
      */
     public function destroy(string $id)
     {
-        $result = new KelolaAbsensi();
-        $result->getDelete($id);
 
-        return back();
+        try {
+            $result = new KelolaAbsensi();
+            $result->getDelete($id);
+
+            return back();
+        } catch (\Throwable $th) {
+            return back();
+        }
     }
 
     public function destroyAbsenGuru(string $id)
     {
+        try {
 
-        $result = new AbsenGuru();
-        $result->getDelete($id);
+            $result = new AbsenGuru();
+            $result->getDelete($id);
 
-        return back();
+            return back();
+        } catch (\Throwable $th) {
+            return back();
+        }
     }
 
     public function destroyAbsenPegawai(string $id)
     {
 
-        $result = new AbsenPegawai();
-        $result->getDelete($id);
+        try {
 
-        return back();
+            $result = new AbsenPegawai();
+            $result->getDelete($id);
+
+            return back();
+        } catch (\Throwable $th) {
+            return back();
+        }
     }
 }

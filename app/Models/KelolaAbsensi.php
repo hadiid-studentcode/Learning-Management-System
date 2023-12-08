@@ -42,11 +42,12 @@ class KelolaAbsensi extends Model
 
     public function absensi()
     {
-        $date = date('Y-m-d');
 
         // $date = date('2023-12-04');
 
         date_default_timezone_set('Asia/Jakarta');
+
+        $date = date('Y-m-d');
 
         $date_now = date('Y-m-d H:i:s');
 
@@ -55,6 +56,8 @@ class KelolaAbsensi extends Model
         // data absensi guru
         $result = new KelolaAbsensi();
         $absen = $result->getAbsenWhereDateNow($date);
+
+     
 
         if ($absen == null) {
             return $absen = [

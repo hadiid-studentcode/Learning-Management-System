@@ -66,15 +66,15 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="eventDate">Tanggal Hari Ini:</label>
-                                    <input type="date" id="eventDate" name="tanggal" class="form-control datepicker">
+                                    <input type="date" id="eventDate" name="tanggal" class="form-control datepicker" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="startTime">Absen Dibuka :</label>
-                                    <input type="time" id="startTime" name="waktu_mulai" class="form-control">
+                                    <input type="time" id="startTime" name="waktu_mulai" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="endTime">Absen Berakhir:</label>
-                                    <input type="time" id="endTime" name="waktu_selesai" class="form-control">
+                                    <input type="time" id="endTime" name="waktu_selesai" class="form-control" required>
                                 </div>
                                 <button type="submit" class="btn btn-success">Submit</button>
                             </form>
