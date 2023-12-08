@@ -2,7 +2,7 @@
 ![Logo](public/Assets/images/iconfile.png)
 
 
-# (SIHAMKABS) SISTEM HAMKA BS (BETA VERSION 1.6.2)
+# (SIHAMKABS) SISTEM HAMKA BS (BETA VERSION 1.6.3)
 
 Learning Management System (LMS) adalah platform perangkat lunak yang dirancang untuk
 mengelola, mengirimkan, dan melacak proses pembelajaran secara digital. LMS memungkinkan
