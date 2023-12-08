@@ -456,27 +456,28 @@ class ManajemenSiswaTataUsahaController extends TataUsahaController
      */
     public function destroy(string $id)
     {
-        // get userid siswa
-        $resultSiswa = new Siswa();
-        $resultWaliMurid = new WaliMurid();
-        $resultUser = new User();
 
-        $user_id = $resultSiswa->getUserIdSiswa($id);
-        $waliMurid = $resultWaliMurid->getIdUserWhereIdSiswa($id);
+        try {
+            // get userid siswa
+            $resultSiswa = new Siswa();
+            $resultWaliMurid = new WaliMurid();
+            $resultUser = new User();
 
-        // hapus user wali murid
-        $resultUser->deleteUser($waliMurid->id_user);
+            $user_id = $resultSiswa->getUserIdSiswa($id);
+            $waliMurid = $resultWaliMurid->getIdUserWhereIdSiswa($id);
 
-        $resultSiswa->HapusFotoSiswa($id);
-        $resultUser->deleteUser($user_id->id_user);
+            // hapus user wali murid
+            $resultUser->deleteUser($waliMurid->id_user);
 
-        $resultSiswa->deleteSiswa($id);
+            $resultSiswa->HapusFotoSiswa($id);
+            $resultUser->deleteUser($user_id->id_user);
 
-        // // get userid wali murid
+            $resultSiswa->deleteSiswa($id);
 
-        // // hapus wali murid
-        // $resultWaliMurid->deleteWaliMurid($waliMurid->id_user);
+            return redirect('/tata-usaha/manajemen-siswa')->with('warning', 'Data Siswa Berhasil Dihapus');
+        } catch (\Throwable $th) {
+            return back();
+        }
 
-        return redirect('/tata-usaha/manajemen-siswa')->with('warning', 'Data Siswa Berhasil Dihapus');
     }
 }
