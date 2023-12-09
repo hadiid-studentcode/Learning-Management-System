@@ -24,7 +24,7 @@ class User_TataUsahaController extends UserController
 
     public function authenticate(Request $r)
     {
-       
+
         try {
             $credentials = $r->validate([
                 'userid' => ['required'],
@@ -36,16 +36,16 @@ class User_TataUsahaController extends UserController
                 'hak_akses.required' => 'Mohon masukkan hak akses.',
             ]);
 
-        
-          
-           
+
+
+
 
             if (Auth::attempt($credentials)) {
                 $r->session()->regenerate();
 
                 return redirect()->intended('/tata-usaha/dashboard');
             }
-          
+
 
             return back()->with('error', 'Username dan password anda salah !');
         } catch (\Throwable $th) {
@@ -56,13 +56,17 @@ class User_TataUsahaController extends UserController
 
     public function logout(Request $request): RedirectResponse
     {
-        Auth::logout();
+        try {
+            Auth::logout();
 
-        $request->session()->invalidate();
+            $request->session()->invalidate();
 
-        $request->session()->regenerateToken();
+            $request->session()->regenerateToken();
 
-        return redirect('/tata-usaha');
+            return redirect('/tata-usaha');
+        } catch (\Throwable $th) {
+            return back();
+        }
     }
 
     public function update(Request $r, $nama, $userid)

@@ -23,14 +23,12 @@ class ManajemenPegawaiTataUsahaController extends TataUsahaController
         if ($userid == 'admintu') {
 
             $getPegawai = $result->getPegawai();
-
         } else {
             $getPegawai =
                 $result = DB::table('pegawai')
-                    ->select('*')
-                    ->WhereNot('pegawai.nama', '=', 'admin')
-                    ->get();
-
+                ->select('*')
+                ->WhereNot('pegawai.nama', '=', 'admin')
+                ->get();
         }
 
         return view('tataUsaha.manajemen-pegawai.index')
@@ -45,10 +43,10 @@ class ManajemenPegawaiTataUsahaController extends TataUsahaController
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+    // public function create()
+    // {
+    //     //
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -74,7 +72,7 @@ class ManajemenPegawaiTataUsahaController extends TataUsahaController
         try {
             if ($request->hasfile('foto')) {
 
-                $foto = round(microtime(true) * 1000).'-'.str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
+                $foto = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
 
                 $dataUser = [
                     'nama_lengkap' => ucwords($request->nama),
@@ -167,25 +165,25 @@ class ManajemenPegawaiTataUsahaController extends TataUsahaController
             }
         } catch (\Throwable $th) {
 
-            return back()->with('warning', 'Terjadi Kesalahan : '.$th->getMessage());
+            return back()->with('warning', 'Terjadi Kesalahan : ' . $th->getMessage());
         }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+    // public function show(string $id)
+    // {
+    //     //
+    // }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+    // /**
+    //  * Show the form for editing the specified resource.
+    //  */
+    // public function edit(string $id)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -199,7 +197,7 @@ class ManajemenPegawaiTataUsahaController extends TataUsahaController
         try {
             if ($request->hasfile('foto')) {
 
-                $foto = round(microtime(true) * 1000).'-'.str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
+                $foto = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
 
                 $dataUser = [
                     'nama_lengkap' => ucwords($request->nama),
@@ -300,19 +298,22 @@ class ManajemenPegawaiTataUsahaController extends TataUsahaController
      */
     public function destroy(string $id)
     {
+        try {
+            // user id where pegawai
+            $result = new Pegawai();
+            $pegawai = $result->getUserIdPegawai($id);
 
-        // user id where pegawai
-        $result = new Pegawai();
-        $pegawai = $result->getUserIdPegawai($id);
+            // deleted user dengan id
+            $result = new User();
+            $result->deleteUser($pegawai->id_user);
 
-        // deleted user dengan id
-        $result = new User();
-        $result->deleteUser($pegawai->id_user);
+            $result = new Pegawai();
+            $result->HapusFotoPegawai($id);
+            $result->deletePegawai($id);
 
-        $result = new Pegawai();
-        $result->HapusFotoPegawai($id);
-        $result->deletePegawai($id);
-
-        return redirect('/tata-usaha/manajemen-pegawai')->with('success', 'Data berhasil dihapus');
+            return redirect('/tata-usaha/manajemen-pegawai')->with('success', 'Data berhasil dihapus');
+        } catch (\Throwable $th) {
+            return back();
+        }
     }
 }

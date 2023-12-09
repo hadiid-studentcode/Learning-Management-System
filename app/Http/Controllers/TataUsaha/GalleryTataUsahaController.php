@@ -30,10 +30,10 @@ class GalleryTataUsahaController extends TataUsahaController
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+    // public function create()
+    // {
+    //     //
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -72,47 +72,48 @@ class GalleryTataUsahaController extends TataUsahaController
             $result->uploadFotoGallery($request->foto_kegiatan, $foto, '');
 
             return redirect('/tata-usaha/gallery');
-
         } catch (\Illuminate\Validation\ValidationException $exception) {
             // Kode ini akan dieksekusi jika validasi gagal
             return back()->withErrors($exception->getMessage());
         }
-
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+    // public function show(string $id)
+    // {
+    //     //
+    // }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+    // /**
+    //  * Show the form for editing the specified resource.
+    //  */
+    // public function edit(string $id)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    // public function update(Request $request, string $id)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        $result = new Gallery();
-        $result->deleteGallery($id);
+        try {
+            $result = new Gallery();
+            $result->deleteGallery($id);
 
-        return redirect('tata-usaha/gallery')->with('message', 'Gallery Berhasil Dihapus');
-
+            return redirect('tata-usaha/gallery')->with('message', 'Gallery Berhasil Dihapus');
+        } catch (\Throwable $th) {
+            return back();
+        }
     }
 }

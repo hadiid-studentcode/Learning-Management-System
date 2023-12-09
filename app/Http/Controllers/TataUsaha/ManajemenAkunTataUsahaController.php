@@ -35,48 +35,48 @@ class ManajemenAkunTataUsahaController extends TataUsahaController
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+    // public function create()
+    // {
+    //     //
+    // }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
+    // public function store(Request $request)
+    // {
 
-        $data = [
-            'nama_lengkap' => $request->nama_lengkap,
-            'email' => '',
-            'userid' => $request->username,
-            'password' => bcrypt($request->password),
-            'foto' => '',
-            'hak_akses' => $request->posisi,
-        ];
+    //     $data = [
+    //         'nama_lengkap' => $request->nama_lengkap,
+    //         'email' => '',
+    //         'userid' => $request->username,
+    //         'password' => bcrypt($request->password),
+    //         'foto' => '',
+    //         'hak_akses' => $request->posisi,
+    //     ];
 
-        // save users baru
-        $result = new User();
-        $result->saveUsers($data);
+    //     // save users baru
+    //     $result = new User();
+    //     $result->saveUsers($data);
 
-        return redirect('/tata-usaha/manajemen-akun')->with('success', 'Data berhasil disimpan');
-    }
+    //     return redirect('/tata-usaha/manajemen-akun')->with('success', 'Data berhasil disimpan');
+    // }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+    // public function show(string $id)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
+    // public function edit(string $id)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -98,11 +98,11 @@ class ManajemenAkunTataUsahaController extends TataUsahaController
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        $result = new User();
-        $result->deleteUser($id);
+    // public function destroy(string $id)
+    // {
+    //     $result = new User();
+    //     $result->deleteUser($id);
 
-        return redirect('/tata-usaha/manajemen-akun')->with('success', 'Data berhasil dihapus');
-    }
+    //     return redirect('/tata-usaha/manajemen-akun')->with('success', 'Data berhasil dihapus');
+    // }
 }

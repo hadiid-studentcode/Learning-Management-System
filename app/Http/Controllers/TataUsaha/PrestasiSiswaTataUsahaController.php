@@ -66,9 +66,9 @@ class PrestasiSiswaTataUsahaController extends TataUsahaController
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-    }
+    // public function create()
+    // {
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -197,26 +197,32 @@ class PrestasiSiswaTataUsahaController extends TataUsahaController
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
+    // public function edit(string $id)
+    // {
+    //     //
+    // }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id_siswa)
-    {
-    }
+    // /**
+    //  * Update the specified resource in storage.
+    //  */
+    // public function update(Request $request, string $id_siswa)
+    // {
+    // }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        $result = new PrestasiSiswa();
-        $result->deletePrestasiSiswa($id);
 
-        return redirect('/tata-usaha/prestasi-siswa')->with('warning', 'Data Prestasi Siswa Berhasil Dihapus');
+        try {
+            $result = new PrestasiSiswa();
+            $result->deletePrestasiSiswa($id);
+
+            return redirect('/tata-usaha/prestasi-siswa')->with('warning', 'Data Prestasi Siswa Berhasil Dihapus');
+        } catch (\Throwable $th) {
+           return back();
+        }
+      
     }
 }

@@ -46,160 +46,164 @@ class SettingsTataUsahaController extends TataUsahaController
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+    // public function create()
+    // {
+    //     //
+    // }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-    }
+    // /**
+    //  * Store a newly created resource in storage.
+    //  */
+    // public function store(Request $request)
+    // {
+    // }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+    // /**
+    //  * Display the specified resource.
+    //  */
+    // public function show(string $id)
+    // {
+    //     //
+    // }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+    // /**
+    //  * Show the form for editing the specified resource.
+    //  */
+    // public function edit(string $id)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
+        try {
+            $request->validate([
 
-        $request->validate([
-
-            'foto' => 'mimes:jpg,jpeg,png|max:5000',
-        ]);
-
-        if ($request->hasFile('foto')) {
-            $foto =
-                round(microtime(true) * 1000).'-'.str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
-
-            if ($request->nik == null) {
-                $data = [
-                    'nama' => $request->input('nama'),
-                    'no_hp' => $request->input('nohp'),
-                    'tempat_lahir' => $request->input('tempat_lahir'),
-                    'tanggal_lahir' => $request->input('tanggal_lahir'),
-                    'jenis_kelamin' => $request->input('jenis_kelamin'),
-                    'agama' => $request->input('agama'),
-                    'status_perkawinan' => $request->input('status_perkawinan'),
-                    'kelurahan' => $request->input('kelurahan'),
-                    'kecamatan' => $request->input('kecamatan'),
-                    'kabupatenKota' => $request->input('kabupatenKota'),
-                    'provinsi' => $request->input('provinsi'),
-                    'alamat' => $request->input('alamat'),
-                    'foto' => $foto,
-                ];
-            } else {
-                $data = [
-                    'nik' => $request->nik,
-                    'nama' => $request->input('nama'),
-                    'no_hp' => $request->input('nohp'),
-                    'tempat_lahir' => $request->input('tempat_lahir'),
-                    'tanggal_lahir' => $request->input('tanggal_lahir'),
-                    'jenis_kelamin' => $request->input('jenis_kelamin'),
-                    'agama' => $request->input('agama'),
-                    'status_perkawinan' => $request->input('status_perkawinan'),
-                    'kelurahan' => $request->input('kelurahan'),
-                    'kecamatan' => $request->input('kecamatan'),
-                    'kabupatenKota' => $request->input('kabupatenKota'),
-                    'provinsi' => $request->input('provinsi'),
-                    'alamat' => $request->input('alamat'),
-                    'foto' => $foto,
-                ];
-
-            }
-
-            $result = new Pegawai();
-
-            //   upload foto yang baru
-            $result->uploadFotoPegawai(
-                $request->file('foto'),
-                $foto,
-                $id
-            );
-            // simpan data pegawai
-
-            $result->updatePegawaiWhereIdUsers($id, $data);
-            // update nama lengkap
-            $result = new User();
-            $result->updateUserName(Auth()->user()->id, [
-                'nama_lengkap' => $request->input('nama'),
-                'foto' => $foto,
+                'foto' => 'mimes:jpg,jpeg,png|max:5000',
             ]);
 
-            return redirect('/tata-usaha/setting');
-        } elseif ($request->hasFile('foto') == false) {
+            if ($request->hasFile('foto')) {
+                $foto =
+                    round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
 
-            if ($request->nik == null) {
-                $data = [
-                    'nama' => $request->input('nama'),
-                    'no_hp' => $request->input('nohp'),
-                    'tempat_lahir' => $request->input('tempat_lahir'),
-                    'tanggal_lahir' => $request->input('tanggal_lahir'),
-                    'jenis_kelamin' => $request->input('jenis_kelamin'),
-                    'agama' => $request->input('agama'),
-                    'status_perkawinan' => $request->input('status_perkawinan'),
-                    'kelurahan' => $request->input('kelurahan'),
-                    'kecamatan' => $request->input('kecamatan'),
-                    'kabupatenKota' => $request->input('kabupatenKota'),
-                    'provinsi' => $request->input('provinsi'),
-                    'alamat' => $request->input('alamat'),
+                if ($request->nik == null) {
+                    $data = [
+                        'nama' => $request->input('nama'),
+                        'no_hp' => $request->input('nohp'),
+                        'tempat_lahir' => $request->input('tempat_lahir'),
+                        'tanggal_lahir' => $request->input('tanggal_lahir'),
+                        'jenis_kelamin' => $request->input('jenis_kelamin'),
+                        'agama' => $request->input('agama'),
+                        'status_perkawinan' => $request->input('status_perkawinan'),
+                        'kelurahan' => $request->input('kelurahan'),
+                        'kecamatan' => $request->input('kecamatan'),
+                        'kabupatenKota' => $request->input('kabupatenKota'),
+                        'provinsi' => $request->input('provinsi'),
+                        'alamat' => $request->input('alamat'),
+                        'foto' => $foto,
+                    ];
+                } else {
+                    $data = [
+                        'nik' => $request->nik,
+                        'nama' => $request->input('nama'),
+                        'no_hp' => $request->input('nohp'),
+                        'tempat_lahir' => $request->input('tempat_lahir'),
+                        'tanggal_lahir' => $request->input('tanggal_lahir'),
+                        'jenis_kelamin' => $request->input('jenis_kelamin'),
+                        'agama' => $request->input('agama'),
+                        'status_perkawinan' => $request->input('status_perkawinan'),
+                        'kelurahan' => $request->input('kelurahan'),
+                        'kecamatan' => $request->input('kecamatan'),
+                        'kabupatenKota' => $request->input('kabupatenKota'),
+                        'provinsi' => $request->input('provinsi'),
+                        'alamat' => $request->input('alamat'),
+                        'foto' => $foto,
+                    ];
+                }
 
-                ];
+                $result = new Pegawai();
+
+                //   upload foto yang baru
+                $result->uploadFotoPegawai(
+                    $request->file('foto'),
+                    $foto,
+                    $id
+                );
+                // simpan data pegawai
+
+                $result->updatePegawaiWhereIdUsers($id, $data);
+                // update nama lengkap
+                $result = new User();
+                $result->updateUserName(Auth()->user()->id, [
+                    'nama_lengkap' => $request->input('nama'),
+                    'foto' => $foto,
+                ]);
+
+                return redirect('/tata-usaha/setting');
+            } elseif ($request->hasFile('foto') == false) {
+
+                if ($request->nik == null) {
+                    $data = [
+                        'nama' => $request->input('nama'),
+                        'no_hp' => $request->input('nohp'),
+                        'tempat_lahir' => $request->input('tempat_lahir'),
+                        'tanggal_lahir' => $request->input('tanggal_lahir'),
+                        'jenis_kelamin' => $request->input('jenis_kelamin'),
+                        'agama' => $request->input('agama'),
+                        'status_perkawinan' => $request->input('status_perkawinan'),
+                        'kelurahan' => $request->input('kelurahan'),
+                        'kecamatan' => $request->input('kecamatan'),
+                        'kabupatenKota' => $request->input('kabupatenKota'),
+                        'provinsi' => $request->input('provinsi'),
+                        'alamat' => $request->input('alamat'),
+
+                    ];
+                } else {
+                    $data = [
+                        'nik' => $request->nik,
+                        'nama' => $request->input('nama'),
+                        'no_hp' => $request->input('nohp'),
+                        'tempat_lahir' => $request->input('tempat_lahir'),
+                        'tanggal_lahir' => $request->input('tanggal_lahir'),
+                        'jenis_kelamin' => $request->input('jenis_kelamin'),
+                        'agama' => $request->input('agama'),
+                        'status_perkawinan' => $request->input('status_perkawinan'),
+                        'kelurahan' => $request->input('kelurahan'),
+                        'kecamatan' => $request->input('kecamatan'),
+                        'kabupatenKota' => $request->input('kabupatenKota'),
+                        'provinsi' => $request->input('provinsi'),
+                        'alamat' => $request->input('alamat'),
+
+                    ];
+                }
+
+                // simpan data pegawai
+                $result = new Pegawai();
+                $result->updatePegawaiWhereIdUsers($id, $data);
+                // update nama lengkap
+                $result = new User();
+                $result->updateUserName(Auth()->user()->id, ['nama_lengkap' => $request->input('nama')]);
+
+                return redirect('/tata-usaha/setting');
             } else {
-                $data = [
-                    'nik' => $request->nik,
-                    'nama' => $request->input('nama'),
-                    'no_hp' => $request->input('nohp'),
-                    'tempat_lahir' => $request->input('tempat_lahir'),
-                    'tanggal_lahir' => $request->input('tanggal_lahir'),
-                    'jenis_kelamin' => $request->input('jenis_kelamin'),
-                    'agama' => $request->input('agama'),
-                    'status_perkawinan' => $request->input('status_perkawinan'),
-                    'kelurahan' => $request->input('kelurahan'),
-                    'kecamatan' => $request->input('kecamatan'),
-                    'kabupatenKota' => $request->input('kabupatenKota'),
-                    'provinsi' => $request->input('provinsi'),
-                    'alamat' => $request->input('alamat'),
-
-                ];
+                return back()
+                    ->with('error', 'Data Pegawai Gagal Disimpan');
             }
-
-            // simpan data pegawai
-            $result = new Pegawai();
-            $result->updatePegawaiWhereIdUsers($id, $data);
-            // update nama lengkap
-            $result = new User();
-            $result->updateUserName(Auth()->user()->id, ['nama_lengkap' => $request->input('nama')]);
-
-            return redirect('/tata-usaha/setting');
-        } else {
-            return back()
-                ->with('error', 'Data Pegawai Gagal Disimpan');
+        } catch (\Throwable $th) {
+           return back();
         }
+
+       
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
-    }
+    // public function destroy(string $id)
+    // {
+    //     //
+    // }
 }

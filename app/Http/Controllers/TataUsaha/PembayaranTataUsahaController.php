@@ -49,10 +49,10 @@ class PembayaranTataUsahaController extends TataUsahaController
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+    // public function create()
+    // {
+    //     //
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -240,10 +240,10 @@ class PembayaranTataUsahaController extends TataUsahaController
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
+    // public function edit(string $id)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -294,12 +294,18 @@ class PembayaranTataUsahaController extends TataUsahaController
     public function destroy(Request $request, string $no_transaksi)
     {
 
-        $nisn = $request->siswa_nisn;
+        try {
+            $nisn = $request->siswa_nisn;
 
-        $result = new Pemasukan();
-        $result->deletePembayaran($no_transaksi);
+            $result = new Pemasukan();
+            $result->deletePembayaran($no_transaksi);
 
-        return redirect('tata-usaha/pembayaran/cari-siswa?cariSiswaAtauNisn='.$nisn)->with('success', 'Data Pembayaran Berhasil Dihapus.');
+            return redirect('tata-usaha/pembayaran/cari-siswa?cariSiswaAtauNisn=' . $nisn)->with('success', 'Data Pembayaran Berhasil Dihapus.');
+        } catch (\Throwable $th) {
+           return back();
+        }
+
+       
     }
 
     public function cetak($kode)
@@ -358,11 +364,16 @@ class PembayaranTataUsahaController extends TataUsahaController
 
     public function report($nisn, $no_transaksi)
     {
+        try {
+            $result = new Pemasukan();
 
-        $result = new Pemasukan();
+            $result->reportPemasukkan($no_transaksi);
 
-        $result->reportPemasukkan($no_transaksi);
+            return redirect('tata-usaha/pembayaran/cari-siswa?cariSiswaAtauNisn=' . $nisn)->with('success', 'Data Pembayaran Berhasil Direport Silahkan Menunggu.');
+        } catch (\Throwable $th) {
+            return back();
+        }
 
-        return redirect('tata-usaha/pembayaran/cari-siswa?cariSiswaAtauNisn='.$nisn)->with('success', 'Data Pembayaran Berhasil Direport Silahkan Menunggu.');
+      
     }
 }
