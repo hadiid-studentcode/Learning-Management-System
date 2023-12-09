@@ -145,18 +145,24 @@ class ManajemenKelasTataUsahaController extends TataUsahaController
     public function destroy(string $id)
     {
 
-        $resultKelas = new Kelas();
+        try {
+            $resultKelas = new Kelas();
 
-        // get id_guru wali kelas lama
-        $id_guru = $resultKelas->getWaliKelasLama($id);
+            // get id_guru wali kelas lama
+            $id_guru = $resultKelas->getWaliKelasLama($id);
 
-        // ganti guru wali kelas menjadi non walikelas
-        $resultGuru = new Guru();
-        $resultGuru->updateGuru($id_guru->id_guru, ['jenis' => 'Non Wali Kelas']);
+            // ganti guru wali kelas menjadi non walikelas
+            $resultGuru = new Guru();
+            $resultGuru->updateGuru($id_guru->id_guru, ['jenis' => 'Non Wali Kelas']);
 
-        $result = new Kelas();
-        $result->deleteKelas($id);
+            $result = new Kelas();
+            $result->deleteKelas($id);
 
-        return redirect('/tata-usaha/manajemen-kelas')->with('success', 'Data Kelas Berhasil Dihapus');
+            return redirect('/tata-usaha/manajemen-kelas')->with('success', 'Data Kelas Berhasil Dihapus');
+        } catch (\Throwable $th) {
+            return back();
+        }
+
+      
     }
 }
