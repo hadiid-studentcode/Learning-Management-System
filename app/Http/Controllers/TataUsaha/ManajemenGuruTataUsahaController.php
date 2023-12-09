@@ -291,18 +291,25 @@ class ManajemenGuruTataUsahaController extends TataUsahaController
     public function destroy(string $id)
     {
 
-        // get userId
-        $result = new Guru();
-        $user_id = $result->getUserIdGuru($id);
 
-        // hapus user
-        $result = new User();
-        $result->deleteUser($user_id->id_user);
+        try {
+            // get userId
+            $result = new Guru();
+            $user_id = $result->getUserIdGuru($id);
 
-        $result = new Guru();
-        $result->HapusFotoGuru($id);
-        $result->deleteGuru($id);
+            // hapus user
+            $result = new User();
+            $result->deleteUser($user_id->id_user);
 
-        return redirect('/tata-usaha/manajemen-guru')->with('success', 'Data berhasil dihapus');
+            $result = new Guru();
+            $result->HapusFotoGuru($id);
+            $result->deleteGuru($id);
+
+            return redirect('/tata-usaha/manajemen-guru')->with('success', 'Data berhasil dihapus');
+        } catch (\Throwable $th) {
+           return back();
+        }
+
+      
     }
 }

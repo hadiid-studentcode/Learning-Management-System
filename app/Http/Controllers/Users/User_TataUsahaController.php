@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class User_TataUsahaController extends UserController
 {
+
     public function index()
     {
 
@@ -23,20 +24,34 @@ class User_TataUsahaController extends UserController
 
     public function authenticate(Request $r)
     {
+       
+        try {
+            $credentials = $r->validate([
+                'userid' => ['required'],
+                'password' => ['required'],
+                'hak_akses' => ['required'],
+            ], [
+                'userid.required' => 'Mohon masukkan userid.',
+                'password.required' => 'Mohon masukkan password.',
+                'hak_akses.required' => 'Mohon masukkan hak akses.',
+            ]);
 
-        $credentials = $r->validate([
-            'userid' => ['required'],
-            'password' => ['required'],
-            'hak_akses' => ['required'],
-        ]);
+        
+          
+           
 
-        if (Auth::attempt($credentials)) {
-            $r->session()->regenerate();
+            if (Auth::attempt($credentials)) {
+                $r->session()->regenerate();
 
-            return redirect()->intended('/tata-usaha/dashboard');
+                return redirect()->intended('/tata-usaha/dashboard');
+            }
+          
+
+            return back()->with('error', 'Username dan password anda salah !');
+        } catch (\Throwable $th) {
+            dd(1);
+            return back()->with('error', 'Terjadi kesalahan. Silakan coba lagi.');
         }
-
-        return back()->with('error', 'username dan password anda salah !');
     }
 
     public function logout(Request $request): RedirectResponse
