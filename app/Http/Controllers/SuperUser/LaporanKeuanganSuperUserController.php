@@ -38,115 +38,130 @@ class LaporanKeuanganSuperUserController extends SuperUserController
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+    // public function create()
+    // {
+    //     //
+    // }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    // /**
+    //  * Store a newly created resource in storage.
+    //  */
+    // public function store(Request $request)
+    // {
+    //     //
+    // }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+    // /**
+    //  * Display the specified resource.
+    //  */
+    // public function show(string $id)
+    // {
+    //     //
+    // }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+    // /**
+    //  * Show the form for editing the specified resource.
+    //  */
+    // public function edit(string $id)
+    // {
+    //     //
+    // }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    // /**
+    //  * Update the specified resource in storage.
+    //  */
+    // public function update(Request $request, string $id)
+    // {
+    //     //
+    // }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+    // /**
+    //  * Remove the specified resource from storage.
+    //  */
+    // public function destroy(string $id)
+    // {
+    //     //
+    // }
 
     public function updatePemasukkanAccepted($no_transaksi)
     {
 
-        // update report pemasukkan menjadi diterima
+        try {
+            // update report pemasukkan menjadi diterima
 
-        $data = [
-            'report' => 'Diterima',
-        ];
+            $data = [
+                'report' => 'Diterima',
+            ];
 
-        $result = new Pemasukan();
-        $result->updatePemasukkan($no_transaksi, $data);
-        $result->deletePembayaran($no_transaksi);
+            $result = new Pemasukan();
+            $result->updatePemasukkan($no_transaksi, $data);
+            $result->deletePembayaran($no_transaksi);
 
-        // hapus data pemasukan
+            // hapus data pemasukan
 
-        return redirect('super-user/laporan-keuangan')->with('success', 'Laporan Berhasil Diterima');
-
+            return redirect('super-user/laporan-keuangan')->with('success', 'Laporan Berhasil Diterima');
+        } catch (\Throwable $th) {
+            return back();
+        }
     }
 
     public function updatePemasukkanRejected($no_transaksi)
     {
 
-        // update report pemasukkan menjadi diterima
+        try {
+            // update report pemasukkan menjadi diterima
 
-        $data = [
-            'report' => 'Ditolak',
-        ];
+            $data = [
+                'report' => 'Ditolak',
+            ];
 
-        $result = new Pemasukan();
-        $result->updatePemasukkan($no_transaksi, $data);
+            $result = new Pemasukan();
+            $result->updatePemasukkan($no_transaksi, $data);
 
-        return redirect('super-user/laporan-keuangan')->with('success', 'Laporan Berhasil Ditolak');
+            return redirect('super-user/laporan-keuangan')->with('success', 'Laporan Berhasil Ditolak');
+        } catch (\Throwable $th) {
+            return back();
+        }
     }
 
     public function updatePengeluaranAccepted($no_transaksi)
     {
 
-        // update report pemasukkan menjadi diterima
+        try {
+            // update report pemasukkan menjadi diterima
 
-        $data = [
-            'report' => 'Diterima',
-        ];
+            $data = [
+                'report' => 'Diterima',
+            ];
 
-        $result = new Pengeluaran();
-        $result->updatePengeluaran($no_transaksi, $data);
+            $result = new Pengeluaran();
+            $result->updatePengeluaran($no_transaksi, $data);
 
-        // hapus data pengeluaran
-        $result->deletePengeluaranWhereNoTransaksi($no_transaksi);
+            // hapus data pengeluaran
+            $result->deletePengeluaranWhereNoTransaksi($no_transaksi);
 
-        return redirect('super-user/laporan-keuangan')->with('success', 'Laporan Berhasil Diterima');
+            return redirect('super-user/laporan-keuangan')->with('success', 'Laporan Berhasil Diterima');
+        } catch (\Throwable $th) {
+            return back();
+        }
     }
 
     public function updatePengeluaranRejected($no_transaksi)
     {
 
-        // update report pemasukkan menjadi diterima
+        try {
+            // update report pemasukkan menjadi diterima
 
-        $data = [
-            'report' => 'Ditolak',
-        ];
+            $data = [
+                'report' => 'Ditolak',
+            ];
 
-        $result = new Pengeluaran();
-        $result->updatePengeluaran($no_transaksi, $data);
+            $result = new Pengeluaran();
+            $result->updatePengeluaran($no_transaksi, $data);
 
-        return redirect('super-user/laporan-keuangan')->with('success', 'Laporan Berhasil Ditolak');
+            return redirect('super-user/laporan-keuangan')->with('success', 'Laporan Berhasil Ditolak');
+        } catch (\Throwable $th) {
+            return back();
+        }
     }
 }

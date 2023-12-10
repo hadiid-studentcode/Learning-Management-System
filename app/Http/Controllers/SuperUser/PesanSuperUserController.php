@@ -189,28 +189,35 @@ class PesanSuperUserController extends SuperUserController
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
+    // public function edit(string $id)
+    // {
+    //     //
+    // }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    // /**
+    //  * Update the specified resource in storage.
+    //  */
+    // public function update(Request $request, string $id)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        $result = new Pesan();
-        $result->deletePesan($id);
 
-        return redirect('super-user/pesan')->with('message', 'Pesan Berhasil Dihapus');
 
+        try {
+            $result = new Pesan();
+            $result->deletePesan($id);
+
+            return redirect('super-user/pesan')->with('message', 'Pesan Berhasil Dihapus');
+        } catch (\Throwable $th) {
+            return back();
+        }
+
+      
     }
 }

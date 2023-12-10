@@ -45,10 +45,10 @@ class PembayaranSiswaSuperUserController extends SuperUserController
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+    // public function create()
+    // {
+    //     //
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -96,7 +96,7 @@ class PembayaranSiswaSuperUserController extends SuperUserController
                 $nominal = intval($parts[1]);
 
                 $bulan = strtoupper($request->bulanSPP);
-                $jenis = $nama.' '.$bulan;
+                $jenis = $nama . ' ' . $bulan;
 
                 break;
 
@@ -135,9 +135,9 @@ class PembayaranSiswaSuperUserController extends SuperUserController
         $jumlahTransaksiPemasukkan = $jumlahPemasukkan + 1;
 
         $dataPemasukan = [
-            'no_transaksi' => $tahun_awal.'T0'.$jumlahTransaksiPemasukkan.''.$nisn.'C'.date('s'),
+            'no_transaksi' => $tahun_awal . 'T0' . $jumlahTransaksiPemasukkan . '' . $nisn . 'C' . date('s'),
             'tanggal' => $request->tanggal_pembayaran,
-            'pembayaran' => $jenis.' TAHUN '.$tahun_ajaran->tahun_ajaran,
+            'pembayaran' => $jenis . ' TAHUN ' . $tahun_ajaran->tahun_ajaran,
             'tarif' => $nominal,
             'nominal' => $jumlah,
             'sisa' => $sisa,
@@ -164,7 +164,7 @@ class PembayaranSiswaSuperUserController extends SuperUserController
         $resultRekapKeuangan = new RekapKeuangan();
         $resultRekapKeuangan->saveRekapKeuangan($dataRekapKeuangan);
 
-        return redirect('super-user/pembayaran/cari-siswa?cariSiswaAtauNisn='.$nisn)->with('success', 'Data Pembayaran Berhasil Disimpan.');
+        return redirect('super-user/pembayaran/cari-siswa?cariSiswaAtauNisn=' . $nisn)->with('success', 'Data Pembayaran Berhasil Disimpan.');
     }
 
     /**
@@ -177,7 +177,7 @@ class PembayaranSiswaSuperUserController extends SuperUserController
         $result = new Siswa();
         $data = $result->getSiswaOrNisn($search);
 
-        if (! $data) {
+        if (!$data) {
 
             return redirect('super-user/pembayaran/')->with('error', 'Data Tidak Ditemukan.');
         }
@@ -230,10 +230,10 @@ class PembayaranSiswaSuperUserController extends SuperUserController
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
+    // public function edit(string $id)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -265,7 +265,7 @@ class PembayaranSiswaSuperUserController extends SuperUserController
         $result = new Pemasukan();
         $result->updatePembayaranSiswa($data, $no_transaksi);
 
-        return redirect('super-user/pembayaran/cari-siswa?cariSiswaAtauNisn='.$nisn)->with('success', 'Data Pembayaran Berhasil Diubah.');
+        return redirect('super-user/pembayaran/cari-siswa?cariSiswaAtauNisn=' . $nisn)->with('success', 'Data Pembayaran Berhasil Diubah.');
     }
 
     /**
@@ -273,13 +273,16 @@ class PembayaranSiswaSuperUserController extends SuperUserController
      */
     public function destroy(Request $request, string $no_transaksi)
     {
+        try {
+            $nisn = $request->siswa_nisn;
 
-        $nisn = $request->siswa_nisn;
+            $result = new Pemasukan();
+            $result->deletePembayaran($no_transaksi);
 
-        $result = new Pemasukan();
-        $result->deletePembayaran($no_transaksi);
-
-        return redirect('super-user/pembayaran/cari-siswa?cariSiswaAtauNisn='.$nisn)->with('success', 'Data Pembayaran Berhasil Dihapus.');
+            return redirect('super-user/pembayaran/cari-siswa?cariSiswaAtauNisn=' . $nisn)->with('success', 'Data Pembayaran Berhasil Dihapus.');
+        } catch (\Throwable $th) {
+            return back();
+        }
     }
 
     public function cetak($kode)
@@ -328,7 +331,7 @@ class PembayaranSiswaSuperUserController extends SuperUserController
         $nama_bulan_indonesia = $nama_bulan[$angka_bulan];
 
         // Format tanggal sesuai keinginan
-        $tanggal_pembayaran = date('d', strtotime($tanggal)).' '.$nama_bulan_indonesia.' '.date('Y', strtotime($tanggal));
+        $tanggal_pembayaran = date('d', strtotime($tanggal)) . ' ' . $nama_bulan_indonesia . ' ' . date('Y', strtotime($tanggal));
 
         // Menampilkan tanggal dalam format yang diinginkan
 
@@ -342,7 +345,7 @@ class PembayaranSiswaSuperUserController extends SuperUserController
         $nama_bulan_indonesia = $nama_bulan[$angka_bulan];
 
         // Format tanggal sesuai keinginan
-        $tanggal_sekarang = date('d', strtotime($tanggal_sekarang)).' '.$nama_bulan_indonesia.' '.date('Y', strtotime($tanggal_sekarang));
+        $tanggal_sekarang = date('d', strtotime($tanggal_sekarang)) . ' ' . $nama_bulan_indonesia . ' ' . date('Y', strtotime($tanggal_sekarang));
 
         return view('tataUsaha.pembayaran.cetak')
             ->with('pembayaran', $dataPembayaranSiswa)
