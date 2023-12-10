@@ -60,29 +60,30 @@
             <div class="col-md-12">
                 <div class="card card-success">
                     <div class="card-body p-0">
-                        <h2 class="text-center mt-2">Edit Absensi</h2>
+                        <h3 class="text-center mt-2">Edit Absensi</h3>
                         <hr>
                         <div class="row justify-content-center">
                             <div class="col-md-6">
+                                <h5 class="text-center mb-4">Pilih Range Waktu Absensi Untuk Melihat Data Absensi</h5>
                                 <form action="{{ url('tata-usaha/manajemen-absensi/Search') }}" method="GET" class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="tanggal">Pilih Tanggal:</label>
+                                            <label for="start_date">Waktu Mulai :</label>
                                             <div class="input-group">
-                                                <input type="date" class="form-control" id="tanggal" name="tanggal" value="{{ isset($tanggal) ? $tanggal : '' }}">
+                                                <input type="date" class="form-control" id="start_date" name="start_date" value="{{ isset($start_date) ? $start_date : '' }}">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="tahun_bulan">Pilih Tahun dan Bulan:</label>
+                                            <label for="end_date">Waktu Selesai:</label>
                                             <div class="input-group">
-                                                <input type="month" class="form-control" id="tahun_bulan" name="tahun_bulan" value="{{ isset($tahun_bulan) ? $tahun_bulan : '' }}">
+                                                <input type="date" class="form-control" id="end_date" name="end_date" value="{{ isset($end_date) ? $end_date : '' }}">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12 text-center">
-                                        <div class="form-group"> 
+                                        <div class="form-group">
                                             <button type="submit" class="btn btn-success mt-3 mb-4">Tampilkan Absensi</button>
                                         </div>
                                     </div>
