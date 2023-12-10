@@ -64,18 +64,27 @@
                         <hr>
                         <div class="row justify-content-center">
                             <div class="col-md-6">
-                                <form action="{{ url('tata-usaha/manajemen-absensi/Search') }}" method="GET">
-
-                                    <div class="form-group">
-                                        <label for="tanggal" style="margin-left:10%">Pilih Tanggal:</label>
-                                        <div class="input-group" style="width: 80%; margin-left:10%;">
-                                            <input type="date" class="form-control" id="tanggal" name="tanggal"
-                                                value="{{ isset($tanggal) ? $tanggal : '' }}" >
+                                <form action="{{ url('tata-usaha/manajemen-absensi/Search') }}" method="GET" class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="tanggal">Pilih Tanggal:</label>
+                                            <div class="input-group">
+                                                <input type="date" class="form-control" id="tanggal" name="tanggal" value="{{ isset($tanggal) ? $tanggal : '' }}">
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-success mb-4">Tampilkan Absensi</button>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="tahun_bulan">Pilih Tahun dan Bulan:</label>
+                                            <div class="input-group">
+                                                <input type="month" class="form-control" id="tahun_bulan" name="tahun_bulan" value="{{ isset($tahun_bulan) ? $tahun_bulan : '' }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 text-center">
+                                        <div class="form-group"> 
+                                            <button type="submit" class="btn btn-success mt-3 mb-4">Tampilkan Absensi</button>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -84,6 +93,9 @@
                 </div>
             </div>
         </div>
+
+
+
 
         <div class="row gutetr-b">
             <div class="col-md-6">
@@ -377,7 +389,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                             
+
 
                                             </tr>
                                         @endforeach
@@ -452,7 +464,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                              
+
                                             </tr>
                                         @endforeach
                                     @endif
