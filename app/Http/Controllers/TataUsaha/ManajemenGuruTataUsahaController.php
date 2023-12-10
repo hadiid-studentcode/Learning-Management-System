@@ -291,7 +291,6 @@ class ManajemenGuruTataUsahaController extends TataUsahaController
     public function destroy(string $id)
     {
 
-
         try {
             // get userId
             $result = new Guru();
@@ -307,9 +306,8 @@ class ManajemenGuruTataUsahaController extends TataUsahaController
 
             return redirect('/tata-usaha/manajemen-guru')->with('success', 'Data berhasil dihapus');
         } catch (\Throwable $th) {
-           return back();
+            return back();
         }
 
-      
     }
 }

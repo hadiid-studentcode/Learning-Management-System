@@ -87,7 +87,7 @@ class SettingsTataUsahaController extends TataUsahaController
 
             if ($request->hasFile('foto')) {
                 $foto =
-                    round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
+                    round(microtime(true) * 1000).'-'.str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
 
                 if ($request->nik == null) {
                     $data = [
@@ -193,10 +193,9 @@ class SettingsTataUsahaController extends TataUsahaController
                     ->with('error', 'Data Pegawai Gagal Disimpan');
             }
         } catch (\Throwable $th) {
-           return back();
+            return back();
         }
 
-       
     }
 
     /**

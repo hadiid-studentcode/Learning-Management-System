@@ -163,6 +163,5 @@ class ManajemenKelasTataUsahaController extends TataUsahaController
             return back();
         }
 
-      
     }
 }

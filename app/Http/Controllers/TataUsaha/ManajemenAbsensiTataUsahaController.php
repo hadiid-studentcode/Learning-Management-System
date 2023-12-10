@@ -71,7 +71,6 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
 
         try {
 
-
             $data = [
 
                 'tanggal' => $request->tanggal,
@@ -188,7 +187,7 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
             return redirect('tata-usaha/manajemen-absensi/create');
         } else {
 
-            return redirect('tata-usaha/manajemen-absensi/Search?tanggal=' . $request->tanggal);
+            return redirect('tata-usaha/manajemen-absensi/Search?tanggal='.$request->tanggal);
         }
     }
 

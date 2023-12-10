@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class User_TataUsahaController extends UserController
 {
-
     public function index()
     {
 
@@ -36,20 +35,16 @@ class User_TataUsahaController extends UserController
                 'hak_akses.required' => 'Mohon masukkan hak akses.',
             ]);
 
-
-
-
-
             if (Auth::attempt($credentials)) {
                 $r->session()->regenerate();
 
                 return redirect()->intended('/tata-usaha/dashboard');
             }
 
-
             return back()->with('error', 'Username dan password anda salah !');
         } catch (\Throwable $th) {
             dd(1);
+
             return back()->with('error', 'Terjadi kesalahan. Silakan coba lagi.');
         }
     }

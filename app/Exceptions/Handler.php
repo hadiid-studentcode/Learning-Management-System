@@ -2,9 +2,9 @@
 
 namespace App\Exceptions;
 
-use Throwable;
-use Illuminate\Session\TokenMismatchException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Session\TokenMismatchException;
+use Throwable;
 
 class Handler extends ExceptionHandler
 {
@@ -28,9 +28,9 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
         });
     }
+
     public function render($request, Throwable $exception)
     {
-
 
         // logika jika fungsi tidak ditemukan
 
@@ -38,8 +38,6 @@ class Handler extends ExceptionHandler
 
             return back();
         }
-
-
 
         // jika pesan 419 PAGE EXPIRED
         if ($exception instanceof TokenMismatchException) {
@@ -52,7 +50,6 @@ class Handler extends ExceptionHandler
         //     return back();
         //     return response()->view('errors.404', [], 404);
         // }
-
 
         return parent::render($request, $exception);
     }

@@ -300,12 +300,11 @@ class PembayaranTataUsahaController extends TataUsahaController
             $result = new Pemasukan();
             $result->deletePembayaran($no_transaksi);
 
-            return redirect('tata-usaha/pembayaran/cari-siswa?cariSiswaAtauNisn=' . $nisn)->with('success', 'Data Pembayaran Berhasil Dihapus.');
+            return redirect('tata-usaha/pembayaran/cari-siswa?cariSiswaAtauNisn='.$nisn)->with('success', 'Data Pembayaran Berhasil Dihapus.');
         } catch (\Throwable $th) {
-           return back();
+            return back();
         }
 
-       
     }
 
     public function cetak($kode)
@@ -369,11 +368,10 @@ class PembayaranTataUsahaController extends TataUsahaController
 
             $result->reportPemasukkan($no_transaksi);
 
-            return redirect('tata-usaha/pembayaran/cari-siswa?cariSiswaAtauNisn=' . $nisn)->with('success', 'Data Pembayaran Berhasil Direport Silahkan Menunggu.');
+            return redirect('tata-usaha/pembayaran/cari-siswa?cariSiswaAtauNisn='.$nisn)->with('success', 'Data Pembayaran Berhasil Direport Silahkan Menunggu.');
         } catch (\Throwable $th) {
             return back();
         }
 
-      
     }
 }

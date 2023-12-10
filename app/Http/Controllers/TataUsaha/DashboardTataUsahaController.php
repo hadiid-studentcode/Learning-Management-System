@@ -32,8 +32,6 @@ class DashboardTataUsahaController extends TataUsahaController
         $resultKelolaAbsensi = new KelolaAbsensi();
         $absen = $resultKelolaAbsensi->absensi();
 
-      
-
         // jumlah siswa
         $resultSiswa = new Siswa();
         $siswa = $resultSiswa->getSiswaCount();
@@ -73,7 +71,7 @@ class DashboardTataUsahaController extends TataUsahaController
      */
     // public function create()
     // {
-        
+
     // }
 
     // /**

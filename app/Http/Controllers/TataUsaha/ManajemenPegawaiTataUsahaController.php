@@ -26,9 +26,9 @@ class ManajemenPegawaiTataUsahaController extends TataUsahaController
         } else {
             $getPegawai =
                 $result = DB::table('pegawai')
-                ->select('*')
-                ->WhereNot('pegawai.nama', '=', 'admin')
-                ->get();
+                    ->select('*')
+                    ->WhereNot('pegawai.nama', '=', 'admin')
+                    ->get();
         }
 
         return view('tataUsaha.manajemen-pegawai.index')
@@ -72,7 +72,7 @@ class ManajemenPegawaiTataUsahaController extends TataUsahaController
         try {
             if ($request->hasfile('foto')) {
 
-                $foto = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
+                $foto = round(microtime(true) * 1000).'-'.str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
 
                 $dataUser = [
                     'nama_lengkap' => ucwords($request->nama),
@@ -165,7 +165,7 @@ class ManajemenPegawaiTataUsahaController extends TataUsahaController
             }
         } catch (\Throwable $th) {
 
-            return back()->with('warning', 'Terjadi Kesalahan : ' . $th->getMessage());
+            return back()->with('warning', 'Terjadi Kesalahan : '.$th->getMessage());
         }
     }
 
@@ -197,7 +197,7 @@ class ManajemenPegawaiTataUsahaController extends TataUsahaController
         try {
             if ($request->hasfile('foto')) {
 
-                $foto = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
+                $foto = round(microtime(true) * 1000).'-'.str_replace(' ', '-', $request->file('foto')->getClientOriginalName());
 
                 $dataUser = [
                     'nama_lengkap' => ucwords($request->nama),

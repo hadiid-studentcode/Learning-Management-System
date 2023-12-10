@@ -221,8 +221,8 @@ class PrestasiSiswaTataUsahaController extends TataUsahaController
 
             return redirect('/tata-usaha/prestasi-siswa')->with('warning', 'Data Prestasi Siswa Berhasil Dihapus');
         } catch (\Throwable $th) {
-           return back();
+            return back();
         }
-      
+
     }
 }

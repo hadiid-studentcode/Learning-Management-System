@@ -57,8 +57,6 @@ class KelolaAbsensi extends Model
         $result = new KelolaAbsensi();
         $absen = $result->getAbsenWhereDateNow($date);
 
-     
-
         if ($absen == null) {
             return $absen = [
                 'date_now' => null,
