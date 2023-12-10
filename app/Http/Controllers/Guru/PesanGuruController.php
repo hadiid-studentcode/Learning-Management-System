@@ -86,7 +86,6 @@ class PesanGuruController extends GuruController
         $result->saveMessage($data);
 
         return redirect('/guru/pesan');
-
     }
 
     /**
@@ -165,17 +164,17 @@ class PesanGuruController extends GuruController
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
+    // public function edit(string $id)
+    // {
+    //     //
+    // }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-    }
+    // /**
+    //  * Update the specified resource in storage.
+    //  */
+    // public function update(Request $request, string $id)
+    // {
+    // }
 
     public function search(Request $request)
     {
@@ -200,7 +199,6 @@ class PesanGuruController extends GuruController
             ->with('jenisGuru', $this->jenisGuru())
 
             ->with('pesan', $pesan);
-
     }
 
     /**
@@ -208,9 +206,14 @@ class PesanGuruController extends GuruController
      */
     public function destroy(string $id)
     {
-        $result = new Pesan();
-        $result->deletePesan($id);
 
-        return redirect('guru/pesan')->with('message', 'Pesan Berhasil Dihapus');
+        try {
+            $result = new Pesan();
+            $result->deletePesan($id);
+
+            return redirect('guru/pesan')->with('message', 'Pesan Berhasil Dihapus');
+        } catch (\Throwable $th) {
+            return back();
+        }
     }
 }

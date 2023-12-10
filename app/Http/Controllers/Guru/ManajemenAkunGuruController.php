@@ -25,7 +25,6 @@ class ManajemenAkunGuruController extends GuruController
             $getAkun = $result->getUsersAdmintu();
         } else {
             $getAkun = $result->getUsers();
-
         }
 
         return view('guru.manajemen-akun.index')
@@ -42,10 +41,10 @@ class ManajemenAkunGuruController extends GuruController
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+    // public function create()
+    // {
+    //     //
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -72,18 +71,18 @@ class ManajemenAkunGuruController extends GuruController
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+    // public function show(string $id)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
+    // public function edit(string $id)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -107,9 +106,14 @@ class ManajemenAkunGuruController extends GuruController
      */
     public function destroy(string $id)
     {
-        $result = new User();
-        $result->deleteUser($id);
 
-        return redirect('/guru/manajemen-akun')->with('success', 'Data berhasil dihapus');
+        try {
+            $result = new User();
+            $result->deleteUser($id);
+
+            return redirect('/guru/manajemen-akun')->with('success', 'Data berhasil dihapus');
+        } catch (\Throwable $th) {
+            return back();
+        }
     }
 }

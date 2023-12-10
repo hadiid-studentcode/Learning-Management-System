@@ -20,7 +20,7 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ZxSJO2a1mPQ" allowfullscreen></iframe>
+                        {{-- <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ZxSJO2a1mPQ" allowfullscreen></iframe> --}}
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Video Cara Tambah Siswa dan orang Tua</h5>
@@ -31,7 +31,7 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ZxSJO2a1mPQ" allowfullscreen></iframe>
+                        {{-- <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ZxSJO2a1mPQ" allowfullscreen></iframe> --}}
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Video cara Lihat Akun Siswa dan orang Tua</h5>
@@ -44,7 +44,7 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ZxSJO2a1mPQ" allowfullscreen></iframe>
+                        {{-- <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ZxSJO2a1mPQ" allowfullscreen></iframe> --}}
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Video cara Membuka Pertemuan</h5>
@@ -55,7 +55,7 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ZxSJO2a1mPQ" allowfullscreen></iframe>
+                        {{-- <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ZxSJO2a1mPQ" allowfullscreen></iframe> --}}
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Video cara Menambahkan Materi Dan Tugas</h5>

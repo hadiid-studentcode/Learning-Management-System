@@ -68,10 +68,10 @@ class PrestasiSiswaGuruController extends GuruController
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+    // public function create()
+    // {
+    //     //
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -122,35 +122,41 @@ class PrestasiSiswaGuruController extends GuruController
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+    // public function show(string $id)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
+    // public function edit(string $id)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    // public function update(Request $request, string $id)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        $result = new PrestasiSiswa();
-        $result->deletePrestasiSiswa($id);
 
-        return redirect('/guru/prestasi-siswa')->with('warning', 'Data Prestasi Siswa Berhasil Dihapus');
+        try {
+
+            $result = new PrestasiSiswa();
+            $result->deletePrestasiSiswa($id);
+
+            return redirect('/guru/prestasi-siswa')->with('warning', 'Data Prestasi Siswa Berhasil Dihapus');
+        } catch (\Throwable $th) {
+            return back();
+        }
     }
 }

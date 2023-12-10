@@ -208,7 +208,6 @@ class PesanSuperUserController extends SuperUserController
     public function destroy(string $id)
     {
 
-
         try {
             $result = new Pesan();
             $result->deletePesan($id);
@@ -218,6 +217,5 @@ class PesanSuperUserController extends SuperUserController
             return back();
         }
 
-      
     }
 }
