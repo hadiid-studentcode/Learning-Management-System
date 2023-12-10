@@ -154,7 +154,6 @@ class PesanWaliMuridController extends WaliMuridController
             $result->saveMessage($data);
 
             return redirect('/wali-murid/pesan');
-
         } else {
             // tata usaha
             // id user ketua tata usaha
@@ -176,7 +175,6 @@ class PesanWaliMuridController extends WaliMuridController
             $result->saveMessage($data);
 
             return redirect('/wali-murid/pesan');
-
         }
     }
 
@@ -213,27 +211,32 @@ class PesanWaliMuridController extends WaliMuridController
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
+    // public function edit(string $id)
+    // {
+    //     //
+    // }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    // /**
+    //  * Update the specified resource in storage.
+    //  */
+    // public function update(Request $request, string $id)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        $result = new Pesan();
-        $result->deletePesan($id);
 
-        return redirect('wali-murid/pesan')->with('message', 'Pesan Berhasil Dihapus');
+        try {
+            $result = new Pesan();
+            $result->deletePesan($id);
+
+            return redirect('wali-murid/pesan')->with('message', 'Pesan Berhasil Dihapus');
+        } catch (\Throwable $th) {
+            return back();
+        }
     }
 }
