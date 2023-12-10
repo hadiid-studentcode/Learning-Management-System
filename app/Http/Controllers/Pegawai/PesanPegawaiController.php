@@ -79,7 +79,6 @@ class PesanPegawaiController extends PegawaiController
             ->with('folder', $this->folder)
             ->with('pesan', $pesan)
             ->with('photo', $this->photos);
-
     }
 
     /**
@@ -182,24 +181,26 @@ class PesanPegawaiController extends PegawaiController
      */
     public function show(string $id)
     {
+
+
         $this->title = 'Pesan';
-        $id = auth()->user()->id;
         $id_user = Auth::user()->id;
 
         $result = new Pegawai();
-        $resultPhotos = $result->getPhotosUser($id);
+        $resultPhotos = $result->getPhotosUser($id_user);
         $this->img = $resultPhotos->foto;
         $this->role = auth()->user()->hak_akses;
 
         $result = new Pesan();
         $showPesan = $result->showPesan('Pegawai', $id_user, $id);
+
         $formattedTime = $result->timeDiff($showPesan->created_at);
 
         // ubah pesan sudah dibaca
         $result = new Pesan();
         $result->updateStatus($showPesan->id, 'Pesan Sudah Dibaca');
 
-        return view('pegawai.pesan.phow')
+        return view('pegawai.pesan.show')
             ->with('title', $this->title)
             ->with('role', $this->role)
             ->with('route', $this->route)
@@ -212,27 +213,31 @@ class PesanPegawaiController extends PegawaiController
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
+    // public function edit(string $id)
+    // {
+    //     //
+    // }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    // /**
+    //  * Update the specified resource in storage.
+    //  */
+    // public function update(Request $request, string $id)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        $result = new Pesan();
-        $result->deletePesan($id);
+        try {
+            $result = new Pesan();
+            $result->deletePesan($id);
 
-        return redirect('pegawai/pesan')->with('message', 'Pesan Berhasil Dihapus');
+            return redirect('pegawai/pesan')->with('message', 'Pesan Berhasil Dihapus');
+        } catch (\Throwable $th) {
+            return back();
+        }
     }
 }

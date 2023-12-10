@@ -78,50 +78,50 @@ class DashboardPegawaiController extends PegawaiController
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+    // public function create()
+    // {
+    //     //
+    // }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    // public function store(Request $request)
+    // {
+    //     //
+    // }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+    // /**
+    //  * Display the specified resource.
+    //  */
+    // public function show(string $id)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
+    // public function edit(string $id)
+    // {
+    //     //
+    // }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    // /**
+    //  * Update the specified resource in storage.
+    //  */
+    // public function update(Request $request, string $id)
+    // {
+    //     //
+    // }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+    // /**
+    //  * Remove the specified resource from storage.
+    //  */
+    // public function destroy(string $id)
+    // {
+    //     //
+    // }
 
     public function absen()
     {
@@ -141,9 +141,9 @@ class DashboardPegawaiController extends PegawaiController
         // $waktu_absen_kuning = date('Y-m-d').' 07:00:00';
         // $waktu_absen_merah = date('Y-m-d').' 07:15:00';
 
-        $waktu_absen_hijau = $absen->tanggal.' '.$absen->waktu_mulai;
-        $waktu_absen_kuning = $absen->tanggal.' '.date('H:i:s', strtotime($absen->waktu_mulai.'+1 hour'));
-        $waktu_absen_merah = $absen->tanggal.' '.$absen->waktu_selesai;
+        $waktu_absen_hijau = $absen->tanggal . ' ' . $absen->waktu_mulai;
+        $waktu_absen_kuning = $absen->tanggal . ' ' . date('H:i:s', strtotime($absen->waktu_mulai . '+1 hour'));
+        $waktu_absen_merah = $absen->tanggal . ' ' . $absen->waktu_selesai;
 
         $id_user = Auth()->user()->id;
         $pegawai = DB::table('pegawai')->select('id')->where('id_user', $id_user)->first();
