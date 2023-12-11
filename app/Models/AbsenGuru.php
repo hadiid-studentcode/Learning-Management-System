@@ -37,6 +37,7 @@ class AbsenGuru extends Model
 
         return $result;
     }
+    
 
     public function updateAbsenGuru($id, $data)
     {

@@ -70,7 +70,7 @@
                                         <label for="tanggal" style="margin-left:10%">Pilih Tanggal:</label>
                                         <div class="input-group" style="width: 80%; margin-left:10%;">
                                             <input type="date" class="form-control" id="tanggal" name="tanggal"
-                                                value="{{ isset($tanggal) ? $tanggal : '' }}" >
+                                                value="{{ isset($tanggal) ? $tanggal : '' }}">
                                         </div>
                                     </div>
 
@@ -341,43 +341,42 @@
                                                             data-toggle="modal" data-target="#deleteModal"><i
                                                                 class="fas fa-trash"></i> </button>
                                                     </td>
-                                                       </form>
+                                                </form>
 
-                                                    <!-- Modal untuk konfirmasi hapus -->
-                                                    <div class="modal fade" id="deleteModal" tabindex="-1"
-                                                        role="dialog" aria-labelledby="deleteModalLabel"
-                                                        aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title"
-                                                                        id="deleteConfirmationModalLabel">Konfirmasi Hapus
-                                                                    </h5>
-                                                                    <button type="button" class="close"
-                                                                        data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    Apakah Anda yakin ingin menghapus data ini?
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-dismiss="modal">Batal</button>
-                                                                    <form
-                                                                        action="{{ url('/tata-usaha/manajemen-absensi/data-absen-pegawai/delete/' . $ps->id) }}"
-                                                                        method="post">
-                                                                        @csrf
-                                                                        <button type="submit"
-                                                                            class="btn btn-danger">Hapus</button>
-                                                                    </form>
+                                                <!-- Modal untuk konfirmasi hapus -->
+                                                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+                                                    aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="deleteConfirmationModalLabel">
+                                                                    Konfirmasi Hapus
+                                                                </h5>
+                                                                <button type="button" class="close"
+                                                                    data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Apakah Anda yakin ingin menghapus data ini?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">Batal</button>
+                                                                <form
+                                                                    action="{{ url('/tata-usaha/manajemen-absensi/data-absen-pegawai/delete/' . $ps->id) }}"
+                                                                    method="post">
+                                                                    @csrf
+                                                                    <button type="submit"
+                                                                        class="btn btn-danger">Hapus</button>
+                                                                </form>
 
 
-                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                             
+                                                </div>
+
 
                                             </tr>
                                         @endforeach
@@ -417,42 +416,41 @@
                                                             data-toggle="modal" data-target="#deleteModal"><i
                                                                 class="fas fa-trash"></i> </button>
                                                     </td>
-                                                      </form>
+                                                </form>
 
 
-                                                    <!-- Modal untuk konfirmasi hapus -->
-                                                    <div class="modal fade" id="deleteModal" tabindex="-1"
-                                                        role="dialog" aria-labelledby="deleteModalLabel"
-                                                        aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title"
-                                                                        id="deleteConfirmationModalLabel">Konfirmasi Hapus
-                                                                    </h5>
-                                                                    <button type="button" class="close"
-                                                                        data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    Apakah Anda yakin ingin menghapus data ini?
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-dismiss="modal">Batal</button>
-                                                                    <form
-                                                                        action="{{ url('/tata-usaha/manajemen-absensi/data-absen-pegawai/delete/' . $p->id) }}"
-                                                                        method="post">
-                                                                        @csrf
-                                                                        <button type="submit"
-                                                                            class="btn btn-danger">Hapus</button>
-                                                                    </form>
-                                                                </div>
+                                                <!-- Modal untuk konfirmasi hapus -->
+                                                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+                                                    aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="deleteConfirmationModalLabel">
+                                                                    Konfirmasi Hapus
+                                                                </h5>
+                                                                <button type="button" class="close"
+                                                                    data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Apakah Anda yakin ingin menghapus data ini?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">Batal</button>
+                                                                <form
+                                                                    action="{{ url('/tata-usaha/manajemen-absensi/data-absen-pegawai/delete/' . $p->id) }}"
+                                                                    method="post">
+                                                                    @csrf
+                                                                    <button type="submit"
+                                                                        class="btn btn-danger">Hapus</button>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
-                                              
+                                                </div>
+
                                             </tr>
                                         @endforeach
                                     @endif
@@ -467,11 +465,18 @@
                 </div>
             </div>
 
+       @php
+       if(isset($tanggal)){
+           $url = url('/tata-usaha/manajemen-absensi/cetak/absensi/'.$tanggal);
+       }else{
+           $url = url('/tata-usaha/manajemen-absensi/cetak/absensi/all');
+       }    
+       @endphp
 
-            {{--
-            <button type="button" class="btn btn-success container mb-3" style="width: 20%; backround-color:#7ED7C1;">
+            <a href="javascript:void(0);" class="btn btn-success container mb-3"
+                style="width: 20%; backround-color:#7ED7C1;"  onclick="window.open('{{ $url }}', '_blank', 'width=800,height=auto,scrollbars=yes,status=yes,resizable=yes,screenx=0,screeny=0');">
                 <i class="fas fa-print"></i> Print
-            </button> --}}
+            </a>
 
         </div>
 

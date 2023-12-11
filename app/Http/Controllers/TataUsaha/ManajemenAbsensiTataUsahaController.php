@@ -4,8 +4,10 @@ namespace App\Http\Controllers\TataUsaha;
 
 use App\Models\AbsenGuru;
 use App\Models\AbsenPegawai;
-use App\Models\KelolaAbsensi;
 use Illuminate\Http\Request;
+use App\Models\KelolaAbsensi;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Http\Controllers\TataUsaha\TataUsahaController;
 
 class ManajemenAbsensiTataUsahaController extends TataUsahaController
 {
@@ -187,7 +189,7 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
             return redirect('tata-usaha/manajemen-absensi/create');
         } else {
 
-            return redirect('tata-usaha/manajemen-absensi/Search?tanggal='.$request->tanggal);
+            return redirect('tata-usaha/manajemen-absensi/Search?tanggal=' . $request->tanggal);
         }
     }
 
@@ -232,5 +234,54 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
         } catch (\Throwable $th) {
             return back();
         }
+    }
+
+    public function cetak(string $date)
+    {
+
+
+
+        $absenGuru = new AbsenGuru();
+        $absenPegawai = new AbsenPegawai();
+
+        if ($date == 'all') {
+            // get absen guru
+            $guru = $absenGuru->getAbsenGuru([
+                'absen_guru.*',
+                'guru.nama',
+            ]);
+            $dateGuru = '';
+            // get absen pegawai
+            $pegawai = $absenPegawai->getAbsenPegawai([
+                'absen_pegawai.*',
+                'pegawai.nama',
+            ]);
+
+            $datePegawai = '';
+        } else {
+
+            // get absen guru
+            $guru = $absenGuru->getAbsenGuruSearch([
+                'absen_guru.*',
+                'guru.nama',
+            ], $date);
+            $dateGuru = $date;
+            // get absen pegawai
+            $pegawai = $absenPegawai->getAbsenPegawaiSearch([
+                'absen_pegawai.*',
+                'pegawai.nama',
+            ], $date);
+
+            $datePegawai = $date;
+        }
+
+
+
+        return view('tataUsaha.manajemen-absensi.cetak')
+        ->with('guru', $guru)
+        ->with('dateGuru', $dateGuru)
+        ->with('pegawai', $pegawai)
+        ->with('datePegawai', $datePegawai)
+        ;
     }
 }
