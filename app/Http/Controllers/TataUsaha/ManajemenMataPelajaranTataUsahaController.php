@@ -16,6 +16,7 @@ class ManajemenMataPelajaranTataUsahaController extends TataUsahaController
      */
     public function index()
     {
+    
 
         $this->img = $this->imageHeader();
 
@@ -83,7 +84,8 @@ class ManajemenMataPelajaranTataUsahaController extends TataUsahaController
             // mengambil detik
             $waktu = time(); // Mengambil waktu saat ini
 
-            $detik = date('s', $waktu);
+            $nilaiRandom = rand(1, 999); // Mengambil angka random
+            $detik = date('s', $waktu) + $nilaiRandom;
 
             // kode =  hari + tahun ajaran
             $kode = strtoupper($hari).$bagianTahunMulai.$bagianTahunSelesai.$detik;
