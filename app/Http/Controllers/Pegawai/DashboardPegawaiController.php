@@ -153,7 +153,7 @@ class DashboardPegawaiController extends PegawaiController
         } elseif ($waktu >= $waktu_absen_kuning && $waktu <= $waktu_absen_merah) {
             $status = 'Terlambat';
         } else {
-            $status = 'mangkir';
+            $status = 'Mangkir';
         }
 
         $data = [

@@ -40,13 +40,12 @@ class AbsenPegawai extends Model
         return $result;
     }
 
-    public function getAbsenPegawaiSearch($select, $tanggal)
+    public function getAbsenPegawaiSearch($select, $start_date, $end_date)
     {
         $results = DB::table('absen_pegawai')
             ->select($select)
             ->join('pegawai', 'absen_pegawai.id_pegawai', '=', 'pegawai.id')
-
-            ->where('waktu', 'like', '%'.$tanggal.'%')
+            ->whereBetween('waktu', [$start_date, $end_date])
             ->get();
 
         return $results;

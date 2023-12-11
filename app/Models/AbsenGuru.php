@@ -48,13 +48,12 @@ class AbsenGuru extends Model
         return $result;
     }
 
-    public function getAbsenGuruSearch($select, $tanggal)
+    public function getAbsenGuruSearch($select, $start_date,$end_date)
     {
         $results = DB::table('absen_guru')
             ->select($select)
             ->join('guru', 'absen_guru.id_guru', '=', 'guru.id')
-
-            ->where('waktu', 'like', '%'.$tanggal.'%')
+            ->whereBetween('waktu', [$start_date, $end_date])
             ->get();
 
         return $results;

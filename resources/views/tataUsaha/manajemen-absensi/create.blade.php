@@ -68,7 +68,7 @@
                                 <form action="{{ url('tata-usaha/manajemen-absensi/Search') }}" method="GET" class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="start_date">Waktu Mulai :</label>
+                                            <label for="start_date">Tanggal Mulai :</label>
                                             <div class="input-group">
                                                 <input type="date" class="form-control" id="start_date" name="start_date" value="{{ isset($start_date) ? $start_date : '' }}">
                                             </div>
@@ -76,7 +76,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="end_date">Waktu Selesai:</label>
+                                            <label for="end_date">Tanggal Selesai:</label>
                                             <div class="input-group">
                                                 <input type="date" class="form-control" id="end_date" name="end_date" value="{{ isset($end_date) ? $end_date : '' }}">
                                             </div>
@@ -477,10 +477,10 @@
             </div>
 
        @php
-       if(isset($tanggal)){
-           $url = url('/tata-usaha/manajemen-absensi/cetak/absensi/'.$tanggal);
+       if(isset($start_date) && isset($end_date)){
+           $url = url('/tata-usaha/manajemen-absensi/cetak/absensi/'.$start_date.'/'.$end_date);
        }else{
-           $url = url('/tata-usaha/manajemen-absensi/cetak/absensi/all');
+           $url = url('/tata-usaha/manajemen-absensi/cetak/absensi/all/all');
        }    
        @endphp
 

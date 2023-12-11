@@ -175,7 +175,7 @@ class DashboardGuruController extends GuruController
             $status = 'Terlambat';
             $poin_absensi = 0.1;
         } else {
-            $status = 'mangkir';
+            $status = 'Mangkir';
             $poin_absensi = 0;
         }
 

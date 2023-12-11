@@ -96,13 +96,15 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
     public function show(Request $r, string $id)
     {
 
+
+
         //    get absen pegawai
 
         $resultPegawaiSearch = new AbsenPegawai();
         $getPegawaiSearch = $resultPegawaiSearch->getAbsenPegawaiSearch([
             'absen_pegawai.*',
             'pegawai.nama',
-        ], $r->tanggal);
+        ], $r->start_date, $r->end_date);
 
         // get absen guru
 
@@ -110,7 +112,7 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
         $getGuruSearch = $resultGuruSearch->getAbsenGuruSearch([
             'absen_guru.*',
             'guru.nama',
-        ], $r->tanggal);
+        ], $r->start_date, $r->end_date);
 
         // get absen guru
         $resultGuru = new AbsenGuru();
@@ -136,7 +138,8 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
             ->with('guru', $getGuru)
             ->with('pegawai', $getPegawai)
             ->with('pegawaiSearch', $getPegawaiSearch)
-            ->with('tanggal', $r->tanggal)
+            ->with('start_date', $r->start_date)
+            ->with('end_date', $r->end_date)
             ->with('getGuruSearch', $getGuruSearch)
             ->with('route', $this->route);
     }
@@ -154,43 +157,50 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
      */
     public function update(Request $request, string $id)
     {
-        if ($request->jenis == 'guru') {
 
-            if ($request->status == 'Hadir') {
-                $poin_absen = 0.5;
-            } elseif ($request->status == 'Terlambat') {
-                $poin_absen = 0.1;
-            } elseif ($request->status == 'Izin') {
-                $poin_absen = 0.3;
-            } elseif ($request->status == 'Sakit') {
-                $poin_absen = 0.3;
-            } elseif ($request->status == 'Mangkir') {
-                $poin_absen = 0;
+      try {
+            if ($request->jenis == 'guru') {
+
+                if ($request->status == 'Hadir') {
+                    $poin_absen = 0.5;
+                } elseif ($request->status == 'Terlambat') {
+                    $poin_absen = 0.1;
+                } elseif ($request->status == 'Izin') {
+                    $poin_absen = 0.3;
+                } elseif ($request->status == 'Sakit') {
+                    $poin_absen = 0.3;
+                } elseif ($request->status == 'Mangkir') {
+                    $poin_absen = 0;
+                }
+
+                $dataGuru = [
+                    'status' => $request->status,
+                    'poin_absensi' => $poin_absen,
+                ];
+
+                $result = new AbsenGuru();
+                $result->updateAbsenGuru($id, $dataGuru);
+            } else {
+                $dataPegawai = [
+                    'status' => $request->status,
+                ];
+
+                $result = new AbsenPegawai();
+                $result->updateAbsenPegawai($id, $dataPegawai);
             }
 
-            $dataGuru = [
-                'status' => $request->status,
-                'poin_absensi' => $poin_absen,
-            ];
+            if ($request->tanggal == null) {
 
-            $result = new AbsenGuru();
-            $result->updateAbsenGuru($id, $dataGuru);
-        } else {
-            $dataPegawai = [
-                'status' => $request->status,
-            ];
+            return back();
+            } else {
 
-            $result = new AbsenPegawai();
-            $result->updateAbsenPegawai($id, $dataPegawai);
-        }
+                return redirect('tata-usaha/manajemen-absensi/Search?tanggal=' . $request->tanggal);
+            }
+      } catch (\Throwable $th) {
+       return back();
+      }
 
-        if ($request->tanggal == null) {
-
-            return redirect('tata-usaha/manajemen-absensi/create');
-        } else {
-
-            return redirect('tata-usaha/manajemen-absensi/Search?tanggal=' . $request->tanggal);
-        }
+      
     }
 
     /**
@@ -236,21 +246,20 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
         }
     }
 
-    public function cetak(string $date)
+    public function cetak(string $start_date, string $end_date)
     {
-
-
 
         $absenGuru = new AbsenGuru();
         $absenPegawai = new AbsenPegawai();
 
-        if ($date == 'all') {
+        if ($start_date == 'all' || $end_date == 'all') {
             // get absen guru
             $guru = $absenGuru->getAbsenGuru([
                 'absen_guru.*',
                 'guru.nama',
             ]);
             $dateGuru = '';
+
             // get absen pegawai
             $pegawai = $absenPegawai->getAbsenPegawai([
                 'absen_pegawai.*',
@@ -264,24 +273,55 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
             $guru = $absenGuru->getAbsenGuruSearch([
                 'absen_guru.*',
                 'guru.nama',
-            ], $date);
-            $dateGuru = $date;
+            ], $start_date, $end_date);
+            $dateGuru = $start_date . ' s.d ' . $end_date;
             // get absen pegawai
             $pegawai = $absenPegawai->getAbsenPegawaiSearch([
                 'absen_pegawai.*',
                 'pegawai.nama',
-            ], $date);
+            ], $start_date, $end_date);
 
-            $datePegawai = $date;
+            $datePegawai = $start_date . ' s.d ' . $end_date;
         }
+
+
+        $hadirGuru = $guru->where('status', 'Hadir')->count();
+        $izinGuru = $guru->where('status', 'Izin')->count();
+        $sakitGuru = $guru->where('status', 'Sakit')->count();
+        $terlambatGuru = $guru->where('status', 'Terlambat')->count();
+        $mangkirGuru = $guru->where('status', 'Mangkir')->count();
+
+
+
+
+        $hadirPegawai = $pegawai->where('status', 'Hadir')->count();
+        $izinPegawai = $pegawai->where('status', 'Izin')->count();
+        $sakitPegawai = $pegawai->where('status', 'Sakit')->count();
+        $terlambatPegawai = $pegawai->where('status', 'Terlambat')->count();
+        $mangkirPegawai = $pegawai->where('status', 'Mangkir')->count();
+        
+
+       
+
+
 
 
 
         return view('tataUsaha.manajemen-absensi.cetak')
-        ->with('guru', $guru)
-        ->with('dateGuru', $dateGuru)
-        ->with('pegawai', $pegawai)
-        ->with('datePegawai', $datePegawai)
-        ;
+            ->with('guru', $guru)
+            ->with('dateGuru', $dateGuru)
+            ->with('pegawai', $pegawai)
+            ->with('datePegawai', $datePegawai)
+            ->with('totalHadir_guru', $hadirGuru)
+            ->with('totalIzin_guru', $izinGuru)
+            ->with('totalSakit_guru', $sakitGuru)
+            ->with('totalTerlambat_guru', $terlambatGuru)
+            ->with('totalMangkir_guru', $mangkirGuru)
+            ->with('totalHadir_pegawai', $hadirPegawai)
+            ->with('totalIzin_pegawai', $izinPegawai)
+            ->with('totalSakit_pegawai', $sakitPegawai)
+            ->with('totalTerlambat_pegawai', $terlambatPegawai)
+            ->with('totalMangkir_pegawai', $mangkirPegawai)
+      ;
     }
 }
