@@ -60,22 +60,32 @@
             <div class="col-md-12">
                 <div class="card card-success">
                     <div class="card-body p-0">
-                        <h2 class="text-center mt-2">Edit Absensi</h2>
+                        <h3 class="text-center mt-2">Edit Absensi</h3>
                         <hr>
                         <div class="row justify-content-center">
                             <div class="col-md-6">
-                                <form action="{{ url('tata-usaha/manajemen-absensi/Search') }}" method="GET">
-
-                                    <div class="form-group">
-                                        <label for="tanggal" style="margin-left:10%">Pilih Tanggal:</label>
-                                        <div class="input-group" style="width: 80%; margin-left:10%;">
-                                            <input type="date" class="form-control" id="tanggal" name="tanggal"
-                                                value="{{ isset($tanggal) ? $tanggal : '' }}">
+                                <h5 class="text-center mb-4">Pilih Range Waktu Absensi Untuk Melihat Data Absensi</h5>
+                                <form action="{{ url('tata-usaha/manajemen-absensi/Search') }}" method="GET" class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="start_date">Waktu Mulai :</label>
+                                            <div class="input-group">
+                                                <input type="date" class="form-control" id="start_date" name="start_date" value="{{ isset($start_date) ? $start_date : '' }}">
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-success mb-4">Tampilkan Absensi</button>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="end_date">Waktu Selesai:</label>
+                                            <div class="input-group">
+                                                <input type="date" class="form-control" id="end_date" name="end_date" value="{{ isset($end_date) ? $end_date : '' }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 text-center">
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-success mt-3 mb-4">Tampilkan Absensi</button>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -84,6 +94,9 @@
                 </div>
             </div>
         </div>
+
+
+
 
         <div class="row gutetr-b">
             <div class="col-md-6">
@@ -375,7 +388,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
 
 
                                             </tr>
@@ -449,7 +461,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
 
                                             </tr>
                                         @endforeach
