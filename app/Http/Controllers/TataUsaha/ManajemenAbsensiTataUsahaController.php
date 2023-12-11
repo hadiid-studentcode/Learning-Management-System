@@ -4,10 +4,8 @@ namespace App\Http\Controllers\TataUsaha;
 
 use App\Models\AbsenGuru;
 use App\Models\AbsenPegawai;
-use Illuminate\Http\Request;
 use App\Models\KelolaAbsensi;
-use Barryvdh\DomPDF\Facade\Pdf;
-use App\Http\Controllers\TataUsaha\TataUsahaController;
+use Illuminate\Http\Request;
 
 class ManajemenAbsensiTataUsahaController extends TataUsahaController
 {
@@ -96,8 +94,6 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
     public function show(Request $r, string $id)
     {
 
-
-
         //    get absen pegawai
 
         $resultPegawaiSearch = new AbsenPegawai();
@@ -158,7 +154,7 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
     public function update(Request $request, string $id)
     {
 
-      try {
+        try {
             if ($request->jenis == 'guru') {
 
                 if ($request->status == 'Hadir') {
@@ -191,16 +187,15 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
 
             if ($request->tanggal == null) {
 
-            return back();
+                return back();
             } else {
 
-                return redirect('tata-usaha/manajemen-absensi/Search?tanggal=' . $request->tanggal);
+                return redirect('tata-usaha/manajemen-absensi/Search?tanggal='.$request->tanggal);
             }
-      } catch (\Throwable $th) {
-       return back();
-      }
+        } catch (\Throwable $th) {
+            return back();
+        }
 
-      
     }
 
     /**
@@ -274,16 +269,15 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
                 'absen_guru.*',
                 'guru.nama',
             ], $start_date, $end_date);
-            $dateGuru = $start_date . ' s.d ' . $end_date;
+            $dateGuru = $start_date.' s.d '.$end_date;
             // get absen pegawai
             $pegawai = $absenPegawai->getAbsenPegawaiSearch([
                 'absen_pegawai.*',
                 'pegawai.nama',
             ], $start_date, $end_date);
 
-            $datePegawai = $start_date . ' s.d ' . $end_date;
+            $datePegawai = $start_date.' s.d '.$end_date;
         }
-
 
         $hadirGuru = $guru->where('status', 'Hadir')->count();
         $izinGuru = $guru->where('status', 'Izin')->count();
@@ -291,21 +285,11 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
         $terlambatGuru = $guru->where('status', 'Terlambat')->count();
         $mangkirGuru = $guru->where('status', 'Mangkir')->count();
 
-
-
-
         $hadirPegawai = $pegawai->where('status', 'Hadir')->count();
         $izinPegawai = $pegawai->where('status', 'Izin')->count();
         $sakitPegawai = $pegawai->where('status', 'Sakit')->count();
         $terlambatPegawai = $pegawai->where('status', 'Terlambat')->count();
         $mangkirPegawai = $pegawai->where('status', 'Mangkir')->count();
-        
-
-       
-
-
-
-
 
         return view('tataUsaha.manajemen-absensi.cetak')
             ->with('guru', $guru)
@@ -321,7 +305,6 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
             ->with('totalIzin_pegawai', $izinPegawai)
             ->with('totalSakit_pegawai', $sakitPegawai)
             ->with('totalTerlambat_pegawai', $terlambatPegawai)
-            ->with('totalMangkir_pegawai', $mangkirPegawai)
-      ;
+            ->with('totalMangkir_pegawai', $mangkirPegawai);
     }
 }

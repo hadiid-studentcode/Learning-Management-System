@@ -285,7 +285,6 @@ Route::group(
         Route::post('/tata-usaha/manajemen-absensi/data-absen-pegawai/delete/{id_userGuru}', [ManajemenAbsensiTataUsahaController::class, 'destroyAbsenPegawai']);
         Route::get('tata-usaha/manajemen-absensi/cetak/absensi/{start_date}/{end_date}', [ManajemenAbsensiTataUsahaController::class, 'cetak']);
 
-
         Route::resource('/tata-usaha/setting', SettingsTataUsahaController::class);
         Route::post('/tata-usaha/setting/{nama}/{userid}', [User_TataUsahaController::class, 'update']);
         // Route::get('tata-usaha/pembayaran/{id}', [PembayaranTataUsahaController::class, 'delete']);

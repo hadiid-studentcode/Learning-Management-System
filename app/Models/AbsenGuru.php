@@ -37,7 +37,6 @@ class AbsenGuru extends Model
 
         return $result;
     }
-    
 
     public function updateAbsenGuru($id, $data)
     {
@@ -48,7 +47,7 @@ class AbsenGuru extends Model
         return $result;
     }
 
-    public function getAbsenGuruSearch($select, $start_date,$end_date)
+    public function getAbsenGuruSearch($select, $start_date, $end_date)
     {
         $results = DB::table('absen_guru')
             ->select($select)

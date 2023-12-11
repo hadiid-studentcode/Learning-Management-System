@@ -67,7 +67,7 @@ class JadwalSiswaController extends SiswaController
         }
 
         // akses kunci
-        
+
         return view('siswa.jadwal.index')
             ->with('title', 'Jadwal')
             ->with('role', $this->role)
