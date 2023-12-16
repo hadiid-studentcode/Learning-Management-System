@@ -12,10 +12,12 @@ use App\Http\Controllers\Guru\RekapNilaiGuruController;
 use App\Http\Controllers\Guru\SettingsGuruController;
 use App\Http\Controllers\Guru\TutorialGuruController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KelolaPpdbController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\Pegawai\DashboardPegawaiController;
 use App\Http\Controllers\Pegawai\PesanPegawaiController;
 use App\Http\Controllers\Pegawai\SettingsPegawaiController;
+use App\Http\Controllers\PpdbController;
 use App\Http\Controllers\Siswa\DashboardSiswaController;
 use App\Http\Controllers\Siswa\JadwalSiswaController;
 use App\Http\Controllers\Siswa\PesanSiswaController;
@@ -31,6 +33,8 @@ use App\Http\Controllers\SuperUser\RekapKeuanganSuperUserController;
 use App\Http\Controllers\SuperUser\SettingSuperUserController;
 use App\Http\Controllers\TataUsaha\DashboardTataUsahaController;
 use App\Http\Controllers\TataUsaha\GalleryTataUsahaController;
+use App\Http\Controllers\TataUsaha\KelolaPpdbController as TataUsahaKelolaPpdbController;
+use App\Http\Controllers\TataUsaha\KelolaPpdbTataUsahaController;
 use App\Http\Controllers\TataUsaha\KinerjaGuruTataUsahaController;
 use App\Http\Controllers\TataUsaha\ManajemenAbsensiTataUsahaController;
 use App\Http\Controllers\TataUsaha\ManajemenAkunTataUsahaController;
@@ -79,9 +83,12 @@ use Illuminate\Support\Facades\Route;
 // halaman home
 Route::resource('/', HomeController::class);
 
-Route::get('/maps', function () {
-    return view('maps');
-});
+// Route::get('/maps', function () {
+//     return view('maps');
+// });
+
+Route::resource('/ppdb', PpdbController::class);
+
 
 // id : 12345
 // pass : 12345
@@ -286,6 +293,8 @@ Route::group(
         Route::get('tata-usaha/manajemen-absensi/cetak/absensi/{start_date}/{end_date}', [ManajemenAbsensiTataUsahaController::class, 'cetak']);
 
         Route::resource('/tata-usaha/setting', SettingsTataUsahaController::class);
+        Route::resource('/tata-usaha/kelola-ppdb', KelolaPpdbTataUsahaController::class);
+
         Route::post('/tata-usaha/setting/{nama}/{userid}', [User_TataUsahaController::class, 'update']);
         // Route::get('tata-usaha/pembayaran/{id}', [PembayaranTataUsahaController::class, 'delete']);
 
