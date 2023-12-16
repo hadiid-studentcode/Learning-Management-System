@@ -25,25 +25,25 @@
                         $resultPesan = new App\Models\Pesan();
                         $pesan = $resultPesan->jumlahPesanBelumDibaca($id_user);
 
-                        
+
 
                         // get pegawai jenis where id_user
                         $resultPegawai = new App\Models\Pegawai();
 
-                    
+
 
                         $tataUsaha = $resultPegawai->getPegawaiFirst(['jenis'], $id_user);
 
                         if($tataUsaha == null){
                             $jenis ='';
                         }else{
-                              $jenis = $tataUsaha->jenis;   
+                              $jenis = $tataUsaha->jenis;
 
                         }
 
-                      
 
-                     
+
+
 
                     @endphp
 
@@ -204,7 +204,7 @@
                                         <span style="font-family: arial; color: black;">Dashboard</span>
                                     </a>
                                 </li>
-                                
+
 
                                 <li class="nav-item">
                                     <a href="{{ asset('/' . $route . '/jadwal') }}"
@@ -266,7 +266,7 @@
                                             <span style="font-family: arial; color: black;">Prestasi Siswa</span>
                                         </a>
                                     </li>
-                                    
+
                                 @endif
                                 <li class="nav-item">
                                     <a href="{{ asset('/' . $route . '/atur-kkm') }}"
@@ -423,10 +423,10 @@
                                         </a>
                                     </li>
                                     {{-- PPDB --}}
-                                      <li class="nav-item">
+                                    <li class="nav-item">
                                         <a href="{{ asset('/' . $route . '/kelola-ppdb') }}"
                                             class="nav-link @if ($title == 'Manajemen Siswa') active @endif">
-                                            <i class="fas fa-user-plus"
+                                            <i class="fas fa-user-graduate"
                                                 style="font-size: 20px; width: 25px; height: 25px; color: black; margin-right: 23px;"></i>
                                             <span style="font-family: Arial; color: black;">Kelola PPDB</span>
                                         </a>

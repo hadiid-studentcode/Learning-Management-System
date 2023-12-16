@@ -30,7 +30,7 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/woCHzIFvIt0" allowfullscreen></iframe>
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/OKTPkN_KCVM"  allowfullscreen></iframe>
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Tutorial Melakukan Absensi dan Memberikan Nilai Siswa dalam Sistem HamkaBS</h5>
