@@ -436,7 +436,7 @@
                         <h3 class="display-5 text-success">Penerimaan Peserta Didik Baru (PPDB)</h3>
                         <p class="lead">PPDB adalah proses penerimaan siswa baru di sekolah kami. Kami menyambut
                             calon siswa dengan antusias dan menyediakan proses pendaftaran yang mudah melalui sistem online.</p>
-                        <a href="link_pendaftaran_PPDB" class="btn btn-success">Daftar Sekarang</a>
+                        <a href="{{ url('/ppdb') }}" class="btn btn-success">Daftar Sekarang</a>
                     </div>
                 </div>
             </div>
