@@ -123,6 +123,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#ppdb" onmouseover="this.querySelector('p').style.color = 'green';"
+                            onmouseout="this.querySelector('p').style.color = 'white';">
+                            <p style="color: white;">PPDB</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#galeri" onmouseover="this.querySelector('p').style.color = 'green';"
                             onmouseout="this.querySelector('p').style.color = 'white';">
                             <p style="color: white;">galeri</p>
@@ -307,113 +313,137 @@
     </section>
     <!-- Halaman Keunggulan End -->
 
-    <section id="login">
-        <h2 class="text-center">Halaman Login</h2>
-        <div class="container my-5">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-                        <div class="p-3 p-lg-5 pt-lg-3">
-                            <h3 class="display-6">Login Siswa</h3>
-                            <br>
-                            <p class="lead">Peran siswa dalam Sistem HAMKA BS dapat mengakses materi, ikuti tugas,
-                                interaksi dengan guru & teman, terima umpan balik, amati kemajuan & nilai, akses sumber
-                                belajar tambahan, serta berpartisipasi dalam evaluasi.</p>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-                                <a href="{{ url('/siswa') }}" target="blank"
-                                    class="btn btn-success btn-lg px-4 me-md-2">Login</a>
-                            </div>
+   {{-- Login --}}
+   <section id="login">
+    <h2 class="text-center">Halaman Login</h2>
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+                    <div class="p-3 p-lg-5 pt-lg-3">
+                        <h3 class="display-6">Login Siswa</h3>
+                        <br>
+                        <p class="lead">Peran siswa dalam Sistem HAMKA BS dapat mengakses materi, ikuti tugas,
+                            interaksi dengan guru & teman, terima umpan balik, amati kemajuan & nilai, akses sumber
+                            belajar tambahan, serta berpartisipasi dalam evaluasi.</p>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+                            <a href="{{ url('/siswa') }}" target="blank"
+                                class="btn btn-success btn-lg px-4 me-md-2">Login</a>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="col-lg-6">
-                    <div class="p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-                        <div class="p-3 p-lg-5 pt-lg-3">
-                            <h3 class="display-6">Login Guru</h3>
-                            <br>
-                            <p class="lead">Peran guru dalam Sistem HAMKA BS memiliki fungsi-fungsi penting, seperti
-                                mengelola materi, menyusun jadwal dan tugas, menilai siswa, berinteraksi dengan siswa
-                                dan orang tua, dan mengamati kemajuan siswa.</p>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-                                <a href="{{ url('/guru') }}" target="blank"
-                                    class="btn btn-success btn-lg px-4 me-md-2">Login</a>
-                            </div>
+            <div class="col-lg-6">
+                <div class="p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+                    <div class="p-3 p-lg-5 pt-lg-3">
+                        <h3 class="display-6">Login Guru</h3>
+                        <br>
+                        <p class="lead">Peran guru dalam Sistem HAMKA BS memiliki fungsi-fungsi penting, seperti
+                            mengelola materi, menyusun jadwal dan tugas, menilai siswa, berinteraksi dengan siswa
+                            dan orang tua, dan mengamati kemajuan siswa.</p>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+                            <a href="{{ url('/guru') }}" target="blank"
+                                class="btn btn-success btn-lg px-4 me-md-2">Login</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container my-5">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-                        <div class="p-3 p-lg-5 pt-lg-3">
-                            <h3 class="display-6">Login Pegawai</h3>
-                            <br>
-                            <p class="lead">Peran pegawai dalam Sistem HAMKA BS memiliki fungsi-fungsi penting,
-                                seperti
-                                memberikan dukungan dalam penggunaan Sistem HAMKA BS, dan menghasilkan laporan dan
-                                analisis,
-                                serta mengatur komunikasi.</p>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-                                <a href="{{ url('/pegawai') }}" target="blank"
-                                    class="btn btn-success btn-lg px-4 me-md-2">Login</a>
-                            </div>
+    </div>
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+                    <div class="p-3 p-lg-5 pt-lg-3">
+                        <h3 class="display-6">Login Pegawai</h3>
+                        <br>
+                        <p class="lead">Peran pegawai dalam Sistem HAMKA BS memiliki fungsi-fungsi penting,
+                            seperti
+                            memberikan dukungan dalam penggunaan Sistem HAMKA BS, dan menghasilkan laporan dan
+                            analisis,
+                            serta mengatur komunikasi.</p>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+                            <a href="{{ url('/pegawai') }}" target="blank"
+                                class="btn btn-success btn-lg px-4 me-md-2">Login</a>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="col-lg-6">
-                    <div class="p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-                        <div class="p-3 p-lg-5 pt-lg-3">
-                            <h3 class="display-6">Login Wali Murid</h3>
-                            <br>
-                            <p class="lead">Peran wali murid dalam Sistem HAMKA BS fungsi-fungsinya seperti mengakses
-                                informasi, memantau kemajuan belajar, berinteraksi dengan guru, dan terlibat dalam
-                                proses pendidikan.</p>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-                                <a href="{{ url('/wali-murid') }}" target="blank"
-                                    class="btn btn-success btn-lg px-4 me-md-2">Login</a>
-                            </div>
+            <div class="col-lg-6">
+                <div class="p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+                    <div class="p-3 p-lg-5 pt-lg-3">
+                        <h3 class="display-6">Login Wali Murid</h3>
+                        <br>
+                        <p class="lead">Peran wali murid dalam Sistem HAMKA BS fungsi-fungsinya seperti mengakses
+                            informasi, memantau kemajuan belajar, berinteraksi dengan guru, dan terlibat dalam
+                            proses pendidikan.</p>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+                            <a href="{{ url('/wali-murid') }}" target="blank"
+                                class="btn btn-success btn-lg px-4 me-md-2">Login</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container my-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-                        <div class="p-3 p-lg-5 pt-lg-3">
-                            <h3 class="display-6">Login Tata Usaha</h3>
-                            <br>
-                            <p class="lead">Peran tata usaha dalam sistem Sistem HAMKA BS meliputi pengelolaan data
-                                siswa
-                                dan pegawai, administrasi akademik, jadwal pelajaran, absensi siswa, tugas dan ujian,
-                                serta dukungan teknis dan pelatihan.</p>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-                                <a href="{{ url('/tata-usaha') }}" target="blank"
-                                    class="btn btn-success btn-lg px-4 me-md-2">Login</a>
-                            </div>
+    </div>
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+                    <div class="p-3 p-lg-5 pt-lg-3">
+                        <h3 class="display-6">Login Tata Usaha</h3>
+                        <br>
+                        <p class="lead">Peran tata usaha dalam sistem Sistem HAMKA BS meliputi pengelolaan data
+                            siswa
+                            dan pegawai, administrasi akademik, jadwal pelajaran, absensi siswa, tugas dan ujian,
+                            serta dukungan teknis dan pelatihan.</p>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+                            <a href="{{ url('/tata-usaha') }}" target="blank"
+                                class="btn btn-success btn-lg px-4 me-md-2">Login</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        {{-- <div class="col-lg-6">
+    </div>
+    {{-- <div class="col-lg-6">
     <div class="p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-      <div class="p-3 p-lg-5 pt-lg-3">
+    <div class="p-3 p-lg-5 pt-lg-3">
         <h3 class="display-6">Login Super User</h3>
         <br>
         <p class="lead">Peran Super user dalam Sistem HAMKA BS sangatlah penting yaitu pengelolaan sistem Sistem HAMKA BS, memberikan akses administrasi, pengaturan dan personalisasi, pelaporan dan analisis, serta dukungan dan pelatihan.</p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-          <a href="{{ url('/super-user') }}" class="btn btn-success btn-lg px-4 me-md-2">Login</a>
+        <a href="{{ url('/super-user') }}" class="btn btn-success btn-lg px-4 me-md-2">Login</a>
         </div>
-      </div>
+    </div>
     </div> --}}
+</section>
+
+   {{-- Login --}}
+
+    {{-- PPDB --}}
+    <section id="ppdb" style="background-color: #F1F6F9;">
+        <div class="container">
+            <div class="container ">
+                <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+                    <div class="col-10 col-sm-8 col-lg-6">
+                        <img src="{{ asset('Assets/images/ppdb.png') }}" class="mx-lg-auto img-fluid"
+                            alt="Gambar Ilustrasi" loading="lazy">
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 class="display-5 text-success">Penerimaan Peserta Didik Baru (PPDB)</h3>
+                        <p class="lead">PPDB adalah proses penerimaan siswa baru di sekolah kami. Kami menyambut
+                            calon siswa dengan antusias dan menyediakan proses pendaftaran yang mudah melalui sistem online.</p>
+                        <a href="link_pendaftaran_PPDB" class="btn btn-success">Daftar Sekarang</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
+    {{-- PPDB --}}
 
 
     <section class="bg-light" id="galeri">
@@ -523,7 +553,6 @@
         </div>
     </div>
 
-
     <!-- Modal Photo 5 -->
     <div class="modal fade modal-lg" id="modalPhoto5" tabindex="-1" role="dialog"
         aria-labelledby="modalPhoto3Label" aria-hidden="true">
@@ -610,7 +639,6 @@
         </div>
     </section>
     <!-- End Kontak Section -->
-
 
 
     <footer class="bg-dark text-light">
