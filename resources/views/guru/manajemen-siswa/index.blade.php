@@ -317,10 +317,10 @@
                                 </th>
                             </tr>
                             <tr>
-                                <th>No</th>
+                                <th style="width:5%;">No</th>
                                 <th>Nama</th>
                                 <th>NISN</th>
-                                <th>Kelas</th>
+                                <th style="width: 20%;">Kelas</th>
                                 <th>Jenis Kelamin</th>
                                 <th>Action</th>
                             </tr>
