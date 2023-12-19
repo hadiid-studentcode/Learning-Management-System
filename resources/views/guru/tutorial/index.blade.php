@@ -19,7 +19,7 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/eOZg7NwfTjo" allowfullscreen></iframe>
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/pxrUbRgE1rY" allowfullscreen></iframe>
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Tutorial Tambah Siswa Dan Wali Murid dalam sistem HamkaBS</h5>
@@ -43,7 +43,7 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Wnke70pym64" allowfullscreen></iframe>
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/fL1EvYL7CHU?si=CBBEDgxCDEO2zxA4" allowfullscreen></iframe>
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">Tutorial Melihat dan Mengedit Akun Siswa Dan Wali Murid dalam Sistem HamkaBS</h5>
