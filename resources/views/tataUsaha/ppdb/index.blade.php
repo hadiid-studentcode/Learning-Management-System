@@ -88,7 +88,17 @@
                                             <td>1</td>
                                             <td>Ucok</td>
                                             <td>21390812390821</td>
-                                            <td>1 </td> {{-- Tanpa Romble Jika sudah di ACC TU baru pilih romble nya (HANYA MENAMPILKAN DIA DAFTAR DI KELAS BERAPA NB : NGGAK HARUS KELAS 1) --}}
+                                            <td>
+                                                <div class="form-group">
+                                                  <select class="form-control" name="kelas">
+                                                      <option value="" hidden>--Pilih Romble--</option>
+                                                      <option value="">Kelas Ahmad Dahlan</option>
+                                                      <option value="">Kelas Nyai Ahmad Dahlan</option>
+                                                      <option value="">Kelas Syamsudin</option>
+                                                  </select>
+                                                </div>
+                                              </td>
+                                               {{-- Tanpa Romble Jika sudah di ACC TU baru pilih romble nya (HANYA MENAMPILKAN DIA DAFTAR DI KELAS BERAPA NB : NGGAK HARUS KELAS 1) --}}
                                             <td>Laki Laki</td>
                                             <td>
                                                 <a href="https://wa.me/62932389232130" target="_blank" class="btn btn-success btn-sm">

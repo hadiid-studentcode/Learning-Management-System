@@ -576,9 +576,37 @@
                         <div class="form-group mb-3">
                             <label for="nisn">NISN:</label>
                             <input type="number" class="form-control" id="nisn"
-                                name="nisn" required>
+                                name="nisn">
+                                <div class="alert alert-success mt-2" role="alert" style="display: none;" id="nisnalert">
+                                    Boleh dikosongkan Jika Siswa Belum memiliki NISN
+                                  </div>
                         </div>
 
+                          <script>
+                            document.getElementById('nisn').addEventListener('focus', function() {
+                              document.getElementById('nisnalert').style.display = 'block';
+                            });
+                          </script>
+
+                        <div class="form-group mb-3">
+                            <label for="kelas">Kelas :</label>
+                            <select class="form-control" id="kelas" name="kelas"
+                                required>
+                                <optgroup label="SD">
+                                    <option value="1">Kelas 1</option>
+                                    <option value="2">Kelas 2</option>
+                                    <option value="3">Kelas 3</option>
+                                    <option value="4">Kelas 4</option>
+                                    <option value="5">Kelas 5</option>
+                                    <option value="6">Kelas 6</option>
+                                  </optgroup>
+                                  <optgroup label="SMP">
+                                    <option value="7">Kelas 7</option>
+                                    <option value="8">Kelas 8</option>
+                                    <option value="9">Kelas 9</option>
+                                  </optgroup>
+                            </select>
+                        </div>
                         <div class="form-group mb-3">
                             <label for="jenis-kelamin">Jenis Kelamin:</label>
                             <select class="form-control" id="jenis-kelamin" name="jenis_kelamin"
@@ -715,9 +743,19 @@
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="no_hp_ortu">Nomor HP Orang Tua:</label>
+                            <label for="no_hp_ortu">Nomor HP Orang Tua :</label>
                             <input type="number" class="form-control" id="no_hp_ortu" name="no_hp_ortu" required>
-                        </div>
+                            <div class="alert alert-success mt-2" role="alert" style="display: none;" id="whatsappAlert">
+                              Nomor HP harus terdaftar di WhatsApp.
+                            </div>
+                          </div>
+
+                          <script>
+                            document.getElementById('no_hp_ortu').addEventListener('focus', function() {
+                              document.getElementById('whatsappAlert').style.display = 'block';
+                            });
+                          </script>
+
 
                         <div class="form-group mb-3">
                             <label for="kelurahan_ortu">Kelurahan Orang Tua:</label>
