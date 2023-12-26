@@ -425,7 +425,7 @@
                                     {{-- PPDB --}}
                                     <li class="nav-item">
                                         <a href="{{ asset('/' . $route . '/kelola-ppdb') }}"
-                                            class="nav-link @if ($title == 'Manajemen Siswa') active @endif">
+                                            class="nav-link @if ($title == 'Kelola PPDB') active @endif">
                                             <i class="fas fa-user-graduate"
                                                 style="font-size: 20px; width: 25px; height: 25px; color: black; margin-right: 23px;"></i>
                                             <span style="font-family: Arial; color: black;">Kelola PPDB</span>

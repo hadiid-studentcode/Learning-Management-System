@@ -1,39 +1,40 @@
 @extends('layouts.main')
 
 @section('main')
-
-<div class="">
-    <div class="card card-custom gutter-b">
-        <div class="card-body">
-            <div class="d-flex flex-column align-items-center">
-                <h2 class="text-dark-75 text-hover-success font-size-h1">Data Penerima Peserta Didik Baru</h2>
-                <p class="text-dark-50 mt-2 text-center">Silakan anda periksa Data siswa yang berminat masuk ke Yayasan Sekolah Muammadiyah Kampa Boarding School</p>
+    <div class="">
+        <div class="card card-custom gutter-b">
+            <div class="card-body">
+                <div class="d-flex flex-column align-items-center">
+                    <h2 class="text-dark-75 text-hover-success font-size-h1">Data Penerima Peserta Didik Baru</h2>
+                    <p class="text-dark-50 mt-2 text-center">Silakan anda periksa Data siswa yang berminat masuk ke Yayasan
+                        Sekolah Muammadiyah Kampa Boarding School</p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
-<style>
-    /* Tambahkan gaya CSS yang diperlukan di sini */
-    .hidden {
-        display: none;
-    }
-    .visible {
-        display: block;
-    }
-</style>
+    <style>
+        /* Tambahkan gaya CSS yang diperlukan di sini */
+        .hidden {
+            display: none;
+        }
+
+        .visible {
+            display: block;
+        }
+    </style>
 
 
-<div class="" style="width:auto;">
-    <div class="card card-custom" id="data_pertemuan">
-        <div class="card-body">
-            <div class="card-toolbar">
-                <ul class="nav nav-tabs nav-bold nav-tabs-line nav-tabs-line-3x">
-                    <li class="nav-item mr-3">
-                        <a class="nav-link active" href="#" onclick="showContent('buka')">
-                            <span class="nav-icon">
-                                <span class="svg-icon mr-3"></span>
+    <div class="" style="width:auto;">
+        <div class="card card-custom" id="data_pertemuan">
+            <div class="card-body">
+                <div class="card-toolbar">
+                    <ul class="nav nav-tabs nav-bold nav-tabs-line nav-tabs-line-3x">
+                        <li class="nav-item mr-3">
+                            <a class="nav-link active" href="{{ url('/tata-usaha/kelola-ppdb') }}">
+                                <span class="nav-icon">
+                                    <span class="svg-icon mr-3"></span>
                                     <svg width="25px" height="25x" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -41,13 +42,13 @@
                                             fill="#47495F" />
                                     </svg>
                                     <span class="nav-text font-size-lg">Pengajuan</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item mr-3">
-                        <a class="nav-link" href="#" onclick="showContent('edit')">
-                            <span class="nav-icon">
-                                <span class="svg-icon mr-3"></span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item mr-3">
+                            <a class="nav-link" href="{{ url('/tata-usaha/kelola-ppdb/create') }}">
+                                <span class="nav-icon">
+                                    <span class="svg-icon mr-3"></span>
                                     <svg width="25px" height="25x" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -55,23 +56,362 @@
                                             fill="#47495F" />
                                     </svg>
                                     <span class="nav-text font-size-lg">Diterima</span>
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <!-- Konten yang akan ditampilkan -->
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Konten yang akan ditampilkan -->
 
-            {{-- Data PPDB --}}
-            <div id="content_buka" class="hidden">
-                <div class="card mt-5 card-custom gutter-b">
-                    <div class="card-body">
-                    {{-- Tabel Data Siswa Yang akan mendaftar --}}
+                {{-- Data PPDB --}}
+                <div id="content_buka" class="hidden">
+                    <div class="card mt-5 card-custom gutter-b">
+                        <div class="card-body">
+                            {{-- Tabel Data Siswa Yang akan mendaftar --}}
+                            <div class="table-responsive">
+                                <table id="data_table" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="7">
+                                                <h5 class="text-center">Tabel Data Siswa PPDB</h5>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th style="width: 5%">No</th>
+                                            <th>Nama</th>
+                                            <th>NISN</th>
+                                            <th>Kelas</th>
+                                            <th>Kelamin</th>
+                                            <th>Kontak Orang Tua</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="siswa-table-body">
+                                        @foreach ($peserta as $p)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $p->nama_siswa }}</td>
+                                                <td>{{ $p->nisn_siswa }}</td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <select class="form-control" name="kelas" id="kelas_input">
+                                                            <option value="" hidden>--Pilih Romble Kelas
+                                                                {{ $p->kelas_siswa }} --</option>
+                                                            @foreach ($kelas as $k)
+                                                                @if ($p->kelas_siswa == $k->nama)
+                                                                    @if ($k->jumlah_siswa < $k->kouta_siswa)
+                                                                        <option value="{{ $k->id }}">
+                                                                           {{$p->kelas_siswa}} {{ $k->rombel }}</option>
+                                                                    @endif
+                                                                @endif
+                                                            @endforeach
+
+                                                        </select>
+
+                                                    </div>
+                                                </td>
+                                                {{-- Tanpa Romble Jika sudah di ACC TU baru pilih romble nya (HANYA MENAMPILKAN DIA DAFTAR DI KELAS BERAPA NB : NGGAK HARUS KELAS 1) --}}
+                                                <td>{{ $p->jenis_kelamin_siswa }}</td>
+                                                <td>
+                                                    <a href="https://wa.me/62{{ $p->no_hp_wali_murid }}" target="_blank"
+                                                        class="btn btn-success btn-sm">
+                                                        <i class="fab fa-whatsapp"></i> {{ $p->no_hp_wali_murid }}
+                                                    </a>
+                                                </td>
+
+                                                <td>
+                                                    <button type="button" class="btn btn-primary btn-sm view-button"
+                                                        data-toggle="modal" data-target="#detailModal_{{ $p->id }}">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="detailModal_{{ $p->id }}"
+                                                        tabindex="-1" role="dialog" aria-labelledby="detailModalLabel"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered modal-xl"
+                                                            role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title">Detail Siswa</h5>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal">
+                                                                        <span>&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="container-fluid">
+                                                                        <div class="row">
+                                                                            <!-- Foto Profil -->
+                                                                            <div class="col-md-12 text-center mt-4 mb-4">
+                                                                                <img src="{{ asset('storage/siswa/images/' . $p->foto_siswa) }}"
+                                                                                    alt="Foto Profil" class="img-fluid"
+                                                                                    style="max-width: 300px;">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <table class="table">
+                                                                                    <tbody>
+
+                                                                                        <tr>
+                                                                                            <td colspan="2">
+                                                                                                <h4 class="text-center">Data
+                                                                                                    Siswa</h4>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>Nama</th>
+                                                                                            <td>{{ $p->nama_siswa }}</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>NISN</th>
+                                                                                            <td>{{ $p->nisn_siswa }}</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>Kelas</th>
+                                                                                            <td>{{ $p->kelas_siswa }}</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>Jenis Kelamin</th>
+                                                                                            <td>{{ $p->jenis_kelamin_siswa }}
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>Agama</th>
+                                                                                            <td>{{ $p->agama_siswa }}</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>Tempat Lahir</th>
+                                                                                            <td>{{ $p->tempat_lahir_siswa }}
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>Kelurahan</th>
+                                                                                            <td>{{ $p->kelurahan_siswa }}
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>Kecamatan</th>
+                                                                                            <td>{{ $p->kecamatan_siswa }}
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>Provinsi</th>
+                                                                                            <td>{{ $p->provinsi_siswa }}
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>Alamat</th>
+                                                                                            <td>{{ $p->alamat_siswa }}</td>
+                                                                                        </tr>
+
+                                                                                        <tr>
+                                                                                            <th>NIK Orang Tua</th>
+                                                                                            <td>{{ $p->nik_wali_murid }}
+                                                                                            </td>
+                                                                                        </tr>
+
+                                                                                        <tr>
+                                                                                            <td colspan="2">
+                                                                                                <h4 class="text-center">Data
+                                                                                                    Wali Murid</h4>
+                                                                                            </td>
+                                                                                        </tr>
+
+                                                                                        <tr>
+                                                                                            <th>Nama Orang Tua</th>
+                                                                                            <td>{{ $p->nama_wali_murid }}
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>Hubungan dengan siswa</th>
+                                                                                            <td>{{ $p->hubungan_wali_murid }}
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>Agama</th>
+                                                                                            <td>{{ $p->agama_wali_murid }}
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>Jenis Kelamin</th>
+                                                                                            <td>{{ $p->jenis_kelamin_wali_murid }}
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>Nomor HP</th>
+                                                                                            <td>{{ $p->no_hp_wali_murid }}
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>Kelurahan</th>
+                                                                                            <td>{{ $p->kelurahan_wali_murid }}
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>Kecamatan</th>
+                                                                                            <td>{{ $p->kecamatan_wali_murid }}
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>Kabupaten/Kota</th>
+                                                                                            <td>{{ $p->kabupatenKota_wali_murid }}
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>Provinsi</th>
+                                                                                            <td>{{ $p->provinsi_wali_murid }}
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>Email</th>
+                                                                                            <td>{{ $p->email_wali_murid }}
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>Pekerjaan</th>
+                                                                                            <td>{{ $p->pekerjaan_wali_murid }}
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th>Alamat</th>
+                                                                                            <td>{{ $p->alamat_wali_murid }}
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Tutup</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <button type="button" class="btn btn-danger btn-sm delete-button"
+                                                        data-toggle="modal"
+                                                        data-target="#deleteSiswa_{{ $p->id }}">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+
+                                                    <div class="modal fade" id="deleteSiswa_{{ $p->id }}"
+                                                        tabindex="-1" role="dialog" aria-labelledby="deleteSiswaLabel"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="deleteSiswaLabel">
+                                                                        Konfirmasi Hapus</h5>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Apakah kamu yakin ingin menghapus data siswa ini?
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <form
+                                                                        action="{{ url('/tata-usaha/kelola-ppdb/' . $p->id) }}"
+                                                                        method="post">
+
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-dismiss="modal">Tutup</button>
+                                                                        <button type="submit"
+                                                                            class="btn btn-danger">Hapus</button>
+                                                                    </form>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <button type="button" class="btn btn-success btn-sm delete-button"
+                                                        data-toggle="modal" data-target="#acceptSiswa">
+                                                        <i class="fas fa-check"></i>
+                                                    </button>
+
+
+                                                    <div class="modal fade" id="acceptSiswa" tabindex="-1"
+                                                        role="dialog" aria-labelledby="acceptSiswaLabel"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="acceptSiswaLabel">
+                                                                        Konfirmasi Penerimaan Siswa</h5>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Apakah kamu yakin ingin menerima siswa ini?
+                                                                </div>
+
+
+
+                                                                <div class="modal-footer">
+                                                                    <form action="{{ url('/tata-usaha/kelola-ppdb/' . $p->id) }}" method="post">
+                                                                        @csrf
+                                                                        @method('PUT')
+                                                                        <input type="text" name="kelas"
+                                                                            id="kelas_query" hidden>
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-dismiss="modal">Tutup</button>
+                                                                        <button type="submit" class="btn btn-success"
+                                                                           >Terima</button>
+                                                                    </form>
+
+                                                                </div>
+
+                                                                <script>
+                                                                    let kelasid = document.getElementById('kelas_input');
+                                                                    let id_kelas = document.getElementById('kelas_query');
+
+                                                                    kelasid.addEventListener('change', function() {
+                                                                        id_kelas.value = kelasid.value;
+                                                                    })
+                                                                </script>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+                                                {{-- modal --}}
+
+                                            </tr>
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                {{-- Data siswa yang sudah di ACC --}}
+                <div id="content_edit" class="hidden">
+                    <div class="card mt-5 card-custom gutter-b">
                         <div class="table-responsive">
                             <table id="data_table" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th colspan="7"><h5 class="text-center">Tabel Data Siswa PPDB</h5></th>
+                                        <th colspan="8">
+                                            <h5 class="text-center">Tabel Data Siswa PPDB yang suda di Terima</h5>
+                                        </th>
                                     </tr>
                                     <tr>
                                         <th style="width: 5%">No</th>
@@ -79,263 +419,12 @@
                                         <th>NISN</th>
                                         <th>Kelas</th>
                                         <th>Kelamin</th>
+                                        <th>Nama Orang Tua</th>
                                         <th>Kontak Orang Tua</th>
-                                        <th>Action</th>
+                                        <th>Alamat</th>
                                     </tr>
                                 </thead>
                                 <tbody id="siswa-table-body">
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Ucok</td>
-                                            <td>21390812390821</td>
-                                            <td>
-                                                <div class="form-group">
-                                                  <select class="form-control" name="kelas">
-                                                      <option value="" hidden>--Pilih Romble--</option>
-                                                      <option value="">Kelas Ahmad Dahlan</option>
-                                                      <option value="">Kelas Nyai Ahmad Dahlan</option>
-                                                      <option value="">Kelas Syamsudin</option>
-                                                  </select>
-                                                </div>
-                                              </td>
-                                               {{-- Tanpa Romble Jika sudah di ACC TU baru pilih romble nya (HANYA MENAMPILKAN DIA DAFTAR DI KELAS BERAPA NB : NGGAK HARUS KELAS 1) --}}
-                                            <td>Laki Laki</td>
-                                            <td>
-                                                <a href="https://wa.me/62932389232130" target="_blank" class="btn btn-success btn-sm">
-                                                    <i class="fab fa-whatsapp"></i>  0239480238402
-                                                </a>
-                                            </td>
-
-                                            <td>
-                                                <button type="button" class="btn btn-primary btn-sm view-button"
-                                                data-toggle="modal" data-target="#detailModal"> <i class="fas fa-eye"></i>
-                                                </button>
-
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel"
-                                                aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title">Detail Siswa</h5>
-                                                                <button type="button" class="close" data-dismiss="modal">
-                                                                    <span>&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <div class="container-fluid">
-                                                                    <div class="row">
-                                                                        <!-- Foto Profil -->
-                                                                        <div class="col-md-12 text-center mt-4 mb-4">
-                                                                            <img src="https://via.placeholder.com/300" alt="Foto Profil" class="img-fluid" style="max-width: 300px;">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-md-12">
-                                                                            <table class="table">
-                                                                                <tbody>
-
-                                                                                    <tr>
-                                                                                        <td colspan="2"><h4 class="text-center">Data Siswa</h4></td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th>Nama</th>
-                                                                                        <td>Ucok</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th>NISN</th>
-                                                                                        <td>21390812390821</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th>Kelas</th>
-                                                                                        <td>1</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th>Jenis Kelamin</th>
-                                                                                        <td>Laki Laki</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th>Agama</th>
-                                                                                        <td>Islam</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th>Tempat Lahir</th>
-                                                                                        <td>Jakarta</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th>Kelurahan</th>
-                                                                                        <td>Kemang</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th>Kecamatan</th>
-                                                                                        <td>Mampang Prapatan</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th>Provinsi</th>
-                                                                                        <td>DKI Jakarta</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th>Alamat</th>
-                                                                                        <td>Jl. Raya No. 123</td>
-                                                                                    </tr>
-
-                                                                                    <tr>
-                                                                                        <th>NIK Orang Tua</th>
-                                                                                        <td>12345678901234</td>
-                                                                                    </tr>
-
-                                                                                    <tr>
-                                                                                        <td colspan="2"><h4 class="text-center">Data Wali Murid</h4></td>
-                                                                                    </tr>
-
-                                                                                    <tr>
-                                                                                        <th>Nama Orang Tua</th>
-                                                                                        <td>Budi</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th>Hubungan dengan siswa</th>
-                                                                                        <td>Orang Tua</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th>Agama</th>
-                                                                                        <td>Islam</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th>Jenis Kelamin</th>
-                                                                                        <td>Laki Laki</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th>Nomor HP</th>
-                                                                                        <td>08123456789</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th>Kelurahan</th>
-                                                                                        <td>Kemang</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th>Kecamatan</th>
-                                                                                        <td>Mampang Prapatan</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th>Kabupaten/Kota</th>
-                                                                                        <td>Jakarta Selatan</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th>Provinsi</th>
-                                                                                        <td>DKI Jakarta</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th>Email</th>
-                                                                                        <td>budi@example.com</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th>Pekerjaan</th>
-                                                                                        <td>Pegawai Swasta</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <th>Alamat</th>
-                                                                                        <td>Jl. Raya No. 456</td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
-                                                                        </div>
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-
-                                                <button type="button" class="btn btn-danger btn-sm delete-button" data-toggle="modal" data-target="#deleteSiswa">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-
-                                                <div class="modal fade" id="deleteSiswa" tabindex="-1" role="dialog" aria-labelledby="deleteSiswaLabel" aria-hidden="true">
-                                                    <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="deleteSiswaLabel">Konfirmasi Hapus</h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                Apakah kamu yakin ingin menghapus data siswa ini?
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                                                <button type="button" class="btn btn-danger" onclick="hapusSiswa()">Hapus</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-                                                <button type="button" class="btn btn-success btn-sm delete-button" data-toggle="modal" data-target="#acceptSiswa">
-                                                    <i class="fas fa-check"></i>
-                                                </button>
-
-
-                                                <div class="modal fade" id="acceptSiswa" tabindex="-1" role="dialog" aria-labelledby="acceptSiswaLabel" aria-hidden="true">
-                                                    <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="acceptSiswaLabel">Konfirmasi Penerimaan Siswa</h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                Apakah kamu yakin ingin menerima siswa ini?
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                                                <button type="button" class="btn btn-success" onclick="terimaSiswa()">Terima</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-
-                                            {{-- modal --}}
-
-                                        </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-    {{-- Data siswa yang sudah di ACC --}}
-            <div id="content_edit" class="hidden">
-                <div class="card mt-5 card-custom gutter-b">
-                    <div class="table-responsive">
-                        <table id="data_table" class="table table-striped table-bordered">
-                            <thead>
-                                <tr>
-                                    <th colspan="8"><h5 class="text-center">Tabel Data Siswa PPDB yang suda di Terima</h5></th>
-                                </tr>
-                                <tr>
-                                    <th style="width: 5%">No</th>
-                                    <th>Nama</th>
-                                    <th>NISN</th>
-                                    <th>Kelas</th>
-                                    <th>Kelamin</th>
-                                    <th>Nama Orang Tua</th>
-                                    <th>Kontak Orang Tua</th>
-                                    <th>Alamat</th>
-                                </tr>
-                            </thead>
-                            <tbody id="siswa-table-body">
                                     <tr>
                                         <td>1</td>
                                         <td>Ucok</td>
@@ -344,45 +433,42 @@
                                         <td>Laki Laki</td>
                                         <td>Ucok Saepudin</td>
                                         <td>
-                                            <a href="https://wa.me/62932389232130" target="_blank" class="btn btn-success btn-sm">
-                                                <i class="fab fa-whatsapp"></i>  0239480238402
+                                            <a href="https://wa.me/62932389232130" target="_blank"
+                                                class="btn btn-success btn-sm">
+                                                <i class="fab fa-whatsapp"></i> 0239480238402
                                             </a>
                                         </td>
                                         <td>pekanbaru</td>
                                     </tr>
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
 
 
-<script>
-    // Fungsi untuk menampilkan konten yang sesuai dengan tombol yang ditekan
-    function showContent(content) {
-        var contentBuka = document.getElementById('content_buka');
-        var contentEdit = document.getElementById('content_edit');
+        <script>
+            // Fungsi untuk menampilkan konten yang sesuai dengan tombol yang ditekan
+            function showContent(content) {
+                var contentBuka = document.getElementById('content_buka');
+                var contentEdit = document.getElementById('content_edit');
 
-        // Sembunyikan kedua konten terlebih dahulu
-        contentBuka.classList.add('hidden');
-        contentEdit.classList.add('hidden');
+                // Sembunyikan kedua konten terlebih dahulu
+                contentBuka.classList.add('hidden');
+                contentEdit.classList.add('hidden');
 
-        // Tampilkan konten yang sesuai dengan tombol yang ditekan
-        if (content === 'buka') {
-            contentBuka.classList.remove('hidden');
-        } else if (content === 'edit') {
-            contentEdit.classList.remove('hidden');
-        }
-    }
+                // Tampilkan konten yang sesuai dengan tombol yang ditekan
+                if (content === 'buka') {
+                    contentBuka.classList.remove('hidden');
+                } else if (content === 'edit') {
+                    contentEdit.classList.remove('hidden');
+                }
+            }
 
-    showContent('buka');
-</script>
-
-
-
-
-@endsection
+            showContent('buka');
+        </script>
+    @endsection

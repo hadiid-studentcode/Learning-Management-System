@@ -90,6 +90,8 @@ Route::resource('/', HomeController::class);
 Route::resource('/ppdb', PpdbController::class);
 
 
+
+
 // id : 12345
 // pass : 12345
 

@@ -243,7 +243,9 @@
                         <h3 class="display-5 text-success">Apa Itu Sistem PPDB HAMKA BS?</h1>
                             <p class="lead">Sistem PPDB Hamka BS atau sistem muhammadiyah Kampa Boarding School adalah
                                 sebuah Platform Website dibuat khusus untuk pendaftaran peserta didik baru bagi SD & SMP
-                                Muhammadiyah Kampa, Yang berfungsi untuk Memudahkan para orang tua dalam mendaftrakan anaknya ke sekolah tanpa harus datang ke sekolah dan bisa dilakukan secara online dan dimana saja. </p>
+                                Muhammadiyah Kampa, Yang berfungsi untuk Memudahkan para orang tua dalam mendaftrakan
+                                anaknya ke sekolah tanpa harus datang ke sekolah dan bisa dilakukan secara online dan
+                                dimana saja. </p>
                     </div>
                 </div>
             </div>
@@ -309,8 +311,8 @@
     </section>
     <!-- Halaman Keunggulan End -->
 
-   {{-- Login --}}
-{{-- <section id="login">
+    {{-- Login --}}
+    {{-- <section id="login">
     <h2 class="text-center">Halaman Login</h2>
     <div class="container my-5">
         <div class="row">
@@ -405,7 +407,7 @@
         </div>
     </div>
 </section> --}}
-   {{-- Login --}}
+    {{-- Login --}}
 
     {{-- PPDB --}}
     <section id="ppdb" style="background-color: #F1F6F9;">
@@ -419,7 +421,8 @@
                     <div class="col-lg-6">
                         <h3 class="display-5 text-success">Penerimaan Peserta Didik Baru (PPDB)</h3>
                         <p class="lead">PPDB adalah proses penerimaan siswa baru di sekolah kami. Kami menyambut
-                            calon siswa dengan antusias dan menyediakan proses pendaftaran yang mudah melalui sistem online.</p>
+                            calon siswa dengan antusias dan menyediakan proses pendaftaran yang mudah melalui sistem
+                            online.</p>
                         <a href="{{ url('/ppdb') }}" class="btn btn-success">Daftar Sekarang</a>
                     </div>
                 </div>
@@ -429,7 +432,7 @@
 
     {{-- PPDB --}}
 
-{{--
+    {{--
     <section class="bg-light" id="galeri">
         <h2 class="text-center mb-5">Gallery Sekolah</h2>
         <div class="container">
@@ -563,11 +566,14 @@
 
     <section id="daftar" style="background-color: white;">
         <div class="container ">
-            <h3 class="text-center mb-5" style="color: green; font-family: 'Arial', sans-serif; font-size: 2.5em; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Form Pendaftaran</h3>
+            <h3 class="text-center mb-5"
+                style="color: green; font-family: 'Arial', sans-serif; font-size: 2.5em; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">
+                Form Pendaftaran</h3>
+            <form action="{{ url('/ppdb') }}" method="POST" id="siswa-form" enctype="multipart/form-data">
+                @csrf
+                <div class="row">
+                    <div class="col-md-6">
 
-            <div class="row">
-                <div class="col-md-6">
-                    <form action="" method="POST" id="siswa-form" enctype="multipart/form-data">
                         <h5>Data Siswa</h5>
                         <div class="form-group mb-3">
                             <label for="nama">Nama:</label>
@@ -575,23 +581,22 @@
                         </div>
                         <div class="form-group mb-3">
                             <label for="nisn">NISN:</label>
-                            <input type="number" class="form-control" id="nisn"
-                                name="nisn">
-                                <div class="alert alert-success mt-2" role="alert" style="display: none;" id="nisnalert">
-                                    Boleh dikosongkan Jika Siswa Belum memiliki NISN
-                                  </div>
+                            <input type="number" class="form-control" id="nisn" name="nisn">
+                            <div class="alert alert-success mt-2" role="alert" style="display: none;"
+                                id="nisnalert">
+                                Boleh dikosongkan Jika Siswa Belum memiliki NISN
+                            </div>
                         </div>
 
-                          <script>
+                        <script>
                             document.getElementById('nisn').addEventListener('focus', function() {
-                              document.getElementById('nisnalert').style.display = 'block';
+                                document.getElementById('nisnalert').style.display = 'block';
                             });
-                          </script>
+                        </script>
 
                         <div class="form-group mb-3">
                             <label for="kelas">Kelas :</label>
-                            <select class="form-control" id="kelas" name="kelas"
-                                required>
+                            <select class="form-control" id="kelas" name="kelas" required>
                                 <optgroup label="SD">
                                     <option value="1">Kelas 1</option>
                                     <option value="2">Kelas 2</option>
@@ -599,18 +604,17 @@
                                     <option value="4">Kelas 4</option>
                                     <option value="5">Kelas 5</option>
                                     <option value="6">Kelas 6</option>
-                                  </optgroup>
-                                  <optgroup label="SMP">
+                                </optgroup>
+                                <optgroup label="SMP">
                                     <option value="7">Kelas 7</option>
                                     <option value="8">Kelas 8</option>
                                     <option value="9">Kelas 9</option>
-                                  </optgroup>
+                                </optgroup>
                             </select>
                         </div>
                         <div class="form-group mb-3">
                             <label for="jenis-kelamin">Jenis Kelamin:</label>
-                            <select class="form-control" id="jenis-kelamin" name="jenis_kelamin"
-                                required>
+                            <select class="form-control" id="jenis-kelamin" name="jenis_kelamin" required>
                                 <option value="" hidden>pilih</option>
                                 <option value="Laki-laki">Laki-laki</option>
                                 <option value="Perempuan">Perempuan</option>
@@ -632,51 +636,50 @@
 
                         <div class="form-group mb-3">
                             <label for="tempat-lahir">Tempat Lahir:</label>
-                            <input type="text" class="form-control" id="tempat-lahir"
-                                name="tempat_lahir" required>
+                            <input type="text" class="form-control" id="tempat-lahir" name="tempat_lahir"
+                                required>
                         </div>
 
 
                         <div class="form-group mb-3">
                             <label for="tanggal-lahir">Tanggal Lahir:</label>
-                            <input type="date" class="form-control" id="tanggal-lahir"
-                                name="tanggal_lahir" required>
+                            <input type="date" class="form-control" id="tanggal-lahir" name="tanggal_lahir"
+                                required>
                         </div>
 
                         <div class="form-group mb-3">
                             <label for="kelurahan">Kelurahan:</label>
-                            <input type="text" class="form-control" id="kelurahan"
-                                name="kelurahan" required>
+                            <input type="text" class="form-control" id="kelurahan" name="kelurahan" required>
                         </div>
 
                         <div class="form-group mb-3">
                             <label for="kecamatan">Kecamatan:</label>
-                            <input type="text" class="form-control" id="kecamatan"
-                                name="kecamatan" required>
+                            <input type="text" class="form-control" id="kecamatan" name="kecamatan" required>
                         </div>
 
                         <div class="form-group mb-3">
                             <label for="kabupaten-kota">Kabupaten/Kota:</label>
-                            <input type="text" class="form-control" id="kabupaten-kota"
-                                name="kabupaten_kota" required>
+                            <input type="text" class="form-control" id="kabupaten-kota" name="kabupaten_kota"
+                                required>
                         </div>
 
                         <div class="form-group mb-3">
                             <label for="provinsi">Provinsi:</label>
-                            <input type="text" class="form-control" id="provinsi"
-                                name="provinsi" required>
+                            <input type="text" class="form-control" id="provinsi" name="provinsi" required>
                         </div>
 
                         <div class="form-group mb-3">
                             <label for="alamat">Alamat:</label>
-                            <textarea class="form-control" id="alamat" name="alamat" required maxlength="100" ></textarea>
+                            <textarea class="form-control" id="alamat" name="alamat" required maxlength="100"></textarea>
                         </div>
 
                         <div class="form-group mb-3">
                             <label for="formFile" class="form-label">Photo:</label>
-                            <input class="form-control form-control" id="formFileLg" type="file" accept="image/*" onchange="showFileName1(event)">
+                            <input class="form-control form-control" id="formFileLg" type="file" accept="image/*"
+                                onchange="showFileName1(event)" name="photo">
                         </div>
-                        <img id="preview" src="#" alt="Preview" class=" mb-3" style="display:none; max-width: 200px; max-height: 200px;">
+                        <img id="preview" src="#" alt="Preview" class=" mb-3"
+                            style="display:none; max-width: 200px; max-height: 200px;">
 
 
                         <script>
@@ -684,7 +687,7 @@
                                 const input = event.target;
                                 if (input.files && input.files[0]) {
                                     const reader = new FileReader();
-                                    reader.onload = function (e) {
+                                    reader.onload = function(e) {
                                         const preview = document.getElementById('preview');
                                         preview.style.display = 'block';
                                         preview.src = e.target.result;
@@ -694,109 +697,109 @@
                             }
                         </script>
 
-                    </form>
+        </div>
+
+        <div class="col-md-6">
+                <h5>Data Orang Tua</h5>
+                <div class="form-group mb-3">
+                    <label for="nik">NIK:</label>
+                    <input type="text" class="form-control" id="nik" name="nik" required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="nama_ortu">Nama Orang Tua:</label>
+                    <input type="text" class="form-control" id="nama_ortu" name="nama_ortu" required>
                 </div>
 
-                <div class="col-md-6">
-                    <form action="" method="POST" id="orang-tua-form">
-                        <h5>Data Orang Tua</h5>
-                        <div class="form-group mb-3">
-                            <label for="nik">NIK:</label>
-                            <input type="text" class="form-control" id="nik" name="nik" required>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="nama_ortu">Nama Orang Tua:</label>
-                            <input type="text" class="form-control" id="nama_ortu" name="nama_ortu" required>
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label for="hubungan">Hubungan:</label>
-                            <select class="form-control" id="hubungan" name="hubungan" required>
-                                <option value="" hidden>pilih</option>
-                                <option value="Orang Tua Kandung">Orang Tua Kandung</option>
-                                <option value="Orang Tua Angkat">Orang Tua Angkat</option>
-                                <option value="Saudara">Saudara</option>
-                                <option value="Keponakan">Keponakan</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label for="agama">Agama:</label>
-                            <select class="form-control" id="agama" name="agama_ortu" required>
-                                <option value="" hidden>pilih</option>
-                                <option value="Islam">Islam</option>
-                                <option value="Kristen">Kristen</option>
-                                <option value="Katolik">Katolik</option>
-                                <option value="Hindu">Hindu</option>
-                                <option value="Budha">Budha</option>
-                                <option value="Konghucu">Konghucu</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label for="jenis_kelamin_ortu">Jenis Kelamin Orang Tua:</label>
-                            <select class="form-control" id="jenis_kelamin_ortu" name="jenis_kelamin_ortu" required>
-                                <option value="" hidden>Pilih</option>
-                                <option value="Laki-laki">Laki-laki</option>
-                                <option value="Perempuan">Perempuan</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label for="no_hp_ortu">Nomor HP Orang Tua :</label>
-                            <input type="number" class="form-control" id="no_hp_ortu" name="no_hp_ortu" required>
-                            <div class="alert alert-success mt-2" role="alert" style="display: none;" id="whatsappAlert">
-                              Nomor HP harus terdaftar di WhatsApp.
-                            </div>
-                          </div>
-
-                          <script>
-                            document.getElementById('no_hp_ortu').addEventListener('focus', function() {
-                              document.getElementById('whatsappAlert').style.display = 'block';
-                            });
-                          </script>
-
-
-                        <div class="form-group mb-3">
-                            <label for="kelurahan_ortu">Kelurahan Orang Tua:</label>
-                            <input type="text" class="form-control" id="kelurahan_ortu" name="kelurahan_ortu" required>
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label for="kecamatan_ortu">Kecamatan Orang Tua:</label>
-                            <input type="text" class="form-control" id="kecamatan_ortu" name="kecamatan_ortu" required>
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label for="kabupaten_kota_ortu">Kabupaten/Kota Orang Tua:</label>
-                            <input type="text" class="form-control" id="kabupaten_kota_ortu" name="kabupaten_kota_ortu" required>
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label for="provinsi_ortu">Provinsi Orang Tua:</label>
-                            <input type="text" class="form-control" id="provinsi_ortu" name="provinsi_ortu" required>
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label for="email_ortu">Email Orang Tua:</label>
-                            <input type="email" class="form-control" id="email_ortu" name="email_ortu">
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label for="pekerjaan_ortu">Pekerjaan Orang Tua:</label>
-                            <input type="text" class="form-control" id="pekerjaan_ortu" name="pekerjaan_ortu" required>
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label for="alamat_ortu">Alamat Orang Tua:</label>
-                            <textarea class="form-control" id="alamat_ortu" name="alamat_ortu" required></textarea>
-                        </div>
-
-                    </form>
+                <div class="form-group mb-3">
+                    <label for="hubungan">Hubungan:</label>
+                    <select class="form-control" id="hubungan" name="hubungan" required>
+                        <option value="" hidden>pilih</option>
+                        <option value="Orang Tua Kandung">Orang Tua Kandung</option>
+                        <option value="Orang Tua Angkat">Orang Tua Angkat</option>
+                        <option value="Saudara">Saudara</option>
+                        <option value="Keponakan">Keponakan</option>
+                    </select>
                 </div>
 
-                <button type="submit" class="btn btn-success container mt-5" style="width: 30%">Daftar</button>
-            </div>
+                <div class="form-group mb-3">
+                    <label for="agama">Agama:</label>
+                    <select class="form-control" id="agama" name="agama_ortu" required>
+                        <option value="" hidden>pilih</option>
+                        <option value="Islam">Islam</option>
+                        <option value="Kristen">Kristen</option>
+                        <option value="Katolik">Katolik</option>
+                        <option value="Hindu">Hindu</option>
+                        <option value="Budha">Budha</option>
+                        <option value="Konghucu">Konghucu</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="jenis_kelamin_ortu">Jenis Kelamin Orang Tua:</label>
+                    <select class="form-control" id="jenis_kelamin_ortu" name="jenis_kelamin_ortu" required>
+                        <option value="" hidden>Pilih</option>
+                        <option value="Laki-laki">Laki-laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="no_hp_ortu">Nomor HP Orang Tua :</label>
+                    <input type="number" class="form-control" id="no_hp_ortu" name="no_hp_ortu" required>
+                    <div class="alert alert-success mt-2" role="alert" style="display: none;" id="whatsappAlert">
+                        Nomor HP harus terdaftar di WhatsApp.
+                    </div>
+                </div>
+
+                <script>
+                    document.getElementById('no_hp_ortu').addEventListener('focus', function() {
+                        document.getElementById('whatsappAlert').style.display = 'block';
+                    });
+                </script>
+
+
+                <div class="form-group mb-3">
+                    <label for="kelurahan_ortu">Kelurahan Orang Tua:</label>
+                    <input type="text" class="form-control" id="kelurahan_ortu" name="kelurahan_ortu" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="kecamatan_ortu">Kecamatan Orang Tua:</label>
+                    <input type="text" class="form-control" id="kecamatan_ortu" name="kecamatan_ortu" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="kabupaten_kota_ortu">Kabupaten/Kota Orang Tua:</label>
+                    <input type="text" class="form-control" id="kabupaten_kota_ortu" name="kabupaten_kota_ortu"
+                        required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="provinsi_ortu">Provinsi Orang Tua:</label>
+                    <input type="text" class="form-control" id="provinsi_ortu" name="provinsi_ortu" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="email_ortu">Email Orang Tua:</label>
+                    <input type="email" class="form-control" id="email_ortu" name="email_ortu">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="pekerjaan_ortu">Pekerjaan Orang Tua:</label>
+                    <input type="text" class="form-control" id="pekerjaan_ortu" name="pekerjaan_ortu" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="alamat_ortu">Alamat Orang Tua:</label>
+                    <textarea class="form-control" id="alamat_ortu" name="alamat_ortu" required></textarea>
+                </div>
+
+          
+        </div>
+
+        <button type="submit" class="btn btn-success container mt-5" style="width: 30%">Daftar</button>
+        </div>
+        </form>
         </div>
     </section>
 
@@ -898,7 +901,8 @@
             const subject = document.getElementById("subject").value;
             const message = document.getElementById("message").value;
             // send ke wa ini +6285381782497
-          window.open("https://api.whatsapp.com/send?phone=6289620569613&text=Nama%20%3A%20" + name + "%0AEmail%20%3A%20" + email + "%0ASubjek%3A%20" + subject + "%0APesan%20%3A%20" + message);
+            window.open("https://api.whatsapp.com/send?phone=6289620569613&text=Nama%20%3A%20" + name +
+                "%0AEmail%20%3A%20" + email + "%0ASubjek%3A%20" + subject + "%0APesan%20%3A%20" + message);
 
         }
     </script>
