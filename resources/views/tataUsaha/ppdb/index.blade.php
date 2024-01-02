@@ -144,7 +144,9 @@
                                                                         <div class="row">
                                                                             <!-- Foto Profil -->
                                                                             <div class="col-md-12 text-center mt-4 mb-4">
-                                                                                <img src="{{ asset('storage/siswa/images/' . $p->foto_siswa) }}"
+
+                                                                            
+                                                                                <img src="{{ asset('/storage/siswa/images/' . $p->foto_siswa) }}"
                                                                                     alt="Foto Profil" class="img-fluid"
                                                                                     style="max-width: 300px;">
                                                                             </div>
