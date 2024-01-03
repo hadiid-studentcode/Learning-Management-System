@@ -28,17 +28,31 @@ class PpdbController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->nisn == null && $request->kelas !== '1'){
+            return back()->with('error', 'NISN Harap Diinput Jika Kelas 2-9');
+
+        }elseif($request->nisn !== null && $request->kelas == '1'){
+            return back()->with('error', 'NISN Tidak Perlu Diinput Jika Kelas 1 atau Peserta Didik Baru');
+        }
+
+      
+
+
+
         $resultPPDB = new PesertaPPDB();
         try {
 
             if($request->hasFile('photo')){
                 $foto = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('photo')->getClientOriginalName());
+                // save foto peserta PPDB
+                $resultPPDB->uploadFotoPesertaPPDB($request->photo, $foto);
+
            
             }else{
                 $foto = null;
             }
 
-            if($request->kelas == '1'){
+            if($request->kelas == '1' && $request->nisn == null){
                 $nisn = 'PPDB'.sprintf("%010d", mt_rand(0, 9999999999));
             }else{
                 $nisn = $request->nisn;
@@ -80,16 +94,14 @@ class PpdbController extends Controller
 
             $resultPPDB->createPesertaPPDB($data);
 
-            // save foto peserta PPDB
-            $resultPPDB->uploadFotoPesertaPPDB($request->photo, $foto);
-
+          
            
             return redirect('/ppdb#ppdb')->with('success', 'Data Berhasil');
             
             
         } catch (\Throwable $th) {
-            dd($th->getMessage());
-        }
+         return back()->with('Terjadi Kesalahan Silahkan Coba Lagi', );
+        } 
     }
 
     /**

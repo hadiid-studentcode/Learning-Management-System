@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 class PesertaPPDB extends Model
 {
@@ -54,10 +55,10 @@ class PesertaPPDB extends Model
     public function uploadFotoPesertaPPDB($foto, $dbfoto)
     {
 
-       
+
 
         if (!empty($dbfoto)) {
-          
+
 
             $image_path = 'storage/siswa/images/' . $dbfoto;
             if (File::exists($image_path)) {
@@ -71,20 +72,42 @@ class PesertaPPDB extends Model
             mkdir($folderPath, 0777, true);
         }
 
-        $img = Image::make($foto);
-        // perbaiki rotasi foto
-        $img->orientate();
-        // kompres gambar
-        $img->filesize();
+        // upload foto ke storage
 
-        return $img->save('storage/siswa/images/' . $dbfoto, 10);
+
+        // $path = $foto->store(
+        //     'avatars/' . $dbfoto,
+        //     'public'
+        // );
+
+        $path = Storage::putFileAs(
+            'public/siswa/images',
+            $foto,
+            $dbfoto,
+        );
+
+
+        return $path;
+
+
+        // $img = Image::make($foto);
+        // // perbaiki rotasi foto
+        // $img->orientate();
+        // // kompres gambar
+        // $img->filesize();
+
+
+
+        // return $img->save('storage/siswa/images/' . $dbfoto, 10);
     }
 
-    public function getPesertaPPDB(){
-       return  PesertaPPDB::all();
+    public function getPesertaPPDB()
+    {
+        return  PesertaPPDB::all();
     }
 
-    public function getPesertaWhereid($id){
+    public function getPesertaWhereid($id)
+    {
         return PesertaPPDB::where('id', $id)->first();
     }
 
@@ -104,9 +127,9 @@ class PesertaPPDB extends Model
             }
         }
     }
-    public function updatePesertaPPDB($id,$data){
+    public function updatePesertaPPDB($id, $data)
+    {
 
         return PesertaPPDB::where('id', $id)->update($data);
     }
-
 }
