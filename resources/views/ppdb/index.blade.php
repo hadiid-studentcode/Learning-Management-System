@@ -423,7 +423,7 @@
                         <p class="lead">PPDB adalah proses penerimaan siswa baru di sekolah kami. Kami menyambut
                             calon siswa dengan antusias dan menyediakan proses pendaftaran yang mudah melalui sistem
                             online.</p>
-                       
+
                     </div>
                 </div>
             </div>
@@ -566,9 +566,15 @@
 
     <section id="daftar" style="background-color: white;">
         <div class="container ">
-            <h3 class="text-center mb-5"
+            <h3 class="text-center mb-3"
                 style="color: green; font-family: 'Arial', sans-serif; font-size: 2.5em; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">
                 Form Pendaftaran</h3>
+
+                <div class="alert alert-success alert-dismissible fade show mb-3" role="alert">
+                    Pengiriman Data ke Pihak Sekolah Berhasil
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+
             <form action="{{ url('/ppdb') }}" method="POST" id="siswa-form" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
