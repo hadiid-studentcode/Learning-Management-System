@@ -313,6 +313,7 @@
     </section>
     <!-- Halaman Keunggulan End -->
 
+
    {{-- Login --}}
    <section id="login">
     <h2 class="text-center">Halaman Login</h2>
@@ -446,7 +447,7 @@
     {{-- PPDB --}}
 
 
-    <section class="bg-light" id="galeri">
+    <section class="bg-light" style="background-color: white" id="galeri">
         <h2 class="text-center mb-5">Gallery Sekolah</h2>
         <div class="container">
             <div class="row">
@@ -489,7 +490,6 @@
             </div>
         </div>
     </section>
-
 
     {{-- Modal Start --}}
 
@@ -584,7 +584,7 @@
     </div>
     {{-- Modal End --}}
 
-    <section id="kontak" class="kontak">
+    <section id="kontak" class="kontak bg-light">
         <div class="container" data-aos="fade-up">
             <div class="section-kontak" data-aos="fade-up">
                 <h2><span>Hubungi</span> Kami</h2>
@@ -682,14 +682,6 @@
             // send ke wa ini +6285381782497
 
           window.open("https://api.whatsapp.com/send?phone=6289620569613&text=Nama%20%3A%20" + name + "%0AEmail%20%3A%20" + email + "%0ASubjek%3A%20" + subject + "%0APesan%20%3A%20" + message);
-
-
-
-
-
-
-
-
         }
     </script>
 

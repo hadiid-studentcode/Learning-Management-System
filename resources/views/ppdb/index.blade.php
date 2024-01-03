@@ -423,7 +423,7 @@
                         <p class="lead">PPDB adalah proses penerimaan siswa baru di sekolah kami. Kami menyambut
                             calon siswa dengan antusias dan menyediakan proses pendaftaran yang mudah melalui sistem
                             online.</p>
-                        <a href="{{ url('/ppdb') }}" class="btn btn-success">Daftar Sekarang</a>
+                       
                     </div>
                 </div>
             </div>
@@ -794,7 +794,7 @@
                     <textarea class="form-control" id="alamat_ortu" name="alamat_ortu" required></textarea>
                 </div>
 
-          
+
         </div>
 
         <button type="submit" class="btn btn-success container mt-5" style="width: 30%">Daftar</button>
