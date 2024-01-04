@@ -188,7 +188,6 @@ class KelolaPpdbTataUsahaController extends TataUsahaController
 
             return back();
         } catch (\Throwable $th) {
-            dd($th->getMessage());
             return back();
         }
     }

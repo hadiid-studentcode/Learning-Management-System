@@ -570,10 +570,20 @@
                 style="color: green; font-family: 'Arial', sans-serif; font-size: 2.5em; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">
                 Form Pendaftaran</h3>
 
+                @if(session('success'))
                 <div class="alert alert-success alert-dismissible fade show mb-3" role="alert">
-                    Pengiriman Data ke Pihak Sekolah Berhasil
+                    {{ session('success') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
+                  @elseif(session('error'))
+                    <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
+                   {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+
+                @endif
+
+              
 
             <form action="{{ url('/ppdb') }}" method="POST" id="siswa-form" enctype="multipart/form-data">
                 @csrf

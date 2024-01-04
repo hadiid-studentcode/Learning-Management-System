@@ -28,38 +28,34 @@ class PpdbController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->nisn == null && $request->kelas !== '1'){
-            return back()->with('error', 'NISN Harap Diinput Jika Kelas 2-9');
-
-        }elseif($request->nisn !== null && $request->kelas == '1'){
-            return back()->with('error', 'NISN Tidak Perlu Diinput Jika Kelas 1 atau Peserta Didik Baru');
+        if ($request->nisn == null && $request->kelas !== '1') {
+            return redirect('/ppdb#daftar')->with('error', 'Kesalahan,NISN Harap Diinput Jika Kelas 2-9');
+        } elseif ($request->nisn !== null && $request->kelas == '1') {
+            return redirect('/ppdb#daftar')->with('error', 'Kesalahan,NISN Tidak Perlu Diinput Jika Kelas 1 atau Peserta Didik Baru');
         }
 
-      
+
 
 
 
         $resultPPDB = new PesertaPPDB();
         try {
 
-            if($request->hasFile('photo')){
+            if ($request->hasFile('photo')) {
                 $foto = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('photo')->getClientOriginalName());
                 // save foto peserta PPDB
                 $resultPPDB->uploadFotoPesertaPPDB($request->photo, $foto);
-
-           
-            }else{
+            } else {
                 $foto = null;
             }
 
-            if($request->kelas == '1' && $request->nisn == null){
-                $nisn = 'PPDB'.sprintf("%010d", mt_rand(0, 9999999999));
-            }else{
+            if ($request->kelas == '1' && $request->nisn == null) {
+                $nisn = 'PPDB' . sprintf("%010d", mt_rand(0, 9999999999));
+            } else {
                 $nisn = $request->nisn;
-                
             }
             // simpan ppdb
-          $data = [
+            $data = [
                 "nisn_siswa" => $nisn,
                 'nama_siswa' => $request->nama,
                 'kelas_siswa' => $request->kelas,
@@ -88,20 +84,18 @@ class PpdbController extends Controller
                 'alamat_wali_murid' => $request->alamat_ortu,
                 'status_ppdb' => false,
 
-          ];
+            ];
 
-      
+
 
             $resultPPDB->createPesertaPPDB($data);
 
-          
-           
-            return redirect('/ppdb#ppdb')->with('success', 'Data Berhasil');
-            
-            
+
+
+            return redirect('/ppdb#daftar')->with('success', 'Sukses,Pengiriman Data ke Pihak Sekolah Berhasil');
         } catch (\Throwable $th) {
-         return back()->with('Terjadi Kesalahan Silahkan Coba Lagi', );
-        } 
+            return redirect('/ppdb#daftar')->with('error',' Kesalahan,Terjadi Kesalahan Silahkan Coba Lagi',);
+        }
     }
 
     /**
