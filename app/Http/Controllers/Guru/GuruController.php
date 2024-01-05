@@ -32,26 +32,16 @@ class GuruController extends Controller
         return $this->img;
     }
 
-    public function uploadFotoGuru($foto, $dbfoto)
-    {
-
-        $folderPath = public_path('Assets/images/guru');
-
-        if (! is_dir($folderPath)) {
-            mkdir($folderPath, 0777, true);
-        }
-
-        $img = Image::make($foto);
-        // perbaiki rotasi foto
-        $img->orientate();
-        // kompres gambar
-        $img->filesize();
-
-        return $img->save('Assets/images/guru/'.$dbfoto, 10);
-    }
 
     public function uploadMateriGuru($pertemuan, $file, $dbfile)
     {
+        // periksa apakah folder ini ada atau tidak
+
+        $folderPath = 'storage/guru/materi';
+
+        if (!is_dir($folderPath)) {
+            mkdir($folderPath, 0777, true);
+        }
 
         // panggil file di database
         $resultMateri = new Pertemuan();
@@ -64,18 +54,22 @@ class GuruController extends Controller
             File::delete($file_path);
         }
 
-        $folderPath = public_path('storage/guru/materi');
-
-        if (! is_dir($folderPath)) {
-            mkdir($folderPath, 0777, true);
-        }
+        // $request->photo->store('images', 's3');
 
         // simpan file materi
-        return $file->storeAs('public/guru/materi/', $dbfile);
+      return move_uploaded_file($file, 'storage/guru/materi/'.$dbfile);
+        // return $file->move_uploaded_file('storage/guru/materi/', $dbfile);
     }
 
     public function uploadTugasGuru($pertemuan, $file, $dbfile)
     {
+
+        // periksa folder
+        $folderPath = 'storage/guru/tugas';
+
+        if (!is_dir($folderPath)) {
+            mkdir($folderPath, 0777, true);
+        }
 
         // panggil file di database
         $resultTugas = new Pertemuan();
@@ -88,14 +82,11 @@ class GuruController extends Controller
             File::delete($file_path);
         }
 
-        $folderPath = public_path('storage/guru/tugas');
-
-        if (! is_dir($folderPath)) {
-            mkdir($folderPath, 0777, true);
-        }
+     
 
         // simpan file tugas
-        return $file->storeAs('public/guru/tugas', $dbfile);
+
+        return move_uploaded_file($file, 'storage/guru/tugas/'.$dbfile);
     }
 
     public function jenisGuru()

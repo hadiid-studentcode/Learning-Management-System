@@ -337,7 +337,7 @@ class PembayaranTataUsahaController extends TataUsahaController
         $resultCalender = new Calender();
         $tanggal_pembayaran = $resultCalender->TanggalBahasaIndonesia($dataPembayaranSiswa->tanggal);
 
-        $folderPath = public_path('storage/tata_usaha/pemasukan');
+        $folderPath = 'storage/tata_usaha/pemasukan';
 
         if (! is_dir($folderPath)) {
             mkdir($folderPath, 0777, true);

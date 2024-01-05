@@ -41,9 +41,9 @@ class Pengeluaran extends Model
     public function uploadBuktiTransaksi($file, $dbfile)
     {
 
-        $folderPath = public_path('storage/tata_usaha/pengeluaran');
+        $folderPath = 'storage/tata_usaha/pengeluaran';
 
-        if (! is_dir($folderPath)) {
+        if (!is_dir($folderPath)) {
             mkdir($folderPath, 0777, true);
         }
 
@@ -53,7 +53,7 @@ class Pengeluaran extends Model
         // kompres gambar
         $img->filesize();
 
-        return $img->save('storage/tata_usaha/pengeluaran/'.$dbfile, 10);
+        return $img->save('storage/tata_usaha/pengeluaran/' . $dbfile, 10);
     }
 
     public function getPengeluaran()

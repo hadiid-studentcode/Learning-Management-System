@@ -41,38 +41,10 @@ class TataUsahaController extends Controller
 
     public function roundFoto($requestFoto)
     {
-        $foto = round(microtime(true) * 1000).'-'.str_replace(' ', '-', $requestFoto->getClientOriginalName());
+        $foto = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $requestFoto->getClientOriginalName());
 
         return $foto;
     }
 
-    public function uploadFotoSiswa($foto, $dbfoto)
-    {
-
-        $img = Image::make($foto);
-        // perbaiki rotasi foto
-        $img->orientate();
-        // kompres gambar
-        $img->filesize();
-
-        return $img->save('Assets/images/siswa/'.$dbfoto, 10);
-    }
-
-    public function uploadFoto($foto, $folder, $dbfoto)
-    {
-
-        $folderPath = public_path('Assets/images/'.$folder);
-
-        if (! is_dir($folderPath)) {
-            mkdir($folderPath, 0777, true);
-        }
-
-        $img = Image::make($foto);
-        // perbaiki rotasi foto
-        $img->orientate();
-        // kompres gambar
-        $img->filesize();
-
-        return $img->save('Assets/images/'.$folder.'/'.$dbfoto, 10);
-    }
+   
 }

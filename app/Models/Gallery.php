@@ -54,6 +54,11 @@ class Gallery extends Model
 
     public function uploadFotoGallery($foto, $dbfoto, $id)
     {
+        $folderPath = 'storage/gallery';
+
+        if (!is_dir($folderPath)) {
+            mkdir($folderPath, 0777, true);
+        }
 
         $result = new Gallery();
         $getfoto = $result->getPhotoGallery($id);
@@ -67,11 +72,6 @@ class Gallery extends Model
             }
         }
 
-        $folderPath = public_path('storage/gallery');
-
-        if (! is_dir($folderPath)) {
-            mkdir($folderPath, 0777, true);
-        }
 
         $img = Image::make($foto);
         // perbaiki rotasi foto

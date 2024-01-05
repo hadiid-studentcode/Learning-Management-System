@@ -55,43 +55,21 @@ class PesertaPPDB extends Model
     public function uploadFotoPesertaPPDB($foto, $dbfoto)
     {
 
+        $folderPath = 'storage/siswa/images';
+
+        if (!is_dir($folderPath)) {
+            mkdir($folderPath, 0777, true);
+        }
 
 
         if (!empty($dbfoto)) {
-
-
             $image_path = 'storage/siswa/images/' . $dbfoto;
             if (File::exists($image_path)) {
                 File::delete($image_path);
             }
         }
 
-        $folderPath = public_path('storage/siswa/images');
-
-        if (!is_dir($folderPath)) {
-            mkdir($folderPath, 0777, true);
-        }
-
-        // upload foto ke storage
-
-
-        // $path = $foto->store(
-        //     'avatars/' . $dbfoto,
-        //     'public'
-        // );
-
-        // $path = Storage::putFileAs(
-        //     'public/siswa/images',
-        //     $foto,
-        //     $dbfoto,
-        // );
-
-        // cara mengetahui apakah foto benar masuk ke file atau tidak
-
        
-
-
-        // return $path;
 
 
         $img = Image::make($foto);

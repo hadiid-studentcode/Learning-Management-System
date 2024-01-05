@@ -27,14 +27,14 @@ class tugasSiswa extends Model
     public function uploadTugasSiswa($file, $dbfile)
     {
 
-        $folderPath = public_path('storage/siswa/tugas');
+        $folderPath = 'storage/siswa/tugas';
 
-        if (! is_dir($folderPath)) {
+        if (!is_dir($folderPath)) {
             mkdir($folderPath, 0777, true);
         }
 
         // simpan file tugas
-        return $file->storeAs('public/siswa/tugas', $dbfile);
+        return move_uploaded_file($file, 'storage/siswa/tugas/' . $dbfile);
     }
 
     public function saveTugasSiswa($data)

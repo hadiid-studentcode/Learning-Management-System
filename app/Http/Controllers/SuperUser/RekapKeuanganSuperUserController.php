@@ -184,7 +184,7 @@ class RekapKeuanganSuperUserController extends SuperUserController
 
             $total = $resultRekapKeuangan->totalPemasukkanDanPengeluaran($rekapKeuangan);
 
-            // $folderPath = public_path('storage/tata_usaha/rekap-keuangan/');
+            // $folderPath = 'storage/tata_usaha/rekap-keuangan/';
 
             // if (! is_dir($folderPath)) {
             //     mkdir($folderPath, 0777, true);
@@ -220,7 +220,7 @@ class RekapKeuanganSuperUserController extends SuperUserController
 
             $totalSearch = $resultRekapKeuangan->totalPemasukkanDanPengeluaran($rekapKeuanganSearch);
 
-            // $folderPath = public_path('storage/tata_usaha/rekap-keuangan/'.$month);
+            // $folderPath = 'storage/tata_usaha/rekap-keuangan/'.$month;
 
             // if (! is_dir($folderPath)) {
             //     mkdir($folderPath, 0777, true);

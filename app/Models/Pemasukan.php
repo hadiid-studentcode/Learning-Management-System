@@ -41,9 +41,9 @@ class Pemasukan extends Model
     public function uploadBuktiTransaksi($file, $dbfile)
     {
 
-        $folderPath = public_path('storage/tata_usaha/pemasukan');
+        $folderPath = 'storage/tata_usaha/pemasukan';
 
-        if (! is_dir($folderPath)) {
+        if (!is_dir($folderPath)) {
             mkdir($folderPath, 0777, true);
         }
 
@@ -53,7 +53,7 @@ class Pemasukan extends Model
         // kompres gambar
         $img->filesize();
 
-        return $img->save('storage/tata_usaha/pemasukan/'.$dbfile, 10);
+        return $img->save('storage/tata_usaha/pemasukan/' . $dbfile, 10);
     }
 
     public function getPemasukan()
@@ -174,7 +174,7 @@ class Pemasukan extends Model
     {
         $deskripsi = DB::table('pemasukan')
             ->select('deskripsi')
-            ->where('no_transaksi', 'like', '%'.$nisn_siswa.'%')
+            ->where('no_transaksi', 'like', '%' . $nisn_siswa . '%')
             ->get();
 
         return $deskripsi;
@@ -209,10 +209,10 @@ class Pemasukan extends Model
         $results = DB::table('pemasukan')
             ->select('pemasukan.deskripsi')
             ->where('pembayaran', 'like', '%SPP%')
-            ->where('no_transaksi', 'like', '%'.$siswa->nisn.'%')
-            ->where('pembayaran', 'like', '%'.$bulanSekarang.' TAHUN '.$tahunAjaran->tahun_ajaran.'%')
-            ->where('tanggal', '>=', $tahunSekarang.'-'.$bulanNow.'-01')
-            ->where('tanggal', '<=', $tahunSekarang.'-'.$bulanNow.'-30')
+            ->where('no_transaksi', 'like', '%' . $siswa->nisn . '%')
+            ->where('pembayaran', 'like', '%' . $bulanSekarang . ' TAHUN ' . $tahunAjaran->tahun_ajaran . '%')
+            ->where('tanggal', '>=', $tahunSekarang . '-' . $bulanNow . '-01')
+            ->where('tanggal', '<=', $tahunSekarang . '-' . $bulanNow . '-30')
             ->first();
 
         $data = [$results, $bulanSekarang, $tahunAjaran->tahun_ajaran];
@@ -249,10 +249,10 @@ class Pemasukan extends Model
         $results = DB::table('pemasukan')
             ->select('pemasukan.deskripsi')
             ->where('pembayaran', 'like', '%SPP%')
-            ->where('no_transaksi', 'like', '%'.$siswa->nisn.'%')
-            ->where('pembayaran', 'like', '%'.$bulanSekarang.' TAHUN '.$tahunAjaran->tahun_ajaran.'%')
-            ->where('tanggal', '>=', $tahunSekarang.'-'.$bulanNow.'-01')
-            ->where('tanggal', '<=', $tahunSekarang.'-'.$bulanNow.'-30')
+            ->where('no_transaksi', 'like', '%' . $siswa->nisn . '%')
+            ->where('pembayaran', 'like', '%' . $bulanSekarang . ' TAHUN ' . $tahunAjaran->tahun_ajaran . '%')
+            ->where('tanggal', '>=', $tahunSekarang . '-' . $bulanNow . '-01')
+            ->where('tanggal', '<=', $tahunSekarang . '-' . $bulanNow . '-30')
             ->first();
 
         $data = [$results, $bulanSekarang, $tahunAjaran->tahun_ajaran];
