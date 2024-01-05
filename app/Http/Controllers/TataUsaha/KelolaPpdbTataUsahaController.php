@@ -22,7 +22,7 @@ class KelolaPpdbTataUsahaController extends TataUsahaController
         $resultKelas = new Kelas();
         $kelas = $resultKelas->getkelas();
 
-        return view('tatausaha.ppdb.index')
+        return view('tataUsaha.ppdb.index')
             ->with('title', 'Kelola PPDB')
             ->with('role', $this->role)
             ->with('img', $this->imageHeader())
@@ -36,7 +36,7 @@ class KelolaPpdbTataUsahaController extends TataUsahaController
     {
         $resultPPDB = new PesertaPPDB();
         $pesertaPPDB  = $resultPPDB->getPesertaPPDB()->where('status_ppdb', 1);
-        return view('tatausaha.ppdb.create')
+        return view('tataUsaha.ppdb.create')
             ->with('title', 'Kelola PPDB')
             ->with('role', $this->role)
             ->with('peserta', $pesertaPPDB)
@@ -64,29 +64,32 @@ class KelolaPpdbTataUsahaController extends TataUsahaController
     public function update(Request $request, $id)
     {
 
-     
+       
+
+
 
         try {
 
-            if($request->kelas == null){
+            if ($request->kelas == null) {
+                dd('kelas');
                 return back()->with('error', 'Kelas harus dipilih');
             }
 
             // get kelas where id kelas
             $resultKelas = new Kelas();
             $getKelas = $resultKelas->firstKelasWhereIdKelas($request->kelas);
-           
+
 
             $dataPesertaPPDB = [
                 'kelas_siswa' => $getKelas->kelas . ' ' . $getKelas->rombel,
                 'status_ppdb' => true
             ];
 
-          
-            
+
+
 
             $resultPesertaPPDB = new PesertaPPDB();
-            $resultPesertaPPDB->updatePesertaPPDB($id,$dataPesertaPPDB);
+            $resultPesertaPPDB->updatePesertaPPDB($id, $dataPesertaPPDB);
 
 
             $resultSiswa = new Siswa();
@@ -132,9 +135,9 @@ class KelolaPpdbTataUsahaController extends TataUsahaController
                 'foto' => $peserta->foto_siswa,
                 'id_user' => $id,
             ];
-       
 
-         
+
+
 
             $resultSiswa->saveSiswa($dataSiswa);
 
@@ -149,7 +152,7 @@ class KelolaPpdbTataUsahaController extends TataUsahaController
                 'hak_akses' => 'Wali Murid',
             ];
 
-          
+
 
             $resultUser->saveUsers($dataUserWaliMurid);
 
@@ -184,7 +187,7 @@ class KelolaPpdbTataUsahaController extends TataUsahaController
 
 
 
-        
+
 
             return back();
         } catch (\Throwable $th) {

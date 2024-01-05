@@ -80,25 +80,29 @@ class PesertaPPDB extends Model
         //     'public'
         // );
 
-        $path = Storage::putFileAs(
-            'public/siswa/images',
-            $foto,
-            $dbfoto,
-        );
+        // $path = Storage::putFileAs(
+        //     'public/siswa/images',
+        //     $foto,
+        //     $dbfoto,
+        // );
+
+        // cara mengetahui apakah foto benar masuk ke file atau tidak
+
+       
 
 
-        return $path;
+        // return $path;
 
 
-        // $img = Image::make($foto);
-        // // perbaiki rotasi foto
-        // $img->orientate();
-        // // kompres gambar
-        // $img->filesize();
+        $img = Image::make($foto);
+        // perbaiki rotasi foto
+        $img->orientate();
+        // kompres gambar
+        $img->filesize();
 
 
 
-        // return $img->save('storage/siswa/images/' . $dbfoto, 10);
+        return $img->save('storage/siswa/images/' . $dbfoto);
     }
 
     public function getPesertaPPDB()
