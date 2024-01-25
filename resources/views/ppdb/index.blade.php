@@ -719,7 +719,7 @@
                 <h5>Data Orang Tua</h5>
                 <div class="form-group mb-3">
                     <label for="nik">NIK:</label>
-                    <input type="text" class="form-control" id="nik" name="nik" required>
+                    <input type="text" class="form-control" id="nik" name="nik" >
                 </div>
                 <div class="form-group mb-3">
                     <label for="nama_ortu">Nama Orang Tua:</label>
