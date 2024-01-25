@@ -10,7 +10,7 @@
                     <h2 class="text-dark-75 text-center  ">Mengatur Nilai KKM di Setiap Kelas</h2>
                     <p class="text-dark-50 text-center">Silakan input Nilai KKM dalam Mata Pelajaran</p>
                 </div>
-            </div>
+            </div>dsf
         </div>
     </div>
 
