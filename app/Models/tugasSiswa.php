@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\File;
 class tugasSiswa extends Model
 {
     use HasFactory;
-    use HasFactory;
 
     protected $table = 'tugas_siswa';
 
@@ -29,12 +28,12 @@ class tugasSiswa extends Model
 
         $folderPath = 'storage/siswa/tugas';
 
-        if (!is_dir($folderPath)) {
+        if (! is_dir($folderPath)) {
             mkdir($folderPath, 0777, true);
         }
 
         // simpan file tugas
-        return move_uploaded_file($file, 'storage/siswa/tugas/' . $dbfile);
+        return move_uploaded_file($file, 'storage/siswa/tugas/'.$dbfile);
     }
 
     public function saveTugasSiswa($data)

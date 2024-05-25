@@ -6,11 +6,9 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
-use Illuminate\Support\Facades\Storage;
 
 class PPDBTest extends TestCase
 {
-
     // use RefreshDatabase;
     use WithFaker;
 
@@ -18,6 +16,7 @@ class PPDBTest extends TestCase
     {
         parent::setUp();
     }
+
     /**
      * A basic feature test example.
      */
@@ -37,7 +36,7 @@ class PPDBTest extends TestCase
 
         $file = UploadedFile::fake()->image('photo1.jpg');
 
-        $data  = [
+        $data = [
             'nisn' => null,
             'nama' => $this->faker->name(),
             'kelas' => '1',
@@ -68,10 +67,7 @@ class PPDBTest extends TestCase
 
         ];
 
-
         $response = $this->post('/ppdb', $data, ['Content-Type' => 'multipart/form-data', 'X-CSRF-TOKEN' => csrf_token()]);
-
-
 
         $response->assertStatus(302);
     }
@@ -83,16 +79,9 @@ class PPDBTest extends TestCase
 
         $response->assertStatus(200);
 
-
-
         $file = UploadedFile::fake()->image('photo1.jpg');
 
-
-
-
-
-
-        $data  = [
+        $data = [
             'nisn' => $this->faker->randomNumber(),
             'nama' => $this->faker->name(),
             'kelas' => $this->faker->numberBetween(2, 9),
@@ -123,10 +112,7 @@ class PPDBTest extends TestCase
 
         ];
 
-
         $response = $this->post('/ppdb', $data, ['Content-Type' => 'multipart/form-data', 'X-CSRF-TOKEN' => csrf_token()]);
-
-
 
         $response->assertStatus(302);
     }
@@ -140,7 +126,7 @@ class PPDBTest extends TestCase
 
         $file = null;
 
-        $data  = [
+        $data = [
             'nisn' => null,
             'nama' => $this->faker->name(),
             'kelas' => '1',
@@ -171,10 +157,7 @@ class PPDBTest extends TestCase
 
         ];
 
-
         $response = $this->post('/ppdb', $data, ['Content-Type' => 'multipart/form-data', 'X-CSRF-TOKEN' => csrf_token()]);
-
-
 
         $response->assertStatus(302);
     }
@@ -185,12 +168,9 @@ class PPDBTest extends TestCase
 
         $response->assertStatus(200);
 
-
-
         $file = null;
 
-
-        $data  = [
+        $data = [
             'nisn' => $this->faker->randomNumber(),
             'nama' => $this->faker->name(),
             'kelas' => $this->faker->numberBetween(2, 9),
@@ -221,26 +201,20 @@ class PPDBTest extends TestCase
 
         ];
 
-
         $response = $this->post('/ppdb', $data, ['Content-Type' => 'multipart/form-data', 'X-CSRF-TOKEN' => csrf_token()]);
-
-
 
         $response->assertStatus(302);
     }
 
-    public function test_storeCekJikaNisnNullDanKelasAda() : void
+    public function test_storeCekJikaNisnNullDanKelasAda(): void
     {
         $response = $this->get('/ppdb');
 
         $response->assertStatus(200);
 
-
-
         $file = UploadedFile::fake()->image('photo1.jpg');
 
-
-        $data  = [
+        $data = [
             'nisn' => null,
             'nama' => $this->faker->name(),
             'kelas' => $this->faker->numberBetween(2, 9),
@@ -271,14 +245,10 @@ class PPDBTest extends TestCase
 
         ];
 
-
         $response = $this->post('/ppdb', $data, ['Content-Type' => 'multipart/form-data', 'X-CSRF-TOKEN' => csrf_token()]);
-
-
 
         $response->assertStatus(302);
     }
-
 
     public function test_storeCekJikaNisnAdaDanKelas1(): void
     {
@@ -286,12 +256,9 @@ class PPDBTest extends TestCase
 
         $response->assertStatus(200);
 
-
-
         $file = UploadedFile::fake()->image('photo1.jpg');
 
-
-        $data  = [
+        $data = [
             'nisn' => null,
             'nama' => $this->faker->name(),
             'kelas' => $this->faker->numberBetween(2, 9),
@@ -322,10 +289,7 @@ class PPDBTest extends TestCase
 
         ];
 
-
         $response = $this->post('/ppdb', $data, ['Content-Type' => 'multipart/form-data', 'X-CSRF-TOKEN' => csrf_token()]);
-
-
 
         $response->assertStatus(302);
     }

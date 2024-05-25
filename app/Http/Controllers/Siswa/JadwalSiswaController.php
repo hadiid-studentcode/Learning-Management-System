@@ -18,7 +18,6 @@ class JadwalSiswaController extends SiswaController
      */
     public function index()
     {
-      
 
         $id_user = Auth()->user()->id;
 
@@ -86,7 +85,6 @@ class JadwalSiswaController extends SiswaController
      */
     public function create(Request $r)
     {
-     
 
         $SearchtahunAjaran = $r->tahun_ajaran;
         $Searchhari = $r->hari;
@@ -163,8 +161,6 @@ class JadwalSiswaController extends SiswaController
      */
     public function show(string $kode)
     {
-       
-      
 
         $id_user = Auth()->user()->id;
 
@@ -175,7 +171,7 @@ class JadwalSiswaController extends SiswaController
         // get mapel where kode first
         $resultMapel = new Mapel();
         $getMapel = $resultMapel->getMapelWhereKode($kode);
-      
+
         // get pertemuan where id_kelas
         $resultPertemuan = new Pertemuan();
         $getPertemuan = $resultPertemuan->getPertemuanWhereIdKelas($kode, $getidKelas->id_kelas);
@@ -230,7 +226,6 @@ class JadwalSiswaController extends SiswaController
 
     public function detailMapel(string $kodemapel)
     {
-     
 
         $parts = explode('-', $kodemapel);
         $kode_mapel = $parts[0];

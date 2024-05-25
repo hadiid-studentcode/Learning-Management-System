@@ -4,7 +4,6 @@ namespace App\Http\Controllers\TataUsaha;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pegawai;
-use Intervention\Image\Facades\Image;
 
 class TataUsahaController extends Controller
 {
@@ -41,10 +40,8 @@ class TataUsahaController extends Controller
 
     public function roundFoto($requestFoto)
     {
-        $foto = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $requestFoto->getClientOriginalName());
+        $foto = round(microtime(true) * 1000).'-'.str_replace(' ', '-', $requestFoto->getClientOriginalName());
 
         return $foto;
     }
-
-   
 }

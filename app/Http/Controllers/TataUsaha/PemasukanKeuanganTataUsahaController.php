@@ -85,7 +85,7 @@ class PemasukanKeuanganTataUsahaController extends TataUsahaController
         }
 
         if ($bukti_transaksi !== null) {
-            $bukti_transaksi_image = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('bukti_transaksi')->getClientOriginalName());
+            $bukti_transaksi_image = round(microtime(true) * 1000).'-'.str_replace(' ', '-', $request->file('bukti_transaksi')->getClientOriginalName());
         } else {
             $bukti_transaksi_image = null;
         }
@@ -109,7 +109,7 @@ class PemasukanKeuanganTataUsahaController extends TataUsahaController
         }
 
         $dataPemasukan = [
-            'no_transaksi' => $tahun_awal . 'T0' . $jumlahTransaksiPemasukkan . $metode . date('s'),
+            'no_transaksi' => $tahun_awal.'T0'.$jumlahTransaksiPemasukkan.$metode.date('s'),
             'tanggal' => $tanggal,
             'pembayaran' => $request->kategori,
             'tarif' => null,
@@ -118,7 +118,7 @@ class PemasukanKeuanganTataUsahaController extends TataUsahaController
             'diterima_dari' => $pengirim,
             'metode_pembayaran' => 'Tunai',
             'deskripsi' => $deskripsi,
-            'bukti_transaksi' => $tahun_awal . 'T0' . $jumlahTransaksiPemasukkan . $metode . date('s'),
+            'bukti_transaksi' => $tahun_awal.'T0'.$jumlahTransaksiPemasukkan.$metode.date('s'),
             'id_tahun_ajaran' => $tahunAjaran->id,
             'report' => null,
         ];
@@ -148,7 +148,7 @@ class PemasukanKeuanganTataUsahaController extends TataUsahaController
 
         $folderPath = 'storage/tata_usaha/pemasukan';
 
-        if (!is_dir($folderPath)) {
+        if (! is_dir($folderPath)) {
             mkdir($folderPath, 0777, true);
         }
 
@@ -163,7 +163,7 @@ class PemasukanKeuanganTataUsahaController extends TataUsahaController
             'pembayaran' => $dataPemasukan['pembayaran'],
             'nominal' => $dataPemasukan['nominal'],
 
-        ])->setPaper('A4', 'landscape')->save('storage/tata_usaha/pemasukan/' . $dataPemasukan['bukti_transaksi'] . '.pdf')->stream('download.pdf');
+        ])->setPaper('A4', 'landscape')->save('storage/tata_usaha/pemasukan/'.$dataPemasukan['bukti_transaksi'].'.pdf')->stream('download.pdf');
 
         return redirect('/tata-usaha/pemasukan')->with('message', 'Data Pengeluaran Berhasil Disimpan.');
     }

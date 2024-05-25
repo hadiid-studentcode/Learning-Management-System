@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
-use Illuminate\Support\Facades\Storage;
 
 class PesertaPPDB extends Model
 {
     use HasFactory;
+
     protected $table = 'peserta_ppdb';
 
     protected $fillable = [
@@ -57,20 +57,16 @@ class PesertaPPDB extends Model
 
         $folderPath = 'storage/siswa/images';
 
-        if (!is_dir($folderPath)) {
+        if (! is_dir($folderPath)) {
             mkdir($folderPath, 0777, true);
         }
 
-
-        if (!empty($dbfoto)) {
-            $image_path = 'storage/siswa/images/' . $dbfoto;
+        if (! empty($dbfoto)) {
+            $image_path = 'storage/siswa/images/'.$dbfoto;
             if (File::exists($image_path)) {
                 File::delete($image_path);
             }
         }
-
-       
-
 
         $img = Image::make($foto);
         // perbaiki rotasi foto
@@ -78,14 +74,12 @@ class PesertaPPDB extends Model
         // kompres gambar
         $img->filesize();
 
-
-
-        return $img->save('storage/siswa/images/' . $dbfoto);
+        return $img->save('storage/siswa/images/'.$dbfoto);
     }
 
     public function getPesertaPPDB()
     {
-        return  PesertaPPDB::all();
+        return PesertaPPDB::all();
     }
 
     public function getPesertaWhereid($id)
@@ -97,18 +91,19 @@ class PesertaPPDB extends Model
     {
         $resultPesertaPPDB = new PesertaPPDB();
 
-        $peserta =  $resultPesertaPPDB->getPesertaWhereid($id);
+        $peserta = $resultPesertaPPDB->getPesertaWhereid($id);
 
-        if (!empty($peserta->foto_siswa)) {
+        if (! empty($peserta->foto_siswa)) {
             $fotoPath = $peserta->foto_siswa;
 
-            $image_path = 'storage/siswa/images/' . $fotoPath;
+            $image_path = 'storage/siswa/images/'.$fotoPath;
 
             if (File::exists($image_path)) {
                 File::delete($image_path);
             }
         }
     }
+
     public function updatePesertaPPDB($id, $data)
     {
 

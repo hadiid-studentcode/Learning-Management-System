@@ -106,24 +106,22 @@ class Guru extends Model
     {
         $folderPath = 'storage/guru/images';
 
-        if (!is_dir($folderPath)) {
+        if (! is_dir($folderPath)) {
             mkdir($folderPath, 0777, true);
         }
 
         $result = new Guru();
         $getfoto = $result->getGuruFirstWhereId(['foto'], $id);
 
-        if (!empty($getfoto->foto)) {
+        if (! empty($getfoto->foto)) {
             $fotoPath = $getfoto->foto;
 
-            $image_path = 'storage/guru/images/' . $fotoPath;
+            $image_path = 'storage/guru/images/'.$fotoPath;
 
             if (File::exists($image_path)) {
                 File::delete($image_path);
             }
         }
-
-
 
         $img = Image::make($foto);
         // perbaiki rotasi foto
@@ -131,7 +129,7 @@ class Guru extends Model
         // kompres gambar
         $img->filesize();
 
-        return $img->save('storage/guru/images/' . $dbfoto, 10);
+        return $img->save('storage/guru/images/'.$dbfoto, 10);
     }
 
     public function saveGuru($data)
@@ -173,10 +171,10 @@ class Guru extends Model
         $result = new Guru();
         $getfoto = $result->getGuruFirstWhereId(['foto'], $id);
 
-        if (!empty($getfoto->foto)) {
+        if (! empty($getfoto->foto)) {
             $fotoPath = $getfoto->foto;
 
-            $image_path = 'storage/guru/images/' . $fotoPath;
+            $image_path = 'storage/guru/images/'.$fotoPath;
 
             if (File::exists($image_path)) {
                 File::delete($image_path);

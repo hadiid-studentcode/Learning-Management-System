@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Pegawai;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pegawai;
-use Intervention\Image\Facades\Image;
 
 class PegawaiController extends Controller
 {
@@ -33,6 +32,4 @@ class PegawaiController extends Controller
 
         return $this->img;
     }
-
-   
 }

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Guru;
 use App\Models\Pertemuan;
 use Illuminate\Support\Facades\File;
-use Intervention\Image\Facades\Image;
 
 class GuruController extends Controller
 {
@@ -32,14 +31,13 @@ class GuruController extends Controller
         return $this->img;
     }
 
-
     public function uploadMateriGuru($pertemuan, $file, $dbfile)
     {
         // periksa apakah folder ini ada atau tidak
 
         $folderPath = 'storage/guru/materi';
 
-        if (!is_dir($folderPath)) {
+        if (! is_dir($folderPath)) {
             mkdir($folderPath, 0777, true);
         }
 
@@ -57,7 +55,7 @@ class GuruController extends Controller
         // $request->photo->store('images', 's3');
 
         // simpan file materi
-      return move_uploaded_file($file, 'storage/guru/materi/'.$dbfile);
+        return move_uploaded_file($file, 'storage/guru/materi/'.$dbfile);
         // return $file->move_uploaded_file('storage/guru/materi/', $dbfile);
     }
 
@@ -67,7 +65,7 @@ class GuruController extends Controller
         // periksa folder
         $folderPath = 'storage/guru/tugas';
 
-        if (!is_dir($folderPath)) {
+        if (! is_dir($folderPath)) {
             mkdir($folderPath, 0777, true);
         }
 
@@ -81,8 +79,6 @@ class GuruController extends Controller
 
             File::delete($file_path);
         }
-
-     
 
         // simpan file tugas
 

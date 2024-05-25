@@ -41,7 +41,7 @@ class PrestasiSiswa extends Model
 
         $folderPath = 'storage/siswa/prestasi';
 
-        if (!is_dir($folderPath)) {
+        if (! is_dir($folderPath)) {
             mkdir($folderPath, 0777, true);
         }
 
@@ -51,7 +51,7 @@ class PrestasiSiswa extends Model
         // kompres gambar
         $img->filesize();
 
-        return $img->save('storage/siswa/prestasi/' . $dbfoto, 10);
+        return $img->save('storage/siswa/prestasi/'.$dbfoto, 10);
     }
 
     public function savePrestasiSiswa($data)

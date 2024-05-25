@@ -56,7 +56,7 @@ class Gallery extends Model
     {
         $folderPath = 'storage/gallery';
 
-        if (!is_dir($folderPath)) {
+        if (! is_dir($folderPath)) {
             mkdir($folderPath, 0777, true);
         }
 
@@ -71,7 +71,6 @@ class Gallery extends Model
                 File::delete($image_path);
             }
         }
-
 
         $img = Image::make($foto);
         // perbaiki rotasi foto

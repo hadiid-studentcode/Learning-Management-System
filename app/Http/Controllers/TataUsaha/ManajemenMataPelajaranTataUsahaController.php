@@ -16,7 +16,6 @@ class ManajemenMataPelajaranTataUsahaController extends TataUsahaController
      */
     public function index()
     {
-    
 
         $this->img = $this->imageHeader();
 

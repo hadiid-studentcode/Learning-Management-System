@@ -12,7 +12,6 @@ use App\Http\Controllers\Guru\RekapNilaiGuruController;
 use App\Http\Controllers\Guru\SettingsGuruController;
 use App\Http\Controllers\Guru\TutorialGuruController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\KelolaPpdbController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\Pegawai\DashboardPegawaiController;
 use App\Http\Controllers\Pegawai\PesanPegawaiController;
@@ -33,7 +32,6 @@ use App\Http\Controllers\SuperUser\RekapKeuanganSuperUserController;
 use App\Http\Controllers\SuperUser\SettingSuperUserController;
 use App\Http\Controllers\TataUsaha\DashboardTataUsahaController;
 use App\Http\Controllers\TataUsaha\GalleryTataUsahaController;
-use App\Http\Controllers\TataUsaha\KelolaPpdbController as TataUsahaKelolaPpdbController;
 use App\Http\Controllers\TataUsaha\KelolaPpdbTataUsahaController;
 use App\Http\Controllers\TataUsaha\KinerjaGuruTataUsahaController;
 use App\Http\Controllers\TataUsaha\ManajemenAbsensiTataUsahaController;
@@ -88,9 +86,6 @@ Route::resource('/', HomeController::class);
 // });
 
 Route::resource('/ppdb', PpdbController::class);
-
-
-
 
 // id : 12345
 // pass : 12345
@@ -361,3 +356,7 @@ Route::group([
 
 //
 // SCRIPT DILARANG DIUBAH =====================================================================
+
+Route::get('/cek', function () {
+    return view('welcome');
+});

@@ -34,15 +34,11 @@ class PpdbController extends Controller
             return redirect('/ppdb#daftar')->with('error', 'Kesalahan,NISN Tidak Perlu Diinput Jika Kelas 1 atau Peserta Didik Baru');
         }
 
-
-
-
-
         $resultPPDB = new PesertaPPDB();
         try {
 
             if ($request->hasFile('photo')) {
-                $foto = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('photo')->getClientOriginalName());
+                $foto = round(microtime(true) * 1000).'-'.str_replace(' ', '-', $request->file('photo')->getClientOriginalName());
                 // save foto peserta PPDB
                 $resultPPDB->uploadFotoPesertaPPDB($request->photo, $foto);
             } else {
@@ -50,13 +46,13 @@ class PpdbController extends Controller
             }
 
             if ($request->kelas == '1' && $request->nisn == null) {
-                $nisn = 'PPDB' . sprintf("%010d", mt_rand(0, 9999999999));
+                $nisn = 'PPDB'.sprintf('%010d', mt_rand(0, 9999999999));
             } else {
                 $nisn = $request->nisn;
             }
             // simpan ppdb
             $data = [
-                "nisn_siswa" => $nisn,
+                'nisn_siswa' => $nisn,
                 'nama_siswa' => $request->nama,
                 'kelas_siswa' => $request->kelas,
                 'jenis_kelamin_siswa' => $request->jenis_kelamin,
@@ -86,15 +82,11 @@ class PpdbController extends Controller
 
             ];
 
-
-
             $resultPPDB->createPesertaPPDB($data);
-
-
 
             return redirect('/ppdb#daftar')->with('success', 'Sukses,Pengiriman Data ke Pihak Sekolah Berhasil');
         } catch (\Throwable $th) {
-            return redirect('/ppdb#daftar')->with('error',' Kesalahan,Terjadi Kesalahan Silahkan Coba Lagi',);
+            return redirect('/ppdb#daftar')->with('error', ' Kesalahan,Terjadi Kesalahan Silahkan Coba Lagi');
         }
     }
 
