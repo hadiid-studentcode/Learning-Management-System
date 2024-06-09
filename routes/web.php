@@ -65,6 +65,7 @@ use App\Http\Controllers\WaliMurid\RekapNilaiWaliMuridController;
 use App\Http\Controllers\WaliMurid\SettingsWaliMuridController;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -284,10 +285,12 @@ Route::group(
         Route::resource('/tata-usaha/manajemen-pegawai', ManajemenPegawaiTataUsahaController::class);
         Route::resource('/tata-usaha/manajemen-guru', ManajemenGuruTataUsahaController::class);
         Route::resource('/tata-usaha/manajemen-absensi', ManajemenAbsensiTataUsahaController::class);
+
         Route::post('/tata-usaha/manajemen-absensi/data-absen-guru/delete/{id_userGuru}', [ManajemenAbsensiTataUsahaController::class, 'destroyAbsenGuru']);
 
         Route::post('/tata-usaha/manajemen-absensi/data-absen-pegawai/delete/{id_userGuru}', [ManajemenAbsensiTataUsahaController::class, 'destroyAbsenPegawai']);
         Route::get('tata-usaha/manajemen-absensi/cetak/absensi/{start_date}/{end_date}', [ManajemenAbsensiTataUsahaController::class, 'cetak']);
+        Route::get('tata-usaha/manajemen-absensi/laporan', [ManajemenAbsensiTataUsahaController::class, 'laporan']);
 
         Route::resource('/tata-usaha/setting', SettingsTataUsahaController::class);
         Route::resource('/tata-usaha/kelola-ppdb', KelolaPpdbTataUsahaController::class);
