@@ -19,6 +19,7 @@ class DashboardTataUsahaController extends TataUsahaController
      */
     public function index()
     {
+        
 
         $resultTahunAjaran = new TahunAjaran();
         $resultTahunAjaran->updateAutoTahunAjaran();

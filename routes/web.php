@@ -81,6 +81,7 @@ use Illuminate\Support\Facades\Route;
 // halaman home
 Route::resource('/', HomeController::class);
 
+
 // Route::get('/maps', function () {
 //     return view('maps');
 // });
