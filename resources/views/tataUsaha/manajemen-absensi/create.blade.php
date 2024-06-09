@@ -49,7 +49,7 @@
                             </a>
                         </li>
                         <li class="nav-item mr-3">
-                            <a class="nav-link active" href="{{ url('tata-usaha/manajemen-absensi/laporan') }}">
+                            <a class="nav-link active" href="{{ url('tata-usaha/manajemen-absensi/show/laporan') }}">
                                 <span class="nav-icon">
                                     <span class="svg-icon mr-3"></span>
                                     <svg width="25px" height="25x" viewBox="0 0 24 24" fill="none"

@@ -99,6 +99,8 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
     public function show(Request $r, string $id)
     {
 
+       
+
         //    get absen pegawai
 
         $resultPegawaiSearch = new AbsenPegawai();
