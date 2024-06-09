@@ -29,6 +29,11 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
             ->with('route', $this->route);
     }
 
+    public function laporan()
+    {
+        dd(1);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -307,4 +312,6 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
             ->with('totalTerlambat_pegawai', $terlambatPegawai)
             ->with('totalMangkir_pegawai', $mangkirPegawai);
     }
+
+  
 }
