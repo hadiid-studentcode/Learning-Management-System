@@ -3,12 +3,11 @@
 @section('main')
     {{-- @include('partials.alert') --}}
     <div class="">
-
         <div class="card card-custom">
             <div class="card-body">
                 <div class="d-flex flex-column align-items-center">
-                    <h2 class="text-dark-75 text-center ">Jadwal Absensi Guru dan Karyawan</h2>
-                    <p class="text-dark-50 text-center">Silakan Atur Jam Absensi dan atur keterangan Absensi Karyawan dan
+                    <h3 class="text-dark-75 text-center ">Eit kondisi Absensi Guru dan Karyawan</h3>
+                    <p class="text-dark-50 text-center">Silakan Atur kondisi Absensi dan atur keterangan Absensi Karyawan dan
                         guru.</p>
                 </div>
             </div>

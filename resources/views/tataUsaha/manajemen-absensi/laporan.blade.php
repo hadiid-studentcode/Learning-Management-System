@@ -3,18 +3,16 @@
 @section('main')
     {{-- @include('partials.alert') --}}
     <div class="">
-
         <div class="card card-custom">
             <div class="card-body">
                 <div class="d-flex flex-column align-items-center">
-                    <h2 class="text-dark-75 text-center ">Jadwal Absensi Guru dan Karyawan</h2>
-                    <p class="text-dark-50 text-center">Silakan Atur Jam Absensi dan atur keterangan Absensi Karyawan dan
+                    <h3 class="text-dark-75 text-center ">Laporan Jadwal Absensi Guru dan Karyawan</h3>
+                    <p class="text-dark-50 text-center">Silakan Atur laporan jenis Absensi dan keterangan Absensi Karyawan dan
                         guru.</p>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="" style="width:auto;">
         <div class="card card-custom" id="data_pertemuan">
             <div class="card-body">
@@ -69,7 +67,93 @@
     </div>
 
 
-<div class="container">
-    tesjgjgjjgjhjht  
+    <div class="row justify-content-center">
+    <div class="col-12">
+        <div class="card card-success">
+            <div class="card-body">
+                <h3 class="text-center mt-2">Laporan Absensi</h3>
+                <hr>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-md-10 col-sm-12">
+                        <h5 class="text-center mb-4">Pilih Range Waktu Absensi Untuk Melihat Data Absensi</h5>
+                        <form action="{{ url('tata-usaha/manajemen-absensi/Search') }}" method="GET" class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="start_date">Tanggal Mulai:</label>
+                                    <div class="input-group">
+                                        <input type="date" class="form-control" id="start_date" name="start_date" value="{{ isset($start_date) ? $start_date : '' }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="end_date">Tanggal Selesai:</label>
+                                    <div class="input-group">
+                                        <input type="date" class="form-control" id="end_date" name="end_date" value="{{ isset($end_date) ? $end_date : '' }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="employee_type">Jenis Pegawai:</label>
+                                    <div class="input-group">
+                                        <select class="form-control" id="employee_type" name="employee_type">
+                                            <option value="">Pilih Jenis Pegawai</option>
+                                            <option value="pegawai">Pegawai</option>
+                                            <option value="guru">Guru</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success mt-3 mb-4">Tampilkan Absensi</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+<div class="row">
+            <div class="col-md-12">
+                <div class="card card-custom gutter-b">
+                    <div class="card-body">
+                        <h4 class="mb-3">Tabel Laporan</h4>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="text-center" style="width:10%;">Nomor</th>
+                                        <th scope="col">Nama</th>
+                                        <th scope="col">Posisi</th>
+                                        <th scope="col">Status Absensi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row" class="text-center">1</th>
+                                        <td>John Doe</td>
+                                        <td>Guru</td>
+                                        <td>Hadir</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"class="text-center">2</th>
+                                        <td>Jane Smith</td>
+                                        <td>Karyawan</td>
+                                        <td>Tidak Hadir</td>
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 @endsection
