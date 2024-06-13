@@ -31,7 +31,12 @@ class ManajemenAbsensiTataUsahaController extends TataUsahaController
 
     public function laporan()
     {
-        dd(1);
+        return view('tataUsaha.manajemen-absensi.laporan')
+        ->with('title', 'Manajemen Absensi')
+        ->with('role', $this->role)
+        ->with('folder', $this->folder)
+        ->with('img', $this->img)
+        ->with('route', $this->route);;
     }
 
     /**
