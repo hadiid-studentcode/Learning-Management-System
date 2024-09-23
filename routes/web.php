@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\Guru\AturKkmGuruController;
 use App\Http\Controllers\Guru\DashboardGuruController;
 use App\Http\Controllers\Guru\JadwalGuruController;
@@ -83,9 +84,43 @@ use Illuminate\Support\Facades\Route;
 Route::resource('/', HomeController::class);
 
 
-// Route::get('/maps', function () {
-//     return view('maps');
-// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::get('/absensi', [AbsensiController::class, 'index']);
+Route::post('/absensi', [AbsensiController::class, 'absensi']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Route::resource('/ppdb', PpdbController::class);
 
